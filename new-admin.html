@@ -231,6 +231,9 @@
   .btn:disabled{opacity:.5;cursor:default}
 
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+  /* 3-card variant (marketing): always fills the row, no empty slot at the right. */
+  .kpis.k3{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:760px){.kpis.k3{grid-template-columns:1fr}}
   .kpi{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-card);
     padding:15px;box-shadow:var(--shadow-sm);text-align:left;font-family:inherit;width:100%}
   button.kpi{cursor:pointer}
@@ -1538,7 +1541,7 @@ function dashMarketing(){
   +'</div></div>';
   var acts='<div class="card"><div class="card-h"><div><div><h2>Aktivitas terbaru</h2><p>3 terakhir · Tim Marketing</p></div></div></div><div class="act-list">'+ACTS.marketing.map(function(a){return '<div class="ev"><span class="ev-ava" style="background:'+a[3]+'">'+a[0]+'</span><div class="et"><div class="et-t">'+esc(a[1])+'</div><time>'+esc(a[2])+'</time></div></div>';}).join('')+'</div></div>';
   return '<div class="hero"><div><h1>Halo, Marketing</h1><p>'+today+' · '+esc(r.tagline)+'</p></div><div class="hero-actions">'+heroes+'</div></div>'
-   +'<div class="kpis">'+kpis+'</div>'
+   +'<div class="kpis k3">'+kpis+'</div>'
    +need
    +'<div class="grid2">'+streak+'<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+kanal+acts+'</div></div>'
   +dashFoot();
