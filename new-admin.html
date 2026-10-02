@@ -769,7 +769,6 @@ var NAV=[
     {k:'permissions',t:'Permission',icn:'ti-key',route:'/permissions',mp:'menu.permissions',perm:'permissions.read'}]}]},
  {g:'Konten',items:[
   {k:'questions',t:'Bank Soal',icn:'ti-books',route:'/questions',mp:'menu.questions',perm:'questionBank.read',badge:'12',cls:'warn'},
-  {k:'media',t:'Media',icn:'ti-photo',route:'/media',mp:'menu.media',perm:'media.read',badge:'320',cls:'info'},
   {k:'ads',t:'Iklan',icn:'ti-speakerphone',route:'/ads',mp:'menu.ads',perm:'ads.read',badge:'5',cls:'ok'},
    /* Prototype-only: no backend route yet — requested for Marketing */
    {k:'social-media',t:'Media Sosial',icn:'ti-building-broadcast-tower',route:'/social-media',mp:'menu.socialMedia',perm:'social-media.read'},
@@ -779,7 +778,8 @@ var NAV=[
   {k:'univ-group',t:'Universitas',icn:'ti-building',mp:'menu.universitas',children:[
     {k:'universitas',t:'Universitas',icn:'ti-building',route:'/universitas',mp:'menu.universitas',perm:'universitas.read'},
     {k:'program-pendidikan',t:'Program Pendidikan',icn:'ti-list-details',route:'/program-pendidikan',mp:'menu.programPendidikan',perm:'program-pendidikan.read'},
-    {k:'program-studi',t:'Program Studi',icn:'ti-book',route:'/program-studi',mp:'menu.programStudi',perm:'program-studi.read'}]}]},
+    {k:'program-studi',t:'Program Studi',icn:'ti-book',route:'/program-studi',mp:'menu.programStudi',perm:'program-studi.read'}]},
+  {k:'media',t:'Media',icn:'ti-photo',route:'/media',mp:'menu.media',perm:'media.read',badge:'320',cls:'info'}]},
  {g:'Struktur Ujian',items:[
   {k:'programs',t:'Program',icn:'ti-folder',route:'/programs',mp:'menu.programs',perm:'program.read'},
    {k:'blueprints',t:'Blueprint',icn:'ti-file-text',route:'/blueprints',mp:'menu.blueprints',perm:'blueprint.read',dot:true,cls:'info'},
@@ -1516,7 +1516,7 @@ function dashMarketing(){
  var today=new Date().toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
  var kpis=kpiHTML(r);
  var heroes=heroBtnsHTML(r);
- var need='<div class="card" style="margin-bottom:14px"><div class="card-h"><div><div><h2>Perlu perhatian</h2><p>3 tertunda · selesaikan langsung dari sini</p></div></div></div><div class="act-list">'
+  var need='<div class="card"><div class="card-h"><div><div><h2>Perlu perhatian</h2><p>3 tertunda · selesaikan langsung dari sini</p></div></div></div><div class="act-list">'
  +'<div class="ev"><span class="ev-ava" style="background:#16A34A">WA</span><div class="et"><div class="et-t">Tautan WhatsApp nonaktif</div><time>1 nonaktif · perbarui tautan undangan</time></div><button class="btn sm" data-goto="social-media" style="flex:0 0 auto">Perbarui</button></div>'
  +'<div class="ev"><span class="ev-ava" style="background:#1D4ED8">IK</span><div class="et"><div class="et-t">1 iklan menunggu jadwal</div><time>Sidebar beranda · atur mulai tayang</time></div><button class="btn sm" data-goto="ads" style="flex:0 0 auto">Atur jadwal</button></div>'
  +'<div class="ev"><span class="ev-ava" style="background:#B45309">NT</span><div class="et"><div class="et-t">2 notifikasi belum dibaca</div><time>1 peringatan · buka pusat notifikasi</time></div><button class="btn sm" data-goto="notifications" style="flex:0 0 auto">Lihat</button></div>'
@@ -1524,7 +1524,7 @@ function dashMarketing(){
   var sts=stSorted();
   var stm=stTotals();
   var stActive=sts.filter(function(x){return x.isActive;}).length;
-  var streak='<div class="card" style="align-self:start"><div class="card-h"><div><div><h2>Tugas Streak</h2><p>'+stActive+' aktif dari '+sts.length+' tugas · '+stm.today+' selesai hari ini</p></div></div><div class="sp"><button class="link" data-goto="streak-tasks">Kelola tugas</button></div></div>'
+  var streak='<div class="card"><div class="card-h"><div><div><h2>Tugas Streak</h2><p>'+stActive+' aktif dari '+sts.length+' tugas · '+stm.today+' selesai hari ini</p></div></div><div class="sp"><button class="link" data-goto="streak-tasks">Kelola tugas</button></div></div>'
   +'<div style="padding:4px 16px 16px;display:flex;flex-direction:column;gap:12px">'
   +'<div class="kpis" style="margin:0;padding:0;grid-template-columns:repeat(3,1fr)">'
   +'<div class="kpi"><div class="kh"><span class="lbl">Selesai · '+stm.days+' hari</span></div><div class="val">'+stm.total.toLocaleString('id-ID')+'</div></div>'
@@ -1540,10 +1540,9 @@ function dashMarketing(){
   +(active.length?active.slice(0,3).map(function(s){var tl=socTile(s.platform);return '<div class="ev"><span class="ev-ava" style="background:'+tl[1]+'">'+esc((s.platform||'S').slice(0,2).toUpperCase())+'</span><div class="et"><div class="et-t">'+esc(s.t)+'</div><time>'+esc(s.url||'')+' · tampil di profil</time></div><span class="status green">Aktif</span></div>';}).join(''):'<div style="padding:4px 16px 16px"><span class="cell-s">Tidak ada akun aktif. Aktifkan dari daftar.</span></div>')
   +'</div></div>';
   var acts='<div class="card"><div class="card-h"><div><div><h2>Aktivitas terbaru</h2><p>3 terakhir · Tim Marketing</p></div></div></div><div class="act-list">'+ACTS.marketing.map(function(a){return '<div class="ev"><span class="ev-ava" style="background:'+a[3]+'">'+a[0]+'</span><div class="et"><div class="et-t">'+esc(a[1])+'</div><time>'+esc(a[2])+'</time></div></div>';}).join('')+'</div></div>';
-  return '<div class="hero"><div><h1>Halo, Marketing</h1><p>'+today+' · '+esc(r.tagline)+'</p></div><div class="hero-actions">'+heroes+'</div></div>'
+   return '<div class="hero"><div><h1>Halo, Marketing</h1><p>'+today+' · '+esc(r.tagline)+'</p></div><div class="hero-actions">'+heroes+'</div></div>'
    +'<div class="kpis k3">'+kpis+'</div>'
-   +need
-   +'<div class="grid2">'+streak+'<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+kanal+acts+'</div></div>'
+   +'<div class="grid2">'+'<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+streak+need+'</div>'+'<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+kanal+acts+'</div></div>'
   +dashFoot();
 }
 function dashView(){
@@ -1640,7 +1639,7 @@ function mediaView(page,t){
   else if(!rows.length)body='<div style="margin:14px 16px;border:1px dashed var(--border);border-radius:14px;padding:36px 20px;text-align:center;color:var(--text-2)"><b>Belum ada media.</b><br><span style="font-size:12.5px">Unggah gambar, audio, atau dokumen.</span><br><br><button class="btn sm" data-reset>Reset filter</button></div>';
   else body='<div class="masonry">'+pageRows.map(function(d,ix){
   var ext=(d.t||'').split('.').pop().toUpperCase();
-  return '<div class="card m-tile"><button class="m-art" data-mopen="'+esc(d.id)+'" aria-label="Buka '+esc(d.t)+'"><span style="display:flex;flex-direction:column;align-items:center;gap:6px">'+ic(mediaIcon(d),32)+'<b style="font-size:11px;letter-spacing:.06em">'+esc(ext)+'</b></span></button><div style="padding:12px 12px 10px;display:flex;flex-direction:column;gap:7px"><span><span class="cell-t" style="font-size:12.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(d.t)+'</span><span class="cell-s">'+esc(d.cat||'')+' · '+esc(d.size||'')+'</span></span><span style="display:flex;gap:6px;align-items:center"><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span>'+byAvatar(d.by,ix)+'<span class="m-quick" style="margin-left:auto"><button class="mini-btn ic" data-mdown="'+esc(d.id)+'" title="Export" aria-label="Export">'+ic(P_DOWNLOAD,12)+'</button></span></span></div></div>';}).join('')+'</div>';
+  return '<div class="card m-tile"><button class="m-art" data-mopen="'+esc(d.id)+'" aria-label="Buka '+esc(d.t)+'"><span style="display:flex;flex-direction:column;align-items:center;gap:6px">'+ic(mediaIcon(d),32)+'<b style="font-size:11px;letter-spacing:.06em">'+esc(ext)+'</b></span></button><div style="padding:12px 12px 10px;display:flex;flex-direction:column;gap:7px"><span><span class="cell-t" style="font-size:12.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(d.t)+'</span><span class="cell-s">'+esc(d.cat||'')+' · '+esc(d.size||'')+'</span></span><span style="display:flex;gap:6px;align-items:center">'+byAvatar(d.by,ix)+'<span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span><span class="m-quick" style="margin-left:auto"><button class="mini-btn ic" data-mdown="'+esc(d.id)+'" title="Export" aria-label="Export">'+ic(P_DOWNLOAD,12)+'</button></span></span></div></div>';}).join('')+'</div>';
   return listHero(page,t,'<button class="btn primary" data-new>'+ic(P_PLUS,17)+'Unggah media</button>')
    +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp">'+((total>0&&tools.fCount>0)?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+toolsBar('Cari file…',tools,false)
    +body+tfootHTML(total,'file',pgNum(pages))+'</div>'+listFoot();
