@@ -425,8 +425,22 @@
   .timeline{padding:6px 16px 14px;display:flex;flex-direction:column}
   .ev{display:flex;gap:11px;font-size:12.8px;padding:9px 0;position:relative}
   .timeline .ev:not(:last-child)::before{content:"";position:absolute;left:15px;top:36px;bottom:-4px;width:2px;background:var(--border-soft)}
-  .ev-ava{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;
+  /* Person avatar — one consistent neutral style everywhere. Identity comes
+     from the initials + the actor name in the meta line, not a random hue. */
+  .ev-ava{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+    background:var(--bg-hover);color:var(--text-2);border:1px solid var(--border-soft);
     font-size:11px;font-weight:600;flex:0 0 30px;z-index:1}
+  /* Icon badge for non-person rows (tasks, alerts, channels). Two-letter
+     initials are reserved for real people — never for objects. */
+  .ev-ic{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;flex:0 0 30px;
+    background:var(--bg-hover);color:var(--text-2);border:1px solid var(--border-soft)}
+  .ev-ic .ti{font-size:17px}
+  .ev-ic.tone-primary{background:var(--primary-50);color:var(--primary);border-color:transparent}
+  [data-theme="dark"] .ev-ic.tone-primary{background:rgba(59,130,246,.14);color:#93C5FD}
+  .ev-ic.tone-success{background:var(--secondary-100);color:#15803D;border-color:transparent}
+  [data-theme="dark"] .ev-ic.tone-success{background:rgba(22,163,74,.15);color:#4ADE80}
+  .ev-ic.tone-warning{background:#FEF3C7;color:#B45309;border-color:transparent}
+  [data-theme="dark"] .ev-ic.tone-warning{background:rgba(245,158,11,.15);color:#FBBF24}
   .ev time{font-size:11px;color:var(--text-3);display:block;margin-top:1px}
   .perm{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;background:var(--bg-hover);
     border:1px solid var(--border);padding:1px 7px;border-radius:6px;color:var(--text-2);white-space:nowrap}
@@ -1174,12 +1188,21 @@ var QUICK={
  user:[['plus','Undang','Lewat email + kursi','#15803D','invitations',1],['shield','Verifikasi','5 perlu manual','#B45309','data-pelajar',0],['mail','Pengingat','8 segera berakhir','#1D4ED8','invitations',0]],
  admin:[['shield','Kelola peran','4 peran · siapa boleh buka apa','#0F172A','roles',0],['file','Aktivitas hari ini','128 catatan · 0 keanehan','#1D4ED8','audit-logs',0],['gear','Pengaturan','Tema · notif · data','#15803D','settings',0]]
 };
+/* Activity feed rows: [initials, title, meta, legacyColor, actorName].
+   The 4th slot is kept for backwards-compat but unused — person avatars are
+   neutral now, so identity comes from initials + actorName. */
 var ACTS={
- soal:[['RK','R. Kartika menilai 18 esai','TO Akbar 12 · 20 mnt lalu','#1D4ED8'],['SY','SR-2091 dibuat otomatis','kunci ganda · 1 jam lalu','#BE123C'],['DM','Blueprint v4 lock 82%','3 jam lalu','#15803D']],
-  marketing:[['RK','Iklan IG Feed ditayangkan','Sidebar beranda · 1–8 Okt','#B45309'],['SY','Tautan bio diperbarui','tryoutku.id/link · 2 jam lalu','#15803D'],['RK','Draf iklan disiapkan','Menunggu jadwal · sidebar beranda','#1D4ED8']],
- user:[['SY','87 pelajar terverifikasi otomatis','94% · hari ini','#15803D'],['TU','SMKN 2 Solo terima undangan','200 kursi','#1D4ED8'],['TU','12 pendaftar belum verifikasi WA','kirim pengingat','#B45309']],
- admin:[['SA','Marketing boleh buka Media','kemarin','#0F172A'],['SY','Salinan data 02:00 berhasil','disimpan 30 hari','#15803D'],['SY','128 aktivitas tercatat','0 anomali','#1D4ED8']]
+ soal:[['RK','R. Kartika menilai 18 esai','TO Akbar 12 · 20 mnt lalu',null,'R. Kartika'],['SY','SR-2091 dibuat otomatis','kunci ganda · 1 jam lalu',null,'Sinta'],['DM','Blueprint v4 lock 82%','3 jam lalu',null,'D. Mahesa']],
+  marketing:[['RK','Iklan IG Feed ditayangkan','Sidebar beranda · 1–8 Okt',null,'R. Kartika'],['SY','Tautan bio diperbarui','tryoutku.id/link · 2 jam lalu',null,'Sinta'],['RK','Draf iklan disiapkan','Menunggu jadwal · sidebar beranda',null,'R. Kartika']],
+ user:[['SY','87 pelajar terverifikasi otomatis','94% · hari ini',null,'Sinta'],['TU','SMKN 2 Solo terima undangan','200 kursi',null,'Tim User'],['TU','12 pendaftar belum verifikasi WA','kirim pengingat',null,'Tim User']],
+ admin:[['SA','Marketing boleh buka Media','kemarin',null,'Sistem'],['SY','Salinan data 02:00 berhasil','disimpan 30 hari',null,'Sinta'],['SY','128 aktivitas tercatat','0 anomali',null,'Sistem']]
 };
+/* One renderer for every activity list so no screen drifts. */
+function actRow(a){
+ var who=a[4]?a[4]+' · ':'';
+ return '<div class="ev"><span class="ev-ava" aria-hidden="true">'+esc(a[0])+'</span>'
+  +'<div class="et"><div class="et-t">'+esc(a[1])+'</div><time>'+esc(who+a[2])+'</time></div></div>';
+}
 /* Notifications: real shape (title/message/type/isRead/link). Dropdown disaring per peran agar marketing hanya lihat yang bisa dibuka. */
 var NOTIFS=[
  {id:'N-1',t:'42 esai menunggu — tertua 2 hari',s:'TO Akbar 12 · antre nilai',c:'#B45309',type:'Peringatan',link:'grading',read:false},
@@ -1517,10 +1540,10 @@ function dashMarketing(){
  var kpis=kpiHTML(r);
  var heroes=heroBtnsHTML(r);
   var need='<div class="card"><div class="card-h"><div><div><h2>Perlu perhatian</h2><p>3 tertunda · selesaikan langsung dari sini</p></div></div></div><div class="act-list">'
- +'<div class="ev"><span class="ev-ava" style="background:#16A34A">WA</span><div class="et"><div class="et-t">Tautan WhatsApp nonaktif</div><time>1 nonaktif · perbarui tautan undangan</time></div><button class="btn sm" data-goto="social-media" style="flex:0 0 auto">Perbarui</button></div>'
- +'<div class="ev"><span class="ev-ava" style="background:#1D4ED8">IK</span><div class="et"><div class="et-t">1 iklan menunggu jadwal</div><time>Sidebar beranda · atur mulai tayang</time></div><button class="btn sm" data-goto="ads" style="flex:0 0 auto">Atur jadwal</button></div>'
- +'<div class="ev"><span class="ev-ava" style="background:#B45309">NT</span><div class="et"><div class="et-t">2 notifikasi belum dibaca</div><time>1 peringatan · buka pusat notifikasi</time></div><button class="btn sm" data-goto="notifications" style="flex:0 0 auto">Lihat</button></div>'
- +'</div></div>';
+  +'<div class="ev"><span class="ev-ic tone-success">'+ic('ti-brand-whatsapp',17)+'</span><div class="et"><div class="et-t">Tautan WhatsApp nonaktif</div><time>1 nonaktif · perbarui tautan undangan</time></div><button class="btn sm" data-goto="social-media" style="flex:0 0 auto">Perbarui</button></div>'
+  +'<div class="ev"><span class="ev-ic tone-primary">'+ic('ti-speakerphone',17)+'</span><div class="et"><div class="et-t">1 iklan menunggu jadwal</div><time>Sidebar beranda · atur mulai tayang</time></div><button class="btn sm" data-goto="ads" style="flex:0 0 auto">Atur jadwal</button></div>'
+  +'<div class="ev"><span class="ev-ic tone-warning">'+ic('ti-bell',17)+'</span><div class="et"><div class="et-t">2 notifikasi belum dibaca</div><time>1 peringatan · buka pusat notifikasi</time></div><button class="btn sm" data-goto="notifications" style="flex:0 0 auto">Lihat</button></div>'
+  +'</div></div>';
   var sts=stSorted();
   var stm=stTotals();
   var stActive=sts.filter(function(x){return x.isActive;}).length;
@@ -1531,15 +1554,15 @@ function dashMarketing(){
   +'<div class="kpi"><div class="kh"><span class="lbl">Selesai hari ini</span></div><div class="val">'+stm.today.toLocaleString('id-ID')+'</div></div>'
   +'<div class="kpi"><div class="kh"><span class="lbl">Tugas aktif</span></div><div class="val">'+stActive+'/'+sts.length+'</div></div>'
   +'</div>'
-  +(sts.length?sts.slice(0,3).map(function(x){var ini=String(x.kind||x.type||'T').slice(0,2).toUpperCase();var per=x.period==='daily'?'harian':x.period==='weekly'?'mingguan':'sekali';return '<div class="ev" style="padding:0"><span class="ev-ava" style="background:var(--primary)">'+esc(ini)+'</span><div class="et"><div class="et-t">'+esc(x.title)+'</div><time>'+(x.targetCount||1)+'x / '+per+' · +'+(x.rewardAmount||0)+' koin</time></div><span class="status '+(STTASK_STATUS_CLS[x.status]||'gray')+'">'+esc(STTASK_STATUS_LBL[x.status]||x.status)+'</span></div>';}).join(''):'<span class="cell-s">Belum ada tugas streak. Buat tugas pertama.</span>')
+  +(sts.length?sts.slice(0,3).map(function(x){var per=x.period==='daily'?'harian':x.period==='weekly'?'mingguan':'sekali';return '<div class="ev" style="padding:0"><span class="ev-ic tone-primary">'+ic(STTASK_ICON[x.type]||'ti-target',17)+'</span><div class="et"><div class="et-t">'+esc(x.title)+'</div><time>'+(x.targetCount||1)+'x / '+per+' · +'+(x.rewardAmount||0)+' koin</time></div><span class="status '+(STTASK_STATUS_CLS[x.status]||'gray')+'">'+esc(STTASK_STATUS_LBL[x.status]||x.status)+'</span></div>';}).join(''):'<span class="cell-s">Belum ada tugas streak. Buat tugas pertama.</span>')
   +'<span class="cell-s" style="display:block;border-top:1px solid var(--border-soft);padding-top:10px">Urutan tampil mengikuti daftar · hadiah koin menjaga streak harian siswa</span>'
   +'</div></div>';
   var socials=(featOf('social-media').rows||[]);
   var active=socials.filter(function(x){return x.chip==='Aktif';});
   var kanal='<div class="card"><div class="card-h"><div><div><h2>Kanal aktif</h2><p>'+active.length+' aktif dari '+socials.length+' akun · urut sesuai daftar</p></div></div><div class="sp"><button class="link" data-goto="social-media">Kelola medsos</button></div></div><div class="act-list">'
-  +(active.length?active.slice(0,3).map(function(s){var tl=socTile(s.platform);return '<div class="ev"><span class="ev-ava" style="background:'+tl[1]+'">'+esc((s.platform||'S').slice(0,2).toUpperCase())+'</span><div class="et"><div class="et-t">'+esc(s.t)+'</div><time>'+esc(s.url||'')+' · tampil di profil</time></div><span class="status green">Aktif</span></div>';}).join(''):'<div style="padding:4px 16px 16px"><span class="cell-s">Tidak ada akun aktif. Aktifkan dari daftar.</span></div>')
+  +(active.length?active.slice(0,3).map(function(s){var tl=socTile(s.platform);return '<div class="ev"><span class="ev-ic" style="background:'+tl[0]+';color:'+tl[1]+';border-color:transparent">'+ic(SOCICON[s.platform]||'ti-share-2',17)+'</span><div class="et"><div class="et-t">'+esc(s.t)+'</div><time>'+esc(s.url||'')+' · tampil di profil</time></div><span class="status green">Aktif</span></div>';}).join(''):'<div style="padding:4px 16px 16px"><span class="cell-s">Tidak ada akun aktif. Aktifkan dari daftar.</span></div>')
   +'</div></div>';
-  var acts='<div class="card"><div class="card-h"><div><div><h2>Aktivitas terbaru</h2><p>3 terakhir · Tim Marketing</p></div></div></div><div class="act-list">'+ACTS.marketing.map(function(a){return '<div class="ev"><span class="ev-ava" style="background:'+a[3]+'">'+a[0]+'</span><div class="et"><div class="et-t">'+esc(a[1])+'</div><time>'+esc(a[2])+'</time></div></div>';}).join('')+'</div></div>';
+  var acts='<div class="card"><div class="card-h"><div><div><h2>Aktivitas terbaru</h2><p>3 terakhir · Tim Marketing</p></div></div></div><div class="act-list">'+ACTS.marketing.map(actRow).join('')+'</div></div>';
    return '<div class="hero"><div><h1>Halo, Marketing</h1><p>'+today+' · '+esc(r.tagline)+'</p></div><div class="hero-actions">'+heroes+'</div></div>'
    +'<div class="kpis k3">'+kpis+'</div>'
    +'<div class="grid2">'+'<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+streak+need+'</div>'+'<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+kanal+acts+'</div></div>'
@@ -1558,7 +1581,7 @@ function dashView(){
   +'<div class="grid2"><div class="card"><div class="card-h"><div><div><h2>Aktivitas 7 hari</h2><p>Pengerjaan & pendaftaran · diperbarui otomatis</p></div></div><div class="sp"><div class="seg" role="group" aria-label="Rentang"><button data-range="7" class="'+(state.range==='7'?'on':'')+'">7</button><button data-range="30" class="'+(state.range==='30'?'on':'')+'">30</button><button data-range="90" class="'+(state.range==='90'?'on':'')+'">90</button></div></div></div><div class="chart">'+areaChart(dd.act)+'</div><div class="chart-legend"><span><i style="background:var(--primary)"></i>Aktivitas</span><span>'+days.join(' · ')+'</span></div></div>'
   +'<div class="card"><div class="card-h"><div><div><h2>Registrasi & perangkat</h2><p>Sumber & perangkat pelajar</p></div></div></div>'+barsHTML(dd.reg)+dd.dev.map(function(d){return '<div class="kvline"><span>'+esc(d[0])+'</span><b>'+d[1]+'%</b></div>';}).join('')+'<div class="kvline"><span>Sumber teratas</span><b>'+esc(dd.ref[0][0])+' · '+dd.ref[0][1]+'</b></div><div style="height:10px"></div></div></div>'
   +tableCard(t.queue,q,true)
-  +'<div class="card" style="margin-top:12px"><div class="card-h"><div><div><h2>Aktivitas terbaru</h2><p>3 terakhir · '+esc(r.label)+'</p></div></div><div class="sp"><span class="cell-s">diperbarui otomatis</span></div></div><div class="act-list">'+(ACTS[state.role]||ACTS.admin).map(function(a){return '<div class="ev"><span class="ev-ava" style="background:'+a[3]+'">'+a[0]+'</span><div class="et"><div class="et-t">'+esc(a[1])+'</div><time>'+esc(a[2])+'</time></div></div>';}).join('')+'</div></div>'
+   +'<div class="card" style="margin-top:12px"><div class="card-h"><div><div><h2>Aktivitas terbaru</h2><p>3 terakhir · '+esc(r.label)+'</p></div></div><div class="sp"><span class="cell-s">diperbarui otomatis</span></div></div><div class="act-list">'+(ACTS[state.role]||ACTS.admin).map(actRow).join('')+'</div></div>'
   +(state.role==='admin'?matrixHTML():'')
   +dashFoot();
 }
@@ -1724,6 +1747,8 @@ var STTASK_TYPE_LBL={quiz:'Quiz',practice:'Latihan',tryout:'Tryout',share:'Share
 var STTASK_STATUS_LBL={draft:'Draft',active:'Aktif',paused:'Dijeda'};
 var STTASK_STATUS_CLS={draft:'gray',active:'green',paused:'amber'};
 var STTASK_PERIOD_LBL={daily:'Harian',weekly:'Mingguan',lifetime:'Sekali seumur hidup'};
+/* Type -> icon. Used wherever a task is listed (dashboard card, table, preview). */
+var STTASK_ICON={quiz:'ti-clipboard-check',practice:'ti-target',tryout:'ti-trophy',share:'ti-share-2'};
 var STTASK_ICON_LBL={math:'Matematika',english:'Bahasa Inggris',indonesian:'Bahasa Indonesia',coin:'Koin'};
 var STTASK_COLOR_LBL={violet:'Violet',blue:'Biru',emerald:'Hijau',amber:'Amber'};
 var STTASK_RULE={quiz:'Batasi tugas berdasarkan subject yang harus dikerjakan siswa.',practice:'Batasi tugas berdasarkan paket latihan dan nilai minimum jika diperlukan.',tryout:'Batasi tugas berdasarkan paket tryout dan nilai minimum jika diperlukan.',share:'Tugas share tidak membutuhkan filter aktivitas tambahan.'};
@@ -2061,7 +2086,7 @@ function drawerTabs(t){
  return '<div class="tabs" role="tablist">'+tabs.map(function(tb){return '<button role="tab" aria-selected="'+(state.tab===tb[0])+'" class="'+(state.tab===tb[0]?'on':'')+'" data-dtab="'+tb[0]+'">'+tb[1]+'</button>';}).join('')+'</div>';
 }
 function drawerBody(t,d){
- if(state.tab==='riwayat')return '<div class="timeline"><div class="ev"><span class="ev-ava" style="background:#1D4ED8">SY</span><div class="et"><div class="et-t">Dibuat otomatis oleh sistem</div><time>2 hari lalu</time></div></div><div class="ev"><span class="ev-ava" style="background:#16A34A">RK</span><div class="et"><div class="et-t">Terakhir disentuh</div><time>20 menit lalu · tanpa anomali</time></div></div></div>';
+  if(state.tab==='riwayat')return '<div class="timeline">'+actRow(['SA','Dibuat otomatis oleh sistem','2 hari lalu'])+actRow(['RK','Terakhir disentuh','20 menit lalu · tanpa anomali','#16A34A','R. Kartika'])+'</div>';
  if(state.tab==='tindak')return '<div class="dsec"><h4>Alur kerja antrean</h4><div style="font-size:12.8px;color:var(--text-2)">1. Tinjau isi & konteks di tab Ringkasan.<br>2. Tekan tombol utama di bawah untuk memproses.<br>3. Bulk tersedia dari tabel untuk banyak baris sekaligus.</div></div>';
  if(state.tab==='media')return '<div class="dsec"><h4>Media & versi terkait</h4><div style="font-size:12.8px;color:var(--text-2)">v3 (aktif) · v2 (arsip) · v1 (arsip). Tampil persis seperti dilihat pelajar; gambar rusak ditandai otomatis.</div></div><div class="skel" style="height:120px" title="Pratinjau"></div>';
  if(state.tab==='unit')return '<div class="dsec"><h4>Unit & versi</h4><div style="font-size:12.8px;color:var(--text-2)">Subtes → Unit → sebaran soal. Unit yang belum dikunci ditandai <b>Perlu perhatian</b>; penerbitan butuh persetujuan.</div><dl class="kv"><dt>Kesiapan</dt><dd>82% · 2 unit belum dikunci</dd><dt>Versi aktif</dt><dd>v4 (Draft) · v3 (Terbit)</dd></dl>';
