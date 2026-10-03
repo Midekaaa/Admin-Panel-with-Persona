@@ -13,6 +13,21 @@ File utama: `new-admin.html`. Buka di browser, pilih peran **Tim Marketing** (to
 |---|---|
 | ![Artikel before](images/before/before-artikel.png) | ![Artikel after](images/after/after-artikel.png) |
 
+## Bank Soal
+
+* Dulu: satu tabel (Konten, Materi, Status, Aksi) berisi judul soal terpotong.
+* Sekarang dua tingkat: grid mata pelajaran, lalu soal-soal mata pelajaran itu sebagai kartu.
+* Tiap kartu soal: nomor, tipe, topik, tingkat sulit, status, teks soal, gambar, pilihan jawaban, kunci + pembahasan, dan aksi Ubah / Duplikat / Arsipkan.
+* Kepala kartu memakai kontrol yang sama dengan tabel: Filter, Urutkan, Export, Reset.
+
+| Before | Update |
+|---|---|
+| ![Bank Soal before](images/before/before-bank-soal.png) | ![Bank Soal after — daftar mata pelajaran](images/after/after-bank-soal-mata-pelajaran.png) |
+
+Soal terkait per mata pelajaran:
+
+![Bank Soal after — soal Matematika](images/after/after-bank-soal-soal.png)
+
 ## Dashboard
 
 * Halaman baru, tidak ada di admin lama.
