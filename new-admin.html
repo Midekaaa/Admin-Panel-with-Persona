@@ -778,6 +778,7 @@ var NAV=[
   {k:'users',t:'Pengguna',icn:'ti-users',route:'/users',mp:'menu.users',perm:'users.read'},
   {k:'data-pelajar',t:'Data Pelajar',icn:'ti-school',route:'/data-pelajar',mp:'menu.users',perm:'users.read'},
   {k:'invitations',t:'Undangan',icn:'ti-mail',route:'/invitations',mp:'menu.invitations',perm:'users.invite',badge:'24',cls:'warn'},
+  {k:'minta-undangan',t:'Minta Undangan',icn:'ti-send',route:'/minta-undangan',mp:'menu.inviteRequests',perm:'users.invite'},
   {k:'database',t:'Database',icn:'ti-database',mp:'menu.database',children:[
     {k:'roles',t:'Role',icn:'ti-shield-check',route:'/roles',mp:'menu.roles',perm:'roles.read',badge:'4',cls:'info'},
     {k:'permissions',t:'Permission',icn:'ti-key',route:'/permissions',mp:'menu.permissions',perm:'permissions.read'}]}]},
@@ -817,8 +818,8 @@ var NAV=[
 /* Role -> visible nav keys. Admin sees all. Media is read-only for Tim Soal. */
 var ACCESS={
  soal:['dashboard','questions','content-areas','topics','programs','blueprints','blueprint-versions','drills','tryouts','grading','question-reports','media','notifications'],
- marketing:['dashboard','ads','articles','vouchers','referrals','social-media','notifications','media','streak-tasks'],
- user:['dashboard','users','data-pelajar','invitations','notifications'],
+ marketing:['dashboard','ads','articles','vouchers','referrals','social-media','notifications','media','streak-tasks','minta-undangan'],
+ user:['dashboard','users','data-pelajar','invitations','minta-undangan','notifications'],
  admin:'*'
 };
 function coveredKeys(){var s={};['soal','marketing','user'].forEach(function(r){(ACCESS[r]||[]).forEach(function(k){s[k]=1;});});return s;}
@@ -912,6 +913,12 @@ var F={
    {id:'INV-1038',t:'tu@smkn2-solo.sch.id',s:'Sekolah · 200 kursi',st:['Diterima','green'],by:'Tim User',chip:'Diterima'}],
   empty:{t:'Belum ada undangan',d:'Undang sekolah mitra atau anggota tim lewat email.',c:'Buat undangan'},
   form:[{k:'email',l:'Email tujuan',type:'email',req:1,ph:'tu@sekolah.sch.id'},{k:'role',l:'Peran',type:'select',opts:['Sekolah','Tim Soal','Tim Marketing','Tim User']},{k:'seats',l:'Kursi',type:'number',ph:'120',hint:'Kosongkan untuk tanpa batas.'}]},
+  /* Prototype-only request flow: Marketing requests, Tim User decides, all roles informed. */
+  'minta-undangan':{menu:'menu.inviteRequests',route:'/minta-undangan',perm:'—',title:'Minta Undangan',cat:'access',qa:'Lihat detail',view:'reqinv',
+   sub:'Marketing meminta, Tim User memutuskan. Semua peran diberi tahu hasilnya.',
+   cols:['Permintaan','Konteks','Status','Aksi'],filters:[],chips:['Semua','Menunggu','Dikirim','Ditolak','Batal','Kedaluwarsa'],
+   rows:[],
+   empty:{t:'Belum ada permintaan',d:'Marketing meminta undangan lewat tombol di atas. Tim User memutuskan di sini.',c:'Minta undangan'}},
  roles:{menu:'menu.roles',route:'/roles',perm:'roles.read',title:'Peran',cat:'access',qa:'Ubah akses',
   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Kelola akses',icn:P_SHIELD,do:'dtab:akses'},{l:'Duplikat',icn:P_COPY,do:'toast:Peran diduplikat sebagai Draft'}],
   sub:'Nama peran, penjelasan, dan jumlah anggota. Atur siapa boleh buka apa di daftar bawah.',
@@ -1353,6 +1360,7 @@ var MATRIX=[
   ['Testimoni',0,0,0,1],
   ['Media promosi (banner & iklan)',2,1,0,1],
   ['Pengguna · Pelajar · Undangan',0,0,1,1],
+  ['Minta undangan',0,1,1,1],
   ['Notifikasi (broadcast)',1,1,1,1],
   ['Masukan',0,0,0,1],
   ['Tugas Streak',0,1,0,1],
@@ -2151,6 +2159,70 @@ function referralsView(page,t){
 }
 VIEWS.vouchers=vouchersView;
 VIEWS.referrals=referralsView;
+/* Invite requests (prototype): Marketing requests, Tim User decides, all roles informed. */
+var REQST={Menunggu:['Menunggu','amber'],Dikirim:['Dikirim','green'],Ditolak:['Ditolak','red'],Batal:['Batal','gray'],Kedaluwarsa:['Kedaluwarsa','gray']};
+function reqAll(){var t=featOf('minta-undangan');return t.rows||[];}
+function reqSave(){store.set('na3-reqinv',JSON.stringify(reqAll()));}
+function reqLoad(){try{var s=store.get('na3-reqinv');var t=featOf('minta-undangan');if(s){t.rows=JSON.parse(s)||[];}else{t.rows=[
+ {id:'REQ-301',email:'tu@sman1-cirebon.sch.id',cat:'Promo deal',detail:'bonus 25 koin, 100 kursi TO Akbar',t:'tu@sman1-cirebon.sch.id',s:'Promo deal · bonus 25 koin, 100 kursi TO Akbar',st:['Menunggu','amber'],by:'Raka',team:'Marketing',chip:'Menunggu',ts:Date.now()-36e5},
+ {id:'REQ-299',email:'halo@bimbelalpha.id',cat:'Lainnya',detail:'akses demo guru BK',t:'halo@bimbelalpha.id',s:'Lainnya · akses demo guru BK',st:['Dikirim','green'],by:'Raka',team:'Marketing',chip:'Dikirim',ts:Date.now()-72e5}]};}catch(_){}}
+function reqFind(id){var out=null;reqAll().forEach(function(r){if(String(r.id)===String(id))out=r;});return out;}
+function reqBell(t,s2){NOTIFS.unshift({id:'N-'+Math.floor(100+Math.random()*900),t:t,s:s2||'',c:'#1D4ED8',type:'Info',link:'minta-undangan',read:false});}
+function reqExpire(){var week=7*24*36e5;var now=Date.now();var ch=false;reqAll().forEach(function(r){if(r.chip==='Menunggu'&&r.ts&&now-r.ts>week){var m=REQST.Kedaluwarsa;r.st=[m[0],m[1]];r.chip=m[0];ch=true;}});if(ch)reqSave();}
+function reqActsFor(){if(state.role==='user')return [{l:'Setujui',icn:P_CHECK,do:'reqok'},{l:'Tolak',icn:P_X,do:'reqno'},{l:'Detail',icn:P_EYE,do:'drawer'}];if(state.role==='marketing')return [{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Batalkan',icn:P_X,do:'reqcancel'}];return [{l:'Detail',icn:P_EYE,do:'drawer'}];}
+function reqRowsFor(){reqLoad();reqExpire();var all=reqAll();if(state.role==='marketing')return all.filter(function(r){return r.team==='Marketing';});return all;}
+function reqView(page,t){
+ t.rows=reqRowsFor();t.acts=reqActsFor();
+ var actions='';
+ if(state.role==='marketing')actions='<button class="btn primary" data-reqnew>'+ic(P_PLUS,17)+'Minta undangan</button>';
+ else{var n=t.rows.filter(function(r){return r.chip==='Menunggu';}).length;if(n)actions='<span class="cell-s">'+n+' menunggu keputusan</span>';}
+ return listHero(page,t,actions)+tableCard(page,t,false)+listFoot();
+}
+VIEWS.reqinv=reqView;
+function reqModal(){
+ if(state.role!=='marketing'){toast('Hanya Marketing yang bisa meminta','Minta Tim User mengeksekusi.','err');return;}
+ var open=reqAll().filter(function(r){return r.team==='Marketing'&&r.chip==='Menunggu';}).length;
+ if(open>=5){toast('Maksimal 5 permintaan terbuka','Selesaikan yang lama dulu.','err');return;}
+ openModal({title:'Minta undangan',sub:'Tim User memutuskan. Kamu diberi tahu hasilnya.',fields:[
+  {k:'email',l:'Email tujuan',type:'email',req:1,ph:'tu@sekolah.sch.id'},
+  {k:'cat',l:'Jenis keperluan',type:'select',opts:['Promo deal','Lainnya']},
+  {k:'detail',l:'Penjelasan singkat',req:1,ph:'cth: bonus 25 koin, 100 kursi'}],
+  submit:'Kirim permintaan',
+  onSubmit:function(v){
+   var r={id:'REQ-'+Math.floor(100+Math.random()*900),email:v.email,cat:v.cat||'Promo deal',detail:v.detail,t:v.email,s:(v.cat||'Promo deal')+' · '+v.detail,st:['Menunggu','amber'],by:'Raka',team:'Marketing',chip:'Menunggu',ts:Date.now()};
+   reqAll().unshift(r);reqSave();reqBell('Permintaan undangan baru',v.email+' · '+r.s);saveFilters();render(false);toast('Permintaan dikirim','Tim User memutuskan.');
+  }});
+}
+function reqApprove(id){
+ var r=reqFind(id);if(!r)return;
+ if(state.role!=='user'&&state.role!=='admin'){toast('Hanya Tim User yang memutuskan',null,'err');return;}
+ if(r.chip!=='Menunggu'){toast('Sudah diputuskan: '+r.chip,null,'err');return;}
+ var m=REQST.Dikirim;r.st=[m[0],m[1]];r.chip=m[0];r.s=r.s+' · oleh Tim User';
+ featOf('invitations').rows.unshift({id:'INV-'+Math.floor(1000+Math.random()*9000),t:r.email,s:(r.cat||'')+' · diminta '+(r.by||''),st:['Menunggu','amber'],by:r.by||'Raka',chip:'Menunggu',reqId:r.id});
+ reqSave();reqBell('Undangan dikirim',r.email+' · permintaan '+(r.by||''));saveFilters();render(false);toast('Undangan dikirim ke '+r.email,'Tercatat di Undangan.');
+}
+function reqReject(id){
+ var r=reqFind(id);if(!r)return;
+ if(state.role!=='user'&&state.role!=='admin'){toast('Hanya Tim User yang memutuskan',null,'err');return;}
+ if(r.chip!=='Menunggu'){toast('Sudah diputuskan: '+r.chip,null,'err');return;}
+ openModal({title:'Tolak permintaan?',sub:r.email+' · '+r.s,fields:[{k:'why',l:'Alasan penolakan',req:1,ph:'cth: kuota sekolah penuh'}],submit:'Tolak',
+  onSubmit:function(v){var m=REQST.Ditolak;r.st=[m[0],m[1]];r.chip=m[0];r.s=r.s+' · ditolak: '+v.why;reqSave();reqBell('Permintaan ditolak',r.email+' · '+v.why);saveFilters();render(false);toast('Permintaan ditolak');}});
+}
+function reqCancel(id){
+ var r=reqFind(id);if(!r)return;
+ if(r.chip==='Menunggu'){
+  openConfirm('Batalkan permintaan '+r.email+'?','Permintaan hilang dari antrean Tim User.','Batalkan',function(){
+   var m=REQST.Batal;r.st=[m[0],m[1]];r.chip=m[0];reqSave();saveFilters();render(false);toast('Permintaan dibatalkan');
+  });return;
+ }
+ if(r.chip==='Dikirim'){
+  openConfirm('Tarik kembali undangan '+r.email+'?','Undangan yang belum diterima ikut dicabut.','Tarik kembali',function(){
+   var t=featOf('invitations');t.rows=(t.rows||[]).filter(function(x){return !(x.reqId&&String(x.reqId)===String(id)&&x.chip==='Menunggu');});
+   var m=REQST.Batal;r.st=[m[0],m[1]];r.chip=m[0];reqSave();reqBell('Undangan ditarik',r.email);saveFilters();render(false);toast('Undangan ditarik kembali');
+  });return;
+ }
+ toast('Tidak ada yang bisa dibatalkan',r.chip,'err');
+}
 function vouForm(editId){
  modalFocus=document.activeElement;
  var d=editId?vouFind(editId):null;
@@ -2555,11 +2627,14 @@ function renderNotif(){
  var g=d.querySelector('[data-ngoto]');if(g)g.onclick=function(){d.classList.remove('show');go('notifications');};
 }
 /* ---- Bindings for #content ---- */
-function openCreate(p){p=p||defPage();if(p==='ads')adForm(null);else if(p==='media')mediaUpload();else if(p==='social-media')socialForm(null);else if(p==='streak-tasks')streakTaskForm(null);else if(p==='vouchers')vouForm(null);else if(p==='referrals')refForm(null);else pendingCreate(p);}
+function openCreate(p){p=p||defPage();if(p==='ads')adForm(null);else if(p==='media')mediaUpload();else if(p==='social-media')socialForm(null);else if(p==='streak-tasks')streakTaskForm(null);else if(p==='vouchers')vouForm(null);else if(p==='referrals')refForm(null);else if(p==='minta-undangan')reqModal();else pendingCreate(p);}
 function doAct(id,way){
  if(way==='drawer')openDrawer(id);
  else if(way&&way.indexOf('dtab:')===0)openDrawer(id,way.slice(5));
- else if(way==='new')pendingCreate(state.page||defPage());
+ else if(way==='new'){if((state.page||defPage())==='minta-undangan')reqModal();else pendingCreate(state.page||defPage());}
+ else if(way==='reqok')reqApprove(id);
+ else if(way==='reqno')reqReject(id);
+ else if(way==='reqcancel')reqCancel(id);
  else if(way&&way.indexOf('go:')===0)go(way.slice(3));
  else if(way&&way.indexOf('confirm:')===0){var cfs=way.slice(8).split('|');openConfirm(cfs[0],cfs[1]||'','Ya',function(){toast(cfs[2]||'Selesai');});}
  else if(way&&way.indexOf('toast:')===0)toast(way.slice(6));
@@ -2582,6 +2657,7 @@ function bindAll(page,t){
   c.querySelectorAll('[data-artshow]').forEach(function(b){b.onclick=function(e){e.stopPropagation();var ky=$('#artKey');if(!ky)return;ky.type=ky.type==='password'?'text':'password';b.setAttribute('aria-label',ky.type==='password'?'Tampilkan API key':'Sembunyikan API key');};});
   c.querySelectorAll('[data-artcopy]').forEach(function(b){b.onclick=function(e){e.stopPropagation();var ky=$('#artKey');var v=ky?ky.value:'';if(!v){toast('API key kosong',null,'err');return;}function done(){toast('API key disalin');}try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(v).then(done,function(){toast('API key gagal disalin',null,'err');});else done();}catch(_){toast('API key gagal disalin',null,'err');}};});
   c.querySelectorAll('[data-artopen]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openDrawer(b.getAttribute('data-artopen'));};});
+  c.querySelectorAll('[data-reqnew]').forEach(function(b){b.onclick=function(e){e.stopPropagation();reqModal();};});
   function copyText(v,okMsg){function done(){toast(okMsg||'Disalin: '+v);}try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(v).then(done,function(){toast(v);});else toast(v);}catch(_){toast(v);}}
   c.querySelectorAll('[data-vounew]').forEach(function(b){b.onclick=function(e){e.stopPropagation();vouForm(null);};});
   c.querySelectorAll('[data-vouquick]').forEach(function(b){b.onclick=function(e){e.stopPropagation();vouQuick();};});
