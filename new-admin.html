@@ -296,7 +296,10 @@
   .fsearch .rowClear{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:8px;border:0;background:none;color:var(--text-3);cursor:pointer;display:grid;place-items:center}
   .fsearch .rowClear:hover{color:var(--text-h);background:var(--bg-hover)}
   input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{display:none}
-  .filters input[type="text"],.filters select{min-height:40px;border:1px solid var(--border);
+  /* .rowQ dikecualikan: aturan di .fsearch (baris di atas) sudah memberi padding
+     36px untuk magnifier dan tombol hapus. Tanpa ini, selector di sini menang
+     hanya karena muncul belakangan, dan ikonnya menimpa huruf pertama. */
+  .filters input[type="text"]:not(.rowQ),.filters select{min-height:40px;border:1px solid var(--border);
     border-radius:12px;background:var(--bg-input);color:var(--text-1);padding:0 12px;font-size:13px;font-family:inherit}
   .filters input[type="text"]:focus,.filters select:focus{border-color:var(--primary);outline:none}
   .filters input[type="text"]{flex:1;min-width:170px}
@@ -718,6 +721,64 @@
     *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
     .skel::after{animation:none;opacity:.25}
   }
+  /* Bank Soal: kartu soal. Satu kolom di ponsel/tablet, dua kolom di layar lebar.
+     Semua warna lewat token, jadi mode gelap ikut berubah tanpa aturan tambahan. */
+  .qlist{display:grid;gap:12px;padding:14px 16px;grid-template-columns:minmax(0,1fr)}
+  @media(min-width:1080px){.qlist{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .qc{display:flex;flex-direction:column;background:var(--bg-card);border:1px solid var(--border);
+    border-radius:var(--r-card);box-shadow:var(--shadow-sm);overflow:hidden}
+  .qc:hover{border-color:var(--primary)}
+  .qc-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 14px 0}
+  .qc-no{width:34px;height:34px;flex:0 0 34px;border-radius:11px;border:1px solid transparent;
+    background:var(--primary-50);color:var(--text-h);display:grid;place-items:center;cursor:pointer;
+    font-family:Poppins,Inter,system-ui,sans-serif;font-size:13px;font-weight:600;padding:0}
+  .qc-no:hover{border-color:var(--primary)}
+  .qc-tags{display:flex;gap:6px;align-items:center;flex-wrap:wrap;min-width:0}
+  .qtag{font-size:11px;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--bg-hover);
+    color:var(--text-2);border:1px solid var(--border-soft);white-space:nowrap;
+    display:inline-flex;align-items:center;gap:5px}
+  .qtag .dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:var(--text-3)}
+  .qtag.lv1 .dot{background:var(--secondary)}
+  .qtag.lv2 .dot{background:var(--gold)}
+  .qtag.lv3 .dot{background:var(--danger)}
+  .qc-stem{margin:11px 14px 0;font-size:14.2px;line-height:1.6;color:var(--text-1)}
+  .qc-fig{margin:12px 14px 0;padding:24px 12px;border:1px dashed var(--border);border-radius:12px;
+    background:var(--bg-hover);color:var(--text-3);display:grid;place-items:center;gap:5px;text-align:center}
+  .qc-fig .ti{font-size:26px}
+  .qc-fig span{font-size:11.5px}
+  .qopts{margin:12px 14px 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+  .qopt{width:100%;display:flex;gap:10px;align-items:flex-start;text-align:left;font:inherit;
+    cursor:pointer;color:var(--text-1);background:var(--bg-card);border:1px solid var(--border-soft);
+    border-radius:var(--r-btn);padding:8px 11px}
+  .qopt:hover{border-color:var(--primary);background:var(--primary-50)}
+  .qopt .qk{width:24px;height:24px;flex:0 0 24px;border-radius:8px;background:var(--bg-hover);
+    color:var(--text-2);display:grid;place-items:center;font-size:11.5px;font-weight:600}
+  .qopt .qt{flex:1;min-width:0;font-size:13.2px;line-height:1.5}
+  .qopt.key{border-color:var(--primary);background:var(--primary-50)}
+  .qopt.key .qk{background:var(--primary);color:#fff}
+  .qopt.pick{border-color:var(--primary)}
+  .qopt.pick .qk{background:var(--text-h);color:var(--bg-card)}
+  .qopt.pick .qt{font-weight:600}
+  .qfill{margin:12px 14px 0;padding:9px 11px;border:1px dashed var(--border);border-radius:var(--r-btn);
+    font-size:13px;line-height:1.5;color:var(--text-3)}
+  .qkey{margin:12px 14px 0;padding:9px 12px;border-left:2px solid var(--primary);
+    background:var(--primary-50);border-radius:0 10px 10px 0}
+  .qkey[hidden]{display:none}
+  .qkey b{display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2)}
+  .qkey p{margin:4px 0 0;font-size:13px;line-height:1.55;color:var(--text-1)}
+  .qc-foot{margin-top:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    border-top:1px solid var(--border-soft);padding:10px 14px}
+  .qc-who{display:flex;align-items:center;gap:7px;min-width:0;font-size:12px;color:var(--text-2)}
+  .qc-use{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  @media(max-width:760px){.qc-use{margin-left:0;width:100%}}
+  /* Tingkat 1 Bank Soal: daftar mata pelajaran. Tile (.m-tile) dan tombol
+     gambar (.m-art) dipinjam apa adanya dari halaman Media; grid-nya sendiri
+     supaya ponsel tetap satu kolom tanpa mengubah halaman Media. */
+  .qsubs{display:grid;gap:12px;padding:14px 16px;grid-template-columns:minmax(0,1fr)}
+  @media(min-width:760px){.qsubs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(min-width:1080px){.qsubs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(min-width:1320px){.qsubs{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .qsubt{font-size:12px;font-weight:600;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 </style>
 </head>
 <body>
@@ -938,17 +999,38 @@ var F={
    {id:'tryout.publish',t:'Publikasikan tryout',s:'Terbitkan tryout setelah siap',st:['Data','gray'],by:'Sistem',chip:'Data'},
    {id:'question-reports.manage',t:'Kelola laporan soal',s:'Tinjau dan tindaklanjuti laporan',st:['Data','gray'],by:'Sistem',chip:'Data'}],
   empty:{t:'Belum ada izin khusus',d:'Izin baru muncul sendiri saat fitur baru ditambahkan.',c:'Muat ulang'}},
- questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',title:'Bank Soal',cat:'content',qa:'Publikasikan',
-  acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Duplikat',icn:P_COPY,do:'toast:Soal diduplikat sebagai Draft'},{l:'Arsipkan',icn:P_ARCH,do:'toast:Soal diarsipkan'}],
-  sub:'Soal pilihan ganda, isian, dan uraian — lengkap dengan tipe, materi, tingkat sulit, dan status.',
-  cols:['Konten','Materi','Status','Aksi'],filters:[{k:'type',l:'Tipe',o:['Semua','Pilihan Ganda','Benar/Salah','Menjodohkan','Isian Singkat','Uraian']},{k:'diff',l:'Kesulitan',o:['Semua','Mudah','Sedang','Sulit']},{k:'st',l:'Status',o:['Semua','Draft','Dipublikasikan']}],chips:['Semua','Dipublikasikan','Draft','Dilaporkan'],
+questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',title:'Bank Soal',cat:'content',qa:'Publikasikan',view:'questions',
+   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Duplikat',icn:P_COPY,do:'toast:Soal diduplikat sebagai Draft'},{l:'Arsipkan',icn:P_ARCH,do:'toast:Soal diarsipkan'}],
+   sub:'Soal pilihan ganda, isian, dan uraian — lengkap dengan tipe, materi, tingkat sulit, dan status.',
+   cols:['Konten','Materi','Status','Aksi'],filters:[{k:'type',l:'Tipe',o:['Semua','Pilihan Ganda','Benar/Salah','Menjodohkan','Isian Singkat','Uraian']},{k:'diff',l:'Kesulitan',o:['Semua','Mudah','Sedang','Sulit']},{k:'st',l:'Status',o:['Semua','Draft','Dipublikasikan']}],chips:['Semua','Dipublikasikan','Draft','Dilaporkan'],
+  /* s sengaja memuat tipe + kesulitan supaya filter bawaan (cari 4 huruf awal) tetap kena. */
   rows:[
-   {id:'SOAL-8821',t:'Fungsi kuadrat memotong sumbu X di…',s:'Pilihan ganda · TPS · dipakai 12x',st:['Dipublikasikan','green'],by:'R. Kartika',chip:'Dipublikasikan'},
-   {id:'SOAL-8822',t:'Bacaan: Transformasi digital UMKM…',s:'Pilihan ganda · Literasi BI · sulit',st:['Draft','amber'],by:'Sinta',chip:'Draft'},
-   {id:'SOAL-8790',t:'Barisan aritmetika: suku ke-20…',s:'Pilihan ganda · PK · sedang · 2 laporan',st:['Dilaporkan','red'],by:'Sistem',chip:'Dilaporkan'},
-   {id:'SOAL-8774',t:'Gelombang berjalan pada tali… [gambar]',s:'Pilihan ganda · Fisika · mudah · ada gambar',st:['Dipublikasikan','green'],by:'D. Mahesa',chip:'Dipublikasikan'}],
-  empty:{t:'Belum ada soal di sini',d:'Buat soal pertama: pilih tipe, tulis konten, pasang kunci dan pembahasan.',c:'Buat soal'},
-  form:[{k:'type',l:'Tipe soal',type:'select',opts:['Pilihan Ganda','Benar/Salah','Menjodohkan','Isian Singkat','Uraian']},{k:'content',l:'Konten soal',type:'textarea',req:1,ph:'Tulis soal (maks 80 char tampil di daftar)…'},{k:'diff',l:'Kesulitan',type:'select',opts:['Mudah','Sedang','Sulit']}]},
+    {id:'SOAL-8821',t:'Grafik fungsi f(x) = x² − 6x + 5 berpotongan dengan sumbu X pada titik …',s:'Pilihan Ganda · Matematika · Aljabar · Mudah · dipakai 12x',st:['Dipublikasikan','green'],by:'R. Kartika',chip:'Dipublikasikan',
+     type:'Pilihan Ganda',diff:'Mudah',topic:'Aljabar',subj:'SUB-MAT',fig:'grafik-fungsi.png',options:['(−1, 0) dan (5, 0)','(1, 0) dan (5, 0)','(−1, 0) dan (−5, 0)','(1, 0) dan (3, 0)','(3, 0) dan (−5, 0)'],key:'B',
+     explain:'Nilai x saat f(x) = 0 diperoleh dari x² − 6x + 5 = 0, sehingga (x − 1)(x − 5) = 0 dan x = 1 atau x = 5. Jadi titik potongnya (1, 0) dan (5, 0).',used:12,reports:0},
+    {id:'SOAL-8803',t:'Jika x² − 2x − 8 = 0, tentukan seluruh nilai x yang memenuhi.',s:'Isian Singkat · Matematika · Persamaan Kuadrat · Sedang · dipakai 15x',st:['Dipublikasikan','green'],by:'R. Kartika',chip:'Dipublikasikan',
+     type:'Isian Singkat',diff:'Sedang',topic:'Persamaan Kuadrat',subj:'SUB-MAT',options:[],key:'x = 4 atau x = −2',
+     explain:'x² − 2x − 8 = (x − 4)(x + 2) = 0, sehingga x = 4 atau x = −2. Jawaban siswa boleh ditulis dengan urutan terbalik.',used:15,reports:0},
+    {id:'SOAL-8822',t:'Bacalah kutipan berikut. "Banyak UMKM kehilangan pelanggan karena hanya mengandalkan penjualan di sekitar rumah. Pemilik usaha yang memakai katalog daring mencatat penjualan dari luar daerah naik rata-rata 30%." Kesimpulan yang paling tepat dari kutipan itu adalah …',s:'Pilihan Ganda · Bahasa Indonesia · Literasi · Sulit · dipakai 3x',st:['Draft','amber'],by:'Sinta',chip:'Draft',
+     type:'Pilihan Ganda',diff:'Sulit',topic:'Literasi',subj:'SUB-BIN',options:['Penggunaan katalog daring membantu UMKM menjangkau pasar yang lebih luas','Penjualan di sekitar rumah sudah tidak menarik bagi pembeli','Katalog daring selalu lebih menguntungkan daripada toko fisik','Hanya 30% UMKM yang sudah memakai katalog daring','Kenaikan penjualan berasal dari kenaikan harga barang'],key:'A',
+     explain:'Kutipan menyebut kenaikan penjualan 30% pada pemilik usaha yang memakai katalog daring, dan pembeli dari luar daerah. Jadi katalog daring memperluas jangkauan pasar. Angka 30% menunjukkan kenaikan penjualan, bukan jumlah UMKM.',used:3,reports:1},
+    {id:'SOAL-8774',t:'Sebuah gelombang berjalan pada tali memiliki panjang gelombang 4 m dan kecepatan 8 m/s. Frekuensi gelombang tersebut adalah …',s:'Pilihan Ganda · Fisika · Gelombang · Mudah · ada gambar · dipakai 21x',st:['Dipublikasikan','green'],by:'D. Mahesa',chip:'Dipublikasikan',
+     type:'Pilihan Ganda',diff:'Mudah',topic:'Gelombang',subj:'SUB-FIS',fig:'gelombang-tali.webp',options:['1 Hz','2 Hz','4 Hz','8 Hz','16 Hz'],key:'B',
+     explain:'Frekuensi dihitung dari f = v ÷ λ = 8 ÷ 4 = 2 Hz. Panjang gelombang dalam meter dan kecepatan dalam meter per sekon.',used:21,reports:0},
+    {id:'SOAL-8790',t:'Dari suatu barisan aritmetika diketahui suku ke-5 = 12 dan suku ke-9 = 28. Nilai suku ke-20 adalah …',s:'Pilihan Ganda · Matematika · Barisan · Sedang · 2 laporan',st:['Dilaporkan','red'],by:'Sistem',chip:'Dilaporkan',
+     type:'Pilihan Ganda',diff:'Sedang',topic:'Barisan',subj:'SUB-MAT',options:['56','64','68','72','80'],key:'D',
+     explain:'Selisih suku ke-9 dan ke-5 adalah 16, jadi beda barisan u = 16 ÷ 4 = 4. Dari a + 4u = 12 diperoleh a = −4. Maka suku ke-20 = −4 + 19(4) = 72.',used:27,reports:2},
+    {id:'SOAL-8791',t:'Tentukan benar atau salah pernyataan berikut: kata "praktek" merupakan bentuk baku dari kata "praktik".',s:'Benar/Salah · Bahasa Indonesia · Tata Bahasa · Mudah · dipakai 8x',st:['Dipublikasikan','green'],by:'Sinta',chip:'Dipublikasikan',
+     type:'Benar/Salah',diff:'Mudah',topic:'Tata Bahasa',subj:'SUB-BIN',options:['Benar','Salah'],key:'A',
+     explain:'Menurut KBBI, bentuk baku kata kerja adalah "praktik". "Praktek" hanya dipakai dalam konteks tidak baku, jadi pernyataan ini benar.',used:8,reports:0},
+    {id:'SOAL-8809',t:'Pasangkan setiap istilah dengan definisi yang paling tepat.',s:'Menjodohkan · Biologi · Genetika · Sedang · dipakai 9x',st:['Dipublikasikan','green'],by:'R. Kartika',chip:'Dipublikasikan',
+     type:'Menjodohkan',diff:'Sedang',topic:'Genetika',subj:'SUB-BIO',options:['Hibrida — Persilangan dua individu dengan variasi genetik berbeda','Alel resesif — Alel yang hanya muncul pada individu homozigot resesif','Homozigot — Individu yang memiliki dua alel identik dari satu gen','Genotipe — Susunan alel yang dimiliki individu'],key:'Semua pasangan sesuai',
+     explain:'Keempat pasangan sudah sesuai definisi baku. Saat dipakai di tryout, urutan pasangan diacak; kunci jawaban mengikuti urutan yang diacak.',used:9,reports:0},
+    {id:'SOAL-8782',t:'Uraikan hubungan antara kenaikan permintaan dan harga keseimbangan di pasar, serta dampaknya terhadap jumlah barang yang diperdagangkan.',s:'Uraian · Ekonomi · Mikroekonomi · Sulit · dipakai 1x',st:['Draft','amber'],by:'D. Mahesa',chip:'Draft',
+     type:'Uraian',diff:'Sulit',topic:'Mikroekonomi',subj:'SUB-EKO',options:[],key:'Dinilai sesuai rubrik',
+     explain:'Rubrik menilai tiga hal: alasan harga naik ketika permintaan naik, pergeseran titik keseimbangan, dan alasan jumlah barang yang diperdagangkan bertambah. Jawaban dinilai manual oleh pemeriksa.',used:1,reports:0}],
+   empty:{t:'Belum ada soal di sini',d:'Buat soal pertama: pilih tipe, tulis konten, pasang kunci dan pembahasan.',c:'Buat soal'},
+   form:[{k:'type',l:'Tipe soal',type:'select',opts:['Pilihan Ganda','Benar/Salah','Menjodohkan','Isian Singkat','Uraian']},{k:'content',l:'Konten soal',type:'textarea',req:1,ph:'Tulis soal (maks 80 char tampil di daftar)…'},{k:'diff',l:'Kesulitan',type:'select',opts:['Mudah','Sedang','Sulit']}]},
   media:{menu:'menu.media',route:'/media',perm:'media.read',title:'Media',cat:'content',qa:'Pratinjau',view:'media',
    acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Export',icn:P_DOWNLOAD,do:'toast:Menyiapkan export…'}],
    sub:'Pustaka file bersama. Tim Marketing memakai Banner & Iklan; sisanya referensi (avatar, gambar soal).',
@@ -1258,7 +1340,7 @@ var DASH={
  admin:{act:[120,150,135,170,160,190,184],reg:[90,110,100,128,120,142,135],dev:[['Android',64],['Desktop',27],['iOS',9]],ref:[['Organik',312],['Sekolah',284],['Teman',208],['Iklan',196]]}
 };
 /* State */
-var state={role:store.get('na3-role')||'soal',page:null,chip:'Semua',q:'',fq:{},sort:null,sortKey:null,
+var state={role:store.get('na3-role')||'soal',page:null,qsub:null,chip:'Semua',q:'',fq:{},sort:null,sortKey:null,
  showFilters:false,pg:1,theme:store.get('na3-theme')||'light',loading:false,sel:{},tab:'ringkas',palIdx:0,range:'7',streakDays:30};
 var PG_SIZE=6;
 function fkey(){return 'na3-f-'+state.role+'-'+(state.page||defPage());}
@@ -1284,8 +1366,8 @@ function toast(m,s2,kind,action){
 function defPage(){return 'dashboard';}
 function featOf(page){if(page==='dashboard')return F['dash-'+state.role]||F['dash-admin'];return F[page]||GENERIC(page,'Halaman');}
 function saveLast(){try{store.set('na3-last',state.role+'|'+(state.page||defPage()));}catch(_){}}
-function setRole(r,silent){if(!ROLES[r])return;state.role=r;state.page=null;state.chip='Semua';state.q='';state.fq={};state.sort=null;state.sortKey=null;state.showFilters=false;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();store.set('na3-role',r);saveLast();if(!silent)window.scrollTo(0,0);load(function(){if(!silent)toast('Beralih ke '+ROLES[r].label,ROLES[r].hide);});}
-function go(p){state.page=(p==='dashboard'?'dashboard':p);state.chip='Semua';state.q='';state.fq={};state.sort=null;state.sortKey=null;state.showFilters=false;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
+function setRole(r,silent){if(!ROLES[r])return;state.role=r;state.page=null;state.qsub=null;state.chip='Semua';state.q='';state.fq={};state.sort=null;state.sortKey=null;state.showFilters=false;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();store.set('na3-role',r);saveLast();if(!silent)window.scrollTo(0,0);load(function(){if(!silent)toast('Beralih ke '+ROLES[r].label,ROLES[r].hide);});}
+function go(p){state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.chip='Semua';state.q='';state.fq={};state.sort=null;state.sortKey=null;state.showFilters=false;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
 function load(done){state.loading=true;render(true);clearTimeout(load.t);load.t=setTimeout(function(){state.loading=false;render(false);if(done)done();},220);}
 function cycle(){setRole(ROLE_ORDER[(ROLE_ORDER.indexOf(state.role)+1)%ROLE_ORDER.length]);}
 function fic(cls,s){return '<i class="ti-f '+cls+'"'+(s?' style="font-size:'+s+'px"':'')+'></i>';}
@@ -1712,6 +1794,172 @@ function mediaView(page,t){
    +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp">'+((total>0&&tools.fCount>0)?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+toolsBar('Cari file…',tools,false)
    +body+tfootHTML(total,'file',pgNum(pages))+'</div>'+listFoot();
 }
+/* ===== Bank Soal: kartu soal, bukan tabel =====
+   Tampilan ini membaca soal seperti yang dilihat pelajar: nomor, teks, gambar,
+   pilihan jawaban, kunci, pembahasan. Semua aksi admin tetap ada per kartu. */
+var QLTR=['A','B','C','D','E','F'];
+var QDIFF={'Mudah':'lv1','Sedang':'lv2','Sulit':'lv3'};
+/* Kunci hanya menyorot opsi kalau isinya satu huruf A–E. Isian, uraian, dan
+   menjodohkan punya kunci berupa kalimat, jadi tidak ada opsi yang disorot. */
+function qKeyLetter(d){var k=String((d&&d.key)||'').trim().toUpperCase();return /^[A-E]$/.test(k)?k:'';}
+function qOptsHTML(d,kl){
+ return '<ul class="qopts">'+d.options.map(function(o,i){
+  var L=QLTR[i]||'';
+  return '<li><button class="qopt'+(L===kl?' key':'')+(d.pick===L?' pick':'')+'" data-qopt="'+esc(d.id)+'" data-qletter="'+L+'" aria-label="Pilihan '+L+': '+esc(o)+'"><span class="qk">'+L+'</span><span class="qt">'+esc(o)+'</span></button></li>';
+ }).join('')+'</ul>';
+}
+function qCardHTML(d,no,ix){
+ var kl=qKeyLetter(d);
+ var fig=d.fig?'<div class="qc-fig">'+ic('ti-photo',26)+'<span>'+esc(d.fig)+'</span></div>':'';
+ var tags='<span class="qc-tags"><span class="qtag">'+esc(d.type||'')+'</span><span class="qtag">'+esc(d.topic||'')+'</span><span class="qtag '+(QDIFF[d.diff]||'')+'"><span class="dot"></span>'+esc(d.diff||'')+'</span></span>';
+ var use='<span class="qc-use"><span class="cell-s">dipakai '+esc(d.used||0)+'x</span>'
+  +'<button class="mini-btn ic" data-qkey="'+esc(d.id)+'" aria-expanded="false" aria-controls="qkey-'+esc(d.id)+'" title="Lihat kunci dan pembahasan" aria-label="Lihat kunci dan pembahasan soal '+esc(d.id)+'">'+ic(P_EYE,14)+'</button>'
+  +'<button class="mini-btn ic" data-qedit="'+esc(d.id)+'" title="Ubah soal" aria-label="Ubah soal '+esc(d.id)+'">'+ic(P_PENCIL,14)+'</button>'
+  +'<button class="mini-btn ic" data-qdup="'+esc(d.id)+'" title="Duplikat" aria-label="Duplikat soal '+esc(d.id)+'">'+ic(P_COPY,14)+'</button>'
+  +'<button class="mini-btn ic" data-qarch="'+esc(d.id)+'" title="Arsipkan" aria-label="Arsipkan soal '+esc(d.id)+'">'+ic(P_ARCH,14)+'</button></span>';
+ return '<article class="qc" data-qcard="'+esc(d.id)+'">'
+  +'<div class="qc-top"><button class="qc-no" data-qopen="'+esc(d.id)+'" title="Buka detail soal" aria-label="Buka detail soal '+esc(d.id)+'">'+no+'</button>'+tags
+  +'<span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span>'+(d.reports?'<span class="bdg alert">'+esc(d.reports)+' laporan</span>':'')+'</div>'
+  +'<p class="qc-stem">'+esc(d.t)+'</p>'+fig
+  +(d.options&&d.options.length?qOptsHTML(d,kl):'<div class="qfill">'+(d.type==='Uraian'?'Kolom uraian pelajar · dinilai manual dari rubrik.':'Kolom jawaban pelajar · isian pendek.')+'</div>')
+  +'<div class="qkey" id="qkey-'+esc(d.id)+'" hidden><b>Kunci jawaban</b><p><b>'+esc(d.key||'belum diisi')+'</b> — '+esc(d.explain||'Pembahasan belum ditulis.')+'</p></div>'
+  +'<div class="qc-foot"><span class="qc-who">'+byAvatar(d.by,ix)+esc(d.by||'')+'</span>'+use+'</div></article>';
+}
+function qPick(id,L){
+ var f=findRow('questions',id);if(!f.d)return;
+ f.d.pick=(f.d.pick===L?'':L);
+ var kl=qKeyLetter(f.d);
+ saveFilters();render(false);
+ if(f.d.pick&&kl&&f.d.pick!==kl)toast('Pilihan '+f.d.pick+' beda dari kunci '+kl,'Buka pembahasan untuk mengecek.');
+}
+function qDuplicate(id){
+ var f=findRow('questions',id);if(!f.d)return;
+ var c={};for(var k in f.d)c[k]=f.d[k];
+ c.options=(f.d.options||[]).slice();
+ c.id='SOAL-'+(9000+Math.floor(Math.random()*900));
+ c.st=['Draft','gray'];c.chip='Draft';c.used=0;c.reports=0;c.pick='';
+ c.s=(f.d.s||'')+' · duplikat dari '+f.d.id;
+ f.t.rows.unshift(c);saveFilters();render(false);toast('Soal diduplikat sebagai Draft',c.id);
+}
+function qArchive(id){
+ var f=findRow('questions',id);if(!f.d)return;
+ var was=f.d.st;
+ f.d.st=['Diarsipkan','gray'];saveFilters();render(false);
+ toast('Soal diarsipkan','Tidak ikut tampil di tryout.',null,{label:'Urungkan',fn:function(){f.d.st=was;saveFilters();render(false);}});
+}
+/* ===== Bank Soal tingkat 1: daftar mata pelajaran =====
+   Kartu soal dan css .qc* di atas tidak berubah; ini hanya menambah daftar
+   di atasnya. questionsView() jadi pintu masuk tunggal untuk dua tingkat. */
+var SUBJECTS=[
+ {id:'SUB-MAT',name:'Matematika',group:'Sains',icn:'ti-abacus'},
+ {id:'SUB-FIS',name:'Fisika',group:'Sains',icn:'ti-wave-sine'},
+ {id:'SUB-BIO',name:'Biologi',group:'Sains',icn:'ti-leaf'},
+ {id:'SUB-INF',name:'Informatika',group:'Sains',icn:'ti-binary-tree'},
+ {id:'SUB-BIN',name:'Bahasa Indonesia',group:'Bahasa',icn:'ti-book-2'},
+ {id:'SUB-EKO',name:'Ekonomi',group:'Sosial',icn:'ti-coin'}];
+/* Select level 1: hanya "Isi". Chip kelompok sudah dihapus, jadi chips kosong.
+   Key 'isi' sengaja dibeda dari 'st' milik soal. */
+var SUBTOOLS={chips:[],filters:[{k:'isi',l:'Isi',o:['Semua','Ada Draft','Belum ada soal']}]};
+function qSub(id){var out=null;SUBJECTS.forEach(function(s){if(s.id===id)out=s;});return out;}
+/* Angka selalu dihitung ulang dari baris soal, jadi tidak pernah basi setelah
+   duplikat atau arsip. Draft dibaca dari st, karena baris baru belum punya chip. */
+function qSubCount(s){
+ var r=(featOf('questions').rows||[]).filter(function(d){return d.subj===s.id;});
+ var live=0,draft=0;
+ r.forEach(function(d){if(d.st&&d.st[0]==='Draft')draft++;else live++;});
+ return {total:r.length,live:live,draft:draft};
+}
+/* Level 1 punya barisnya sendiri, jadi tidak menyentuh filteredRows yang dipakai
+   semua halaman lain. Urut A–Z mengikuti tombol urut yang sama seperti tabel. */
+function qSubFiltered(){
+ var out=SUBJECTS.filter(function(s){
+  if(state.q&&(s.name+' '+s.group).toLowerCase().indexOf(state.q.toLowerCase())<0)return false;
+  var isi=state.fq.isi,c=qSubCount(s);
+  if(isi==='Ada Draft'&&!c.draft)return false;
+  if(isi==='Belum ada soal'&&c.total)return false;
+  return true;
+ });
+ if(state.sort){var dir=state.sort==='asc'?1:-1;out.sort(function(a,b){return dir*a.name.localeCompare(b.name,'id',{numeric:true,sensitivity:'base'});});}
+ return out;
+}
+/* Filter aktif, sama hitungannya dengan tableCard. */
+function qFilterCount(){
+ var n=0;
+ if(state.chip&&state.chip!=='Semua')n++;
+ Object.keys(state.fq).forEach(function(k){if(state.fq[k]&&state.fq[k]!=='Semua')n++;});
+ if(state.q)n++;
+ return n;
+}
+/* Kepala kartu Bank Soal: kontrol .sp dan panel filter memakai bahasa yang sama
+   dengan tableCard — tombol Filter, Urutkan, Export, lalu Reset yang menyisakan
+   ruangnya sendiri. Reset memakai data-reset milik app. Satu fungsi untuk dua
+   tingkat supaya keduanya sama. */
+function qHeadTools(tools){
+ var fCount=qFilterCount();
+ var hasReset=(fCount>0||!!state.sort);
+ var resetBtn='<button class="link'+(hasReset?'':' reset-hidden')+'" data-reset'+(hasReset?'':' disabled aria-hidden="true" tabindex="-1"')+'>Reset</button>';
+ return '<button class="link'+(fCount>0?' on':'')+'" id="filterBtn" aria-pressed="'+(fCount>0)+'">'+ic(P_FILTER,15)+esc(fCount>0?('Filter · '+fCount):'Filter')+'</button>'
+  +'<button class="link'+(state.sort?' on':'')+'" id="sortBtn" title="'+esc(tools.sortLabel)+'" aria-pressed="'+(!!state.sort)+'">'+ic(tools.sortIcon,15)+esc(tools.sortLabel)+'</button>'
+  +'<button class="link" data-t="Menyiapkan export…">'+ic(P_DOWNLOAD,15)+'Export</button>'+resetBtn;
+}
+function qSubTileHTML(s){
+ var c=qSubCount(s);
+ var pills=c.total?('<span class="bdg ok">'+c.live+' terbit</span>'+(c.draft?'<span class="bdg warn">'+c.draft+' draft</span>':'')):'<span class="bdg">Belum ada soal</span>';
+ return '<div class="card m-tile">'
+  +'<button class="m-art" data-qsub="'+esc(s.id)+'" aria-label="Buka soal '+esc(s.name)+', '+c.total+' soal">'+ic(s.icn,30)+'</button>'
+  +'<div style="padding:12px 12px 10px;display:flex;flex-direction:column;gap:7px">'
+  +'<span><span class="cell-t" style="font-size:12.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(s.name)+'</span><span class="cell-s">'+esc(s.group)+'</span></span>'
+  +'<span style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><span class="qsubt">'+esc(c.total?c.total+' soal':'0 soal')+'</span><span class="m-quick">'+pills+'</span></span>'
+  +'</div></div>';
+}
+function qSubjectsView(page,t){
+ var tools=tableTools(SUBTOOLS);
+ var head=qHeadTools(tools);
+ var subs=qSubFiltered();
+ var total=subs.length;var pages=Math.max(1,Math.ceil(total/PG_SIZE));
+ if(state.pg>pages)state.pg=pages;
+ var pageSubs=subs.slice((state.pg-1)*PG_SIZE,state.pg*PG_SIZE);
+ var body;
+ if(state.loading)body=skelHTML(2,150);
+else if(!subs.length)body='<div style="margin:14px 16px;border:1px dashed var(--border);border-radius:14px;padding:36px 20px;text-align:center;color:var(--text-2)"><b>Tidak ada mata pelajaran untuk filter ini.</b><br><span style="font-size:12.5px">Ubah kata kunci atau atur filter di atas.</span><br><br><button class="btn sm" data-reset>Reset filter</button></div>';
+   else body='<div class="qsubs">'+pageSubs.map(qSubTileHTML).join('')+'</div>';
+ return listHero(page,t,'<button class="btn primary" data-new>'+ic(P_PLUS,17)+'Buat soal</button>')
+  +'<div class="card"><div class="card-h"><div><div><h2>Mata Pelajaran</h2></div></div><div class="sp">'+head+'</div></div>'
+  +'<div id="filterPanel"'+(state.showFilters?'':' style="display:none"')+'><div class="filters">'+searchField('Cari mata pelajaran…','flex:1;min-width:170px')+tools.fbar+'</div><div style="height:10px"></div></div>'
+  +body+tfootHTML(total,'dari '+SUBJECTS.length+' mata pelajaran',pgNum(pages))+'</div>'+listFoot();
+}
+/* Baris soal milik satu mata pelajaran. Memakai filteredRows apa adanya lalu
+   menyaring lagi per subjek, jadi chip, select, cari, dan urut tetap berlaku. */
+function qSubjectRows(s){return filteredRows(featOf('questions')).filter(function(d){return d.subj===s.id;});}
+function qQuestionsView(page,t,s){
+ var tools=tableTools(t);
+ var head=qHeadTools(tools);
+ var rows=qSubjectRows(s);
+ var c=qSubCount(s);
+ var total=rows.length;var pages=Math.max(1,Math.ceil(total/PG_SIZE));
+ if(state.pg>pages)state.pg=pages;
+ var pageRows=rows.slice((state.pg-1)*PG_SIZE,state.pg*PG_SIZE);
+ var body;
+ if(state.loading)body=skelHTML(2,180);
+  else if(!rows.length)body='<div style="margin:14px 16px;border:1px dashed var(--border);border-radius:14px;padding:36px 20px;text-align:center;color:var(--text-2)">'
+   +(c.total?('<b>Belum ada soal untuk filter ini.</b><br><span style="font-size:12.5px">Ubah kata kunci atau atur filter di atas.</span><br><br><button class="btn sm" data-reset>Reset filter</button>')
+   :('<b>Belum ada soal di '+esc(s.name)+'.</b><br><span style="font-size:12.5px">Mulai dari satu soal, lalu lengkapi kunci dan pembahasannya.</span><br><br><button class="btn sm primary" data-new>'+ic(P_PLUS,15)+'Buat soal</button>'))
+   +'</div>';
+  else body='<div class="qlist">'+pageRows.map(function(d,i){return qCardHTML(d,rows.indexOf(d)+1,i);}).join('')+'</div>';
+ var back='<div style="padding:0 16px 12px"><button class="link plain" data-qback aria-label="Kembali ke daftar mata pelajaran">'+ic(P_CHL,14)+' Daftar mata pelajaran</button></div>';
+ var meta=esc(s.group)+' · '+c.total+' soal · '+c.live+' terbit'+(c.draft?(' · '+c.draft+' draft'):'');
+ var chips=(t.chips||['Semua']).map(function(c2){return '<button class="chip'+(state.chip===c2?' active':'')+'" data-chip="'+esc(c2)+'">'+esc(c2)+'</button>';}).join('');
+ return listHero(page,t,'<button class="btn primary" data-new>'+ic(P_PLUS,17)+'Buat soal</button>')
+  +back
+  +'<div class="card"><div class="card-h"><div><div><h2>Soal '+esc(s.name)+'</h2><p>'+meta+'</p></div></div><div class="sp">'+head+'</div></div>'
+  +'<div id="filterPanel"'+(state.showFilters?'':' style="display:none"')+'><div class="filters">'+searchField('Cari isi soal, topik, atau ID…','flex:1;min-width:170px')+tools.fbar+'</div><div class="chips">'+chips+'</div><div style="height:10px"></div></div>'
+  +body+tfootHTML(total,'soal dari '+c.total+' di '+esc(s.name),pgNum(pages))+'</div>'+listFoot();
+}
+function questionsView(page,t){
+ var s=state.qsub?qSub(state.qsub):null;
+ if(s)return qQuestionsView(page,t,s);
+ return qSubjectsView(page,t);
+}
 function notifTypeMeta(ty){
  if(ty==='Berhasil')return {cls:'green',icn:P_CHECK};
  if(ty==='Peringatan')return {cls:'amber',icn:P_ALERT};
@@ -1756,6 +2004,7 @@ function socialView(page,t){
    +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp"><span class="cell-s">'+rows.length+' akun · '+active+' aktif</span>'+((rows.length>0&&tools.fCount>0)?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+toolsBar('Cari akun…',tools,false)
    +body+'</div>'+prevCard+'</div>'+listFoot();
 }
+VIEWS.questions=questionsView;
 VIEWS.social=socialView;
 function socialForm(editId){
  modalFocus=document.activeElement;
@@ -2736,6 +2985,20 @@ function bindAll(page,t){
   })();
   c.querySelectorAll('[data-mopen]').forEach(function(b){b.onclick=function(e){e.stopPropagation();mediaDetail(b.getAttribute('data-mopen'));};});
   c.querySelectorAll('[data-mdown]').forEach(function(b){b.onclick=function(e){e.stopPropagation();toast('Menyiapkan export…');};});
+  /* Bank Soal — kartu soal. Tombol di dalam kartu tidak memicu klik kartu. */
+  c.querySelectorAll('[data-qcard]').forEach(function(card){
+   card.onclick=function(e){if(e.target.tagName==='BUTTON'||e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;openDrawer(card.getAttribute('data-qcard'));};
+  });
+  /* Bank Soal — pindah antar tingkat. Filter ikut dibersihkan supaya status
+     "Ada Draft" di level 1 tidak ikut menyaring soal di level 2. */
+  c.querySelectorAll('[data-qsub]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.qsub=b.getAttribute('data-qsub');state.chip='Semua';state.q='';state.fq={};state.pg=1;saveFilters();window.scrollTo(0,0);load();};});
+  c.querySelectorAll('[data-qback]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.qsub=null;state.chip='Semua';state.q='';state.fq={};state.pg=1;saveFilters();window.scrollTo(0,0);load();};});
+  c.querySelectorAll('[data-qopen]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openDrawer(b.getAttribute('data-qopen'));};});
+  c.querySelectorAll('[data-qkey]').forEach(function(b){b.onclick=function(e){e.stopPropagation();var card=b.closest('.qc');var kp=card?card.querySelector('.qkey'):null;if(!kp)return;var on=kp.hasAttribute('hidden');if(on)kp.removeAttribute('hidden');else kp.setAttribute('hidden','');var lb=on?'Sembunyikan kunci dan pembahasan':'Lihat kunci dan pembahasan';b.setAttribute('aria-expanded',on?'true':'false');b.setAttribute('title',lb);b.setAttribute('aria-label',lb);};});
+  c.querySelectorAll('[data-qedit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openDrawer(b.getAttribute('data-qedit'),'media');};});
+  c.querySelectorAll('[data-qdup]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qDuplicate(b.getAttribute('data-qdup'));};});
+  c.querySelectorAll('[data-qarch]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qArchive(b.getAttribute('data-qarch'));};});
+  c.querySelectorAll('[data-qopt]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qPick(b.getAttribute('data-qopt'),b.getAttribute('data-qletter'));};});
  c.querySelectorAll('[data-nopen]').forEach(function(r){r.onclick=function(){var id=r.getAttribute('data-nopen');var tt=featOf('notifications');var nn=null;(tt.rows||[]).forEach(function(x){if(x.id===id)nn=x;});if(!nn)return;if(nn.link){notifMark(id);go(nn.link);}else notifMark(id);};r.onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();r.onclick();}};});
  c.querySelectorAll('[data-ngoto]').forEach(function(b){b.onclick=function(e){e.stopPropagation();notifMark(b.getAttribute('data-nid'));go(b.getAttribute('data-ngoto'));};});
  c.querySelectorAll('[data-nmark]').forEach(function(b){b.onclick=function(e){e.stopPropagation();notifMark(b.getAttribute('data-nmark'));};});
