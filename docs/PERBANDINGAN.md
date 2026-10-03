@@ -1,81 +1,109 @@
 # Perbandingan: Admin Lama → new-admin.html (Tim Marketing)
 
-File utama: `new-admin.html` (satu file, tanpa build).
-Cara buka: buka file di browser, pilih peran **Tim Marketing** (tombol angka `2`).
+File utama: `new-admin.html`. Buka di browser, pilih peran **Tim Marketing** (tombol `2`).
 
-## 1. Artikel
+## Artikel
 
-| Before (admin lama) | After (new-admin.html) |
+* Konfigurasi portal tetap sama: URL API, Domain portal, API key (sembunyi/tampil + salin), tombol Simpan.
+* Sekarang dalam satu kartu. Tombol reload berlabel jelas: **Muat ulang artikel**.
+* Salin slug dihapus, slug cukup tampil sebagai teks.
+* Dashboard dapat kartu baru **Artikel portal**.
+
+| Before | Update |
 |---|---|
 | ![Artikel before](images/before/before-artikel.png) | ![Artikel after](images/after/after-artikel.png) |
 
-* Konfigurasi portal tetap sama: URL API, Domain portal, API key (sembunyi/tampil + salin), tombol Simpan.
-* Bedanya: config sekarang dalam satu kartu. Dulu header dan field terpisah.
-* Tombol reload sekarang berlabel jelas: **Muat ulang artikel** (dulu: Muat ulang).
-* Daftar artikel tetap kartu: tanggal, judul, ringkasan, slug, status, tombol Detail.
-* Salin slug dihapus. Slug cukup tampil sebagai teks.
-* Dashboard Marketing dapat kartu baru **Artikel portal** (3 artikel terbaru + tombol Kelola artikel).
+## Dashboard
 
-## 2. Iklan
+* Halaman baru, tidak ada di admin lama.
+* Halo Marketing, 3 KPI, Tugas Streak, Kanal aktif, Artikel portal, Perlu perhatian, Aktivitas terbaru.
 
-| Before (admin lama) | After (new-admin.html) |
+| Before | Update |
+|---|---|
+| *(kosong)* | ![Dashboard after](images/after/after-dashboard.png) |
+
+## Iklan
+
+* Dulu: workspace dengan 3 angka ringkasan + 1 kartu contoh.
+* Sekarang: filter chip + pencarian + kartu per iklan.
+* Tiap kartu: jadwal Mulai/Selesai, ubah status dari dropdown, Ubah, Duplikat, Hapus (ada Urungkan).
+
+| Before | Update |
 |---|---|
 | ![Iklan before](images/before/before-iklan.png) | ![Iklan after](images/after/after-iklan.png) |
 
-* Dulu: halaman workspace dengan 3 angka ringkasan + 1 kartu contoh.
-* Sekarang: filter chip (Semua, Tayang, Menunggu, Draft, Selesai) + pencarian + kartu per iklan.
-* Tiap kartu: jadwal Mulai/Selesai, ubah status langsung dari dropdown, Ubah, Duplikat, Hapus (ada Urungkan).
-* Status Tayang meminta konfirmasi dulu.
+## Media
 
-## 3. Media
+* Dulu: tabel (ID, preview, nama file, tipe, ukuran, tanggal, aksi).
+* Sekarang: grid tile dengan chip tipe + pencarian + export per tile.
 
-| Before (admin lama) | After (new-admin.html) |
+| Before | Update |
 |---|---|
 | ![Media before](images/before/before-media.png) | ![Media after](images/after/after-media.png) |
 
-* Dulu: tabel (ID, preview, nama file, tipe, ukuran, tanggal, aksi).
-* Sekarang: grid tile dengan chip tipe (Semua, Avatar, Banner, Soal, Logo, Iklan, Lainnya) + pencarian.
-* Tiap tile: preview ekstensi, nama, kategori + ukuran, status Dipakai/Belum dipakai, tombol export.
+## Media Sosial
 
-## 4. Media Sosial
+* Dulu: tabel dengan aksi teks (Edit, Nonaktifkan, Naik, Turun, Hapus).
+* Sekarang: daftar geser untuk urutan tampil, status pill, tombol ikon, plus kartu Pratinjau tautan.
 
-| Before (admin lama) | After (new-admin.html) |
+| Before | Update |
 |---|---|
 | ![Media sosial before](images/before/before-media-sosial.png) | ![Media sosial after](images/after/after-media-sosial.png) |
 
-* Dulu: tabel dengan aksi teks (Edit, Nonaktifkan, Naik, Turun, Hapus).
-* Sekarang: daftar geser (drag handle) untuk urutan tampil.
-* Status jadi pill (Aktif/Nonaktif) yang bisa diketuk. Salin dan hapus jadi tombol ikon.
-* Ada kartu **Pratinjau tautan** di kanan: tampil persis seperti dilihat pelajar.
+## Notifikasi
 
-## 5. Tugas Streak
+* Halaman baru, tidak ada di admin lama.
+* Daftar belum/sudah dibaca + Tandai semua dibaca.
 
-| Before (admin lama) | After (new-admin.html) |
+| Before | Update |
+|---|---|
+| *(kosong)* | ![Notifikasi after](images/after/after-notifikasi.png) |
+
+## Pengaturan
+
+* Halaman baru, tidak ada di admin lama.
+* Mode Terang/Gelap, notifikasi, pasang aplikasi, export, cadangan, reset lokal.
+
+| Before | Update |
+|---|---|
+| *(kosong)* | ![Pengaturan after](images/after/after-pengaturan.png) |
+
+## Profil
+
+* Halaman baru, tidak ada di admin lama.
+* Data diri + daftar halaman yang boleh dibuka peran ini.
+
+| Before | Update |
+|---|---|
+| *(kosong)* | ![Profil after](images/after/after-profil.png) |
+
+## Referral
+
+* Fitur baru, tidak ada di admin lama.
+* Kartu tautan + salin, pill +koin, pemakaian, kedaluwarsa. Alur Aktif → Jeda → Kedaluwarsa.
+* Ada Tambah cepat (cukup nama) dan form lengkap.
+
+| Before | Update |
+|---|---|
+| *(kosong)* | ![Referral after](images/after/after-referral.png) |
+
+## Tugas Streak
+
+* Dulu: monitoring nol + tabel urutan.
+* Sekarang: kartu Monitoring Tugas (7/30/90 hari) + kartu geser dengan alur Tinjau & terbitkan.
+
+| Before | Update |
 |---|---|
 | ![Tugas streak before](images/before/before-tugas-streak.png) | ![Tugas streak after](images/after/after-tugas-streak.png) |
 
-* Dulu: monitoring masih nol + tabel urutan.
-* Sekarang: kartu Monitoring Tugas (Selesai 30 hari, Selesai hari ini, Task aktif) dengan pilihan 7/30/90 hari.
-* Daftar jadi kartu geser dengan garis status di kiri.
-* Ubah status tidak langsung tayang. Masuk antrean **Tinjau & terbitkan** dulu.
+## Voucher
 
-## 6. Baru (tidak ada before = standalone)
+* Fitur baru, tidak ada di admin lama.
+* Kartu kode + salin, pill Persen/Nominal, kuota, jadwal, penerima (Semua/Acak/Pilihan). Alur Draft → Siap → Aktif → Kedaluwarsa.
+* Ada Tambah cepat (cukup nama) dan form lengkap.
 
-* **Dashboard** — Halo Marketing, 3 KPI, Tugas Streak, Kanal aktif, Artikel portal, Perlu perhatian, Aktivitas terbaru.
-  ![Dashboard](images/after/after-dashboard.png)
-* **Voucher** — kartu kode diskon (kode besar + salin), pill Persen/Nominal, pemakaian kuota, jadwal, penerima (Semua/Acak/Pilihan). Alur Draft → Siap → Aktif → Kedaluwarsa. Ada **Tambah cepat** (cukup isi nama) dan form lengkap (Buat voucher).
-  ![Voucher](images/after/after-voucher.png)
-* **Referral** — kartu tautan (`tryoutku.id/r/...` + salin), pill +koin, pemakaian, kedaluwarsa. Alur Aktif → Jeda → Kedaluwarsa. Ada **Tambah cepat** dan form lengkap.
-  ![Referral](images/after/after-referral.png)
-* **Notifikasi** — daftar belum/sudah dibaca, Tandai semua dibaca.
-  ![Notifikasi](images/after/after-notifikasi.png)
-* **Pengaturan** — mode Terang/Gelap, notifikasi, pasang aplikasi, export, cadangan, reset lokal.
-  ![Pengaturan](images/after/after-pengaturan.png)
-* **Profil** — data diri + daftar halaman yang boleh dibuka peran ini.
-  ![Profil](images/after/after-profil.png)
+| Before | Update |
+|---|---|
+| *(kosong)* | ![Voucher after](images/after/after-voucher.png) |
 
-## 7. Catatan kecil sesi ini
-
-* Header Konfigurasi portal tanpa ikon. Aturan baru di `.opencode/AGENTS.md`: jangan tambah ikon hiasan sembarangan. Cek fitur terkait dulu. Kalau di sana tidak ada ikon, jangan tambah.
-* Tab drawer **Media & versi** ditulis ulang: versi per baris (Aktif/Arsip), seksi Pratinjau siswa sendiri, peringatan gambar rusak dengan ikon.
-* Screenshot di dokumen ini diambil sebelum tombol **Tambah cepat** ada. Tombolnya ada di file terbaru, di samping Buat voucher / Buat referral.
+Catatan: screenshot diambil sebelum tombol Tambah cepat ada. Tombolnya ada di file terbaru, di samping Buat voucher / Buat referral.
