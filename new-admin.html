@@ -886,7 +886,7 @@ var NAV=[
 /* Role -> visible nav keys. Admin sees all. Media is read-only for Tim Soal. */
 var ACCESS={
  soal:['dashboard','questions','content-areas','topics','programs','blueprints','blueprint-versions','drills','tryouts','grading','question-reports','media','notifications'],
- marketing:['dashboard','ads','articles','vouchers','referrals','social-media','notifications','media','streak-tasks'],
+ marketing:['dashboard','ads','articles','vouchers','referrals','social-media','notifications','streak-tasks'],
  user:['dashboard','users','data-pelajar','invitations','notifications'],
  admin:'*'
 };
@@ -993,7 +993,7 @@ var F={
   cols:['Peran','Cakupan','Anggota','Aksi'],filters:[],chips:['Semua'],
   rows:[
    {id:'R-SOAL',t:'Tim Soal',s:'11 halaman · Bank Soal, Latihan, Tryout, Laporan',st:['4 anggota','blue'],by:'Admin'},
-    {id:'R-MKT',t:'Tim Marketing',s:'5 halaman · Iklan, Medsos, Media promosi, Notifikasi',st:['3 anggota','blue'],by:'Admin'},
+    {id:'R-MKT',t:'Tim Marketing',s:'8 halaman · Iklan, Artikel, Voucher, Referral, Notifikasi',st:['3 anggota','blue'],by:'Admin'},
    {id:'R-USER',t:'Tim User',s:'5 halaman · Pengguna, Pelajar, Undangan, Notifikasi',st:['5 anggota','blue'],by:'Admin'},
    {id:'R-ADM',t:'Admin',s:'semua halaman · termasuk Peran & Log',st:['2 anggota','purple'],by:'Admin'}],
   empty:{t:'Belum ada peran khusus',d:'Buat peran baru lalu centang halaman yang boleh dibuka.',c:'Buat peran'},
@@ -1040,7 +1040,7 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    form:[{k:'type',l:'Tipe soal',type:'select',opts:['Pilihan Ganda','Benar/Salah','Menjodohkan','Isian Singkat','Uraian']},{k:'content',l:'Konten soal',type:'textarea',req:1,ph:'Tulis soal (maks 80 char tampil di daftar)…'},{k:'diff',l:'Kesulitan',type:'select',opts:['Mudah','Sedang','Sulit']}]},
   media:{menu:'menu.media',route:'/media',perm:'media.read',title:'Media',cat:'content',qa:'Pratinjau',view:'media',
    acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Export',icn:P_DOWNLOAD,do:'toast:Menyiapkan export…'}],
-   sub:'Pustaka file bersama. Tim Marketing memakai Banner & Iklan; sisanya referensi (avatar, gambar soal).',
+   sub:'Pustaka file bersama: avatar, gambar soal, banner & iklan.',
    cols:['File','Kegunaan / Ukuran','Status','Aksi'],filters:[],chips:['Semua','Avatar','Banner','Soal','Logo','Iklan','Lainnya'],
   rows:[
    {id:'M-101',t:'gelombang-tali.webp',s:'Gambar · 1,2 MB · dipakai 3 soal',st:['Dipakai','green'],by:'D. Mahesa',chip:'Soal',cat:'Soal',owner:'Admin',mime:'image/webp',size:'1,2 MB',ratio:'3/4'},
@@ -1456,7 +1456,7 @@ var MATRIX=[
   ['Laporan soal',1,0,0,1],
   ['Iklan · Medsos · Broadcast',0,1,0,1],
   ['Testimoni',0,0,0,1],
-  ['Media promosi (banner & iklan)',2,1,0,1],
+  ['Media promosi (banner & iklan)',2,0,0,1],
   ['Pengguna · Pelajar · Undangan',0,0,1,1],
   ['Notifikasi (broadcast)',1,1,1,1],
   ['Masukan',0,0,0,1],
@@ -1683,7 +1683,7 @@ function dashMarketing(){
   var stm=stTotals();
   var stActive=sts.filter(function(x){return x.isActive;}).length;
   var streak='<div class="card"><div class="card-h"><div><div><h2>Tugas Streak</h2><p>'+stActive+' aktif dari '+sts.length+' tugas · '+stm.today+' selesai hari ini</p></div></div><div class="sp"><button class="link" data-goto="streak-tasks">Kelola tugas</button></div></div>'
-  +'<div style="padding:4px 16px 16px;display:flex;flex-direction:column;gap:12px">'
+  +'<div style="padding:16px 16px 16px;display:flex;flex-direction:column;gap:12px">'
   +'<div class="kpis" style="margin:0;padding:0;grid-template-columns:repeat(3,1fr)">'
   +'<div class="kpi"><div class="kh"><span class="lbl">Selesai · '+stm.days+' hari</span></div><div class="val">'+stm.total.toLocaleString('id-ID')+'</div></div>'
   +'<div class="kpi"><div class="kh"><span class="lbl">Selesai hari ini</span></div><div class="val">'+stm.today.toLocaleString('id-ID')+'</div></div>'
