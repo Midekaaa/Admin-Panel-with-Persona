@@ -433,6 +433,7 @@
   .st-mini{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;color:inherit;
     background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:10px 12px;cursor:pointer}
   .st-mini:hover{border-color:var(--primary)}
+  .st-mini .et{flex:1;min-width:0}
   .timeline{padding:6px 16px 14px;display:flex;flex-direction:column}
   .ev{display:flex;gap:11px;font-size:12.8px;padding:9px 0;position:relative}
   .timeline .ev:not(:last-child)::before{content:"";position:absolute;left:15px;top:36px;bottom:-4px;width:2px;background:var(--border-soft)}
@@ -1689,7 +1690,7 @@ function dashMarketing(){
   +'<div class="kpi"><div class="kh"><span class="lbl">Selesai hari ini</span></div><div class="val">'+stm.today.toLocaleString('id-ID')+'</div></div>'
   +'<div class="kpi"><div class="kh"><span class="lbl">Tugas aktif</span></div><div class="val">'+stActive+'/'+sts.length+'</div></div>'
   +'</div>'
-  +(sts.length?sts.slice(0,3).map(function(x){var per=x.period==='daily'?'harian':x.period==='weekly'?'mingguan':'sekali';return '<button class="st-mini" data-stdopen="'+esc(x.id)+'" aria-label="Buka '+esc(x.title)+'"><span class="et"><span class="et-t">'+esc(x.title)+'</span><br><time>'+(x.targetCount||1)+'x / '+per+' · +'+(x.rewardAmount||0)+' koin · '+esc(STTASK_STATUS_LBL[x.status]||x.status)+'</time></span></button>';}).join(''):'<span class="cell-s">Belum ada tugas streak. Buat tugas pertama.</span>')
+  +(sts.length?sts.slice(0,3).map(function(x){var per=x.period==='daily'?'harian':x.period==='weekly'?'mingguan':'sekali';return '<button class="st-mini" data-stdopen="'+esc(x.id)+'" aria-label="Buka '+esc(x.title)+'"><span class="et"><span class="et-t">'+esc(x.title)+'</span><br><time>'+(x.targetCount||1)+'x / '+per+' · +'+(x.rewardAmount||0)+' koin · '+esc(STTASK_STATUS_LBL[x.status]||x.status)+'</time></span><span style="color:var(--text-3);flex:0 0 auto">'+ic(P_CHR,16)+'</span></button>';}).join(''):'<span class="cell-s">Belum ada tugas streak. Buat tugas pertama.</span>')
   +'</div></div>';
   var socials=(featOf('social-media').rows||[]);
   var active=socials.filter(function(x){return x.chip==='Aktif';});
