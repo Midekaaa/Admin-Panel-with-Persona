@@ -96,9 +96,12 @@ Soal terkait per mata pelajaran:
 
 * Fitur baru, tidak ada di admin lama.
 * Model quest: admin kelola Quest A/B/C (multi-live, toggle Aktif/Nonaktif), siswa yang membuat tautan.
-* Quest cards di atas tabel: badge Quest A (blue) / B (purple) / C (amber), reward split +pengajak / +pendaftar, periode Berlaku.
-* Tabel campuran Pemilik / Pendaftar / Quest / Status (sortable Pemilik, Quest, Status). Kolom Pendaftar inline: nama + N/M pendaftar unik + koin terbayar (tanpa expand).
-* Aksi: Detail + Cabut (ada Urungkan). Drawer Ringkasan: pemilik, pendaftar unik, koin terbayar, quest, tanggal dibuat + Salin tautan.
+* Quest cards di atas tabel: badge Quest A (blue) / B (purple) / C (amber), reward split +pengajak / +pendaftar (10–15 koin, ikut ekonomi student app: latihan +10, TO +15), periode Berlaku.
+* Tabel campuran Quest / Kuota / Penyebar / Pendaftar tanpa kolom Aksi (sortable Quest, Penyebar). Kolom Quest pertama. Kolom Penyebar: nama + ikon kalender tanggal + pil koin per pendaftar (ikon `coin.png` dari student app). Kolom Pendaftar: nama + koin pendaftar (ikut reward quest, ikon `coin.png`). Kolom Kuota: N/M pendaftar (tanpa total, tanpa expand). Penyebar dan Pendaftar selalu sama lebar (`table-layout:fixed`). Detail lewat klik baris.
+* Baris Filter / Urutkan / Export di semua tabel: tombol Reset yang tersembunyi tidak lagi menyisakan gap (`display:none`), dan grup tombol mengisi ruang secara flex + wrap.
+* Kartu quest: tombol Ubah + Aktifkan/Nonaktifkan di bawah baris tanggal Berlaku.
+* Strip Minta Undangan (Marketing saja) di atas quest: butuh undangan sekolah → minta via Tim User, tanpa halaman mandiri.
+* Aksi: Detail + Cabut (ada Urungkan). Drawer Ringkasan: penyebar, pendaftar unik, koin per pendaftar, quest, tanggal dibuat + Salin tautan.
 * Chip: Semua / Aktif / Penuh / Kedaluwarsa. Tidak ada Tambah cepat / Buat referral (toast: tautan dibuat siswa dari quest yang live).
 * Satu siswa satu reward. Share berkali-kali tetap dihitung 1.
 
@@ -130,7 +133,8 @@ Soal terkait per mata pelajaran:
 ## Undangan (split Marketing ↔ Tim User)
 
 * Baru di PR ini, tidak ada di admin lama maupun perbandingan sebelumnya.
-* Marketing: hanya `Minta Undangan` (maks 5 permintaan terbuka, hanya Marketing yang bisa meminta). Tidak melihat menu Undangan eksekusi.
+* Marketing: strip Minta Undangan di halaman Referral (maks 5 permintaan terbuka, hanya Marketing yang bisa meminta). Form: Email tujuan, Jenis keperluan, Penjelasan singkat. Benefit selalu Quest A (pengguna baru), tanpa dropdown. Tidak ada halaman / menu mandiri.
+* Kolom Aksi disembunyikan di tabel yang aksinya non-fungsional (Undangan, Data Pelajar, Izin, Materi, Universitas, Jenjang, Prodi, Versi Blueprint, Try Out, Penilaian Esai, Log, Masukan, Testimoni, Tugas Streak, Referral). Detail tetap via klik baris; tabel dengan navigasi nyata (Pengguna, Peran, Bidang, Program, Blueprint, Latihan, Laporan Soal) tetap punya Aksi.
 * Tim User: halaman `Undangan` + section `Permintaan dari Marketing` (Setujui / Tolak di tempat). Setujui → `INV-xxx` tercatat di Undangan + notif link ke `invitations`. Tolak wajib alasan.
 * Label quest live ikut tersemat di Undangan (`· Quest A, …`) via `syncInvQuest`.
 

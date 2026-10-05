@@ -259,7 +259,7 @@
   .card-h>div:first-child{display:flex;align-items:center;min-height:30px}
   .card-h h2{margin:0;font-size:14px;color:var(--text-h);line-height:1.4}
   .card-h p{margin:2px 0 0;font-size:12px;color:var(--text-2)}
-  .card-h .sp{margin-left:auto;display:flex;gap:6px;align-items:center;flex:0 0 auto}
+  .card-h .sp{margin-left:auto;display:flex;gap:6px;align-items:center;flex:1 1 auto;justify-content:flex-end;flex-wrap:wrap}
   /* Card tools: same language as .mini-btn/.chip — bordered, blue on hover, dark when on */
   .link{font-size:12.5px;font-weight:600;color:var(--text-2);background:var(--bg-card);
     border:1px solid var(--border);cursor:pointer;padding:0 12px;border-radius:10px;white-space:nowrap;
@@ -268,7 +268,7 @@
   .link.on{background:var(--primary);border-color:var(--primary);color:#fff}
   .link.plain{background:none;border:0;padding:4px 6px;min-height:30px}
   /* Header Reset reserves its slot when inactive so the card header / table layout never shifts when it appears. */
-  .link.reset-hidden{visibility:hidden;pointer-events:none}
+  .link.reset-hidden{display:none}
   .seg{display:flex;gap:4px;background:var(--bg-hover);border-radius:10px;padding:3px}
   .seg button{border:0;background:none;border-radius:8px;padding:5px 11px;font-size:12px;font-weight:600;
     color:var(--text-2);cursor:pointer;min-height:30px}
@@ -313,6 +313,10 @@
   /* Reusable table system: sticky head, sortable columns, cohesive row states */
   .tbl-wrap{overflow-x:auto}
   thead th{position:sticky;top:0;background:var(--bg-card);z-index:1}
+  /* Referral: kolom Penyebar (4) dan Pendaftar (5) selalu sama lebar. */
+  .tbl-ref{table-layout:fixed;width:100%}
+  .tbl-ref th:nth-child(4),.tbl-ref td:nth-child(4),
+  .tbl-ref th:nth-child(5),.tbl-ref td:nth-child(5){width:27%}
   th.th-sort{cursor:pointer;user-select:none}
   th.th-sort:hover{background:none}
   th.sorted{background:none;color:var(--text-h)}
@@ -425,6 +429,10 @@
   .quick small{font-size:12px;color:var(--text-2)}
   .quick .qi{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;
     flex:0 0 34px;font-size:15px;font-weight:600}
+  /* Dashboard Tugas Streak: daftar kartu kecil berbingkai, bisa diklik langsung. */
+  .st-mini{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;color:inherit;
+    background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:10px 12px;cursor:pointer}
+  .st-mini:hover{border-color:var(--primary)}
   .timeline{padding:6px 16px 14px;display:flex;flex-direction:column}
   .ev{display:flex;gap:11px;font-size:12.8px;padding:9px 0;position:relative}
   .timeline .ev:not(:last-child)::before{content:"";position:absolute;left:15px;top:36px;bottom:-4px;width:2px;background:var(--border-soft)}
@@ -838,9 +846,8 @@ var NAV=[
  {g:'Pengguna & Akses',items:[
   {k:'users',t:'Pengguna',icn:'ti-users',route:'/users',mp:'menu.users',perm:'users.read'},
   {k:'data-pelajar',t:'Data Pelajar',icn:'ti-school',route:'/data-pelajar',mp:'menu.users',perm:'users.read'},
-  {k:'invitations',t:'Undangan',icn:'ti-mail',route:'/invitations',mp:'menu.invitations',perm:'users.invite',badge:'24',cls:'warn'},
-  {k:'minta-undangan',t:'Minta Undangan',icn:'ti-send',route:'/minta-undangan',mp:'menu.inviteRequests',perm:'users.invite'},
-  {k:'database',t:'Database',icn:'ti-database',mp:'menu.database',children:[
+   {k:'invitations',t:'Undangan',icn:'ti-mail',route:'/invitations',mp:'menu.invitations',perm:'users.invite',badge:'24',cls:'warn'},
+   {k:'database',t:'Database',icn:'ti-database',mp:'menu.database',children:[
     {k:'roles',t:'Role',icn:'ti-shield-check',route:'/roles',mp:'menu.roles',perm:'roles.read',badge:'4',cls:'info'},
     {k:'permissions',t:'Permission',icn:'ti-key',route:'/permissions',mp:'menu.permissions',perm:'permissions.read'}]}]},
  {g:'Konten',items:[
@@ -879,7 +886,7 @@ var NAV=[
 /* Role -> visible nav keys. Admin sees all. Media is read-only for Tim Soal. */
 var ACCESS={
  soal:['dashboard','questions','content-areas','topics','programs','blueprints','blueprint-versions','drills','tryouts','grading','question-reports','media','notifications'],
- marketing:['dashboard','ads','articles','vouchers','referrals','social-media','notifications','media','streak-tasks','minta-undangan'],
+ marketing:['dashboard','ads','articles','vouchers','referrals','social-media','notifications','media','streak-tasks'],
  user:['dashboard','users','data-pelajar','invitations','notifications'],
  admin:'*'
 };
@@ -932,7 +939,7 @@ var F={
    {id:'E-42',t:'42 esai antre dinilai',s:'TO Akbar 12 · Ekonomi · rubrik v2',st:['Antre','amber'],by:'R. Kartika'},
    {id:'BP-v4',t:'Blueprint SNBT-2026 v4',s:'Kesiapan 82% · 2 unit belum dikunci',st:['Revisi','amber'],by:'D. Mahesa'},
    {id:'TO-12',t:'TO Akbar 12',s:'1.842 peserta · berakhir 2 hari',st:['Berlangsung','green'],by:'Sistem'}]},
-  /* Ringkasan antrean marketing tampil di kartu "Perlu perhatian" dasbor; daftar rinci ikut halaman Iklan. */
+  /* Ringkasan antrean marketing ikut halaman Iklan. */
   'dash-marketing':{menu:'menu.dashboard',route:'/',title:'Dashboard Marketing',cat:'dash',queue:'ads'},
  'dash-user':{menu:'menu.dashboard',route:'/',title:'Dashboard Operasional',cat:'dash',queue:'invitations',
   cols:['Antrian','Konteks','Status','Aksi'],filters:[],chips:['Semua','Pengingat','Antre'],
@@ -957,14 +964,14 @@ var F={
    {id:'U-9001',t:'Sinta (Tim Soal)',s:'sinta@… · Tim Soal · boleh buka 11 halaman',st:['Aktif','green'],by:'Sinta',chip:'Aktif'}],
   empty:{t:'Belum ada pengguna',d:'Undang anggota tim atau impor dari sekolah mitra.',c:'Undang pengguna'},
   form:[{k:'name',l:'Nama lengkap',req:1,ph:'cth: Sinta Maharani'},{k:'email',l:'Email',type:'email',req:1,ph:'nama@sekolah.sch.id'},{k:'role',l:'Peran awal',type:'select',opts:['Tim Soal','Tim Marketing','Tim User','Admin']}]},
- 'data-pelajar':{menu:'menu.users',route:'/data-pelajar',perm:'users.read',title:'Data Pelajar',cat:'access',qa:'Lihat profil',
+ 'data-pelajar':{menu:'menu.users',hideActs:true,route:'/data-pelajar',perm:'users.read',title:'Data Pelajar',cat:'access',qa:'Lihat profil',
   sub:'Nama, sekolah, tahun lulus, kontak WA, dan asal info pendaftar. Ketuk baris untuk lihat detail.',
   cols:['Nama','Sekolah / Lulus','Status','Info'],filters:[{k:'lulus',l:'Lulus',o:['Semua','2026','2025']}],chips:['Semua'],
   rows:[
    {id:'S-771',t:'Nadia P. — XII',s:'SMAN 1 Bandung · lulus 2026 · WA terisi',st:['Aktif','green'],by:'Organik'},
    {id:'S-772',t:'Bagas R. — gap year',s:'SMKN 2 Solo · lulus 2025 · WA terisi',st:['Aktif','green'],by:'Teman'}],
   empty:{t:'Belum ada data pelajar',d:'Data masuk otomatis saat pelajar mendaftar atau via undangan sekolah.',c:'Undang sekolah'}},
-  invitations:{menu:'menu.invitations',route:'/invitations',perm:'users.invite',title:'Undangan',cat:'access',qa:'Salin tautan',view:'invitations',
+  invitations:{menu:'menu.invitations',hideActs:true,route:'/invitations',perm:'users.invite',title:'Undangan',cat:'access',qa:'Kirim ulang',view:'invitations',
   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Salin tautan',icn:P_COPY,do:'toast:Tautan undangan disalin'},{l:'Kirim ulang',icn:P_SEND,do:'toast:Undangan dikirim ulang'}],
   sub:'Undang sekolah atau tim lewat email. Lihat status, salin tautan, kirim ulang, cabut, export rekap.',
   cols:['Email','Roles / Exp','Status','Aksi'],filters:[{k:'st',l:'Status',o:['Semua','Menunggu','Dibuka','Diterima','Kedaluwarsa']}],chips:['Semua','Menunggu','Diterima','Kedaluwarsa'],
@@ -991,7 +998,7 @@ var F={
    {id:'R-ADM',t:'Admin',s:'semua halaman · termasuk Peran & Log',st:['2 anggota','purple'],by:'Admin'}],
   empty:{t:'Belum ada peran khusus',d:'Buat peran baru lalu centang halaman yang boleh dibuka.',c:'Buat peran'},
   form:[{k:'name',l:'Nama peran',req:1,ph:'cth: Kurator Soal'},{k:'desc',l:'Deskripsi',type:'textarea',ph:'Tanggung jawab peran ini…'}]},
- permissions:{menu:'menu.permissions',route:'/permissions',perm:'permissions.read',title:'Izin akses',cat:'access',qa:'Lihat pemakaian',
+ permissions:{menu:'menu.permissions',hideActs:true,route:'/permissions',perm:'permissions.read',title:'Izin akses',cat:'access',qa:'Lihat pemakaian',
   sub:'Daftar semua izin: halaman apa boleh dibuka dan aksi apa boleh dilakukan, plus keterangannya.',
   cols:['Izin','Keterangan','Jenis','Aksi'],filters:[{k:'jenis',l:'Jenis',o:['Semua','Menu','Data']}],chips:['Semua','Menu','Data'],
   rows:[
@@ -1076,22 +1083,22 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
     {id:'V-MITRA',t:'Sekolah mitra Cirebon',s:'100 koin · kuota 120 · pilihan 120 kursi',st:['Draft','gray'],by:'Raka',chip:'Draft',code:'MITRA-CRB',kind:'Koin',value:100,quota:120,used:0,mulai:'Belum diatur',selesai:'Belum diatur',target:'Pilihan · 120 kursi',targetKind:'Pilihan',targetN:120},
     {id:'V-FLASH10',t:'Flash sale 10rb',s:'10 koin · kuota 50 · semua pelajar',st:['Kedaluwarsa','gray'],by:'Raka',chip:'Kedaluwarsa',code:'FLASH10',kind:'Koin',value:10,quota:50,used:50,mulai:'20 Sep 2026',selesai:'21 Sep 2026',target:'Semua pelajar',targetKind:'Semua',targetN:''}],
    empty:{t:'Belum ada voucher',d:'Buat kode diskon: nilai, kuota, jadwal, dan penerima.',c:'Buat voucher'}},
-  referrals:{menu:'menu.referrals',route:'/referrals',perm:'referrals.read',title:'Referral',cat:'content',qa:'Lihat tautan',view:'referrals',
+  referrals:{menu:'menu.referrals',route:'/referrals',perm:'referrals.read',title:'Referral',cat:'content',qa:'Tutup',view:'referrals',
    sub:'Admin membuat quest, siswa yang membuat tautan. Satu quest live dalam satu waktu.',
-   cols:['Pemilik','Pendaftar','Quest','Status','Aksi'],filters:[],chips:['Semua','Aktif','Penuh','Kedaluwarsa'],
+   cols:['Quest','Kuota','Penyebar','Pendaftar'],filters:[],chips:['Semua','Aktif','Penuh','Kedaluwarsa'],hideActs:true,
    colDefs:[
-    {label:'Pemilik',sort:'owner',html:function(d,i){return '<div class="who">'+ava(d.by,i)+'<span><span class="cell-t" style="font-weight:500">'+esc(d.owner||d.by)+'</span><br><span class="cell-s">sejak '+esc(d.joined||'—')+'</span></span></div>';}},
-    {label:'Pendaftar',sort:null,html:function(d){var h=d.hist||[];var names=h.map(function(x){return x.n;}).join(', ');return '<div class="cell-t">'+(names?esc(names):'<span class="cell-s">—</span>')+'</div><div class="cell-s">'+esc(d.used||0)+'/'+esc(d.max||0)+' pendaftar · +'+esc(d.paid||0)+' koin</div>';}},
     {label:'Quest',sort:'quest',html:function(d){return questBadge(d.quest)+'<div class="cell-s" style="margin-top:4px">'+esc(refQuestName(d.quest))+'</div>';}},
-    {label:'Status',sort:'status',html:function(d){return cellStatus(d);}}],
-   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Cabut',icn:P_TRASH,do:'refcabut'}],
+    {label:'Kuota',sort:null,html:function(d){return '<div class="cell-t">'+esc(d.used||0)+'/'+esc(d.max||0)+'</div><div class="cell-s">pendaftar</div>';}},
+    {label:'Penyebar',sort:'owner',html:function(d,i){return '<div class="who">'+ava(d.by,i)+'<span><span class="cell-t" style="font-weight:500">'+esc(d.owner||d.by)+'</span><br><span class="cell-s">'+ic('ti-calendar',13)+' '+esc(d.joined||'—')+'</span> <span class="status amber">'+esc(d.coin||0)+' '+COIN_IMG+'</span></span></div>';}},
+    {label:'Pendaftar',sort:null,html:function(d){var h=d.hist||[];var names=h.map(function(x){return x.n;}).join(', ');return '<div class="cell-t">'+(names?esc(names):'<span class="cell-s">—</span>')+'</div><div class="cell-s">+'+esc(refQuestJoin(d.quest))+' '+COIN_IMG+'</div>';}}],
+   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Cabut',icn:P_TRASH,do:'refcabut'},{l:'Salin tautan',icn:P_COPY,do:'toast:Tautan disalin'}],
    rows:[
-    {id:'L-RAKA',t:'tryoutku.id/r/rakasnbt',s:'Raka · 34/100 pendaftar unik · +850 koin terbayar',st:['Aktif','green'],by:'Raka',chip:'Aktif',code:'rakasnbt',link:'tryoutku.id/r/rakasnbt',owner:'Raka',quest:'A',used:34,max:100,paid:850,joined:'28 Sep 2026',hist:[{n:'Nadia P.',t:'28 Sep 2026'},{n:'Bagas R.',t:'27 Sep 2026'}]},
-    {id:'L-SINTA',t:'tryoutku.id/r/sintalolos',s:'Sinta · 12/50 pendaftar unik · +120 koin terbayar',st:['Aktif','green'],by:'Sinta',chip:'Aktif',code:'sintalolos',link:'tryoutku.id/r/sintalolos',owner:'Sinta',quest:'A',used:12,max:50,paid:120,joined:'25 Sep 2026',hist:[{n:'Citra L.',t:'25 Sep 2026'}]},
-    {id:'L-BAGAS',t:'tryoutku.id/r/bagasmain',s:'Bagas · 30/30 pendaftar unik · +450 koin terbayar',st:['Penuh','amber'],by:'Bagas',chip:'Penuh',code:'bagasmain',link:'tryoutku.id/r/bagasmain',owner:'Bagas',quest:'A',used:30,max:30,paid:450,joined:'20 Sep 2026',hist:[{n:'Eko P.',t:'20 Sep 2026'},{n:'Farah A.',t:'19 Sep 2026'}]},
-    {id:'L-DINDA',t:'tryoutku.id/r/dindaajak',s:'Dinda · 2/50 pendaftar unik · +20 koin terbayar',st:['Aktif','green'],by:'Dinda',chip:'Aktif',code:'dindaajak',link:'tryoutku.id/r/dindaajak',owner:'Dinda',quest:'A',used:2,max:50,paid:20,joined:'2 Okt 2026',hist:[]},
-    {id:'L-EKO',t:'tryoutku.id/r/ekoutbk',s:'Eko · 5/40 pendaftar unik · +75 koin terbayar',st:['Aktif','green'],by:'Eko',chip:'Aktif',code:'ekoutbk',link:'tryoutku.id/r/ekoutbk',owner:'Eko',quest:'B',used:5,max:40,paid:75,joined:'15 Sep 2026',hist:[{n:'Gilang R.',t:'15 Sep 2026'}]},
-    {id:'L-FARAH',t:'tryoutku.id/r/farahakbar',s:'Farah · 9/60 pendaftar unik · +180 koin terbayar',st:['Aktif','green'],by:'Farah',chip:'Aktif',code:'farahakbar',link:'tryoutku.id/r/farahakbar',owner:'Farah',quest:'C',used:9,max:60,paid:180,joined:'22 Sep 2026',hist:[{n:'Hadi P.',t:'22 Sep 2026'}]}],
+    {id:'L-RAKA',t:'tryoutku.id/r/rakasnbt',s:'Raka · 34/100 pendaftar unik · +10 koin per pendaftar',st:['Aktif','green'],by:'Raka',chip:'Aktif',code:'rakasnbt',link:'tryoutku.id/r/rakasnbt',owner:'Raka',quest:'A',used:34,max:100,coin:10,joined:'28 Sep 2026',hist:[{n:'Nadia P.',t:'28 Sep 2026'},{n:'Bagas R.',t:'27 Sep 2026'}]},
+    {id:'L-SINTA',t:'tryoutku.id/r/sintalolos',s:'Sinta · 12/50 pendaftar unik · +10 koin per pendaftar',st:['Aktif','green'],by:'Sinta',chip:'Aktif',code:'sintalolos',link:'tryoutku.id/r/sintalolos',owner:'Sinta',quest:'A',used:12,max:50,coin:10,joined:'25 Sep 2026',hist:[{n:'Citra L.',t:'25 Sep 2026'}]},
+    {id:'L-BAGAS',t:'tryoutku.id/r/bagasmain',s:'Bagas · 30/30 pendaftar unik · +10 koin per pendaftar',st:['Penuh','amber'],by:'Bagas',chip:'Penuh',code:'bagasmain',link:'tryoutku.id/r/bagasmain',owner:'Bagas',quest:'A',used:30,max:30,coin:10,joined:'20 Sep 2026',hist:[{n:'Eko P.',t:'20 Sep 2026'},{n:'Farah A.',t:'19 Sep 2026'}]},
+    {id:'L-DINDA',t:'tryoutku.id/r/dindaajak',s:'Dinda · 2/50 pendaftar unik · +10 koin per pendaftar',st:['Aktif','green'],by:'Dinda',chip:'Aktif',code:'dindaajak',link:'tryoutku.id/r/dindaajak',owner:'Dinda',quest:'A',used:2,max:50,coin:10,joined:'2 Okt 2026',hist:[]},
+    {id:'L-EKO',t:'tryoutku.id/r/ekoutbk',s:'Eko · 5/40 pendaftar unik · +15 koin per pendaftar',st:['Aktif','green'],by:'Eko',chip:'Aktif',code:'ekoutbk',link:'tryoutku.id/r/ekoutbk',owner:'Eko',quest:'B',used:5,max:40,coin:15,joined:'15 Sep 2026',hist:[{n:'Gilang R.',t:'15 Sep 2026'}]},
+    {id:'L-FARAH',t:'tryoutku.id/r/farahakbar',s:'Farah · 9/60 pendaftar unik · +15 koin per pendaftar',st:['Aktif','green'],by:'Farah',chip:'Aktif',code:'farahakbar',link:'tryoutku.id/r/farahakbar',owner:'Farah',quest:'C',used:9,max:60,coin:15,joined:'22 Sep 2026',hist:[{n:'Hadi P.',t:'22 Sep 2026'}]}],
    empty:{t:'Belum ada tautan',d:'Tautan muncul saat siswa ikut quest yang live.',c:'Lihat quest'}},
   /* Prototype-only: no backend route yet — requested for Marketing */
  'social-media':{menu:'menu.socialMedia',route:'/social-media',perm:'social-media.read',title:'Media Sosial',cat:'content',qa:'Ubah',view:'social',
@@ -1105,7 +1112,7 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
   empty:{t:'Belum ada akun',d:'Tambahkan akun resmi beserta tautannya.',c:'Tambah akun'},
   form:[{k:'label',l:'Nama akun',req:1,ph:'cth: @tryoutku · Instagram'},{k:'platform',l:'Platform',type:'select',opts:['Instagram','TikTok','YouTube','X','Facebook','WhatsApp','Telegram']},{k:'url',l:'Tautan',req:1,ph:'https://'}]},
   /* Mirrors admin /(content)/streak-tasks: same enums, labels, validation, metrics + sortable table + drawer form. */
-  'streak-tasks':{menu:'menu.streakTasks',route:'/streak-tasks',perm:'streak-tasks.read',title:'Tugas Streak',cat:'content',qa:'Ubah tugas',view:'streak-tasks',
+  'streak-tasks':{menu:'menu.streakTasks',hideActs:true,route:'/streak-tasks',perm:'streak-tasks.read',title:'Tugas Streak',cat:'content',qa:'Ubah tugas',view:'streak-tasks',
    sub:'Atur target, tampilan, dan aturan tugas yang ditampilkan ke siswa. Tarik handle untuk mengubah urutan tampil.',
    cols:['Tugas','Aturan','Reward','Monitoring','Status','Aksi'],filters:[],chips:['Semua'],
    rows:[
@@ -1124,7 +1131,7 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'CA-FIS',t:'Fisika Saintek',s:'74 soal · 9 materi · 3 unit',st:['Nonaktif','gray'],by:'Sistem'}],
   empty:{t:'Belum ada bidang materi',d:'Buat bidang materi sebagai wadah materi dan unit blueprint.',c:'Buat bidang'},
   form:[{k:'name',l:'Nama bidang',req:1,ph:'cth: TPS — Penalaran Umum'},{k:'code',l:'Kode',req:1,ph:'cth: CA-TPS'}]},
- topics:{menu:'menu.topics',route:'/topics',perm:'taxonomy.read',title:'Materi',cat:'structure',qa:'Gabungkan duplikat',
+ topics:{menu:'menu.topics',hideActs:true,route:'/topics',perm:'taxonomy.read',title:'Materi',cat:'structure',qa:'Gabungkan duplikat',
   sub:'Topik di dalam tiap kelompok materi. Topik kembar bisa digabung.',
   cols:['Materi','ContentArea','Status','Aksi'],filters:[{k:'ca',l:'ContentArea',o:['Semua','TPS','Literasi','Fisika']}],chips:['Semua'],
   rows:[
@@ -1133,7 +1140,7 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'FIS-03',t:'Gelombang berjalan',s:'Fisika · mirip 92% dengan FIS-02',st:['Aktif','green'],by:'Sistem'}],
   empty:{t:'Belum ada materi',d:'Materi mengelompokkan soal dalam satu bidang. Cek kemiripan sebelum menambah.',c:'Buat materi'},
   form:[{k:'name',l:'Nama materi',req:1,ph:'cth: Penalaran Umum 15 — Silogisme'},{k:'ca',l:'Bidang Materi',type:'select',opts:['TPS','Literasi','Fisika']}]},
- universitas:{menu:'menu.universitas',route:'/universitas',perm:'universitas.read',title:'Universitas',cat:'structure',qa:'Lihat prodi',
+ universitas:{menu:'menu.universitas',hideActs:true,route:'/universitas',perm:'universitas.read',title:'Universitas',cat:'structure',qa:'Lihat prodi',
   sub:'Daftar kampus negeri dan swasta per kota beserta prodinya. Ketuk untuk lihat prodi.',
   cols:['Nama','Lokasi','Status','Aksi'],filters:[{k:'jenis',l:'Jenis',o:['Semua','PTN','PTS']}],chips:['Semua'],
   rows:[
@@ -1142,14 +1149,14 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'TELU',t:'Universitas Telkom',s:'PTS · Bandung · 31 prodi',st:['Aktif','green'],by:'Raka'}],
   empty:{t:'Belum ada universitas',d:'Tambahkan kampus beserta logo, jenis, dan lokasi untuk referensi prodi.',c:'Tambah universitas'},
   form:[{k:'name',l:'Nama universitas',req:1,ph:'cth: Universitas Airlangga'},{k:'jenis',l:'Jenis',type:'select',opts:['PTN','PTS']},{k:'city',l:'Kota',ph:'cth: Surabaya'}]},
- 'program-pendidikan':{menu:'menu.programPendidikan',route:'/program-pendidikan',perm:'program-pendidikan.read',title:'Program Pendidikan',cat:'structure',qa:'Lihat prodi',
+ 'program-pendidikan':{menu:'menu.programPendidikan',hideActs:true,route:'/program-pendidikan',perm:'program-pendidikan.read',title:'Program Pendidikan',cat:'structure',qa:'Lihat prodi',
   sub:'Jenjang pendidikan: D3, D4, S1, S2 — terhubung ke tiap prodi.',
   cols:['Jenjang','Diperbarui','Status','Aksi'],filters:[],chips:['Semua'],
   rows:[
    {id:'S1',t:'Sarjana (S1)',s:'diperbarui bulan lalu · 120 prodi',st:['Aktif','green'],by:'Sistem'},
    {id:'D4',t:'Diploma 4',s:'diperbarui 2 bulan lalu · 34 prodi',st:['Aktif','green'],by:'Sistem'}],
   empty:{t:'Belum ada jenjang',d:'Jenjang menghubungkan program studi ke tingkat pendidikan.',c:'Tambah jenjang'}},
- 'program-studi':{menu:'menu.programStudi',route:'/program-studi',perm:'program-studi.read',title:'Program Studi',cat:'structure',qa:'Lihat passing grade',
+ 'program-studi':{menu:'menu.programStudi',hideActs:true,route:'/program-studi',perm:'program-studi.read',title:'Program Studi',cat:'structure',qa:'Lihat passing grade',
   sub:'Jurusan beserta daya tampung dan passing grade tiap kampus.',
   cols:['Prodi','Info','Status','Aksi'],filters:[],chips:['Semua'],
   rows:[
@@ -1177,7 +1184,7 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'BP-SAIN-v1',t:'Saintek v1',s:'belum ada versi terbit',st:['Perlu pemeriksaan','red'],by:'Sistem'}],
   empty:{t:'Belum ada blueprint',d:'Blueprint memetakan unit, subtes, dan sebaran soal sebelum dipakai latihan.',c:'Buat blueprint'},
   form:[{k:'name',l:'Nama blueprint',req:1,ph:'cth: SNBT-2027 v1'},{k:'program',l:'Program',type:'select',opts:['SNBT 2026','TPS Intensif']}]},
- 'blueprint-versions':{menu:'menu.blueprints',route:'/blueprint-versions',perm:'blueprint.read',title:'Versi Blueprint',cat:'structure',qa:'Bandingkan versi',
+ 'blueprint-versions':{menu:'menu.blueprints',hideActs:true,route:'/blueprint-versions',perm:'blueprint.read',title:'Versi Blueprint',cat:'structure',qa:'Bandingkan versi',
   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Publikasikan',icn:P_CHECK,do:'toast:Versi diterbitkan'},{l:'Arsipkan',icn:P_ARCH,do:'toast:Versi diarsipkan'}],
   sub:'Riwayat perubahan blueprint. Bandingkan versi konsep, terbit, dan arsip.',
   cols:['Versi','Blueprint','Status','Aksi'],filters:[{k:'st',l:'Status',o:['Semua','Draft','Terbit','Diarsipkan']}],chips:['Semua','Draft','Terbit','Diarsipkan'],
@@ -1196,7 +1203,7 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'DR-NEW',t:'Latihan draft baru',s:'belum pilih versi blueprint',st:['Draft','gray'],by:'D. Mahesa',chip:'Draft'}],
   empty:{t:'Belum ada latihan',d:'Latihan mengambil pool soal dari versi blueprint yang sudah siap.',c:'Buat latihan'},
   form:[{k:'name',l:'Nama latihan',req:1,ph:'cth: Latihan PK-05'},{k:'program',l:'Program',type:'select',opts:['SNBT 2026','TPS Intensif']}]},
- tryouts:{menu:'menu.tryouts',route:'/tryouts',perm:'tryout.read',title:'Try Out',cat:'assess',qa:'Publikasikan',
+ tryouts:{menu:'menu.tryouts',hideActs:true,route:'/tryouts',perm:'tryout.read',title:'Try Out',cat:'assess',qa:'Publikasikan',
   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Publikasikan',icn:P_CHECK,do:'toast:Try out dipublikasikan'},{l:'Duplikat',icn:P_COPY,do:'toast:Try out diduplikat sebagai Draft'}],
   sub:'Ujian bersama: paket soal, jadwal, dan jumlah peserta. Ketuk untuk detail.',
   cols:['Try Out','Jadwal / Peserta','Status','Aksi'],filters:[{k:'st',l:'Status',o:['Semua','Draft','Dipublikasikan','Diarsipkan']}],chips:['Semua','Dipublikasikan','Draft','Diarsipkan'],
@@ -1206,7 +1213,7 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'TO-04',t:'TO Saintek 04 (draft)',s:'blueprint v4 · 40% soal terpetakan',st:['Draft','amber'],by:'D. Mahesa',chip:'Draft'}],
   empty:{t:'Belum ada try out',d:'Susun try out dari blueprint: paket soal, jadwal, lalu publikasikan.',c:'Buat try out'},
   form:[{k:'title',l:'Judul try out',req:1,ph:'cth: TO Akbar 13'},{k:'program',l:'Program',type:'select',opts:['SNBT 2026','TPS Intensif']},{k:'n',l:'Jumlah soal',type:'number',ph:'180'}]},
- grading:{menu:'— (essay.grade)',route:'/grading',perm:'essay.grade',title:'Penilaian Esai',cat:'queue',qa:'Nilai sekarang',
+ grading:{menu:'— (essay.grade)',hideActs:true,route:'/grading',perm:'essay.grade',title:'Penilaian Esai',cat:'queue',qa:'Nilai sekarang',
   sub:'Jawaban esai menunggu nilai. Beri skor 0–100 beserta masukan untuk pelajar.',
   cols:['Jawaban','Konteks','Status','Aksi'],filters:[{k:'st',l:'Status',o:['Semua','Menunggu','Dinilai']}],chips:['Semua','Menunggu','Dinilai'],
   rows:[
@@ -1214,7 +1221,7 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'E-5510',t:'Esai Ekonomi · 280 kata',s:'TO Akbar 12 · jawaban A-988',st:['Menunggu','amber'],by:'Belum dinilai',chip:'Menunggu'},
    {id:'E-5498',t:'Esai Sejarah · skor 85',s:'Latihan 09 · oleh R. Kartika',st:['Dinilai','green'],by:'R. Kartika',chip:'Dinilai'}],
   empty:{t:'Antrian kosong',d:'Semua jawaban esai sudah dinilai. Jawaban baru akan muncul di sini.',c:'Muat ulang'}},
- 'audit-logs':{menu:'menu.auditLogs',route:'/audit-logs',perm:'audit-logs.read',title:'Log Aktivitas',cat:'system',qa:'Export',
+ 'audit-logs':{menu:'menu.auditLogs',hideActs:true,route:'/audit-logs',perm:'audit-logs.read',title:'Log Aktivitas',cat:'system',qa:'Export',
   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Salin ID',icn:P_COPY,do:'toast:ID disalin'}],
   sub:'Catatan siapa melakukan apa dan kapan. Hanya bisa dilihat, tersimpan 30 hari.',
   cols:['Waktu','Pengguna','Aksi','Bagian','ID','Detail'],
@@ -1232,7 +1239,7 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'A-990',t:'Akses Marketing diubah',s:'kemarin · boleh buka Media',st:['Diubah','amber'],by:'Admin',ent:'Peran',when:'30 Sep, 16:40'},
    {id:'A-989',t:'Laporan SR-2091 otomatis',s:'kunci jawaban ganda',st:['Dibuat','gray'],by:'Sistem',ent:'Soal',when:'30 Sep, 08:03'}],
   empty:{t:'Belum ada aktivitas',d:'Setiap aksi penting tercatat di sini dan disimpan 30 hari.',c:'Muat ulang'}},
- feedbacks:{menu:'menu.feedbacks',route:'/feedbacks',perm:'feedbacks.read',title:'Masukan',cat:'queue',qa:'Ubah status',
+ feedbacks:{menu:'menu.feedbacks',hideActs:true,route:'/feedbacks',perm:'feedbacks.read',title:'Masukan',cat:'queue',qa:'Ubah status',
   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Ubah status',icn:P_CHECK,do:'drawer'},{l:'Hapus',icn:P_TRASH,do:'confirm:Hapus masukan ini?|Masukan diarsipkan.|Masukan dihapus'}],
   sub:'Saran dan kendala dari pelajar. Tandai statusnya, bisa banyak sekaligus.',
   cols:['Masukan','Pengguna','Status','Aksi'],filters:[{k:'st',l:'Status',o:['Semua','Menunggu','Ditinjau','Selesai','Ditutup']}],chips:['Semua','Menunggu','Ditinjau','Selesai','Ditutup'],
@@ -1249,7 +1256,7 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'SR-2088',t:'SOAL-8774 v1 — gambar tidak tampil',s:'Gambar bermasalah · Fisika',st:['Ditinjau','amber'],by:'Bagas R.',chip:'Ditinjau'},
    {id:'SR-2079',t:'SOAL-8701 v3 — label sulit salah',s:'Kurang jelas · 78% salah · PK',st:['Selesai','green'],by:'R. Kartika',chip:'Selesai'}],
   empty:{t:'Tidak ada laporan',d:'Laporan kunci salah atau gambar rusak dari pelajar muncul di sini.',c:'Muat ulang'}},
- testimonials:{menu:'menu.feedbacks',route:'/testimonials',perm:'feedbacks.read',title:'Testimoni',cat:'content',qa:'Terbitkan',
+ testimonials:{menu:'menu.feedbacks',hideActs:true,route:'/testimonials',perm:'feedbacks.read',title:'Testimoni',cat:'content',qa:'Terbitkan',
   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Terbitkan',icn:P_CHECK,do:'toast:Testimoni diterbitkan'},{l:'Hapus',icn:P_TRASH,do:'confirm:Hapus testimoni ini?|Testimoni diarsipkan.|Testimoni dihapus'}],
   sub:'Cerita lolos dari pelajar. Periksa, sunting bahasa, lalu terbitkan.',
   cols:['Testimoni','Rating','Status','Aksi'],filters:[{k:'st',l:'Status',o:['Semua','Terbit','Draft']}],chips:['Semua','Terbit','Draft'],
@@ -1451,7 +1458,6 @@ var MATRIX=[
   ['Testimoni',0,0,0,1],
   ['Media promosi (banner & iklan)',2,1,0,1],
   ['Pengguna · Pelajar · Undangan',0,0,1,1],
-  ['Minta undangan',0,1,0,1],
   ['Notifikasi (broadcast)',1,1,1,1],
   ['Masukan',0,0,0,1],
   ['Tugas Streak',0,1,0,1],
@@ -1496,7 +1502,7 @@ var SORTS={
  title:{label:'Judul',get:function(d){return String(d.t||'');}},
  detail:{label:'Detail',get:function(d){return String((d.by||'')+' '+(d.s||''));}},
  status:{label:'Status',get:function(d){return String((d.st&&d.st[0])||'');}},
- owner:{label:'Pemilik',get:function(d){return String(d.owner||d.by||'');}},
+ owner:{label:'Penyebar',get:function(d){return String(d.owner||d.by||'');}},
  quest:{label:'Quest',get:function(d){return String(d.quest||'');}}
 };
 function applySort(rows){
@@ -1524,9 +1530,9 @@ function defColDefs(t){return [{label:(t.cols[0]||'Item'),sort:'title',html:func
 function colDefsOf(t){return t.colDefs||defColDefs(t);}
 function headHTML(t){
  var h='<th style="width:48px"><input type="checkbox" id="selAll" aria-label="Pilih semua di halaman ini"></th>';
- colDefsOf(t).forEach(function(c){h+=thCell(c.label,c.sort||null);});
- h+=thCell(t.colDefs?(t.aksi||'Aksi'):(t.cols[3]||'Aksi'),null,true);
- return h;
+  colDefsOf(t).forEach(function(c){h+=thCell(c.label,c.sort||null);});
+  if(!t.hideActs)h+=thCell(t.colDefs?(t.aksi||'Aksi'):(t.cols[3]||'Aksi'),null,true);
+  return h;
 }
 function rowCellsHTML(t,d,i){return colDefsOf(t).map(function(c){return '<td>'+c.html(d,i)+'</td>';}).join('');}
 function rowActs(t,d){
@@ -1579,8 +1585,8 @@ function tableCard(page,t,preview){
  var body;
   if(state.loading)body=skelHTML(3,44);
   else if(!rows.length)body=emptyHTML(t,!!(t.form||t.cat!=='system'));
-  else body='<div class="tbl-wrap"><table><thead><tr>'+headHTML(t)+'</tr></thead><tbody>'
-  +pageRows.map(function(d,i){return '<tr data-row="'+esc(d.id)+'" tabindex="0" class="'+(state.sel[d.id]?'selected':'')+'"><td class="sel-cell"><input type="checkbox" data-sel="'+esc(d.id)+'"'+(state.sel[d.id]?' checked':'')+' aria-label="Pilih '+esc(d.t)+'"></td>'+rowCellsHTML(t,d,i)+'<td><div class="rowact">'+rowActs(t,d)+'</div></td></tr>';}).join('')+'</tbody></table></div>';
+   else body='<div class="tbl-wrap"><table'+(page==='referrals'?' class="tbl-ref"':'')+'><thead><tr>'+headHTML(t)+'</tr></thead><tbody>'
+  +pageRows.map(function(d,i){return '<tr data-row="'+esc(d.id)+'" tabindex="0" class="'+(state.sel[d.id]?'selected':'')+'"><td class="sel-cell"><input type="checkbox" data-sel="'+esc(d.id)+'"'+(state.sel[d.id]?' checked':'')+' aria-label="Pilih '+esc(d.t)+'"></td>'+rowCellsHTML(t,d,i)+(t.hideActs?'':'<td><div class="rowact">'+rowActs(t,d)+'</div></td>')+'</tr>';}).join('')+'</tbody></table></div>';
   var selIds=Object.keys(state.sel).filter(function(id){return state.sel[id];});
  var bulk=selIds.length?'<div class="bulkbar" role="status">'+selIds.length+' dipilih <button class="mini-btn" data-bulk="process">Tandai diproses</button><button class="mini-btn" data-bulk="archive">Arsipkan</button><button class="mini-btn danger" data-bulk="delete">Hapus</button><button class="mini-btn" data-clear>Batal</button></div>':'';
  var sortIcon=state.sort==='asc'?P_SORT_ASC:state.sort==='desc'?P_SORT_DESC:P_SORT;
@@ -1672,12 +1678,7 @@ function dashMarketing(){
  var r=ROLES.marketing;
  var today=new Date().toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
  var kpis=kpiHTML(r);
- var heroes=heroBtnsHTML(r);
-  var need='<div class="card"><div class="card-h"><div><div><h2>Perlu perhatian</h2><p>3 tertunda · selesaikan langsung dari sini</p></div></div></div><div class="act-list">'
-  +'<div class="ev"><span class="ev-ic tone-success">'+ic('ti-brand-whatsapp',17)+'</span><div class="et"><div class="et-t">Tautan WhatsApp nonaktif</div><time>1 nonaktif · perbarui tautan undangan</time></div><button class="btn sm" data-goto="social-media" style="flex:0 0 auto">Perbarui</button></div>'
-  +'<div class="ev"><span class="ev-ic tone-primary">'+ic('ti-speakerphone',17)+'</span><div class="et"><div class="et-t">1 iklan menunggu jadwal</div><time>Sidebar beranda · atur mulai tayang</time></div><button class="btn sm" data-goto="ads" style="flex:0 0 auto">Atur jadwal</button></div>'
-  +'<div class="ev"><span class="ev-ic tone-warning">'+ic('ti-bell',17)+'</span><div class="et"><div class="et-t">2 notifikasi belum dibaca</div><time>1 peringatan · buka pusat notifikasi</time></div><button class="btn sm" data-goto="notifications" style="flex:0 0 auto">Lihat</button></div>'
-  +'</div></div>';
+  var heroes=heroBtnsHTML(r);
   var sts=stSorted();
   var stm=stTotals();
   var stActive=sts.filter(function(x){return x.isActive;}).length;
@@ -1688,8 +1689,7 @@ function dashMarketing(){
   +'<div class="kpi"><div class="kh"><span class="lbl">Selesai hari ini</span></div><div class="val">'+stm.today.toLocaleString('id-ID')+'</div></div>'
   +'<div class="kpi"><div class="kh"><span class="lbl">Tugas aktif</span></div><div class="val">'+stActive+'/'+sts.length+'</div></div>'
   +'</div>'
-  +(sts.length?sts.slice(0,3).map(function(x){var per=x.period==='daily'?'harian':x.period==='weekly'?'mingguan':'sekali';return '<div class="ev" style="padding:0"><span class="ev-ic tone-primary">'+ic(STTASK_ICON[x.type]||'ti-target',17)+'</span><div class="et"><div class="et-t">'+esc(x.title)+'</div><time>'+(x.targetCount||1)+'x / '+per+' · +'+(x.rewardAmount||0)+' koin</time></div><span class="status '+(STTASK_STATUS_CLS[x.status]||'gray')+'">'+esc(STTASK_STATUS_LBL[x.status]||x.status)+'</span></div>';}).join(''):'<span class="cell-s">Belum ada tugas streak. Buat tugas pertama.</span>')
-  +'<span class="cell-s" style="display:block;border-top:1px solid var(--border-soft);padding-top:10px">Urutan tampil mengikuti daftar · hadiah koin menjaga streak harian siswa</span>'
+  +(sts.length?sts.slice(0,3).map(function(x){var per=x.period==='daily'?'harian':x.period==='weekly'?'mingguan':'sekali';return '<button class="st-mini" data-stdopen="'+esc(x.id)+'" aria-label="Buka '+esc(x.title)+'"><span class="et"><span class="et-t">'+esc(x.title)+'</span><br><time>'+(x.targetCount||1)+'x / '+per+' · +'+(x.rewardAmount||0)+' koin · '+esc(STTASK_STATUS_LBL[x.status]||x.status)+'</time></span></button>';}).join(''):'<span class="cell-s">Belum ada tugas streak. Buat tugas pertama.</span>')
   +'</div></div>';
   var socials=(featOf('social-media').rows||[]);
   var active=socials.filter(function(x){return x.chip==='Aktif';});
@@ -1698,12 +1698,11 @@ function dashMarketing(){
   +'</div></div>';
   var arts=(featOf('articles').rows||[]);
   var artCard='<div class="card"><div class="card-h"><div><div><h2>Artikel portal</h2><p>'+arts.length+' artikel grup “artikel” · dari portal</p></div></div><div class="sp"><button class="link" data-goto="articles">Kelola artikel</button></div></div><div class="act-list">'
-  +(arts.length?arts.slice(0,3).map(function(a){return '<div class="ev"><span class="ev-ic tone-primary">'+ic('ti-news',17)+'</span><div class="et"><div class="et-t">'+esc(a.t)+'</div><time>'+esc(a.published||'')+'</time></div><span class="status '+a.st[1]+'">'+esc(a.st[0])+'</span></div>';}).join(''):'<div style="padding:4px 16px 16px"><span class="cell-s">Belum ada artikel. Simpan konfigurasi portal.</span></div>')
+  +(arts.length?arts.slice(0,3).map(function(a){return '<div class="ev"><div class="et"><div class="et-t">'+esc(a.t)+'</div><time>'+esc(a.published||'')+'</time></div><span class="status '+a.st[1]+'">'+esc(a.st[0])+'</span></div>';}).join(''):'<div style="padding:4px 16px 16px"><span class="cell-s">Belum ada artikel. Simpan konfigurasi portal.</span></div>')
   +'</div></div>';
-  var acts='<div class="card"><div class="card-h"><div><div><h2>Aktivitas terbaru</h2><p>3 terakhir · Tim Marketing</p></div></div></div><div class="act-list">'+ACTS.marketing.map(actRow).join('')+'</div></div>';
    return '<div class="hero"><div><h1>Halo, Marketing</h1><p>'+today+' · '+esc(r.tagline)+'</p></div><div class="hero-actions">'+heroes+'</div></div>'
    +'<div class="kpis k3">'+kpis+'</div>'
-   +'<div class="grid2">'+'<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+streak+need+'</div>'+'<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+kanal+artCard+acts+'</div></div>'
+   +'<div class="grid2">'+'<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+streak+'</div>'+'<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+kanal+artCard+'</div></div>'
   +dashFoot();
 }
 function dashView(){
@@ -1719,7 +1718,6 @@ function dashView(){
   +'<div class="grid2"><div class="card"><div class="card-h"><div><div><h2>Aktivitas 7 hari</h2><p>Pengerjaan & pendaftaran · diperbarui otomatis</p></div></div><div class="sp"><div class="seg" role="group" aria-label="Rentang"><button data-range="7" class="'+(state.range==='7'?'on':'')+'">7</button><button data-range="30" class="'+(state.range==='30'?'on':'')+'">30</button><button data-range="90" class="'+(state.range==='90'?'on':'')+'">90</button></div></div></div><div class="chart">'+areaChart(dd.act)+'</div><div class="chart-legend"><span><i style="background:var(--primary)"></i>Aktivitas</span><span>'+days.join(' · ')+'</span></div></div>'
   +'<div class="card"><div class="card-h"><div><div><h2>Registrasi & perangkat</h2><p>Sumber & perangkat pelajar</p></div></div></div>'+barsHTML(dd.reg)+dd.dev.map(function(d){return '<div class="kvline"><span>'+esc(d[0])+'</span><b>'+d[1]+'%</b></div>';}).join('')+'<div class="kvline"><span>Sumber teratas</span><b>'+esc(dd.ref[0][0])+' · '+dd.ref[0][1]+'</b></div><div style="height:10px"></div></div></div>'
   +tableCard(t.queue,q,true)
-   +'<div class="card" style="margin-top:12px"><div class="card-h"><div><div><h2>Aktivitas terbaru</h2><p>3 terakhir · '+esc(r.label)+'</p></div></div><div class="sp"><span class="cell-s">diperbarui otomatis</span></div></div><div class="act-list">'+(ACTS[state.role]||ACTS.admin).map(actRow).join('')+'</div></div>'
   +(state.role==='admin'?matrixHTML():'')
   +dashFoot();
 }
@@ -2383,13 +2381,15 @@ var QUESTS=null;
 function questAll(){if(!QUESTS)questLoad();return QUESTS;}
 function questSave(){store.set('na3-quests-v2',JSON.stringify(QUESTS));}
 function questLoad(){try{var s=store.get('na3-quests-v2');if(s){QUESTS=JSON.parse(s)||[];return;}}catch(_){}QUESTS=[
- {id:'Q-A',slot:'A',t:'Ajak teman baru',rewardIn:25,rewardJoin:10,mulai:'1 Okt 2026',selesai:'31 Des 2026',st:['Aktif','green'],chip:'Aktif',isLive:true},
- {id:'Q-B',slot:'B',t:'Lainnya',rewardIn:15,rewardJoin:5,mulai:'Belum diatur',selesai:'Belum diatur',st:['Draft','gray'],chip:'Draft',isLive:false},
- {id:'Q-C',slot:'C',t:'Bonus TO Akbar',rewardIn:50,rewardJoin:20,mulai:'Belum diatur',selesai:'Belum diatur',st:['Draft','gray'],chip:'Draft',isLive:false}];}
+ {id:'Q-A',slot:'A',t:'Ajak teman baru',rewardIn:10,rewardJoin:10,mulai:'1 Okt 2026',selesai:'31 Des 2026',st:['Aktif','green'],chip:'Aktif',isLive:true},
+ {id:'Q-B',slot:'B',t:'Lainnya',rewardIn:15,rewardJoin:10,mulai:'Belum diatur',selesai:'Belum diatur',st:['Draft','gray'],chip:'Draft',isLive:false},
+ {id:'Q-C',slot:'C',t:'Bonus TO Akbar',rewardIn:15,rewardJoin:15,mulai:'Belum diatur',selesai:'Belum diatur',st:['Draft','gray'],chip:'Draft',isLive:false}];}
 function questFind(id){var out=null;questAll().forEach(function(q){if(String(q.id)===String(id))out=q;});return out;}
 function questActives(){return questAll().filter(function(q){return q.isLive;});}
 function questLabel(){var a=questActives();if(!a.length)return 'Tanpa quest';return 'Quest '+a.map(function(q){return q.slot;}).join(', ');}
 function questBadge(slot){var c={A:'blue',B:'purple',C:'amber'}[slot]||'gray';return '<span class="status '+c+'">Quest '+esc(slot||'')+'</span>';}
+/* Ikon koin student app (smartcbt/public/assets/gamify/coin.png, disalin ke coin.png). */
+var COIN_IMG='<img src="coin.png" alt="koin" style="width:15px;height:15px;vertical-align:-3px">';
 function questForm(editId){
  modalFocus=document.activeElement;
  var q=editId?questFind(editId):null;if(!q)return;
@@ -2454,6 +2454,7 @@ function vouchersView(page,t){
 }
 function linkMaster(){var t=featOf('referrals');if(!t._master)t._master=(t.rows||[]).slice();return t._master;}
 function refQuestName(slot){var q=null;(questAll()||[]).forEach(function(x){if(String(x.slot)===String(slot))q=x;});return q?q.t:'';}
+function refQuestJoin(slot){var q=null;(questAll()||[]).forEach(function(x){if(String(x.slot)===String(slot))q=x;});return q?q.rewardJoin:'';}
 function questMinis(qs){
  var ordered=qs.slice().sort(function(a,b){return ((b.isLive?1:0)-(a.isLive?1:0));});
  if(!ordered.length)return '';
@@ -2462,9 +2463,10 @@ function questMinis(qs){
  +ordered.map(function(q){var isLive=!!q.isLive;
   return '<div class="card" style="box-shadow:none;padding:12px 14px 12px 24px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden">'
   +'<span class="st-stick" style="background:'+(isLive?'var(--secondary)':'var(--border)')+'"></span>'
-  +'<div style="display:flex;gap:8px;align-items:center">'+questBadge(q.slot)+'<span class="cell-t" style="flex:1;min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(q.t)+'</span><button class="mini-btn ic" data-qedit="'+esc(q.id)+'" title="Ubah quest" aria-label="Ubah quest">'+ic(P_PENCIL,14)+'</button>'+(isLive?'<button class="mini-btn" data-qact="'+esc(q.id)+'">Nonaktifkan</button>':'<button class="mini-btn primary" data-qact="'+esc(q.id)+'">Aktifkan</button>')+'</div>'
-  +'<div class="cell-s">+'+esc(q.rewardIn||0)+' pengajak · +'+esc(q.rewardJoin||0)+' pendaftar</div>'
+  +'<div style="display:flex;gap:8px;align-items:center">'+questBadge(q.slot)+'<span class="cell-t" style="flex:1;min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(q.t)+'</span></div>'
+  +'<div class="cell-s">+'+esc(q.rewardIn||0)+' '+COIN_IMG+' pengajak · +'+esc(q.rewardJoin||0)+' '+COIN_IMG+' pendaftar</div>'
   +'<div class="cell-s">Berlaku '+esc(q.mulai||'—')+' → '+esc(q.selesai||'—')+'</div>'
+  +'<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:2px"><button class="mini-btn" data-qedit="'+esc(q.id)+'" title="Ubah quest" aria-label="Ubah quest">'+ic(P_PENCIL,14)+'<span>Ubah</span></button>'+(isLive?'<button class="mini-btn" data-qact="'+esc(q.id)+'">Nonaktifkan</button>':'<button class="mini-btn primary" data-qact="'+esc(q.id)+'">Aktifkan</button>')+'</div>'
   +'</div>';}).join('')
  +'</div>';
 }
@@ -2472,9 +2474,17 @@ function referralsView(page,t){
  questLoad();
  t.rows=linkMaster();
  return listHero(page,t,'')
+  +reqWidget()
   +questMinis(questAll())
   +tableCard(page,t,false)
   +listFoot();
+}
+/* Minta Undangan now lives on Referral (Marketing only): small request strip, no standalone page. */
+function reqWidget(){
+ if(state.role!=='marketing')return '';
+ reqLoad();reqExpire();
+ var open=reqAll().filter(function(r){return r.team==='Marketing'&&r.chip==='Menunggu';}).length;
+ return '<div class="card" style="margin-bottom:12px"><div style="padding:12px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap"><div style="flex:1;min-width:0"><div class="cell-t">Minta Undangan</div><div class="cell-s">'+(open?open+' menunggu keputusan '+teamBadge('Tim User'):'Butuh undangan pengguna pilihan khusus? Minta via '+teamBadge('Tim User')+'.')+'</div></div><button class="btn sm primary" data-reqnew>'+ic(P_PLUS,15)+'Minta undangan</button></div></div>';
 }
 VIEWS.vouchers=vouchersView;
 VIEWS.referrals=referralsView;
@@ -2487,10 +2497,11 @@ function reqLoad(){try{var s=store.get('na3-reqinv');var t=featOf('minta-undanga
  {id:'REQ-299',email:'halo@bimbelalpha.id',cat:'Lainnya',detail:'akses demo guru BK',t:'halo@bimbelalpha.id',s:'Lainnya · akses demo guru BK',st:['Dikirim','green'],by:'Raka',team:'Marketing',chip:'Dikirim',ts:Date.now()-72e5}]};}catch(_){}}
 function reqFind(id){var out=null;reqAll().forEach(function(r){if(String(r.id)===String(id))out=r;});return out;}
 function copyText(v,okMsg){function done(){toast(okMsg||'Disalin: '+v);}try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(v).then(done,function(){toast(v);});else toast(v);}catch(_){toast(v);}}
-function reqBell(t,s2,link){NOTIFS.unshift({id:'N-'+Math.floor(100+Math.random()*900),t:t,s:s2||'',c:'#1D4ED8',type:'Info',link:link||'minta-undangan',read:false});}
+function reqBell(t,s2,link){NOTIFS.unshift({id:'N-'+Math.floor(100+Math.random()*900),t:t,s:s2||'',c:'#1D4ED8',type:'Info',link:link||'invitations',read:false});}
 function reqExpire(){var week=7*24*36e5;var now=Date.now();var ch=false;reqAll().forEach(function(r){if(r.chip==='Menunggu'&&r.ts&&now-r.ts>week){var m=REQST.Kedaluwarsa;r.st=[m[0],m[1]];r.chip=m[0];ch=true;}});if(ch)reqSave();}
 function reqActsFor(){if(state.role==='user')return [{l:'Setujui',icn:P_CHECK,do:'reqok'},{l:'Tolak',icn:P_X,do:'reqno'},{l:'Detail',icn:P_EYE,do:'drawer'}];if(state.role==='marketing')return [{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Batalkan',icn:P_X,do:'reqcancel'}];return [{l:'Detail',icn:P_EYE,do:'drawer'}];}
 function reqRowsFor(){reqLoad();reqExpire();var all=reqAll();if(state.role==='marketing')return all.filter(function(r){return r.team==='Marketing';});return all;}
+/* reqView retired: requests live on Referral (reqWidget), decisions in Undangan (invView). */
 function reqView(page,t){
  t.rows=reqRowsFor();t.acts=reqActsFor();
  var actions='';
@@ -2498,20 +2509,23 @@ function reqView(page,t){
  else{var n=t.rows.filter(function(r){return r.chip==='Menunggu';}).length;if(n)actions='<span class="cell-s">'+n+' menunggu keputusan</span>';}
  return listHero(page,t,actions)+tableCard(page,t,false)+listFoot();
 }
-VIEWS.reqinv=reqView;
+/* VIEWS.reqinv retired with the standalone page (see reqView note). */
 function reqModal(){
  if(state.role!=='marketing'){toast('Hanya Marketing yang bisa meminta','Minta Tim User mengeksekusi.','err');return;}
  var open=reqAll().filter(function(r){return r.team==='Marketing'&&r.chip==='Menunggu';}).length;
  if(open>=5){toast('Maksimal 5 permintaan terbuka','Selesaikan yang lama dulu.','err');return;}
- openModal({title:'Minta undangan',sub:'Tim User memutuskan. Kamu diberi tahu hasilnya.',fields:[
-  {k:'email',l:'Email tujuan',type:'email',req:1,ph:'tu@sekolah.sch.id'},
-  {k:'cat',l:'Jenis keperluan',type:'select',opts:['Promo deal','Lainnya']},
-  {k:'detail',l:'Penjelasan singkat',req:1,ph:'cth: bonus 25 koin, 100 kursi'}],
-  submit:'Kirim permintaan',
-  onSubmit:function(v){
-   var r={id:'REQ-'+Math.floor(100+Math.random()*900),email:v.email,cat:v.cat||'Promo deal',detail:v.detail,t:v.email,s:(v.cat||'Promo deal')+' · '+v.detail,st:['Menunggu','amber'],by:'Raka',team:'Marketing',chip:'Menunggu',ts:Date.now()};
-   reqAll().unshift(r);reqSave();reqBell('Permintaan undangan baru',v.email+' · '+r.s,'invitations');saveFilters();render(false);toast('Permintaan dikirim','Tim User memutuskan.');
-  }});
+  /* Benefit simpel: undangan selalu untuk pengguna baru (Quest A). Tanpa dropdown. */
+  var qslot='A';
+  openModal({title:'Minta undangan',sub:'Tim User memutuskan. Kamu diberi tahu hasilnya.',fields:[
+   {k:'email',l:'Email tujuan',type:'email',req:1,ph:'tu@sekolah.sch.id'},
+   {k:'cat',l:'Jenis keperluan',type:'select',opts:['Promo deal','Lainnya']},
+   {k:'detail',l:'Penjelasan singkat',req:1,ph:'cth: bonus 25 koin, 100 kursi'}],
+   submit:'Kirim permintaan',
+   onSubmit:function(v){
+    var benefit=' · benefit Quest '+qslot;
+    var r={id:'REQ-'+Math.floor(100+Math.random()*900),email:v.email,cat:v.cat||'Promo deal',detail:v.detail,quest:qslot,t:v.email,s:(v.cat||'Promo deal')+' · '+v.detail+benefit,st:['Menunggu','amber'],by:'Raka',team:'Marketing',chip:'Menunggu',ts:Date.now()};
+    reqAll().unshift(r);reqSave();reqBell('Permintaan undangan baru',v.email+' · '+r.s,'invitations');saveFilters();render(false);toast('Permintaan dikirim','Tim User memutuskan.');
+   }});
 }
 function reqApprove(id){
  var r=reqFind(id);if(!r)return;
@@ -2551,7 +2565,7 @@ function invView(page,t){
  var sec='';
  if(state.role!=='marketing'&&pend.length){
   sec='<div class="card" style="margin-bottom:12px"><div class="card-h"><div><div><h2>Permintaan dari Marketing</h2><p>'+pend.length+' menunggu keputusan · kirim atau tolak dari sini</p></div></div></div><div class="act-list">'
-  +pend.map(function(r){return '<div class="ev"><span class="ev-ic tone-primary">'+ic(P_MAIL,17)+'</span><div class="et"><div class="et-t">'+esc(r.email)+'</div><time>'+esc(r.cat||'')+' · '+esc(r.detail||'')+' · '+esc(r.by||'')+'</time></div><button class="btn sm primary" data-do="reqok" data-id="'+esc(r.id)+'" style="flex:0 0 auto">Setujui</button><button class="btn sm" data-do="reqno" data-id="'+esc(r.id)+'" style="flex:0 0 auto">Tolak</button></div>';}).join('')
+  +pend.map(function(r){return '<div class="ev"><span class="ev-ic tone-primary">'+ic(P_MAIL,17)+'</span><div class="et"><div class="et-t">'+esc(r.email)+'</div><time>'+esc(r.cat||'')+' · '+esc(r.detail||'')+(r.quest?(' · benefit Quest '+esc(r.quest)):'')+' · '+esc(r.by||'')+'</time></div><button class="btn sm primary" data-do="reqok" data-id="'+esc(r.id)+'" style="flex:0 0 auto">Setujui</button><button class="btn sm" data-do="reqno" data-id="'+esc(r.id)+'" style="flex:0 0 auto">Tolak</button></div>';}).join('')
   +'</div></div>';
  }
  var primary='<button class="btn primary" data-new>'+ic(P_PLUS,17)+'Buat '+esc(t.title)+'</button>';
@@ -2709,7 +2723,7 @@ function drawerTabs(t){
  return '<div class="tabs" role="tablist">'+tabs.map(function(tb){return '<button role="tab" aria-selected="'+(state.tab===tb[0])+'" class="'+(state.tab===tb[0]?'on':'')+'" data-dtab="'+tb[0]+'">'+tb[1]+'</button>';}).join('')+'</div>';
 }
 function drawerBody(t,d){
-  if((state.dpage==='vouchers'||state.dpage==='referrals')&&state.tab==='media')return '<div class="dsec"><h4>Pemakaian</h4><div style="font-size:12.8px;color:var(--text-2)">'+(state.dpage==='vouchers'?('Kode terpakai '+esc(d.used||0)+' dari '+esc(d.quota||0)+' kuota · '+esc(d.target||'')):('Tautan dipakai '+esc(d.used||0)+(d.max?(' dari '+esc(d.max)):'')+' pendaftar unik · +'+esc(d.paid||0)+' koin terbayar.'))+'</div></div>';
+  if((state.dpage==='vouchers'||state.dpage==='referrals')&&state.tab==='media')return '<div class="dsec"><h4>Pemakaian</h4><div style="font-size:12.8px;color:var(--text-2)">'+(state.dpage==='vouchers'?('Kode terpakai '+esc(d.used||0)+' dari '+esc(d.quota||0)+' kuota · '+esc(d.target||'')):('Tautan dipakai '+esc(d.used||0)+(d.max?(' dari '+esc(d.max)):'')+' pendaftar unik · +'+esc(d.coin||0)+' '+COIN_IMG+' per pendaftar.'))+'</div></div>';
   if(state.tab==='riwayat')return '<div class="timeline">'+actRow(['SA','Dibuat otomatis oleh sistem','2 hari lalu'])+actRow(['RK','Terakhir disentuh','20 menit lalu · tanpa anomali','#16A34A','R. Kartika'])+'</div>';
  if(state.tab==='tindak')return '<div class="dsec"><h4>Alur kerja antrean</h4><div style="font-size:12.8px;color:var(--text-2)">1. Tinjau isi & konteks di tab Ringkasan.<br>2. Tekan tombol utama di bawah untuk memproses.<br>3. Bulk tersedia dari tabel untuk banyak baris sekaligus.</div></div>';
  if(state.tab==='media')return '<div class="dsec"><h4>Versi</h4><div style="display:flex;flex-direction:column;gap:9px;margin-top:10px">'
@@ -2723,7 +2737,7 @@ function drawerBody(t,d){
  if(state.tab==='akses')return '<div class="dsec"><h4>Siapa bisa buka</h4><div style="font-size:12.8px;color:var(--text-2)">'+esc(rolesFor(state.dpage||'dashboard'))+'. Ubah dari halaman Peran.</div></div>';
  if(state.tab==='data')return '<div class="cell-s">Catatan mentah untuk admin teknis: siapa, kapan, dari perangkat mana.</div><div class="json">'+esc(JSON.stringify({id:d.id,actor:d.by,status:d.st[0],detail:d.s,ip:'103.147.x.x',at:'2026-10-01T02:00:00+07:00'},null,2))+'</div>';
  if(state.tab==='keamanan')return '<div class="field"><label for="drPass">Kata sandi baru</label><input id="drPass" type="password" placeholder="Minimal 6 karakter" aria-label="Kata sandi baru" autocomplete="new-password"><span class="ferr" id="drPassErr"></span></div><button class="btn sm primary" data-drpass>Atur ulang kata sandi</button><div class="dsec"><h4>Zona berbahaya</h4><div style="font-size:12.8px;color:var(--text-2)">Akun dinonaktifkan. Data riwayat tetap tersimpan.</div><div style="margin-top:8px"><button class="btn sm danger" data-drdel>Hapus akun</button></div></div>';
- if(state.dpage==='invitations'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Email</dt><dd>'+esc(d.t)+'</dd><dt>Info</dt><dd>'+esc(d.s)+'</dd><dt>ID</dt><dd>'+esc(d.id)+'</dd><dt>Letak menu</dt><dd>'+esc(groupOf(state.dpage||'dashboard').g)+'</dd></dl><div class="dsec"><h4>Tautan undangan</h4><div style="font-size:12.8px;color:var(--text-2);word-break:break-all">tryoutku.id/undang/'+esc(d.id)+'</div><div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-drcopy>Salin tautan</button><button class="btn sm" data-t="Undangan dikirim ulang">Kirim ulang</button></div></div>';
+ if(state.dpage==='invitations'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Email</dt><dd>'+esc(d.t)+'</dd><dt>Info</dt><dd>'+esc(d.s)+'</dd><dt>ID</dt><dd>'+esc(d.id)+'</dd><dt>Letak menu</dt><dd>'+esc(groupOf(state.dpage||'dashboard').g)+'</dd></dl><div class="dsec"><h4>Tautan undangan</h4><div style="font-size:12.8px;color:var(--text-2);word-break:break-all">tryoutku.id/undang/'+esc(d.id)+'</div><div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-t="Undangan dikirim ulang">Kirim ulang</button></div></div>';
  if(state.dpage==='users'&&state.tab==='akses')return '<div class="dsec"><h4>Peran</h4>'+['Tim Soal','Tim Marketing','Tim User','Admin'].map(function(r,i){return '<label style="display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;padding:7px 0"><input type="checkbox" data-drrole '+(i===2?'checked':'')+'> '+r+'</label>';}).join('')+'</div><div class="dsec"><h4>Izin khusus</h4><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="perm">users.read</span><span class="perm">users.invite</span></div><div class="fhint" style="margin-top:6px">Kode izin dikelola di halaman Izin.</div></div><button class="btn sm primary" data-drsave>Simpan akses</button>';
  if(state.dpage==='roles'&&state.tab==='akses')return '<div class="dsec"><h4>Halaman yang boleh dibuka</h4>'+['Bank Soal','Latihan','Try Out','Laporan Soal','Media','Pengguna','Undangan','Iklan','Log Aktivitas'].map(function(f,i){return '<label style="display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;padding:7px 0"><input type="checkbox" data-drrole '+(i<4?'checked':'')+'> '+f+'</label>';}).join('')+'</div><button class="btn sm primary" data-drsave>Simpan akses</button>';
  if(state.dpage==='data-pelajar'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Nama</dt><dd>'+esc(d.t)+'</dd><dt>Info</dt><dd>'+esc(d.s)+'</dd><dt>Sumber</dt><dd>'+esc(d.by)+'</dd></dl><div class="dsec"><h4>Catatan</h4><div style="font-size:12.8px;color:var(--text-2)">Data pelajar hanya bisa dilihat. Perubahan berasal dari pendaftaran atau undangan.</div></div>';
@@ -2754,9 +2768,9 @@ function drawerBody(t,d){
    +'<details class="st-adv" style="margin-top:12px"><summary>'+ic('ti-settings',16)+'<span>Detail teknis</span></summary><div class="adv-b"><div class="cell-s">Tombol siswa: '+dCta+'</div>'+(stCfg.successMessage?'<div class="cell-s">Pesan sukses: '+esc(stCfg.successMessage)+'</div>':'')+'</div></details>';
   }
   if(state.dpage==='vouchers'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Kode</dt><dd style="font-family:ui-monospace,Menlo,Consolas,monospace">'+esc(d.code||d.id)+'</dd><dt>Nilai</dt><dd>'+esc(vouValText(d))+'</dd><dt>Kuota</dt><dd>Terpakai '+esc(d.used||0)+' dari '+esc(d.quota||0)+'</dd><dt>Jadwal</dt><dd>'+esc(d.mulai||'—')+' → '+esc(d.selesai||'—')+'</dd><dt>Penerima</dt><dd>'+esc(d.target||'—')+'</dd></dl><div class="dsec"><h4>Alur status</h4><div style="font-size:12.8px;color:var(--text-2)">Draft → Siap → Aktif → Kedaluwarsa. Mengaktifkan meminta konfirmasi.</div></div>';
-  if(state.dpage==='referrals'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Tautan</dt><dd>'+esc(d.link||d.code||'')+'</dd><dt>Pemilik</dt><dd>'+esc(d.owner||d.by||'')+'</dd><dt>Pendaftar unik</dt><dd>'+esc(d.used||0)+(d.max?(' dari '+esc(d.max)):'')+'</dd><dt>Koin terbayar</dt><dd>+'+esc(d.paid||0)+'</dd><dt>Ikut quest</dt><dd>'+questBadge(d.quest)+' '+esc(refQuestName(d.quest))+'</dd><dt>Dibuat</dt><dd>'+esc(d.joined||'—')+'</dd></dl><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-drefcopy="'+esc(d.link||'')+'">Salin tautan</button></div>';
+  if(state.dpage==='referrals'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Tautan</dt><dd>'+esc(d.link||d.code||'')+'</dd><dt>Penyebar</dt><dd>'+esc(d.owner||d.by||'')+'</dd><dt>Pendaftar unik</dt><dd>'+esc(d.used||0)+(d.max?(' dari '+esc(d.max)):'')+'</dd><dt>Koin per pendaftar</dt><dd>+'+esc(d.coin||0)+' '+COIN_IMG+'</dd><dt>Ikut quest</dt><dd>'+questBadge(d.quest)+' '+esc(refQuestName(d.quest))+'</dd><dt>Dibuat</dt><dd>'+esc(d.joined||'—')+'</dd></dl>';
   if(state.dpage==='articles'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Judul</dt><dd>'+esc(d.t)+'</dd><dt>Tanggal</dt><dd>'+esc(d.published||'—')+'</dd><dt>Slug</dt><dd>'+esc(d.slug||d.id)+'</dd></dl>'+(d.excerpt?'<div class="dsec"><h4>Ringkasan</h4><div style="font-size:12.8px;color:var(--text-2)">'+esc(d.excerpt)+'</div></div>':'');
-  return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Penanggung jawab</dt><dd>'+esc(d.by)+'</dd><dt>Detail</dt><dd>'+esc(d.s)+'</dd><dt>ID</dt><dd>'+esc(d.id)+'</dd><dt>Letak menu</dt><dd>'+esc(groupOf(state.dpage||'dashboard').g)+'</dd></dl><div class="dsec"><h4>Catatan</h4><div style="font-size:12.8px;color:var(--text-2)">Riwayat versi dan lampiran tampil di tab sebelah. Teruskan ke tim terkait bila perlu.</div></div>';
+  return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Penanggung jawab</dt><dd>'+esc(d.by)+'</dd><dt>Detail</dt><dd>'+esc(d.s)+'</dd><dt>ID</dt><dd>'+esc(d.id)+'</dd><dt>Letak menu</dt><dd>'+esc(groupOf(state.dpage||'dashboard').g)+'</dd></dl><div class="dsec"><h4>Catatan</h4><div style="font-size:12.8px;color:var(--text-2)">Riwayat versi dan lampiran tampil di tab sebelah.</div></div>';
 }
 function openDrawer(id,tab){
  var page=state.page||defPage();if(page==='dashboard')page=featOf('dashboard').queue;
@@ -2772,7 +2786,7 @@ function paintDrawer(t,d){
  var dSub=esc(d.code||d.id)+' · '+esc(d.st[0]);
  var isSt=(state.dpage==='streak-tasks');
  var foot=isSt?'<div class="drawer-f"><button class="btn primary" style="flex:1;justify-content:center" data-stdedit="'+esc(d.id)+'">Ubah tugas</button></div>'
- :'<div class="drawer-f"><button class="btn primary" style="flex:1;justify-content:center" data-dact="'+esc(d.id)+'">'+esc(t.qa||'Proses')+'</button><button class="btn" data-t="Diteruskan ke tim terkait">Teruskan</button></div>';
+  :'<div class="drawer-f"><button class="btn primary" style="flex:1;justify-content:center" data-dact="'+esc(d.id)+'">'+esc(t.qa||'Proses')+'</button></div>';
  $('#drawer').innerHTML='<div class="drawer-h"><div style="display:flex;gap:8px;align-items:center"><h3 style="flex:1">'+esc(dTitle)+'</h3><button class="iconbtn" id="drClose" aria-label="Tutup detail">'+ic(P_X,18)+'</button></div><p>'+dSub+'</p>'+drawerTabs(t)+'</div>'
  +'<div class="drawer-b" id="drawerBody">'+drawerBody(t,d)+'</div>'
  +foot;
@@ -2783,8 +2797,6 @@ function paintDrawer(t,d){
  if(da)da.onclick=function(){toast((t.qa||'Proses')+': '+esc(d.id),'Sudah dicatat.');closeDrawer();};
  var dp=$('#drawer').querySelector('[data-drpass]');if(dp)dp.onclick=function(){var v=$('#drPass').value;var er=$('#drPassErr');if(!v||v.length<6){er.textContent='Minimal 6 karakter.';er.classList.add('show');return;}er.classList.remove('show');toast('Kata sandi diperbarui');closeDrawer();};
  var dl=$('#drawer').querySelector('[data-drdel]');if(dl)dl.onclick=function(){openConfirm('Hapus akun ini?','Akun dinonaktifkan. Data riwayat tetap tersimpan.','Hapus',function(){toast('Akun dihapus');closeDrawer();});};
- var dc=$('#drawer').querySelector('[data-drcopy]');if(dc)dc.onclick=function(){toast('Tautan undangan disalin');};
- var drc=$('#drawer').querySelector('[data-drefcopy]');if(drc)drc.onclick=function(){copyText(drc.getAttribute('data-drefcopy'),'Tautan disalin');};
  var ds=$('#drawer').querySelector('[data-drsave]');if(ds)ds.onclick=function(){toast('Hak akses disimpan');closeDrawer();};
  var dg=$('#drawer').querySelector('[data-drgrade]');if(dg)dg.onclick=function(){var v=$('#drScore').value.trim();var er=$('#drScoreErr');if(v===''||!/^\d+$/.test(v)||+v<0||+v>100){er.textContent='Isi angka 0 sampai 100.';er.classList.add('show');return;}er.classList.remove('show');toast('Nilai '+v+' disimpan','Jawaban masuk antrean review.');closeDrawer();};
  var df=$('#drawer').querySelector('[data-drsavefb]');if(df)df.onclick=function(){toast('Status masukan disimpan');closeDrawer();};
@@ -2959,6 +2971,8 @@ function bindAll(page,t){
   c.querySelectorAll('[data-stsel]').forEach(function(s){s.onchange=function(e){e.stopPropagation();var f=stFind(s.getAttribute('data-stsel'));if(!f.d)return;var ns=s.value;if(ns===f.d.status)delete f.d._pending;else f.d._pending=ns;saveFilters();render(false);if(ns!==f.d.status)toast('Ditandai: '+STTASK_STATUS_LBL[ns],'Tinjau sebelum tayang.');};});
   c.querySelectorAll('[data-stpub]').forEach(function(b){b.onclick=function(e){e.stopPropagation();stPublish();};});
   c.querySelectorAll('[data-strange]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.streakDays=+b.getAttribute('data-strange')||30;render(false);};});
+  /* Dashboard: kartu tugas bisa diklik → buka halaman Tugas Streak + drawer tugasnya. */
+  c.querySelectorAll('[data-stdopen]').forEach(function(b){b.onclick=function(e){e.stopPropagation();go('streak-tasks');openDrawer(b.getAttribute('data-stdopen'));};});
   c.querySelectorAll('[data-strow]').forEach(function(tr){
    tr.onclick=function(e){if(window.__stDrag){window.__stDrag=false;return;}if(e.target.closest('[data-stgrip]')||e.target.tagName==='BUTTON'||e.target.tagName==='SELECT'||e.target.tagName==='INPUT'||e.target.closest('.rowact'))return;openDrawer(tr.getAttribute('data-strow'));};
    tr.onkeydown=function(e){if((e.key==='Enter'||e.key===' ')&&e.target===tr){e.preventDefault();openDrawer(tr.getAttribute('data-strow'));}};
