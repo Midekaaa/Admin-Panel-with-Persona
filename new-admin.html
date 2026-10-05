@@ -1814,7 +1814,7 @@ function qCardHTML(d,no,ix){
  var tags='<span class="qc-tags"><span class="qtag">'+esc(d.type||'')+'</span><span class="qtag">'+esc(d.topic||'')+'</span><span class="qtag '+(QDIFF[d.diff]||'')+'"><span class="dot"></span>'+esc(d.diff||'')+'</span></span>';
  var use='<span class="qc-use"><span class="cell-s">dipakai '+esc(d.used||0)+'x</span>'
   +'<button class="mini-btn ic" data-qkey="'+esc(d.id)+'" aria-expanded="false" aria-controls="qkey-'+esc(d.id)+'" title="Lihat kunci dan pembahasan" aria-label="Lihat kunci dan pembahasan soal '+esc(d.id)+'">'+ic(P_EYE,14)+'</button>'
-  +'<button class="mini-btn ic" data-qedit="'+esc(d.id)+'" title="Ubah soal" aria-label="Ubah soal '+esc(d.id)+'">'+ic(P_PENCIL,14)+'</button>'
+  +'<button class="mini-btn ic" data-qqedit="'+esc(d.id)+'" title="Ubah soal" aria-label="Ubah soal '+esc(d.id)+'">'+ic(P_PENCIL,14)+'</button>'
   +'<button class="mini-btn ic" data-qdup="'+esc(d.id)+'" title="Duplikat" aria-label="Duplikat soal '+esc(d.id)+'">'+ic(P_COPY,14)+'</button>'
   +'<button class="mini-btn ic" data-qarch="'+esc(d.id)+'" title="Arsipkan" aria-label="Arsipkan soal '+esc(d.id)+'">'+ic(P_ARCH,14)+'</button></span>';
  return '<article class="qc" data-qcard="'+esc(d.id)+'">'
@@ -2995,7 +2995,7 @@ function bindAll(page,t){
   c.querySelectorAll('[data-qback]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.qsub=null;state.chip='Semua';state.q='';state.fq={};state.pg=1;saveFilters();window.scrollTo(0,0);load();};});
   c.querySelectorAll('[data-qopen]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openDrawer(b.getAttribute('data-qopen'));};});
   c.querySelectorAll('[data-qkey]').forEach(function(b){b.onclick=function(e){e.stopPropagation();var card=b.closest('.qc');var kp=card?card.querySelector('.qkey'):null;if(!kp)return;var on=kp.hasAttribute('hidden');if(on)kp.removeAttribute('hidden');else kp.setAttribute('hidden','');var lb=on?'Sembunyikan kunci dan pembahasan':'Lihat kunci dan pembahasan';b.setAttribute('aria-expanded',on?'true':'false');b.setAttribute('title',lb);b.setAttribute('aria-label',lb);};});
-  c.querySelectorAll('[data-qedit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openDrawer(b.getAttribute('data-qedit'),'media');};});
+  c.querySelectorAll('[data-qqedit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openDrawer(b.getAttribute('data-qqedit'),'media');};});
   c.querySelectorAll('[data-qdup]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qDuplicate(b.getAttribute('data-qdup'));};});
   c.querySelectorAll('[data-qarch]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qArchive(b.getAttribute('data-qarch'));};});
   c.querySelectorAll('[data-qopt]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qPick(b.getAttribute('data-qopt'),b.getAttribute('data-qletter'));};});
