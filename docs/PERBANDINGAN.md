@@ -133,7 +133,7 @@ Soal terkait per mata pelajaran:
 ## Undangan (split Marketing ↔ Tim User)
 
 * Baru di PR ini, tidak ada di admin lama maupun perbandingan sebelumnya.
-* Marketing: strip Minta Undangan di halaman Referral (maks 5 permintaan terbuka, hanya Marketing yang bisa meminta). Form: Email tujuan, Jenis keperluan, Penjelasan singkat. Benefit selalu Quest A (pengguna baru), tanpa dropdown. Tidak ada halaman / menu mandiri.
+* Marketing: strip Minta Undangan di halaman Referral (maks 5 permintaan terbuka, hanya Marketing yang bisa meminta). Form: Email tujuan, Penjelasan singkat (`user baru mendapatkan benefit +10 koin Quest A`). Benefit selalu Quest A (pengguna baru), tanpa dropdown. Tidak ada halaman / menu mandiri.
 * Kolom Aksi disembunyikan di tabel yang aksinya non-fungsional (Undangan, Data Pelajar, Izin, Materi, Universitas, Jenjang, Prodi, Versi Blueprint, Try Out, Penilaian Esai, Log, Masukan, Testimoni, Tugas Streak, Referral). Detail tetap via klik baris; tabel dengan navigasi nyata (Pengguna, Peran, Bidang, Program, Blueprint, Latihan, Laporan Soal) tetap punya Aksi.
 * Tim User: halaman `Undangan` + section `Permintaan dari Marketing` (Setujui / Tolak di tempat). Setujui → `INV-xxx` tercatat di Undangan + notif link ke `invitations`. Tolak wajib alasan.
 * Label quest live ikut tersemat di Undangan (`· Quest A, …`) via `syncInvQuest`.

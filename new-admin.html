@@ -2484,7 +2484,7 @@ function reqWidget(){
  if(state.role!=='marketing')return '';
  reqLoad();reqExpire();
  var open=reqAll().filter(function(r){return r.team==='Marketing'&&r.chip==='Menunggu';}).length;
- return '<div class="card" style="margin-bottom:12px"><div style="padding:12px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap"><div style="flex:1;min-width:0"><div class="cell-t">Minta Undangan</div><div class="cell-s">'+(open?open+' menunggu keputusan '+teamBadge('Tim User'):'Butuh undangan pengguna pilihan khusus? Minta via '+teamBadge('Tim User')+'.')+'</div></div><button class="btn sm primary" data-reqnew>'+ic(P_PLUS,15)+'Minta undangan</button></div></div>';
+ return '<div class="card" style="margin-bottom:12px"><div style="padding:12px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap"><div style="flex:1;min-width:0"><div class="cell-t">Minta Undangan</div><div class="cell-s">'+(open?open+' menunggu keputusan '+teamBadge('Tim User'):'Butuh undangan pengguna pilihan? Minta via '+teamBadge('Tim User')+'.')+'</div></div><button class="btn sm primary" data-reqnew>'+ic(P_PLUS,15)+'Minta undangan</button></div></div>';
 }
 VIEWS.vouchers=vouchersView;
 VIEWS.referrals=referralsView;
@@ -2518,8 +2518,7 @@ function reqModal(){
   var qslot='A';
   openModal({title:'Minta undangan',sub:'Tim User memutuskan. Kamu diberi tahu hasilnya.',fields:[
    {k:'email',l:'Email tujuan',type:'email',req:1,ph:'tu@sekolah.sch.id'},
-   {k:'cat',l:'Jenis keperluan',type:'select',opts:['Promo deal','Lainnya']},
-   {k:'detail',l:'Penjelasan singkat',req:1,ph:'cth: bonus 25 koin, 100 kursi'}],
+   {k:'detail',l:'Penjelasan singkat',req:1,ph:'cth: user baru mendapatkan benefit +10 koin Quest A'}],
    submit:'Kirim permintaan',
    onSubmit:function(v){
     var benefit=' · benefit Quest '+qslot;
