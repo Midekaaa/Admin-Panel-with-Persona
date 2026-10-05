@@ -80,8 +80,12 @@ File utama: `new-admin.html`. Buka di browser, pilih peran **Tim Marketing** (to
 ## Referral
 
 * Fitur baru, tidak ada di admin lama.
-* Kartu tautan + salin, pill +koin, pemakaian, kedaluwarsa. Alur Aktif → Jeda → Kedaluwarsa.
-* Ada Tambah cepat (cukup nama) dan form lengkap.
+* Model quest: admin kelola Quest A/B/C (multi-live, toggle Aktif/Nonaktif), siswa yang membuat tautan.
+* Quest cards di atas tabel: badge Quest A (blue) / B (purple) / C (amber), reward split +pengajak / +pendaftar, periode Berlaku.
+* Tabel campuran Pemilik / Pendaftar / Quest / Status (sortable Pemilik, Quest, Status). Kolom Pendaftar inline: nama + N/M pendaftar unik + koin terbayar (tanpa expand).
+* Aksi: Detail + Cabut (ada Urungkan). Drawer Ringkasan: pemilik, pendaftar unik, koin terbayar, quest, tanggal dibuat + Salin tautan.
+* Chip: Semua / Aktif / Penuh / Kedaluwarsa. Tidak ada Tambah cepat / Buat referral (toast: tautan dibuat siswa dari quest yang live).
+* Satu siswa satu reward. Share berkali-kali tetap dihitung 1.
 
 | Before | Update |
 |---|---|
@@ -99,11 +103,24 @@ File utama: `new-admin.html`. Buka di browser, pilih peran **Tim Marketing** (to
 ## Voucher
 
 * Fitur baru, tidak ada di admin lama.
-* Kartu kode + salin, pill Persen/Nominal, kuota, jadwal, penerima (Semua/Acak/Pilihan). Alur Draft → Siap → Aktif → Kedaluwarsa.
-* Ada Tambah cepat (cukup nama) dan form lengkap.
+* Kartu model tiket: header VOUCHER + status, kode mono + salin, garis perforasi, stat berlabel Nilai / Terpakai + bar / Berlaku / Penerima.
+* Koin-only: Nilai N koin (validasi 1–32767), tanpa Persen/Nominal. Penerima: Semua / Acak / Pilihan.
+* Auto-urutan: Aktif, Siap, Draft, Kedaluwarsa. Alur Draft → Siap → Aktif → Kedaluwarsa.
+* Ada Tambah cepat (cukup nama: otomatis 10 koin, kuota 100, semua pelajar) dan form lengkap.
 
 | Before | Update |
 |---|---|
 | *(kosong)* | ![Voucher after](images/after/after-voucher.png) |
 
-Catatan: screenshot diambil sebelum tombol Tambah cepat ada. Tombolnya ada di file terbaru, di samping Buat voucher / Buat referral.
+## Undangan (split Marketing ↔ Tim User)
+
+* Baru di PR ini, tidak ada di admin lama maupun perbandingan sebelumnya.
+* Marketing: hanya `Minta Undangan` (maks 5 permintaan terbuka, hanya Marketing yang bisa meminta). Tidak melihat menu Undangan eksekusi.
+* Tim User: halaman `Undangan` + section `Permintaan dari Marketing` (Setujui / Tolak di tempat). Setujui → `INV-xxx` tercatat di Undangan + notif link ke `invitations`. Tolak wajib alasan.
+* Label quest live ikut tersemat di Undangan (`· Quest A, …`) via `syncInvQuest`.
+
+| Before | Update |
+|---|---|
+| *(kosong)* | *(screenshot menyusul)* |
+
+Catatan: screenshot diambil sebelum tombol Tambah cepat ada dan sebelum model quest/tiket/split undangan. Referral tidak lagi punya Tambah cepat / Buat referral; Voucher masih punya Tambah cepat. Screenshot `after-referral.png`, `after-voucher.png` perlu diambil ulang, plus screenshot baru untuk Undangan split.

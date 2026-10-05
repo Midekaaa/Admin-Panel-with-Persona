@@ -318,7 +318,7 @@
   th.th-sort:hover .th-in .ti{opacity:.55}
   th.sorted .th-in .ti{opacity:1;color:var(--text-h)}
   .bulkbar{display:flex;gap:8px;align-items:center;padding:10px 16px;background:var(--primary-50);
-    font-size:12.5px;font-weight:600;color:var(--primary);border-top:1px solid var(--border-soft);flex-wrap:wrap}
+    font-size:12.5px;font-weight:600;color:var(--primary);border-bottom:1px solid var(--border-soft);flex-wrap:wrap}
   th{text-align:left;font-size:11px;color:var(--text-3);font-weight:500;text-transform:uppercase;
     letter-spacing:.06em;padding:11px 12px;border-bottom:1px solid var(--border-soft);white-space:nowrap;background:transparent;vertical-align:middle}
   th:first-child{padding-left:16px} th:last-child{padding-right:16px}
@@ -389,7 +389,7 @@
   @media(min-width:900px){.adsgrid{grid-template-columns:repeat(2,1fr) !important}}
   @media(min-width:1400px){.adsgrid{grid-template-columns:repeat(3,1fr) !important}}
   /* Bio + manager side by side on desktop, stacked on mobile */
-  .smgrid{display:grid;gap:12px;padding:14px 16px;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:start}
+  .smgrid{display:grid;gap:12px;padding:0;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:start}
   @media(max-width:899px){.smgrid{grid-template-columns:1fr}}
   /* Media grid: isi kiri ke kanan, lalu baris berikutnya */
   .masonry{display:grid;gap:12px;padding:14px 16px;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
@@ -819,7 +819,7 @@ var NAV=[
 var ACCESS={
  soal:['dashboard','questions','content-areas','topics','programs','blueprints','blueprint-versions','drills','tryouts','grading','question-reports','media','notifications'],
  marketing:['dashboard','ads','articles','vouchers','referrals','social-media','notifications','media','streak-tasks','minta-undangan'],
- user:['dashboard','users','data-pelajar','invitations','minta-undangan','notifications'],
+ user:['dashboard','users','data-pelajar','invitations','notifications'],
  admin:'*'
 };
 function coveredKeys(){var s={};['soal','marketing','user'].forEach(function(r){(ACCESS[r]||[]).forEach(function(k){s[k]=1;});});return s;}
@@ -903,7 +903,7 @@ var F={
    {id:'S-771',t:'Nadia P. — XII',s:'SMAN 1 Bandung · lulus 2026 · WA terisi',st:['Aktif','green'],by:'Organik'},
    {id:'S-772',t:'Bagas R. — gap year',s:'SMKN 2 Solo · lulus 2025 · WA terisi',st:['Aktif','green'],by:'Teman'}],
   empty:{t:'Belum ada data pelajar',d:'Data masuk otomatis saat pelajar mendaftar atau via undangan sekolah.',c:'Undang sekolah'}},
- invitations:{menu:'menu.invitations',route:'/invitations',perm:'users.invite',title:'Undangan',cat:'access',qa:'Salin tautan',
+  invitations:{menu:'menu.invitations',route:'/invitations',perm:'users.invite',title:'Undangan',cat:'access',qa:'Salin tautan',view:'invitations',
   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Salin tautan',icn:P_COPY,do:'toast:Tautan undangan disalin'},{l:'Kirim ulang',icn:P_SEND,do:'toast:Undangan dikirim ulang'}],
   sub:'Undang sekolah atau tim lewat email. Lihat status, salin tautan, kirim ulang, cabut, export rekap.',
   cols:['Email','Roles / Exp','Status','Aksi'],filters:[{k:'st',l:'Status',o:['Semua','Menunggu','Dibuka','Diterima','Kedaluwarsa']}],chips:['Semua','Menunggu','Diterima','Kedaluwarsa'],
@@ -989,19 +989,28 @@ var F={
    sub:'Kode diskon untuk pelajar. Atur nilai, kuota, jadwal, dan siapa yang menerima.',
    cols:['Voucher','Jadwal','Status','Aksi'],filters:[],chips:['Semua','Draft','Siap','Aktif','Kedaluwarsa'],
    rows:[
-    {id:'V-AKBAR12',t:'Diskon TO Akbar 12',s:'Persen 50% · kuota 200 · semua pelajar',st:['Aktif','green'],by:'Raka',chip:'Aktif',code:'TO-AKBAR12',kind:'Persen',value:50,quota:200,used:143,mulai:'1 Okt 2026',selesai:'8 Okt 2026',target:'Semua pelajar',targetKind:'Semua',targetN:''},
-    {id:'V-HEMAT20',t:'Hemat awal bulan',s:'Nominal Rp20.000 · kuota 100 · acak 100 orang',st:['Siap','amber'],by:'Raka',chip:'Siap',code:'HEMAT20',kind:'Nominal',value:20000,quota:100,used:0,mulai:'5 Okt 2026',selesai:'12 Okt 2026',target:'Acak · 100 orang',targetKind:'Acak',targetN:100},
-    {id:'V-MITRA',t:'Sekolah mitra Cirebon',s:'Persen 100% · kuota 120 · pilihan 120 kursi',st:['Draft','gray'],by:'Raka',chip:'Draft',code:'MITRA-CRB',kind:'Persen',value:100,quota:120,used:0,mulai:'Belum diatur',selesai:'Belum diatur',target:'Pilihan · 120 kursi',targetKind:'Pilihan',targetN:120},
-    {id:'V-FLASH10',t:'Flash sale 10rb',s:'Nominal Rp10.000 · kuota 50 · semua pelajar',st:['Kedaluwarsa','gray'],by:'Raka',chip:'Kedaluwarsa',code:'FLASH10',kind:'Nominal',value:10000,quota:50,used:50,mulai:'20 Sep 2026',selesai:'21 Sep 2026',target:'Semua pelajar',targetKind:'Semua',targetN:''}],
+    {id:'V-AKBAR12',t:'Diskon TO Akbar 12',s:'50 koin · kuota 200 · semua pelajar',st:['Aktif','green'],by:'Raka',chip:'Aktif',code:'TO-AKBAR12',kind:'Koin',value:50,quota:200,used:143,mulai:'1 Okt 2026',selesai:'8 Okt 2026',target:'Semua pelajar',targetKind:'Semua',targetN:''},
+    {id:'V-HEMAT20',t:'Hemat awal bulan',s:'20 koin · kuota 100 · acak 100 orang',st:['Siap','amber'],by:'Raka',chip:'Siap',code:'HEMAT20',kind:'Koin',value:20,quota:100,used:0,mulai:'5 Okt 2026',selesai:'12 Okt 2026',target:'Acak · 100 orang',targetKind:'Acak',targetN:100},
+    {id:'V-MITRA',t:'Sekolah mitra Cirebon',s:'100 koin · kuota 120 · pilihan 120 kursi',st:['Draft','gray'],by:'Raka',chip:'Draft',code:'MITRA-CRB',kind:'Koin',value:100,quota:120,used:0,mulai:'Belum diatur',selesai:'Belum diatur',target:'Pilihan · 120 kursi',targetKind:'Pilihan',targetN:120},
+    {id:'V-FLASH10',t:'Flash sale 10rb',s:'10 koin · kuota 50 · semua pelajar',st:['Kedaluwarsa','gray'],by:'Raka',chip:'Kedaluwarsa',code:'FLASH10',kind:'Koin',value:10,quota:50,used:50,mulai:'20 Sep 2026',selesai:'21 Sep 2026',target:'Semua pelajar',targetKind:'Semua',targetN:''}],
    empty:{t:'Belum ada voucher',d:'Buat kode diskon: nilai, kuota, jadwal, dan penerima.',c:'Buat voucher'}},
-  referrals:{menu:'menu.referrals',route:'/referrals',perm:'referrals.read',title:'Referral',cat:'content',qa:'Aktifkan',view:'referrals',
-   sub:'Tautan ajak teman. Pemilik dan pendaftar sama-sama dapat reward koin.',
-   cols:['Tautan','Pemakaian','Status','Aksi'],filters:[],chips:['Semua','Aktif','Jeda','Kedaluwarsa'],
+  referrals:{menu:'menu.referrals',route:'/referrals',perm:'referrals.read',title:'Referral',cat:'content',qa:'Lihat tautan',view:'referrals',
+   sub:'Admin membuat quest, siswa yang membuat tautan. Satu quest live dalam satu waktu.',
+   cols:['Pemilik','Pendaftar','Quest','Status','Aksi'],filters:[],chips:['Semua','Aktif','Penuh','Kedaluwarsa'],
+   colDefs:[
+    {label:'Pemilik',sort:'owner',html:function(d,i){return '<div class="who">'+ava(d.by,i)+'<span><span class="cell-t" style="font-weight:500">'+esc(d.owner||d.by)+'</span><br><span class="cell-s">sejak '+esc(d.joined||'—')+'</span></span></div>';}},
+    {label:'Pendaftar',sort:null,html:function(d){var h=d.hist||[];var names=h.map(function(x){return x.n;}).join(', ');return '<div class="cell-t">'+(names?esc(names):'<span class="cell-s">—</span>')+'</div><div class="cell-s">'+esc(d.used||0)+'/'+esc(d.max||0)+' pendaftar · +'+esc(d.paid||0)+' koin</div>';}},
+    {label:'Quest',sort:'quest',html:function(d){return questBadge(d.quest)+'<div class="cell-s" style="margin-top:4px">'+esc(refQuestName(d.quest))+'</div>';}},
+    {label:'Status',sort:'status',html:function(d){return cellStatus(d);}}],
+   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Cabut',icn:P_TRASH,do:'refcabut'}],
    rows:[
-    {id:'R-RAKA',t:'Raka · SNBT 2026',s:'tryoutku.id/r/rakasnbt · +25 koin per pakai',st:['Aktif','green'],by:'Raka',chip:'Aktif',code:'rakasnbt',link:'tryoutku.id/r/rakasnbt',reward:25,used:34,max:100,expiry:'31 Des 2026'},
-    {id:'R-SINTA',t:'Sinta · Teman sekelas',s:'tryoutku.id/r/sintalolos · +10 koin per pakai',st:['Aktif','green'],by:'Raka',chip:'Aktif',code:'sintalolos',link:'tryoutku.id/r/sintalolos',reward:10,used:12,max:50,expiry:'31 Des 2026'},
-    {id:'R-BAGAS',t:'Bagas · Komunitas game',s:'tryoutku.id/r/bagasmain · +15 koin per pakai',st:['Jeda','amber'],by:'Raka',chip:'Jeda',code:'bagasmain',link:'tryoutku.id/r/bagasmain',reward:15,used:3,max:30,expiry:'30 Nov 2026'}],
-   empty:{t:'Belum ada tautan referral',d:'Buat tautan: kode, reward koin, batas pakai, dan kedaluwarsa.',c:'Buat referral'}},
+    {id:'L-RAKA',t:'tryoutku.id/r/rakasnbt',s:'Raka · 34/100 pendaftar unik · +850 koin terbayar',st:['Aktif','green'],by:'Raka',chip:'Aktif',code:'rakasnbt',link:'tryoutku.id/r/rakasnbt',owner:'Raka',quest:'A',used:34,max:100,paid:850,joined:'28 Sep 2026',hist:[{n:'Nadia P.',t:'28 Sep 2026'},{n:'Bagas R.',t:'27 Sep 2026'}]},
+    {id:'L-SINTA',t:'tryoutku.id/r/sintalolos',s:'Sinta · 12/50 pendaftar unik · +120 koin terbayar',st:['Aktif','green'],by:'Sinta',chip:'Aktif',code:'sintalolos',link:'tryoutku.id/r/sintalolos',owner:'Sinta',quest:'A',used:12,max:50,paid:120,joined:'25 Sep 2026',hist:[{n:'Citra L.',t:'25 Sep 2026'}]},
+    {id:'L-BAGAS',t:'tryoutku.id/r/bagasmain',s:'Bagas · 30/30 pendaftar unik · +450 koin terbayar',st:['Penuh','amber'],by:'Bagas',chip:'Penuh',code:'bagasmain',link:'tryoutku.id/r/bagasmain',owner:'Bagas',quest:'A',used:30,max:30,paid:450,joined:'20 Sep 2026',hist:[{n:'Eko P.',t:'20 Sep 2026'},{n:'Farah A.',t:'19 Sep 2026'}]},
+    {id:'L-DINDA',t:'tryoutku.id/r/dindaajak',s:'Dinda · 2/50 pendaftar unik · +20 koin terbayar',st:['Aktif','green'],by:'Dinda',chip:'Aktif',code:'dindaajak',link:'tryoutku.id/r/dindaajak',owner:'Dinda',quest:'A',used:2,max:50,paid:20,joined:'2 Okt 2026',hist:[]},
+    {id:'L-EKO',t:'tryoutku.id/r/ekoutbk',s:'Eko · 5/40 pendaftar unik · +75 koin terbayar',st:['Aktif','green'],by:'Eko',chip:'Aktif',code:'ekoutbk',link:'tryoutku.id/r/ekoutbk',owner:'Eko',quest:'B',used:5,max:40,paid:75,joined:'15 Sep 2026',hist:[{n:'Gilang R.',t:'15 Sep 2026'}]},
+    {id:'L-FARAH',t:'tryoutku.id/r/farahakbar',s:'Farah · 9/60 pendaftar unik · +180 koin terbayar',st:['Aktif','green'],by:'Farah',chip:'Aktif',code:'farahakbar',link:'tryoutku.id/r/farahakbar',owner:'Farah',quest:'C',used:9,max:60,paid:180,joined:'22 Sep 2026',hist:[{n:'Hadi P.',t:'22 Sep 2026'}]}],
+   empty:{t:'Belum ada tautan',d:'Tautan muncul saat siswa ikut quest yang live.',c:'Lihat quest'}},
   /* Prototype-only: no backend route yet — requested for Marketing */
  'social-media':{menu:'menu.socialMedia',route:'/social-media',perm:'social-media.read',title:'Media Sosial',cat:'content',qa:'Ubah',view:'social',
   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Salin tautan',icn:P_COPY,do:'toast:Tautan disalin'},{l:'Ubah status',icn:P_CHECK,do:'toast:Status tampilan diubah'}],
@@ -1360,7 +1369,7 @@ var MATRIX=[
   ['Testimoni',0,0,0,1],
   ['Media promosi (banner & iklan)',2,1,0,1],
   ['Pengguna · Pelajar · Undangan',0,0,1,1],
-  ['Minta undangan',0,1,1,1],
+  ['Minta undangan',0,1,0,1],
   ['Notifikasi (broadcast)',1,1,1,1],
   ['Masukan',0,0,0,1],
   ['Tugas Streak',0,1,0,1],
@@ -1404,7 +1413,9 @@ function barsHTML(data){
 var SORTS={
  title:{label:'Judul',get:function(d){return String(d.t||'');}},
  detail:{label:'Detail',get:function(d){return String((d.by||'')+' '+(d.s||''));}},
- status:{label:'Status',get:function(d){return String((d.st&&d.st[0])||'');}}
+ status:{label:'Status',get:function(d){return String((d.st&&d.st[0])||'');}},
+ owner:{label:'Pemilik',get:function(d){return String(d.owner||d.by||'');}},
+ quest:{label:'Quest',get:function(d){return String(d.quest||'');}}
 };
 function applySort(rows){
  if(!state.sort||!state.sortKey||!SORTS[state.sortKey])return rows;
@@ -1499,11 +1510,11 @@ function tableCard(page,t,preview){
   var hasReset=(fCount>0||!!state.sort);
   var resetBtn=(!preview?'<button class="link'+(hasReset?'':' reset-hidden')+'" data-reset'+(hasReset?'':' disabled aria-hidden="true" tabindex="-1"')+'>Reset</button>':'');
   return '<div class="card"><div class="card-h"><div><div>'+headLeft+'</div></div><div class="sp">'
-   +(preview?'<button class="link" data-goto="'+esc(page)+'">Lihat semua</button>':'<button class="link'+(fCount>0?' on':'')+'" id="filterBtn" aria-pressed="'+(fCount>0)+'">'+ic(P_FILTER,15)+esc(filterLabel)+'</button><button class="link'+(state.sort?' on':'')+'" id="sortBtn" title="'+esc(sortLabel)+'" aria-pressed="'+(!!state.sort)+'">'+ic(sortIcon,15)+esc(sortLabel)+'</button><button class="link" data-t="Menyiapkan export…">'+ic(P_DOWNLOAD,15)+'Export</button>'+resetBtn)
+   +(preview?'<button class="link" data-goto="'+esc(page)+'">Lihat semua</button>':'<button class="link'+(fCount>0?' on':'')+'" id="filterBtn" aria-pressed="'+(fCount>0)+'">'+ic(P_FILTER,15)+esc(filterLabel)+'</button><button class="link'+(state.sort?' on':'')+'" id="sortBtn" title="'+esc(sortLabel)+'" aria-pressed="'+(!!state.sort)+'">'+ic(sortIcon,15)+esc(sortLabel)+'</button>'+resetBtn+'<button class="link" data-t="Menyiapkan export…">'+ic(P_DOWNLOAD,15)+'Export</button>')
    +'</div></div>'
    +(preview?'':'<div id="filterPanel"'+(state.showFilters?'':' style="display:none"')+'><div class="filters">'+searchField('Cari nama, ID, email…','flex:1;min-width:170px')+fbar+'</div><div class="chips">'+chips+'</div><div style="height:10px"></div></div>')
-  +body+bulk
-   +(preview?'':tfootHTML(total,'dari '+(t.rows||[]).length+' data',pgBtns))+'</div>';
+   +bulk+body
+    +(preview?'':tfootHTML(total,'dari '+(t.rows||[]).length+' data',pgBtns))+'</div>';
 }
 function hello(){return state.role==='soal'?'Halo, Tim Soal':state.role==='marketing'?'Halo, Marketing':state.role==='user'?'Halo, Tim User':'Halo, Admin';}
 function adForm(editId,draft){
@@ -2100,38 +2111,87 @@ VIEWS.articles=articlesView;
 VIEWS.ads=adsView;
 /* Voucher & referral (Marketing, prototype-only). Same card + status-flow language as ads. */
 var VOUCHST={Draft:['Draft','gray'],Siap:['Siap','amber'],Aktif:['Aktif','green'],Kedaluwarsa:['Kedaluwarsa','gray']};
-var REFST={Aktif:['Aktif','green'],Jeda:['Jeda','amber'],Kedaluwarsa:['Kedaluwarsa','gray']};
+var QST={Aktif:['Aktif','green'],Draft:['Draft','gray']};
 function vouFind(id){return findRow('vouchers',id).d;}
-function refFind(id){return findRow('referrals',id).d;}
-function vouValText(d){return d.kind==='Persen'?(d.value+'%'):'Rp'+Number(d.value||0).toLocaleString('id-ID');}
+function vouValText(d){return Number(d.value||0).toLocaleString('id-ID')+' koin';}
 function vouGenCode(p){var c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';var s='';for(var i=0;i<6;i++)s+=c[Math.floor(Math.random()*c.length)];return (p||'TO')+'-'+s;}
-function refGenCode(){var c='abcdefghjkmnpqrstuvwxyz23456789';var s='';for(var i=0;i<6;i++)s+=c[Math.floor(Math.random()*c.length)];return s;}
 function vouCardHTML(d){
+ var pct=d.quota?Math.min(100,Math.round((d.used||0)/d.quota*100)):0;
  var opts=['Draft','Siap','Aktif','Kedaluwarsa'].map(function(s){return '<option'+(d.chip===s?' selected':'')+'>'+s+'</option>';}).join('');
  var foot='<div style="margin-top:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--border-soft);padding-top:10px"><button class="mini-btn" data-vouedit="'+esc(d.id)+'">'+ic(P_PENCIL,14)+'<span>Ubah</span></button><select class="mini-btn" data-vouflow="'+esc(d.id)+'" aria-label="Ubah status '+esc(d.t)+'">'+opts+'</select><span style="margin-left:auto;display:flex;gap:6px"><button class="mini-btn" data-voudup="'+esc(d.id)+'" aria-label="Duplikat sebagai Draft">'+ic(P_COPY,14)+'<span>Duplikat</span></button><button class="mini-btn ic danger" data-voudel="'+esc(d.id)+'" title="Hapus voucher" aria-label="Hapus voucher">'+ic(P_TRASH,14)+'</button></span></div>';
- return '<article class="card" style="box-shadow:none;display:flex;flex-direction:column;min-width:0">'
- +'<div style="background:var(--bg-hover);border-radius:14px 14px 0 0;padding:14px;display:flex;gap:8px;align-items:center"><span style="flex:1;min-width:0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:17px;font-weight:700;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(d.code)+'</span><button class="mini-btn ic" data-voucopy="'+esc(d.code)+'" title="Salin kode" aria-label="Salin kode">'+ic(P_COPY,14)+'</button><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div>'
- +'<div style="padding:14px 14px 12px;display:flex;flex-direction:column;gap:8px;flex:1">'
- +'<div class="cell-t" style="font-size:15px">'+esc(d.t)+'</div>'
- +'<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="status blue">'+esc(d.kind)+' '+esc(vouValText(d))+'</span><span class="cell-s">Terpakai '+esc(d.used||0)+' dari '+esc(d.quota||0)+'</span></div>'
- +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--bg-hover);border-radius:10px;padding:10px 12px;font-size:12px;color:var(--text-2)"><span>Mulai<br><b style="color:var(--text-h)">'+esc(d.mulai||'—')+'</b></span><span>Selesai<br><b style="color:var(--text-h)">'+esc(d.selesai||'—')+'</b></span></div>'
- +'<div class="cell-s">Penerima: '+esc(d.target||'Semua pelajar')+'</div>'
+ return '<article class="card" style="box-shadow:none;display:flex;flex-direction:column;min-width:0;position:relative">'
+ +'<div style="padding:14px 14px 4px">'
+ +'<div style="display:flex;align-items:center;gap:8px"><span class="cell-s" style="font-weight:600;letter-spacing:.08em">VOUCHER</span><span style="margin-left:auto"><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></span></div>'
+ +'<div style="display:flex;align-items:center;gap:8px;margin-top:6px"><span style="flex:1;min-width:0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:20px;font-weight:700;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(d.code)+'</span><button class="mini-btn ic" data-voucopy="'+esc(d.code)+'" title="Salin kode" aria-label="Salin kode">'+ic(P_COPY,14)+'</button></div>'
+ +'<div class="cell-t" style="font-size:13.5px;font-weight:500;margin-top:2px">'+esc(d.t)+'</div></div>'
+ +'<div style="position:relative;border-top:2px dashed var(--border);margin:12px 0 0"><span style="position:absolute;left:-9px;top:-10px;width:18px;height:18px;border-radius:50%;background:var(--bg-page)"></span><span style="position:absolute;right:-9px;top:-10px;width:18px;height:18px;border-radius:50%;background:var(--bg-page)"></span></div>'
+ +'<div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px;flex:1">'
+ +'<dl class="kv" style="margin:0"><dt>Nilai</dt><dd><span class="status blue">'+esc(vouValText(d))+'</span></dd><dt>Terpakai</dt><dd>'+esc(d.used||0)+' dari '+esc(d.quota||0)+'<span style="display:block;height:6px;border-radius:99px;background:var(--bg-hover);margin-top:6px"><span style="display:block;height:100%;width:'+pct+'%;border-radius:99px;background:var(--primary)"></span></span></dd><dt>Berlaku</dt><dd>'+esc(d.mulai||'—')+' → '+esc(d.selesai||'—')+'</dd><dt>Penerima</dt><dd>'+esc(d.target||'Semua pelajar')+'</dd></dl>'
  +foot+'</div></article>';
 }
-function refCardHTML(d){
- var opts=['Aktif','Jeda','Kedaluwarsa'].map(function(s){return '<option'+(d.chip===s?' selected':'')+'>'+s+'</option>';}).join('');
- var foot='<div style="margin-top:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--border-soft);padding-top:10px"><button class="mini-btn" data-refedit="'+esc(d.id)+'">'+ic(P_PENCIL,14)+'<span>Ubah</span></button><select class="mini-btn" data-refflow="'+esc(d.id)+'" aria-label="Ubah status '+esc(d.t)+'">'+opts+'</select><span style="margin-left:auto;display:flex;gap:6px"><button class="mini-btn" data-refdup="'+esc(d.id)+'" aria-label="Duplikat sebagai Aktif">'+ic(P_COPY,14)+'<span>Duplikat</span></button><button class="mini-btn ic danger" data-refdel="'+esc(d.id)+'" title="Hapus referral" aria-label="Hapus referral">'+ic(P_TRASH,14)+'</button></span></div>';
- return '<article class="card" style="box-shadow:none;display:flex;flex-direction:column;min-width:0">'
- +'<div style="background:var(--bg-hover);border-radius:14px 14px 0 0;padding:14px;display:flex;gap:8px;align-items:center"><span style="flex:1;min-width:0;font-size:14.5px;font-weight:600;color:var(--primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(d.link)+'</span><button class="mini-btn ic" data-refcopy="'+esc(d.link)+'" title="Salin tautan" aria-label="Salin tautan">'+ic(P_COPY,14)+'</button><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div>'
- +'<div style="padding:14px 14px 12px;display:flex;flex-direction:column;gap:8px;flex:1">'
- +'<div class="cell-t" style="font-size:15px">'+esc(d.t)+'</div>'
- +'<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="status amber">+'+esc(d.reward||0)+' koin</span><span class="cell-s">per pendaftar yang memakai</span></div>'
- +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--bg-hover);border-radius:10px;padding:10px 12px;font-size:12px;color:var(--text-2)"><span>Dipakai<br><b style="color:var(--text-h)">'+esc(d.used||0)+(d.max?(' dari '+esc(d.max)):'')+'</b></span><span>Berakhir<br><b style="color:var(--text-h)">'+esc(d.expiry||'—')+'</b></span></div>'
- +foot+'</div></article>';
+/* Referral quests: admin makes the quest (A/B/C, one live), students make the links. */
+var QUESTS=null;
+function questAll(){if(!QUESTS)questLoad();return QUESTS;}
+function questSave(){store.set('na3-quests-v2',JSON.stringify(QUESTS));}
+function questLoad(){try{var s=store.get('na3-quests-v2');if(s){QUESTS=JSON.parse(s)||[];return;}}catch(_){}QUESTS=[
+ {id:'Q-A',slot:'A',t:'Ajak teman baru',rewardIn:25,rewardJoin:10,mulai:'1 Okt 2026',selesai:'31 Des 2026',st:['Aktif','green'],chip:'Aktif',isLive:true},
+ {id:'Q-B',slot:'B',t:'Lainnya',rewardIn:15,rewardJoin:5,mulai:'Belum diatur',selesai:'Belum diatur',st:['Draft','gray'],chip:'Draft',isLive:false},
+ {id:'Q-C',slot:'C',t:'Bonus TO Akbar',rewardIn:50,rewardJoin:20,mulai:'Belum diatur',selesai:'Belum diatur',st:['Draft','gray'],chip:'Draft',isLive:false}];}
+function questFind(id){var out=null;questAll().forEach(function(q){if(String(q.id)===String(id))out=q;});return out;}
+function questActives(){return questAll().filter(function(q){return q.isLive;});}
+function questLabel(){var a=questActives();if(!a.length)return 'Tanpa quest';return 'Quest '+a.map(function(q){return q.slot;}).join(', ');}
+function questBadge(slot){var c={A:'blue',B:'purple',C:'amber'}[slot]||'gray';return '<span class="status '+c+'">Quest '+esc(slot||'')+'</span>';}
+function questForm(editId){
+ modalFocus=document.activeElement;
+ var q=editId?questFind(editId):null;if(!q)return;
+ $('#modalBox').innerHTML='<div class="modal-h"><h3>Ubah Quest '+esc(q.slot)+'</h3><p>Nama, reward split, dan periode quest.</p></div>'
+ +'<div class="modal-b">'
+ +'<div class="field"><label for="qqName">Nama quest</label><input id="qqName" value="'+esc(q.t||'')+'" placeholder="cth: Ajak Teman SNBT"><span class="ferr" id="qqeName"></span></div>'
+ +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px">'
+ +'<div class="field"><label for="qqIn">Koin pengajak</label><input id="qqIn" type="number" min="0" value="'+esc(q.rewardIn==null?'':q.rewardIn)+'"><span class="ferr" id="qqeIn"></span></div>'
+ +'<div class="field"><label for="qqJoin">Koin pendaftar</label><input id="qqJoin" type="number" min="0" value="'+esc(q.rewardJoin==null?'':q.rewardJoin)+'"><span class="ferr" id="qqeJoin"></span></div>'
+ +'</div>'
+ +'<span class="fhint">Satu siswa satu reward. Share berkali-kali tetap dihitung 1.</span>'
+ +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px">'
+ +'<div class="field"><label for="qqStart">Mulai <small>(opsional)</small></label><input id="qqStart" type="datetime-local"></div>'
+ +'<div class="field"><label for="qqEnd">Selesai <small>(opsional)</small></label><input id="qqEnd" type="datetime-local"></div>'
+ +'</div>'
+ +'</div>'
+ +'<div class="modal-f"><button class="btn" id="qqCancel">Batal</button><button class="btn primary" id="qqOk">Simpan</button></div>';
+ $('#modalOv').classList.add('show');
+ $('#qqCancel').onclick=closeModal;
+ $('#qqOk').onclick=function(){
+  var vN=$('#qqName').value.trim(),vI=$('#qqIn').value.trim(),vJ=$('#qqJoin').value.trim(),vS=$('#qqStart').value,vE=$('#qqEnd').value;
+  var ok=true;
+  function mark(id,msg){var f=$('#'+id),e=$('#qqe'+id.slice(2));if(f)f.classList.toggle('bad',!!msg);if(e){e.textContent=msg||'';e.classList.toggle('show',!!msg);}if(msg)ok=false;}
+  mark('qqName',!vN?'Nama quest wajib diisi.':vN.length>80?'Nama maksimal 80 karakter.':'');
+  mark('qqIn',(!/^\d+$/.test(vI)||+vI<0||+vI>32767)?'Koin 0 sampai 32767.':'');
+  mark('qqJoin',(!/^\d+$/.test(vJ)||+vJ<0||+vJ>32767)?'Koin 0 sampai 32767.':'');
+  if(!ok){var b1=$('#modalBox').querySelector('.bad');if(b1)b1.focus();return;}
+  q.t=vN;q.rewardIn=+vI;q.rewardJoin=+vJ;if(vS)q.mulai=vS.replace('T',', ');if(vE)q.selesai=vE.replace('T',', ');
+  questSave();syncInvQuest();closeModal();saveFilters();render(false);toast('Quest '+q.slot+' diperbarui');
+ };
+ var f0=$('#qqName');if(f0)f0.focus();
 }
+function questToggleLive(id){
+ var q=questFind(id);if(!q)return;
+ if(q.isLive){
+  openConfirm('Nonaktifkan Quest '+q.slot+'?','Tautan yang ada tetap tercatat. Quest lain yang live tidak terganggu.','Nonaktifkan',function(){
+   q.isLive=false;var m=QST.Draft;q.st=[m[0],m[1]];q.chip=m[0];
+   questSave();syncInvQuest();saveFilters();render(false);toast('Quest '+q.slot+' nonaktif');
+  });return;
+ }
+ openConfirm('Aktifkan Quest '+q.slot+'?','Berjalan bersama quest live lainnya. Tautan lama tetap tercatat.','Aktifkan',function(){
+  q.isLive=true;var m2=QST.Aktif;q.st=[m2[0],m2[1]];q.chip=m2[0];
+  questSave();syncInvQuest();saveFilters();render(false);toast('Quest '+q.slot+' live');
+ });
+}
+function syncInvQuest(){var lbl=questLabel();var t=featOf('invitations');(t.rows||[]).forEach(function(r){if(!r.s0)r.s0=String(r.s||'');r.s=r.s0+' · '+lbl;});}
 function vouchersView(page,t){
  var tools=tableTools(t);
  var rows=filteredRows(t);
+ var w={Aktif:0,Siap:1,Draft:2,Kedaluwarsa:3};
+ rows=rows.slice().sort(function(a,b){return (w[a.chip]==null?9:w[a.chip])-(w[b.chip]==null?9:w[b.chip]);});
  var total=rows.length;var pages=Math.max(1,Math.ceil(total/PG_SIZE));
  if(state.pg>pages)state.pg=pages;
  var pageRows=rows.slice((state.pg-1)*PG_SIZE,state.pg*PG_SIZE);
@@ -2143,19 +2203,29 @@ function vouchersView(page,t){
   +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp">'+((total>0&&tools.fCount>0)?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+toolsBar('Cari voucher…',tools,false)
   +body+tfootHTML(total,'voucher',pgPN(pages))+'</div>'+listFoot();
 }
+function linkMaster(){var t=featOf('referrals');if(!t._master)t._master=(t.rows||[]).slice();return t._master;}
+function refQuestName(slot){var q=null;(questAll()||[]).forEach(function(x){if(String(x.slot)===String(slot))q=x;});return q?q.t:'';}
+function questMinis(qs){
+ var ordered=qs.slice().sort(function(a,b){return ((b.isLive?1:0)-(a.isLive?1:0));});
+ if(!ordered.length)return '';
+ return '<div class="cell-s" style="margin:0 2px 8px">Quest · '+ordered.filter(function(q){return q.isLive;}).length+' live</div>'
+ +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:12px">'
+ +ordered.map(function(q){var isLive=!!q.isLive;
+  return '<div class="card" style="box-shadow:none;padding:12px 14px 12px 24px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden">'
+  +'<span class="st-stick" style="background:'+(isLive?'var(--secondary)':'var(--border)')+'"></span>'
+  +'<div style="display:flex;gap:8px;align-items:center">'+questBadge(q.slot)+'<span class="cell-t" style="flex:1;min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(q.t)+'</span><button class="mini-btn ic" data-qedit="'+esc(q.id)+'" title="Ubah quest" aria-label="Ubah quest">'+ic(P_PENCIL,14)+'</button>'+(isLive?'<button class="mini-btn" data-qact="'+esc(q.id)+'">Nonaktifkan</button>':'<button class="mini-btn primary" data-qact="'+esc(q.id)+'">Aktifkan</button>')+'</div>'
+  +'<div class="cell-s">+'+esc(q.rewardIn||0)+' pengajak · +'+esc(q.rewardJoin||0)+' pendaftar</div>'
+  +'<div class="cell-s">Berlaku '+esc(q.mulai||'—')+' → '+esc(q.selesai||'—')+'</div>'
+  +'</div>';}).join('')
+ +'</div>';
+}
 function referralsView(page,t){
- var tools=tableTools(t);
- var rows=filteredRows(t);
- var total=rows.length;var pages=Math.max(1,Math.ceil(total/PG_SIZE));
- if(state.pg>pages)state.pg=pages;
- var pageRows=rows.slice((state.pg-1)*PG_SIZE,state.pg*PG_SIZE);
- var body;
- if(state.loading)body=skelHTML(2,200);
-  else if(!rows.length)body='<div style="margin:14px 16px;border:1px dashed var(--border);border-radius:14px;padding:36px 20px;text-align:center;color:var(--text-2)"><b>Belum ada referral untuk filter ini.</b><br><br><button class="btn sm" data-reset>Reset filter</button> <button class="btn sm" data-refquick>Tambah cepat</button> <button class="btn sm primary" data-refnew>Buat referral</button></div>';
- else body='<div class="adsgrid" style="display:grid;grid-template-columns:1fr;gap:12px;padding:14px 16px">'+pageRows.map(refCardHTML).join('')+'</div>';
- return listHero(page,t,'<button class="btn" data-refquick>'+ic(P_ZAP,17)+'Tambah cepat</button><button class="btn primary" data-refnew>'+ic(P_PLUS,17)+'Buat referral</button>')
-  +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp">'+((total>0&&tools.fCount>0)?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+toolsBar('Cari referral…',tools,false)
-  +body+tfootHTML(total,'tautan',pgPN(pages))+'</div>'+listFoot();
+ questLoad();
+ t.rows=linkMaster();
+ return listHero(page,t,'')
+  +questMinis(questAll())
+  +tableCard(page,t,false)
+  +listFoot();
 }
 VIEWS.vouchers=vouchersView;
 VIEWS.referrals=referralsView;
@@ -2167,7 +2237,8 @@ function reqLoad(){try{var s=store.get('na3-reqinv');var t=featOf('minta-undanga
  {id:'REQ-301',email:'tu@sman1-cirebon.sch.id',cat:'Promo deal',detail:'bonus 25 koin, 100 kursi TO Akbar',t:'tu@sman1-cirebon.sch.id',s:'Promo deal · bonus 25 koin, 100 kursi TO Akbar',st:['Menunggu','amber'],by:'Raka',team:'Marketing',chip:'Menunggu',ts:Date.now()-36e5},
  {id:'REQ-299',email:'halo@bimbelalpha.id',cat:'Lainnya',detail:'akses demo guru BK',t:'halo@bimbelalpha.id',s:'Lainnya · akses demo guru BK',st:['Dikirim','green'],by:'Raka',team:'Marketing',chip:'Dikirim',ts:Date.now()-72e5}]};}catch(_){}}
 function reqFind(id){var out=null;reqAll().forEach(function(r){if(String(r.id)===String(id))out=r;});return out;}
-function reqBell(t,s2){NOTIFS.unshift({id:'N-'+Math.floor(100+Math.random()*900),t:t,s:s2||'',c:'#1D4ED8',type:'Info',link:'minta-undangan',read:false});}
+function copyText(v,okMsg){function done(){toast(okMsg||'Disalin: '+v);}try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(v).then(done,function(){toast(v);});else toast(v);}catch(_){toast(v);}}
+function reqBell(t,s2,link){NOTIFS.unshift({id:'N-'+Math.floor(100+Math.random()*900),t:t,s:s2||'',c:'#1D4ED8',type:'Info',link:link||'minta-undangan',read:false});}
 function reqExpire(){var week=7*24*36e5;var now=Date.now();var ch=false;reqAll().forEach(function(r){if(r.chip==='Menunggu'&&r.ts&&now-r.ts>week){var m=REQST.Kedaluwarsa;r.st=[m[0],m[1]];r.chip=m[0];ch=true;}});if(ch)reqSave();}
 function reqActsFor(){if(state.role==='user')return [{l:'Setujui',icn:P_CHECK,do:'reqok'},{l:'Tolak',icn:P_X,do:'reqno'},{l:'Detail',icn:P_EYE,do:'drawer'}];if(state.role==='marketing')return [{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Batalkan',icn:P_X,do:'reqcancel'}];return [{l:'Detail',icn:P_EYE,do:'drawer'}];}
 function reqRowsFor(){reqLoad();reqExpire();var all=reqAll();if(state.role==='marketing')return all.filter(function(r){return r.team==='Marketing';});return all;}
@@ -2190,7 +2261,7 @@ function reqModal(){
   submit:'Kirim permintaan',
   onSubmit:function(v){
    var r={id:'REQ-'+Math.floor(100+Math.random()*900),email:v.email,cat:v.cat||'Promo deal',detail:v.detail,t:v.email,s:(v.cat||'Promo deal')+' · '+v.detail,st:['Menunggu','amber'],by:'Raka',team:'Marketing',chip:'Menunggu',ts:Date.now()};
-   reqAll().unshift(r);reqSave();reqBell('Permintaan undangan baru',v.email+' · '+r.s);saveFilters();render(false);toast('Permintaan dikirim','Tim User memutuskan.');
+   reqAll().unshift(r);reqSave();reqBell('Permintaan undangan baru',v.email+' · '+r.s,'invitations');saveFilters();render(false);toast('Permintaan dikirim','Tim User memutuskan.');
   }});
 }
 function reqApprove(id){
@@ -2198,7 +2269,8 @@ function reqApprove(id){
  if(state.role!=='user'&&state.role!=='admin'){toast('Hanya Tim User yang memutuskan',null,'err');return;}
  if(r.chip!=='Menunggu'){toast('Sudah diputuskan: '+r.chip,null,'err');return;}
  var m=REQST.Dikirim;r.st=[m[0],m[1]];r.chip=m[0];r.s=r.s+' · oleh Tim User';
- featOf('invitations').rows.unshift({id:'INV-'+Math.floor(1000+Math.random()*9000),t:r.email,s:(r.cat||'')+' · diminta '+(r.by||''),st:['Menunggu','amber'],by:r.by||'Raka',chip:'Menunggu',reqId:r.id});
+ var inv={id:'INV-'+Math.floor(1000+Math.random()*9000),t:r.email,s:(r.cat||'')+' · diminta '+(r.by||''),st:['Menunggu','amber'],by:r.by||'Raka',chip:'Menunggu',reqId:r.id};
+ inv.s0=inv.s;inv.s=inv.s0+' · '+questLabel();featOf('invitations').rows.unshift(inv);
  reqSave();reqBell('Undangan dikirim',r.email+' · permintaan '+(r.by||''));saveFilters();render(false);toast('Undangan dikirim ke '+r.email,'Tercatat di Undangan.');
 }
 function reqReject(id){
@@ -2218,23 +2290,35 @@ function reqCancel(id){
  if(r.chip==='Dikirim'){
   openConfirm('Tarik kembali undangan '+r.email+'?','Undangan yang belum diterima ikut dicabut.','Tarik kembali',function(){
    var t=featOf('invitations');t.rows=(t.rows||[]).filter(function(x){return !(x.reqId&&String(x.reqId)===String(id)&&x.chip==='Menunggu');});
-   var m=REQST.Batal;r.st=[m[0],m[1]];r.chip=m[0];reqSave();reqBell('Undangan ditarik',r.email);saveFilters();render(false);toast('Undangan ditarik kembali');
+   var m=REQST.Batal;r.st=[m[0],m[1]];r.chip=m[0];reqSave();reqBell('Undangan ditarik',r.email,'invitations');saveFilters();render(false);toast('Undangan ditarik kembali');
   });return;
  }
  toast('Tidak ada yang bisa dibatalkan',r.chip,'err');
 }
+/* Undangan + permintaan: Tim User memantau semua undangan dan mengeksekusi permintaan Marketing di sini. */
+function invView(page,t){
+ reqLoad();syncInvQuest();
+ var pend=reqAll().filter(function(r){return r.chip==='Menunggu';});
+ var sec='';
+ if(state.role!=='marketing'&&pend.length){
+  sec='<div class="card" style="margin-bottom:12px"><div class="card-h"><div><div><h2>Permintaan dari Marketing</h2><p>'+pend.length+' menunggu keputusan · kirim atau tolak dari sini</p></div></div></div><div class="act-list">'
+  +pend.map(function(r){return '<div class="ev"><span class="ev-ic tone-primary">'+ic(P_MAIL,17)+'</span><div class="et"><div class="et-t">'+esc(r.email)+'</div><time>'+esc(r.cat||'')+' · '+esc(r.detail||'')+' · '+esc(r.by||'')+'</time></div><button class="btn sm primary" data-do="reqok" data-id="'+esc(r.id)+'" style="flex:0 0 auto">Setujui</button><button class="btn sm" data-do="reqno" data-id="'+esc(r.id)+'" style="flex:0 0 auto">Tolak</button></div>';}).join('')
+  +'</div></div>';
+ }
+ var primary='<button class="btn primary" data-new>'+ic(P_PLUS,17)+'Buat '+esc(t.title)+'</button>';
+ return listHero(page,t,primary)+sec+tableCard(page,t,false)+listFoot();
+}
+VIEWS.invitations=invView;
 function vouForm(editId){
  modalFocus=document.activeElement;
  var d=editId?vouFind(editId):null;
- var kind=d?(d.kind||'Persen'):'Persen';
  var target=d?(d.targetKind||'Semua'):'Semua';
  $('#modalBox').innerHTML='<div class="modal-h"><h3>'+(d?'Ubah voucher':'Buat voucher')+'</h3><p>Atur kode, nilai, kuota, jadwal, dan penerima.</p></div>'
  +'<div class="modal-b">'
  +'<div class="field"><label for="vfName">Nama voucher</label><input id="vfName" value="'+esc(d?(d.t||''):'')+'" placeholder="cth: Diskon TO Akbar 13"><span class="ferr" id="vfeName"></span></div>'
  +'<div class="field"><label for="vfCode">Kode <small>(kosongkan untuk kode otomatis)</small></label><div style="display:flex;gap:8px"><input id="vfCode" value="'+esc(d?(d.code||''):'')+'" placeholder="TO-XXXXXX" autocomplete="off" style="flex:1;min-width:0;text-transform:uppercase"><button class="mini-btn" id="vfGen" style="flex:0 0 auto">'+ic('ti-reload',14)+'<span>Acak</span></button></div><span class="ferr" id="vfeCode"></span></div>'
- +'<div class="field"><label>Tipe potongan</label><div class="seg" role="group" aria-label="Tipe potongan"><button data-vk="Persen" class="'+(kind==='Persen'?'on':'')+'">Persen</button><button data-vk="Nominal" class="'+(kind==='Nominal'?'on':'')+'">Nominal</button></div></div>'
  +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px">'
- +'<div class="field"><label for="vfVal">Nilai</label><input id="vfVal" type="number" min="1" value="'+esc(d?(d.value==null?'':d.value):'')+'" placeholder="cth: 50"><span class="ferr" id="vfeVal"></span></div>'
+ +'<div class="field"><label for="vfVal">Nilai (koin)</label><input id="vfVal" type="number" min="1" value="'+esc(d?(d.value==null?'':d.value):'')+'" placeholder="cth: 50"><span class="ferr" id="vfeVal"></span></div>'
  +'<div class="field"><label for="vfQuota">Kuota</label><input id="vfQuota" type="number" min="1" value="'+esc(d?(d.quota==null?'':d.quota):'')+'" placeholder="cth: 100"><span class="ferr" id="vfeQuota"></span></div>'
  +'</div>'
  +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px">'
@@ -2247,7 +2331,6 @@ function vouForm(editId){
  +'<div class="modal-f"><button class="btn" id="vfCancel">Batal</button><button class="btn primary" id="vfOk">'+(d?'Simpan':'Buat')+'</button></div>';
  $('#modalOv').classList.add('show');
  function targetHint(){var h={Semua:'Semua pelajar bisa memakai kode ini.',Acak:'Sistem memilih N pelajar secara acak.',Pilihan:'N kursi untuk sekolah atau grup tertentu.'};var el=$('#vfTargetHint');if(el)el.textContent=h[target]||'';var w=$('#vfWN');if(w)w.style.display=target==='Semua'?'none':'';}
- $('#modalBox').querySelectorAll('[data-vk]').forEach(function(b){b.onclick=function(){kind=b.getAttribute('data-vk');$('#modalBox').querySelectorAll('[data-vk]').forEach(function(x){x.classList.toggle('on',x===b);});};});
  $('#modalBox').querySelectorAll('[data-vt]').forEach(function(b){b.onclick=function(){target=b.getAttribute('data-vt');$('#modalBox').querySelectorAll('[data-vt]').forEach(function(x){x.classList.toggle('on',x===b);});targetHint();};});
  $('#vfGen').onclick=function(){var el=$('#vfCode');if(el)el.value=vouGenCode('TO');};
  targetHint();
@@ -2260,8 +2343,7 @@ function vouForm(editId){
   mark('vfCode',(vC&&!/^[A-Z0-9-]{3,20}$/.test(vC))?'Kode 3–20 karakter: huruf, angka, strip.':'');
   var nV=Number(vV);
   if(!vV)mark('vfVal','Nilai wajib diisi.');
-  else if(kind==='Persen'&&(!/^\d+$/.test(vV)||nV<1||nV>100))mark('vfVal','Persen 1 sampai 100.');
-  else if(kind==='Nominal'&&(!/^\d+$/.test(vV)||nV<1))mark('vfVal','Nominal minimal Rp1.');
+  else if(!/^\d+$/.test(vV)||nV<1||nV>32767)mark('vfVal','Koin 1 sampai 32767.');
   else mark('vfVal','');
   mark('vfQuota',(!/^\d+$/.test(vQ)||+vQ<1)?'Kuota minimal 1.':'');
   if(vS&&vE&&vE<=vS)mark('vfEnd','Waktu selesai harus setelah waktu mulai.');else mark('vfEnd','');
@@ -2269,10 +2351,10 @@ function vouForm(editId){
   if(!ok){var bad1=$('#modalBox').querySelector('.bad');if(bad1)bad1.focus();return;}
   if(!vC)vC=vouGenCode('TO');
   var tgt=target==='Semua'?'Semua pelajar':target==='Acak'?('Acak · '+vT+' orang'):('Pilihan · '+vT+' kursi');
-  var summ=(kind==='Persen'?('Persen '+nV+'%'):('Nominal Rp'+nV.toLocaleString('id-ID')))+' · kuota '+vQ+' · '+tgt.toLowerCase();
+  var summ=nV.toLocaleString('id-ID')+' koin · kuota '+vQ+' · '+tgt.toLowerCase();
   var t=featOf('vouchers');
-  if(d){d.t=vN;d.code=vC;d.kind=kind;d.value=nV;d.quota=+vQ;d.target=tgt;d.targetKind=target;d.targetN=target==='Semua'?'':+vT;d.s=summ;if(vS)d.mulai=vS.replace('T',', ');if(vE)d.selesai=vE.replace('T',', ');toast('Voucher diperbarui');}
-  else{t.rows.unshift({id:'V-'+Math.floor(100+Math.random()*900),t:vN,s:summ,st:['Draft','gray'],by:'Raka',chip:'Draft',code:vC,kind:kind,value:nV,quota:+vQ,used:0,mulai:vS?vS.replace('T',', '):'Belum diatur',selesai:vE?vE.replace('T',', '):'Belum diatur',target:tgt,targetKind:target,targetN:target==='Semua'?'':+vT});toast('Voucher dibuat sebagai Draft');}
+  if(d){d.t=vN;d.code=vC;d.kind='Koin';d.value=nV;d.quota=+vQ;d.target=tgt;d.targetKind=target;d.targetN=target==='Semua'?'':+vT;d.s=summ;if(vS)d.mulai=vS.replace('T',', ');if(vE)d.selesai=vE.replace('T',', ');toast('Voucher diperbarui');}
+  else{t.rows.unshift({id:'V-'+Math.floor(100+Math.random()*900),t:vN,s:summ,st:['Draft','gray'],by:'Raka',chip:'Draft',code:vC,kind:'Koin',value:nV,quota:+vQ,used:0,mulai:vS?vS.replace('T',', '):'Belum diatur',selesai:vE?vE.replace('T',', '):'Belum diatur',target:tgt,targetKind:target,targetN:target==='Semua'?'':+vT});toast('Voucher dibuat sebagai Draft');}
   closeModal();saveFilters();render(false);
  };
  var f0=$('#vfName');if(f0)f0.focus();
@@ -2290,67 +2372,20 @@ function vouDelete(id){
  });
 }
 function vouDuplicate(id){var t=featOf('vouchers');var d=vouFind(id);if(!d)return;var c={};for(var k in d)c[k]=d[k];c.id='V-'+Math.floor(100+Math.random()*900);c.code=vouGenCode('TO');c.chip='Draft';c.st=['Draft','gray'];c.used=0;t.rows.unshift(c);saveFilters();render(false);toast('Voucher diduplikat sebagai Draft');}
-function refForm(editId){
- modalFocus=document.activeElement;
- var d=editId?refFind(editId):null;
- $('#modalBox').innerHTML='<div class="modal-h"><h3>'+(d?'Ubah referral':'Buat referral')+'</h3><p>Atur kode tautan, reward koin, batas pakai, dan kedaluwarsa.</p></div>'
- +'<div class="modal-b">'
- +'<div class="field"><label for="rfName">Nama kampanye</label><input id="rfName" value="'+esc(d?(d.t||''):'')+'" placeholder="cth: Ajak teman SNBT"><span class="ferr" id="rfeName"></span></div>'
- +'<div class="field"><label for="rfCode">Kode tautan <small>(kosongkan untuk kode otomatis)</small></label><div style="display:flex;gap:8px"><input id="rfCode" value="'+esc(d?(d.code||''):'')+'" placeholder="cth: ajaksnbt" autocomplete="off" style="flex:1;min-width:0"><button class="mini-btn" id="rfGen" style="flex:0 0 auto">'+ic('ti-reload',14)+'<span>Acak</span></button></div><span class="fhint">Tautan jadi tryoutku.id/r/[kode].</span><span class="ferr" id="rfeCode"></span></div>'
- +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px">'
- +'<div class="field"><label for="rfReward">Reward koin</label><input id="rfReward" type="number" min="0" value="'+esc(d?(d.reward==null?'':d.reward):'')+'" placeholder="cth: 25"><span class="ferr" id="rfeReward"></span></div>'
- +'<div class="field"><label for="rfMax">Maksimal pakai <small>(opsional)</small></label><input id="rfMax" type="number" min="1" value="'+esc(d?(d.max==null?'':d.max):'')+'" placeholder="cth: 100"><span class="fhint">Kosongkan = tanpa batas.</span><span class="ferr" id="rfeMax"></span></div>'
- +'</div>'
- +'<div class="field"><label for="rfExpiry">Berlaku sampai <small>(opsional)</small></label><input id="rfExpiry" type="datetime-local"><span class="ferr" id="rfeExpiry"></span></div>'
- +'</div>'
- +'<div class="modal-f"><button class="btn" id="rfCancel">Batal</button><button class="btn primary" id="rfOk">'+(d?'Simpan':'Buat')+'</button></div>';
- $('#modalOv').classList.add('show');
- $('#rfGen').onclick=function(){var el=$('#rfCode');if(el)el.value=refGenCode();};
- $('#rfCancel').onclick=closeModal;
- $('#rfOk').onclick=function(){
-  var vN=$('#rfName').value.trim(),vC=$('#rfCode').value.trim().toLowerCase(),vR=$('#rfReward').value.trim(),vM=$('#rfMax').value.trim(),vE=$('#rfExpiry').value;
-  var ok=true;
-  function mark(id,msg){var f=$('#'+id),e=$('#rfe'+id.slice(2));if(f)f.classList.toggle('bad',!!msg);if(e){e.textContent=msg||'';e.classList.toggle('show',!!msg);}if(msg)ok=false;}
-  mark('rfName',!vN?'Nama kampanye wajib diisi.':vN.length>80?'Nama maksimal 80 karakter.':'');
-  mark('rfCode',(vC&&!/^[a-z0-9-]{3,20}$/.test(vC))?'Kode 3–20 karakter: huruf kecil, angka, strip.':'');
-  mark('rfReward',(!/^\d+$/.test(vR)||+vR<0||+vR>32767)?'Reward 0 sampai 32767.':'');
-  mark('rfMax',(vM&&(!/^\d+$/.test(vM)||+vM<1))?'Maksimal pakai minimal 1.':'');
-  mark('rfExpiry','','');
-  if(!ok){var bad1=$('#modalBox').querySelector('.bad');if(bad1)bad1.focus();return;}
-  if(!vC)vC=refGenCode();
-  var link='tryoutku.id/r/'+vC;
-  var summ=link+' · +'+vR+' koin per pakai';
-  var t=featOf('referrals');
-  if(d){d.t=vN;d.code=vC;d.link=link;d.reward=+vR;d.max=vM?+vM:null;d.s=summ;if(vE)d.expiry=vE.replace('T',', ');toast('Referral diperbarui');}
-  else{t.rows.unshift({id:'R-'+Math.floor(100+Math.random()*900),t:vN,s:summ,st:['Aktif','green'],by:'Raka',chip:'Aktif',code:vC,link:link,reward:+vR,used:0,max:vM?+vM:null,expiry:vE?vE.replace('T',', '):'Belum diatur'});toast('Referral dibuat');}
-  closeModal();saveFilters();render(false);
- };
- var f0=$('#rfName');if(f0)f0.focus();
-}
-function refApply(id,target){var m=REFST[target]||REFST.Aktif;var d=setChip(featOf('referrals'),id,m[0],m[1]);if(!d)return null;saveFilters();render(false);return d;}
-function refFlow(id,target){refApply(id,target);toast('Status referral diperbarui');}
-function refDelete(id){
- var d=refFind(id);
- openConfirm('Hapus referral '+((d&&d.code)||id)+'?','Tautan hilang dari daftar dan tidak bisa dipakai lagi.','Hapus',function(){
-  var t=featOf('referrals');var gone=[];t.rows=(t.rows||[]).filter(function(r){if(r.id===id){gone.push(r);return false;}return true;});render(false);
-  toast('Referral dihapus',null,null,{label:'Urungkan',fn:function(){gone.forEach(function(r){t.rows.unshift(r);});render(false);}});
+function refRevoke(id){
+ var m=linkMaster();var d=null;m.forEach(function(r){if(String(r.id)===String(id))d=r;});if(!d)return;
+ openConfirm('Cabut tautan '+((d&&d.code)||id)+'?','Tautan berhenti berlaku. Siswa yang sudah join tetap tercatat.','Cabut',function(){
+  var gone=[];var t=featOf('referrals');t._master=m.filter(function(r){if(String(r.id)===String(id)){gone.push(r);return false;}return true;});
+  render(false);
+  toast('Tautan dicabut',null,null,{label:'Urungkan',fn:function(){gone.forEach(function(r){t._master.unshift(r);});render(false);}});
  });
 }
-function refDuplicate(id){var t=featOf('referrals');var d=refFind(id);if(!d)return;var c={};for(var k in d)c[k]=d[k];c.id='R-'+Math.floor(100+Math.random()*900);c.code=refGenCode();c.link='tryoutku.id/r/'+c.code;c.chip='Aktif';c.st=['Aktif','green'];c.used=0;t.rows.unshift(c);saveFilters();render(false);toast('Referral diduplikat');}
 function vouQuick(){
- openModal({title:'Tambah cepat voucher',sub:'Cukup nama. Sisanya otomatis: persen 10%, kuota 100, semua pelajar.',fields:[{k:'name',l:'Nama voucher',req:1,ph:'cth: Diskon kilat'}],submit:'Tambah',
+ openModal({title:'Tambah cepat voucher',sub:'Cukup nama. Sisanya otomatis: 10 koin, kuota 100, semua pelajar.',fields:[{k:'name',l:'Nama voucher',req:1,ph:'cth: Diskon kilat'}],submit:'Tambah',
   onSubmit:function(v){
    var code=vouGenCode('TO');
-   featOf('vouchers').rows.unshift({id:'V-'+Math.floor(100+Math.random()*900),t:v.name,s:'Persen 10% · kuota 100 · semua pelajar',st:['Draft','gray'],by:'Raka',chip:'Draft',code:code,kind:'Persen',value:10,quota:100,used:0,mulai:'Belum diatur',selesai:'Belum diatur',target:'Semua pelajar',targetKind:'Semua',targetN:''});
+   featOf('vouchers').rows.unshift({id:'V-'+Math.floor(100+Math.random()*900),t:v.name,s:'10 koin · kuota 100 · semua pelajar',st:['Draft','gray'],by:'Raka',chip:'Draft',code:code,kind:'Koin',value:10,quota:100,used:0,mulai:'Belum diatur',selesai:'Belum diatur',target:'Semua pelajar',targetKind:'Semua',targetN:''});
    saveFilters();render(false);toast(code+' ditambahkan','Ubah untuk atur detail.');
-  }});
-}
-function refQuick(){
- openModal({title:'Tambah cepat referral',sub:'Cukup nama kampanye. Sisanya otomatis: +10 koin, tanpa batas pakai.',fields:[{k:'name',l:'Nama kampanye',req:1,ph:'cth: Ajak teman SNBT'}],submit:'Tambah',
-  onSubmit:function(v){
-   var code=refGenCode();var link='tryoutku.id/r/'+code;
-   featOf('referrals').rows.unshift({id:'R-'+Math.floor(100+Math.random()*900),t:v.name,s:link+' · +10 koin per pakai',st:['Aktif','green'],by:'Raka',chip:'Aktif',code:code,link:link,reward:10,used:0,max:null,expiry:'Belum diatur'});
-   saveFilters();render(false);toast('Referral ditambahkan','Ubah untuk atur detail.');
   }});
 }
 function listView(page,t){
@@ -2425,7 +2460,7 @@ function drawerTabs(t){
  return '<div class="tabs" role="tablist">'+tabs.map(function(tb){return '<button role="tab" aria-selected="'+(state.tab===tb[0])+'" class="'+(state.tab===tb[0]?'on':'')+'" data-dtab="'+tb[0]+'">'+tb[1]+'</button>';}).join('')+'</div>';
 }
 function drawerBody(t,d){
-  if((state.dpage==='vouchers'||state.dpage==='referrals')&&state.tab==='media')return '<div class="dsec"><h4>Pemakaian</h4><div style="font-size:12.8px;color:var(--text-2)">'+(state.dpage==='vouchers'?('Kode terpakai '+esc(d.used||0)+' dari '+esc(d.quota||0)+' kuota · '+esc(d.target||'')):('Tautan dipakai '+esc(d.used||0)+(d.max?(' dari '+esc(d.max)):'')+' kali · +'+esc(d.reward||0)+' koin per pakai.'))+'</div></div>';
+  if((state.dpage==='vouchers'||state.dpage==='referrals')&&state.tab==='media')return '<div class="dsec"><h4>Pemakaian</h4><div style="font-size:12.8px;color:var(--text-2)">'+(state.dpage==='vouchers'?('Kode terpakai '+esc(d.used||0)+' dari '+esc(d.quota||0)+' kuota · '+esc(d.target||'')):('Tautan dipakai '+esc(d.used||0)+(d.max?(' dari '+esc(d.max)):'')+' pendaftar unik · +'+esc(d.paid||0)+' koin terbayar.'))+'</div></div>';
   if(state.tab==='riwayat')return '<div class="timeline">'+actRow(['SA','Dibuat otomatis oleh sistem','2 hari lalu'])+actRow(['RK','Terakhir disentuh','20 menit lalu · tanpa anomali','#16A34A','R. Kartika'])+'</div>';
  if(state.tab==='tindak')return '<div class="dsec"><h4>Alur kerja antrean</h4><div style="font-size:12.8px;color:var(--text-2)">1. Tinjau isi & konteks di tab Ringkasan.<br>2. Tekan tombol utama di bawah untuk memproses.<br>3. Bulk tersedia dari tabel untuk banyak baris sekaligus.</div></div>';
  if(state.tab==='media')return '<div class="dsec"><h4>Versi</h4><div style="display:flex;flex-direction:column;gap:9px;margin-top:10px">'
@@ -2469,8 +2504,8 @@ function drawerBody(t,d){
    +'<p style="font-size:12.8px;color:var(--text-2);margin:12px 0 0">'+esc(d.description||'—')+'</p>'
    +'<details class="st-adv" style="margin-top:12px"><summary>'+ic('ti-settings',16)+'<span>Detail teknis</span></summary><div class="adv-b"><div class="cell-s">Tombol siswa: '+dCta+'</div>'+(stCfg.successMessage?'<div class="cell-s">Pesan sukses: '+esc(stCfg.successMessage)+'</div>':'')+'</div></details>';
   }
-  if(state.dpage==='vouchers'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Kode</dt><dd style="font-family:ui-monospace,Menlo,Consolas,monospace">'+esc(d.code||d.id)+'</dd><dt>Nilai</dt><dd>'+esc(vouValText(d))+' ('+esc(d.kind||'')+')</dd><dt>Kuota</dt><dd>Terpakai '+esc(d.used||0)+' dari '+esc(d.quota||0)+'</dd><dt>Jadwal</dt><dd>'+esc(d.mulai||'—')+' → '+esc(d.selesai||'—')+'</dd><dt>Penerima</dt><dd>'+esc(d.target||'—')+'</dd></dl><div class="dsec"><h4>Alur status</h4><div style="font-size:12.8px;color:var(--text-2)">Draft → Siap → Aktif → Kedaluwarsa. Mengaktifkan meminta konfirmasi.</div></div>';
-  if(state.dpage==='referrals'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Tautan</dt><dd>'+esc(d.link||d.code||'')+'</dd><dt>Reward</dt><dd>+'+esc(d.reward||0)+' koin per pendaftar</dd><dt>Pemakaian</dt><dd>'+esc(d.used||0)+(d.max?(' dari '+esc(d.max)):' (tanpa batas)')+'</dd><dt>Berakhir</dt><dd>'+esc(d.expiry||'—')+'</dd></dl><div class="dsec"><h4>Cara kerja</h4><div style="font-size:12.8px;color:var(--text-2)">Pendaftar memakai tautan, pemilik dan pendaftar sama-sama dapat reward.</div></div>';
+  if(state.dpage==='vouchers'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Kode</dt><dd style="font-family:ui-monospace,Menlo,Consolas,monospace">'+esc(d.code||d.id)+'</dd><dt>Nilai</dt><dd>'+esc(vouValText(d))+'</dd><dt>Kuota</dt><dd>Terpakai '+esc(d.used||0)+' dari '+esc(d.quota||0)+'</dd><dt>Jadwal</dt><dd>'+esc(d.mulai||'—')+' → '+esc(d.selesai||'—')+'</dd><dt>Penerima</dt><dd>'+esc(d.target||'—')+'</dd></dl><div class="dsec"><h4>Alur status</h4><div style="font-size:12.8px;color:var(--text-2)">Draft → Siap → Aktif → Kedaluwarsa. Mengaktifkan meminta konfirmasi.</div></div>';
+  if(state.dpage==='referrals'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Tautan</dt><dd>'+esc(d.link||d.code||'')+'</dd><dt>Pemilik</dt><dd>'+esc(d.owner||d.by||'')+'</dd><dt>Pendaftar unik</dt><dd>'+esc(d.used||0)+(d.max?(' dari '+esc(d.max)):'')+'</dd><dt>Koin terbayar</dt><dd>+'+esc(d.paid||0)+'</dd><dt>Ikut quest</dt><dd>'+questBadge(d.quest)+' '+esc(refQuestName(d.quest))+'</dd><dt>Dibuat</dt><dd>'+esc(d.joined||'—')+'</dd></dl><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-drefcopy="'+esc(d.link||'')+'">Salin tautan</button></div>';
   if(state.dpage==='articles'&&state.tab==='ringkas')return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Judul</dt><dd>'+esc(d.t)+'</dd><dt>Tanggal</dt><dd>'+esc(d.published||'—')+'</dd><dt>Slug</dt><dd>'+esc(d.slug||d.id)+'</dd></dl>'+(d.excerpt?'<div class="dsec"><h4>Ringkasan</h4><div style="font-size:12.8px;color:var(--text-2)">'+esc(d.excerpt)+'</div></div>':'');
   return '<div><span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span></div><dl class="kv"><dt>Penanggung jawab</dt><dd>'+esc(d.by)+'</dd><dt>Detail</dt><dd>'+esc(d.s)+'</dd><dt>ID</dt><dd>'+esc(d.id)+'</dd><dt>Letak menu</dt><dd>'+esc(groupOf(state.dpage||'dashboard').g)+'</dd></dl><div class="dsec"><h4>Catatan</h4><div style="font-size:12.8px;color:var(--text-2)">Riwayat versi dan lampiran tampil di tab sebelah. Teruskan ke tim terkait bila perlu.</div></div>';
 }
@@ -2500,6 +2535,7 @@ function paintDrawer(t,d){
  var dp=$('#drawer').querySelector('[data-drpass]');if(dp)dp.onclick=function(){var v=$('#drPass').value;var er=$('#drPassErr');if(!v||v.length<6){er.textContent='Minimal 6 karakter.';er.classList.add('show');return;}er.classList.remove('show');toast('Kata sandi diperbarui');closeDrawer();};
  var dl=$('#drawer').querySelector('[data-drdel]');if(dl)dl.onclick=function(){openConfirm('Hapus akun ini?','Akun dinonaktifkan. Data riwayat tetap tersimpan.','Hapus',function(){toast('Akun dihapus');closeDrawer();});};
  var dc=$('#drawer').querySelector('[data-drcopy]');if(dc)dc.onclick=function(){toast('Tautan undangan disalin');};
+ var drc=$('#drawer').querySelector('[data-drefcopy]');if(drc)drc.onclick=function(){copyText(drc.getAttribute('data-drefcopy'),'Tautan disalin');};
  var ds=$('#drawer').querySelector('[data-drsave]');if(ds)ds.onclick=function(){toast('Hak akses disimpan');closeDrawer();};
  var dg=$('#drawer').querySelector('[data-drgrade]');if(dg)dg.onclick=function(){var v=$('#drScore').value.trim();var er=$('#drScoreErr');if(v===''||!/^\d+$/.test(v)||+v<0||+v>100){er.textContent='Isi angka 0 sampai 100.';er.classList.add('show');return;}er.classList.remove('show');toast('Nilai '+v+' disimpan','Jawaban masuk antrean review.');closeDrawer();};
  var df=$('#drawer').querySelector('[data-drsavefb]');if(df)df.onclick=function(){toast('Status masukan disimpan');closeDrawer();};
@@ -2627,14 +2663,15 @@ function renderNotif(){
  var g=d.querySelector('[data-ngoto]');if(g)g.onclick=function(){d.classList.remove('show');go('notifications');};
 }
 /* ---- Bindings for #content ---- */
-function openCreate(p){p=p||defPage();if(p==='ads')adForm(null);else if(p==='media')mediaUpload();else if(p==='social-media')socialForm(null);else if(p==='streak-tasks')streakTaskForm(null);else if(p==='vouchers')vouForm(null);else if(p==='referrals')refForm(null);else if(p==='minta-undangan')reqModal();else pendingCreate(p);}
+function openCreate(p){p=p||defPage();if(p==='ads')adForm(null);else if(p==='media')mediaUpload();else if(p==='social-media')socialForm(null);else if(p==='streak-tasks')streakTaskForm(null);else if(p==='vouchers')vouForm(null);else if(p==='minta-undangan')reqModal();else pendingCreate(p);}
 function doAct(id,way){
  if(way==='drawer')openDrawer(id);
  else if(way&&way.indexOf('dtab:')===0)openDrawer(id,way.slice(5));
- else if(way==='new'){if((state.page||defPage())==='minta-undangan')reqModal();else pendingCreate(state.page||defPage());}
+ else if(way==='new'){if((state.page||defPage())==='minta-undangan')reqModal();else if((state.page||defPage())==='referrals')toast('Tautan dibuat siswa dari quest yang live');else pendingCreate(state.page||defPage());}
  else if(way==='reqok')reqApprove(id);
  else if(way==='reqno')reqReject(id);
  else if(way==='reqcancel')reqCancel(id);
+ else if(way==='refcabut')refRevoke(id);
  else if(way&&way.indexOf('go:')===0)go(way.slice(3));
  else if(way&&way.indexOf('confirm:')===0){var cfs=way.slice(8).split('|');openConfirm(cfs[0],cfs[1]||'','Ya',function(){toast(cfs[2]||'Selesai');});}
  else if(way&&way.indexOf('toast:')===0)toast(way.slice(6));
@@ -2658,7 +2695,6 @@ function bindAll(page,t){
   c.querySelectorAll('[data-artcopy]').forEach(function(b){b.onclick=function(e){e.stopPropagation();var ky=$('#artKey');var v=ky?ky.value:'';if(!v){toast('API key kosong',null,'err');return;}function done(){toast('API key disalin');}try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(v).then(done,function(){toast('API key gagal disalin',null,'err');});else done();}catch(_){toast('API key gagal disalin',null,'err');}};});
   c.querySelectorAll('[data-artopen]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openDrawer(b.getAttribute('data-artopen'));};});
   c.querySelectorAll('[data-reqnew]').forEach(function(b){b.onclick=function(e){e.stopPropagation();reqModal();};});
-  function copyText(v,okMsg){function done(){toast(okMsg||'Disalin: '+v);}try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(v).then(done,function(){toast(v);});else toast(v);}catch(_){toast(v);}}
   c.querySelectorAll('[data-vounew]').forEach(function(b){b.onclick=function(e){e.stopPropagation();vouForm(null);};});
   c.querySelectorAll('[data-vouquick]').forEach(function(b){b.onclick=function(e){e.stopPropagation();vouQuick();};});
   c.querySelectorAll('[data-vouedit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();vouForm(b.getAttribute('data-vouedit'));};});
@@ -2666,13 +2702,8 @@ function bindAll(page,t){
   c.querySelectorAll('[data-voudup]').forEach(function(b){b.onclick=function(e){e.stopPropagation();vouDuplicate(b.getAttribute('data-voudup'));};});
   c.querySelectorAll('[data-voucopy]').forEach(function(b){b.onclick=function(e){e.stopPropagation();copyText(b.getAttribute('data-voucopy'),'Kode disalin');};});
   c.querySelectorAll('[data-vouflow]').forEach(function(s){s.onchange=function(e){e.stopPropagation();var id=s.getAttribute('data-vouflow');var v=s.value;var cur=(vouFind(id)||{}).chip||'Draft';if(v==='Aktif'&&cur!=='Aktif')s.value=cur;vouFlow(id,v);};});
-  c.querySelectorAll('[data-refnew]').forEach(function(b){b.onclick=function(e){e.stopPropagation();refForm(null);};});
-  c.querySelectorAll('[data-refquick]').forEach(function(b){b.onclick=function(e){e.stopPropagation();refQuick();};});
-  c.querySelectorAll('[data-refedit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();refForm(b.getAttribute('data-refedit'));};});
-  c.querySelectorAll('[data-refdel]').forEach(function(b){b.onclick=function(e){e.stopPropagation();refDelete(b.getAttribute('data-refdel'));};});
-  c.querySelectorAll('[data-refdup]').forEach(function(b){b.onclick=function(e){e.stopPropagation();refDuplicate(b.getAttribute('data-refdup'));};});
-  c.querySelectorAll('[data-refcopy]').forEach(function(b){b.onclick=function(e){e.stopPropagation();copyText(b.getAttribute('data-refcopy'),'Tautan disalin');};});
-  c.querySelectorAll('[data-refflow]').forEach(function(s){s.onchange=function(e){e.stopPropagation();refFlow(s.getAttribute('data-refflow'),s.value);};});
+  c.querySelectorAll('[data-qedit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();questForm(b.getAttribute('data-qedit'));};});
+  c.querySelectorAll('[data-qact]').forEach(function(b){b.onclick=function(e){e.stopPropagation();questToggleLive(b.getAttribute('data-qact'));};});
   c.querySelectorAll('[data-stnew]').forEach(function(b){b.onclick=function(e){e.stopPropagation();streakTaskForm(null);};});
   c.querySelectorAll('[data-stedit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();streakTaskForm(b.getAttribute('data-stedit'));};});
   c.querySelectorAll('[data-stdel]').forEach(function(b){b.onclick=function(e){e.stopPropagation();stDelete(b.getAttribute('data-stdel'));};});
