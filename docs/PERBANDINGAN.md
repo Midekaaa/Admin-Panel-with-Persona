@@ -16,8 +16,13 @@ File utama: `new-admin.html`. Buka di browser, pilih peran **Tim Marketing** (to
 ## Bank Soal
 
 * Dulu: satu tabel (Konten, Materi, Status, Aksi) berisi judul soal terpotong.
-* Sekarang dua tingkat: grid mata pelajaran, lalu soal-soal mata pelajaran itu sebagai kartu.
-* Tiap kartu soal: nomor, tipe, topik, tingkat sulit, status, teks soal, gambar, pilihan jawaban, kunci + pembahasan, dan aksi Ubah / Duplikat / Arsipkan.
+* Sekarang tiga tingkat: grid mata pelajaran (6 mapel sejajar, tanpa sarang) → daftar isi materi per mapel → soal-soal materi itu sebagai kartu.
+* Level 1: kartu 3:4 (gambar upload atau ikon bawaan kiri atas, tanpa hover) berisi nama + `N materi · N soal`; tombol **Tambah buku mapel** (nama + cover, tanpa kelompok) hanya di sini.
+* Cari selalu tampil; Filter/Urutkan/Reset sebaris dengan cari (tanpa toggle, tanpa di baris judul) di semua tabel; judul hanya bawa Export.
+* Tiap mapel punya materi sendiri (mis. Matematika: Aljabar, Persamaan Kuadrat, Barisan & Deret, Geometri). Materi kosong tetap tampil.
+* Tiap kartu soal: nomor, tipe, topik, tingkat sulit, bobot, status, teks soal, gambar, pilihan jawaban, kunci + pembahasan, dan aksi Lihat kunci / Ubah / Duplikat / Arsipkan (Ubah dikunci saat Locked).
+* Status soal: In Review (cek otomatis) → Ready (bisa dipakai) → Locked (dipakai tryout berjalan, ubah dikunci) → Archive. Bobot default ikut kesulitan: Mudah 5, Sedang 10, Sulit 15.
+* Import soal di halaman mapel (ikut admin asli): template CSV per tipe (Pilihan Ganda, Isian Singkat, Benar/Salah, Uraian) + unduh template → upload → cek otomatis per baris (Lolos/Gagal + alasan, duplikat ditandai) → masukkan yang lolos sebagai Ready. Tambah soal manual ada di dalam materi (cek otomatis saat simpan).
 * Kepala kartu memakai kontrol yang sama dengan tabel: Filter, Urutkan, Export, Reset.
 
 | Before | Update |
