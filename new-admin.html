@@ -61,7 +61,7 @@
   .ti-f-adc:before{content:"\f7d3";}
   .ti-f-user:before{content:"\fd19";}
   .ti-f-shield:before{content:"\f761";}
-  .ni .ti{font-size:24px;flex:0 0 24px}
+  .ni .ti{font-size:16px;flex:0 0 16px}
   .iconbtn .ti{font-size:22px;display:block}
   #roleBtn .ti,.ctx-pop .ti,#roleBtn .ti-f,.ctx-pop .ti-f{font-size:16px}
   .qi .ti,.tick .ti{display:block;font-size:17px}
@@ -117,7 +117,7 @@
     color:var(--text-3);padding:14px 10px 6px}
   body.collapsed .nav-title{font-size:0;padding:10px 12px 6px}
   body.collapsed .nav-title::after{content:"";display:block;height:1px;background:var(--border-soft);border-radius:1px}
-  .ni{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;text-align:left;border:0;
+  .ni{display:flex;align-items:center;gap:12px;width:100%;min-height:38px;text-align:left;border:0;
     background:transparent;color:var(--text-2);padding:0 12px;border-radius:12px;cursor:pointer;
     font-weight:500;font-size:13.5px}
   .ni .ti{opacity:.7}
@@ -125,10 +125,36 @@
   .ni:hover .ti{opacity:1}
   .ni.active{background:var(--primary-50);color:var(--text-h);font-weight:600}
   .ni.active .ti{opacity:1}
+  /* Sidebar aktif: ikon gaya filled Tabler (font tabler-icons-filled sudah dimuat).
+    ti-git-branch tidak punya varian filled → tetap outline saat aktif. */
+  .ni.active .ti-layout-dashboard:before{content:"\fe1f";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-school:before{content:"\101cc";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-mail:before{content:"\fa47";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-database:before{content:"\101e1";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-shield-check:before{content:"\f761";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-key:before{content:"\fe28";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-article:before{content:"\f7da";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-ticket:before{content:"\101c9";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-link:before{content:"\101d5";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-building-broadcast-tower:before{content:"\fe81";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-sitemap:before{content:"\1006b";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-tag:before{content:"\ff02";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-list-details:before{content:"\101d3";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-book:before{content:"\fa87";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-photo:before{content:"\fa4a";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-folder:before{content:"\f749";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-file-text:before{content:"\10114";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-trophy:before{content:"\f6af";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-clipboard-check:before{content:"\100ce";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-message-circle:before{content:"\fecf";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-flag:before{content:"\f67a";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-star:before{content:"\f6a6";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-bell:before{content:"\f669";font-family:"tabler-icons-filled"!important}
+  .ni.active .ti-settings:before{content:"\f69e";font-family:"tabler-icons-filled"!important}
   body.collapsed .ni{justify-content:center;padding:0}
   body.collapsed .ni .lbl,body.collapsed .ni .bdg{display:none}
   .ni .lbl{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .ni.sub{padding-left:24px;min-height:40px;font-size:12.8px}
+  .ni.sub{padding-left:24px;min-height:34px;font-size:12.8px}
   .bdg{font-size:10px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap;
     background:var(--bg-hover);color:var(--text-2)}
   .bdg.dot{width:8px;height:8px;min-width:8px;padding:0;border-radius:50%;flex:0 0 8px}
@@ -192,12 +218,17 @@
     background:var(--danger);border:2px solid var(--bg-card)}
   .crumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-3);white-space:nowrap}
   .crumbs b{color:var(--text-h);font-weight:600}
-  .crumbs button{background:none;border:0;color:var(--text-3);cursor:pointer;font-size:13px;padding:2px 4px;border-radius:6px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+  .crumbs button{background:none;border:0;color:var(--text-3);cursor:pointer;font-size:13px;padding:2px 4px;border-radius:6px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
   .crumbs button:hover{color:var(--primary)}
-  .crumbs .cur{color:var(--text-h);font-weight:600;display:inline-flex;align-items:center;gap:6px}
+  .crumbs .cur{color:var(--text-h);font-weight:600;display:inline-flex;align-items:center;gap:6px;padding:2px 4px}
   .crumbs .cur .ti,.crumbs button .ti{font-size:15px}
   .crumbs .sep{display:inline-flex;color:var(--text-3)}
   .crumbs .sep .ti{font-size:14px}
+  /* Trail boleh dalam, boks breadcrumb tetap: luapan jadi ellipsis, bukan
+     mendorong padding/margin topbar di sekitarnya. */
+  #crumbs{flex:1 1 auto;min-width:0;overflow:hidden}
+  #crumbs>button,#crumbs>.cur{min-width:0}
+  #crumbs button span,#crumbs .cur span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .btn .ti,.link .ti,.mini-btn .ti{font-size:17px}
   .top-right{margin-left:auto;display:flex;align-items:center;gap:10px;flex:0 0 auto}
   .searchtrig{display:flex;align-items:center;gap:8px;min-height:40px;min-width:200px;padding:0 12px;border:1px solid var(--border);
@@ -393,6 +424,18 @@
     padding:9px 10px;border-radius:9px;cursor:pointer;font-size:12.8px;font-weight:600;color:var(--text-1);min-height:38px}
   .kebab button:hover{background:var(--bg-hover)}
   .kebab button .ti{font-size:15px;color:var(--text-2)}
+  /* Filter Notion: kondisi inline yang bisa dilepas + popover tambah/urut. */
+  .fcond{display:inline-flex;align-items:center;gap:6px;background:var(--primary-50);
+    border:1px solid var(--primary);color:var(--primary);border-radius:999px;
+    padding:4px 5px 4px 10px;font-size:12px;font-weight:600;white-space:nowrap}
+  .fcond button{border:0;background:none;color:inherit;cursor:pointer;display:grid;
+    place-items:center;width:18px;height:18px;border-radius:50%;padding:0;min-height:0}
+  .fcond button:hover{background:var(--primary);color:#fff}
+  .fpop-h{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--text-3);padding:8px 10px 4px}
+  .fpop-sec{font-size:11px;font-weight:600;color:var(--text-2);padding:8px 10px 2px}
+  .fpop-back{color:var(--text-2) !important;font-weight:500 !important}
+  .fpop-note{font-size:12px;color:var(--text-2);padding:9px 10px}
   @media(min-width:900px){.adsgrid{grid-template-columns:repeat(2,1fr) !important}}
   @media(min-width:1400px){.adsgrid{grid-template-columns:repeat(3,1fr) !important}}
   /* Bio + manager side by side on desktop, stacked on mobile */
@@ -780,6 +823,30 @@
   .qc-who{display:flex;align-items:center;gap:7px;min-width:0;font-size:12px;color:var(--text-2)}
   .qc-use{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
   @media(max-width:760px){.qc-use{margin-left:0;width:100%}}
+  /* Daftar isi materi: list ringkas tanpa visual, tanpa kartu. */
+  .qtop-list{display:flex;flex-direction:column}
+  .qtop-row{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;color:inherit;
+    background:none;border:0;border-bottom:1px solid var(--border-soft);padding:10px 16px;cursor:pointer}
+  .qtop-row:last-child{border-bottom:0}
+  .qtop-row:hover{background:var(--bg-hover)}
+  .qtop-row .et{flex:1;min-width:0}
+  /* Tile mapel Bank Soal: kartu 3:4 milik sendiri (Media tidak ikut berubah).
+     Tanpa aksen hover di gambar; ubah via tombol pensil. */
+  .qsub{margin:0;display:flex;flex-direction:column;min-width:0;background:var(--bg-card);
+    border:1px solid var(--border);border-radius:var(--r-card);box-shadow:none;overflow:hidden;
+    position:relative;aspect-ratio:3/4}
+  .qsub-art{flex:1;min-height:0;display:grid;place-items:center;color:var(--text-3);position:relative;
+    background:var(--bg-hover);border:0;border-radius:0;width:100%;cursor:pointer;font-family:inherit;padding:0;overflow:hidden}
+  .qsub-art .ti{font-size:44px}
+  .qsub-meta{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+  .qsub:hover{border-color:var(--primary)}
+  /* Hover tombol Ubah tidak menyalakan status hover kartu. */
+  .qsub:has([data-qsubedit]:hover){border-color:var(--border)}
+  .qsub:has([data-qsubedit]:hover) .go{opacity:0}
+  .qsub-meta .meta-row{display:flex;align-items:center;gap:8px}
+  .qsub-meta .meta-row>.cell-t,.qsub-meta .meta-row>.cell-s{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .qsub-meta .go{flex:0 0 auto;color:var(--text-3);opacity:0;transition:opacity .15s ease}
+  .qsub:hover .go{opacity:1}
   /* Tingkat 1 Bank Soal: daftar mata pelajaran. Tile (.m-tile) dan tombol
      gambar (.m-art) dipinjam apa adanya dari halaman Media; grid-nya sendiri
      supaya ponsel tetap satu kolom tanpa mengubah halaman Media. */
@@ -788,6 +855,29 @@
   @media(min-width:1080px){.qsubs{grid-template-columns:repeat(3,minmax(0,1fr))}}
   @media(min-width:1320px){.qsubs{grid-template-columns:repeat(4,minmax(0,1fr))}}
   .qsubt{font-size:12px;font-weight:600;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* Import Soal (UI-only mock, mirror admin asli): dropzone, baris status, progres. */
+  .imp-drop{border:1.5px dashed var(--border);border-radius:12px;padding:14px;display:flex;gap:10px;align-items:center;cursor:pointer;background:var(--bg-hover)}
+  .imp-drop:hover{border-color:var(--primary)}
+  .imp-drop .w-up-ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--bg-card);border:1px solid var(--border);color:var(--text-2);flex:0 0 36px}
+  .imp-tpl{position:relative;display:inline-flex}
+  .imp-tpl-pop{position:absolute;top:calc(100% + 6px);left:0;min-width:280px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-md);padding:6px;display:none;z-index:5}
+  .imp-tpl-pop.show{display:block}
+  .imp-tpl-pop button{display:flex;gap:10px;width:100%;text-align:left;border:0;background:none;padding:9px 10px;border-radius:10px;cursor:pointer;min-height:48px;align-items:flex-start}
+  .imp-tpl-pop button:hover{background:var(--bg-hover)}
+  .imp-tpl-pop b{font-size:12.8px;display:block;color:var(--text-h)}
+  .imp-tpl-pop small{font-size:11.5px;color:var(--text-2);display:block;line-height:1.4}
+  .imp-rows{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto}
+  .imp-row{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:12.5px;background:var(--bg-card)}
+  .imp-row.is-ready{border-color:rgba(22,163,74,.35);background:rgba(22,163,74,.05)}
+  .imp-row.is-dup{border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.07)}
+  .imp-row.is-err{border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.05)}
+  [data-theme="dark"] .imp-row.is-ready{background:rgba(34,197,94,.08)}
+  [data-theme="dark"] .imp-row.is-dup{background:rgba(245,158,11,.08)}
+  [data-theme="dark"] .imp-row.is-err{background:rgba(242,63,67,.08)}
+  .imp-dot{width:9px;height:9px;border-radius:50%;flex:0 0 9px;margin-top:5px}
+  .imp-dot.ok{background:var(--secondary)} .imp-dot.warn{background:var(--gold)} .imp-dot.err{background:var(--danger)}
+  .imp-prog{height:8px;border-radius:99px;background:var(--bg-hover);overflow:hidden}
+  .imp-prog i{display:block;height:100%;width:0;background:var(--primary);border-radius:99px;transition:width .3s ease}
 </style>
 </head>
 <body>
@@ -841,6 +931,7 @@ var P_ZAP='ti-bolt',P_CHEV='ti-chevron-down',P_CHEV_UP='ti-chevron-up',P_EYE='ti
 var P_FILTER='ti-filter',P_SORT='ti-arrows-sort',P_SORT_ASC='ti-sort-ascending',P_SORT_DESC='ti-sort-descending';
 var P_DOT='ti-dots',P_HALF='ti-circle-half-2',P_TRASH='ti-trash',P_ARCH='ti-archive';
 var P_COPY='ti-copy',P_SEND='ti-send',P_BELL='ti-bell';
+var P_UPLOAD='ti-upload';
 /* ============ REAL NAV (mirrors sidebar/constants.tsx: 7 groups, routes, menu perms) ============ */
 var NAV=[
  {g:'Beranda',items:[{k:'dashboard',t:'Dashboard',icn:'ti-layout-dashboard',route:'/',mp:'menu.dashboard'}]},
@@ -854,7 +945,7 @@ var NAV=[
  {g:'Konten',items:[
   {k:'questions',t:'Bank Soal',icn:'ti-books',route:'/questions',mp:'menu.questions',perm:'questionBank.read',badge:'12',cls:'warn'},
   {k:'ads',t:'Iklan',icn:'ti-speakerphone',route:'/ads',mp:'menu.ads',perm:'ads.read',badge:'5',cls:'ok'},
-   {k:'articles',t:'Artikel',icn:'ti-news',route:'/articles',mp:'menu.articles',perm:'articles.read'},
+   {k:'articles',t:'Artikel',icn:'ti-article',route:'/articles',mp:'menu.articles',perm:'articles.read'},
    {k:'vouchers',t:'Voucher',icn:'ti-ticket',route:'/vouchers',mp:'menu.vouchers',perm:'vouchers.read'},
    {k:'referrals',t:'Referral',icn:'ti-link',route:'/referrals',mp:'menu.referrals',perm:'referrals.read'},
    /* Prototype-only: no backend route yet — requested for Marketing */
@@ -1010,32 +1101,33 @@ var F={
 questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',title:'Bank Soal',cat:'content',qa:'Publikasikan',view:'questions',
    acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Duplikat',icn:P_COPY,do:'toast:Soal diduplikat sebagai Draft'},{l:'Arsipkan',icn:P_ARCH,do:'toast:Soal diarsipkan'}],
    sub:'Soal pilihan ganda, isian, dan uraian — lengkap dengan tipe, materi, tingkat sulit, dan status.',
-   cols:['Konten','Materi','Status','Aksi'],filters:[{k:'type',l:'Tipe',o:['Semua','Pilihan Ganda','Benar/Salah','Menjodohkan','Isian Singkat','Uraian']},{k:'diff',l:'Kesulitan',o:['Semua','Mudah','Sedang','Sulit']},{k:'st',l:'Status',o:['Semua','Draft','Dipublikasikan']}],chips:['Semua','Dipublikasikan','Draft','Dilaporkan'],
+   sorts:[{key:'title',label:'Konten'},{key:'type',label:'Tipe'},{key:'diff',label:'Kesulitan'},{key:'status',label:'Status'}],
+   cols:['Konten','Materi','Status','Aksi'],filters:[{k:'type',l:'Tipe',o:['Semua','Pilihan Ganda','Benar/Salah','Menjodohkan','Isian Singkat','Uraian']},{k:'diff',l:'Kesulitan',o:['Semua','Mudah','Sedang','Sulit']},{k:'st',l:'Status',o:['Semua','In Review','Ready','Locked','Archive']}],chips:['Semua','In Review','Ready','Locked','Archive'],
   /* s sengaja memuat tipe + kesulitan supaya filter bawaan (cari 4 huruf awal) tetap kena. */
   rows:[
-    {id:'SOAL-8821',t:'Grafik fungsi f(x) = x² − 6x + 5 berpotongan dengan sumbu X pada titik …',s:'Pilihan Ganda · Matematika · Aljabar · Mudah · dipakai 12x',st:['Dipublikasikan','green'],by:'R. Kartika',chip:'Dipublikasikan',
-     type:'Pilihan Ganda',diff:'Mudah',topic:'Aljabar',subj:'SUB-MAT',fig:'grafik-fungsi.png',options:['(−1, 0) dan (5, 0)','(1, 0) dan (5, 0)','(−1, 0) dan (−5, 0)','(1, 0) dan (3, 0)','(3, 0) dan (−5, 0)'],key:'B',
+    {id:'SOAL-8821',t:'Grafik fungsi f(x) = x² − 6x + 5 berpotongan dengan sumbu X pada titik …',s:'Pilihan Ganda · Matematika · Aljabar · Mudah · dipakai 12x',st:['Ready','green'],by:'R. Kartika',chip:'Ready',
+     type:'Pilihan Ganda',diff:'Mudah',topic:'Aljabar',subj:'SUB-MAT',mat:'MAT-ALJ',points:5,fig:'grafik-fungsi.png',options:['(−1, 0) dan (5, 0)','(1, 0) dan (5, 0)','(−1, 0) dan (−5, 0)','(1, 0) dan (3, 0)','(3, 0) dan (−5, 0)'],key:'B',
      explain:'Nilai x saat f(x) = 0 diperoleh dari x² − 6x + 5 = 0, sehingga (x − 1)(x − 5) = 0 dan x = 1 atau x = 5. Jadi titik potongnya (1, 0) dan (5, 0).',used:12,reports:0},
-    {id:'SOAL-8803',t:'Jika x² − 2x − 8 = 0, tentukan seluruh nilai x yang memenuhi.',s:'Isian Singkat · Matematika · Persamaan Kuadrat · Sedang · dipakai 15x',st:['Dipublikasikan','green'],by:'R. Kartika',chip:'Dipublikasikan',
-     type:'Isian Singkat',diff:'Sedang',topic:'Persamaan Kuadrat',subj:'SUB-MAT',options:[],key:'x = 4 atau x = −2',
+    {id:'SOAL-8803',t:'Jika x² − 2x − 8 = 0, tentukan seluruh nilai x yang memenuhi.',s:'Isian Singkat · Matematika · Persamaan Kuadrat · Sedang · dipakai 15x',st:['Ready','green'],by:'R. Kartika',chip:'Ready',
+     type:'Isian Singkat',diff:'Sedang',topic:'Persamaan Kuadrat',subj:'SUB-MAT',mat:'MAT-PK',points:10,options:[],key:'x = 4 atau x = −2',
      explain:'x² − 2x − 8 = (x − 4)(x + 2) = 0, sehingga x = 4 atau x = −2. Jawaban siswa boleh ditulis dengan urutan terbalik.',used:15,reports:0},
-    {id:'SOAL-8822',t:'Bacalah kutipan berikut. "Banyak UMKM kehilangan pelanggan karena hanya mengandalkan penjualan di sekitar rumah. Pemilik usaha yang memakai katalog daring mencatat penjualan dari luar daerah naik rata-rata 30%." Kesimpulan yang paling tepat dari kutipan itu adalah …',s:'Pilihan Ganda · Bahasa Indonesia · Literasi · Sulit · dipakai 3x',st:['Draft','amber'],by:'Sinta',chip:'Draft',
-     type:'Pilihan Ganda',diff:'Sulit',topic:'Literasi',subj:'SUB-BIN',options:['Penggunaan katalog daring membantu UMKM menjangkau pasar yang lebih luas','Penjualan di sekitar rumah sudah tidak menarik bagi pembeli','Katalog daring selalu lebih menguntungkan daripada toko fisik','Hanya 30% UMKM yang sudah memakai katalog daring','Kenaikan penjualan berasal dari kenaikan harga barang'],key:'A',
+    {id:'SOAL-8822',t:'Bacalah kutipan berikut. "Banyak UMKM kehilangan pelanggan karena hanya mengandalkan penjualan di sekitar rumah. Pemilik usaha yang memakai katalog daring mencatat penjualan dari luar daerah naik rata-rata 30%." Kesimpulan yang paling tepat dari kutipan itu adalah …',s:'Pilihan Ganda · Bahasa Indonesia · Literasi · Sulit · dipakai 3x',st:['In Review','amber'],by:'Sinta',chip:'In Review',
+     type:'Pilihan Ganda',diff:'Sulit',topic:'Literasi',subj:'SUB-BIN',mat:'BIN-LIT',points:15,options:['Penggunaan katalog daring membantu UMKM menjangkau pasar yang lebih luas','Penjualan di sekitar rumah sudah tidak menarik bagi pembeli','Katalog daring selalu lebih menguntungkan daripada toko fisik','Hanya 30% UMKM yang sudah memakai katalog daring','Kenaikan penjualan berasal dari kenaikan harga barang'],key:'A',
      explain:'Kutipan menyebut kenaikan penjualan 30% pada pemilik usaha yang memakai katalog daring, dan pembeli dari luar daerah. Jadi katalog daring memperluas jangkauan pasar. Angka 30% menunjukkan kenaikan penjualan, bukan jumlah UMKM.',used:3,reports:1},
-    {id:'SOAL-8774',t:'Sebuah gelombang berjalan pada tali memiliki panjang gelombang 4 m dan kecepatan 8 m/s. Frekuensi gelombang tersebut adalah …',s:'Pilihan Ganda · Fisika · Gelombang · Mudah · ada gambar · dipakai 21x',st:['Dipublikasikan','green'],by:'D. Mahesa',chip:'Dipublikasikan',
-     type:'Pilihan Ganda',diff:'Mudah',topic:'Gelombang',subj:'SUB-FIS',fig:'gelombang-tali.webp',options:['1 Hz','2 Hz','4 Hz','8 Hz','16 Hz'],key:'B',
+    {id:'SOAL-8774',t:'Sebuah gelombang berjalan pada tali memiliki panjang gelombang 4 m dan kecepatan 8 m/s. Frekuensi gelombang tersebut adalah …',s:'Pilihan Ganda · Fisika · Gelombang · Mudah · ada gambar · dipakai 21x',st:['Ready','green'],by:'D. Mahesa',chip:'Ready',
+     type:'Pilihan Ganda',diff:'Mudah',topic:'Gelombang',subj:'SUB-FIS',mat:'FIS-GEL',points:5,fig:'gelombang-tali.webp',options:['1 Hz','2 Hz','4 Hz','8 Hz','16 Hz'],key:'B',
      explain:'Frekuensi dihitung dari f = v ÷ λ = 8 ÷ 4 = 2 Hz. Panjang gelombang dalam meter dan kecepatan dalam meter per sekon.',used:21,reports:0},
-    {id:'SOAL-8790',t:'Dari suatu barisan aritmetika diketahui suku ke-5 = 12 dan suku ke-9 = 28. Nilai suku ke-20 adalah …',s:'Pilihan Ganda · Matematika · Barisan · Sedang · 2 laporan',st:['Dilaporkan','red'],by:'Sistem',chip:'Dilaporkan',
-     type:'Pilihan Ganda',diff:'Sedang',topic:'Barisan',subj:'SUB-MAT',options:['56','64','68','72','80'],key:'D',
+    {id:'SOAL-8790',t:'Dari suatu barisan aritmetika diketahui suku ke-5 = 12 dan suku ke-9 = 28. Nilai suku ke-20 adalah …',s:'Pilihan Ganda · Matematika · Barisan · Sedang · 2 laporan',st:['In Review','amber'],by:'Sistem',chip:'In Review',
+     type:'Pilihan Ganda',diff:'Sedang',topic:'Barisan',subj:'SUB-MAT',mat:'MAT-BAR',points:10,options:['56','64','68','72','80'],key:'D',
      explain:'Selisih suku ke-9 dan ke-5 adalah 16, jadi beda barisan u = 16 ÷ 4 = 4. Dari a + 4u = 12 diperoleh a = −4. Maka suku ke-20 = −4 + 19(4) = 72.',used:27,reports:2},
-    {id:'SOAL-8791',t:'Tentukan benar atau salah pernyataan berikut: kata "praktek" merupakan bentuk baku dari kata "praktik".',s:'Benar/Salah · Bahasa Indonesia · Tata Bahasa · Mudah · dipakai 8x',st:['Dipublikasikan','green'],by:'Sinta',chip:'Dipublikasikan',
-     type:'Benar/Salah',diff:'Mudah',topic:'Tata Bahasa',subj:'SUB-BIN',options:['Benar','Salah'],key:'A',
+    {id:'SOAL-8791',t:'Tentukan benar atau salah pernyataan berikut: kata "praktek" merupakan bentuk baku dari kata "praktik".',s:'Benar/Salah · Bahasa Indonesia · Tata Bahasa · Mudah · dipakai 8x',st:['Ready','green'],by:'Sinta',chip:'Ready',
+     type:'Benar/Salah',diff:'Mudah',topic:'Tata Bahasa',subj:'SUB-BIN',mat:'BIN-TB',points:5,options:['Benar','Salah'],key:'A',
      explain:'Menurut KBBI, bentuk baku kata kerja adalah "praktik". "Praktek" hanya dipakai dalam konteks tidak baku, jadi pernyataan ini benar.',used:8,reports:0},
-    {id:'SOAL-8809',t:'Pasangkan setiap istilah dengan definisi yang paling tepat.',s:'Menjodohkan · Biologi · Genetika · Sedang · dipakai 9x',st:['Dipublikasikan','green'],by:'R. Kartika',chip:'Dipublikasikan',
-     type:'Menjodohkan',diff:'Sedang',topic:'Genetika',subj:'SUB-BIO',options:['Hibrida — Persilangan dua individu dengan variasi genetik berbeda','Alel resesif — Alel yang hanya muncul pada individu homozigot resesif','Homozigot — Individu yang memiliki dua alel identik dari satu gen','Genotipe — Susunan alel yang dimiliki individu'],key:'Semua pasangan sesuai',
+    {id:'SOAL-8809',t:'Pasangkan setiap istilah dengan definisi yang paling tepat.',s:'Menjodohkan · Biologi · Genetika · Sedang · dipakai 9x',st:['Locked','blue'],by:'R. Kartika',chip:'Locked',
+     type:'Menjodohkan',diff:'Sedang',topic:'Genetika',subj:'SUB-BIO',mat:'BIO-GEN',points:10,usedIn:'TO Akbar 12',options:['Hibrida — Persilangan dua individu dengan variasi genetik berbeda','Alel resesif — Alel yang hanya muncul pada individu homozigot resesif','Homozigot — Individu yang memiliki dua alel identik dari satu gen','Genotipe — Susunan alel yang dimiliki individu'],key:'Semua pasangan sesuai',
      explain:'Keempat pasangan sudah sesuai definisi baku. Saat dipakai di tryout, urutan pasangan diacak; kunci jawaban mengikuti urutan yang diacak.',used:9,reports:0},
-    {id:'SOAL-8782',t:'Uraikan hubungan antara kenaikan permintaan dan harga keseimbangan di pasar, serta dampaknya terhadap jumlah barang yang diperdagangkan.',s:'Uraian · Ekonomi · Mikroekonomi · Sulit · dipakai 1x',st:['Draft','amber'],by:'D. Mahesa',chip:'Draft',
-     type:'Uraian',diff:'Sulit',topic:'Mikroekonomi',subj:'SUB-EKO',options:[],key:'Dinilai sesuai rubrik',
+    {id:'SOAL-8782',t:'Uraikan hubungan antara kenaikan permintaan dan harga keseimbangan di pasar, serta dampaknya terhadap jumlah barang yang diperdagangkan.',s:'Uraian · Ekonomi · Mikroekonomi · Sulit · dipakai 1x',st:['Archive','gray'],by:'D. Mahesa',chip:'Archive',
+     type:'Uraian',diff:'Sulit',topic:'Mikroekonomi',subj:'SUB-EKO',mat:'EKO-MIK',points:15,options:[],key:'Dinilai sesuai rubrik',
      explain:'Rubrik menilai tiga hal: alasan harga naik ketika permintaan naik, pergeseran titik keseimbangan, dan alasan jumlah barang yang diperdagangkan bertambah. Jawaban dinilai manual oleh pemeriksa.',used:1,reports:0}],
    empty:{t:'Belum ada soal di sini',d:'Buat soal pertama: pilih tipe, tulis konten, pasang kunci dan pembahasan.',c:'Buat soal'},
    form:[{k:'type',l:'Tipe soal',type:'select',opts:['Pilihan Ganda','Benar/Salah','Menjodohkan','Isian Singkat','Uraian']},{k:'content',l:'Konten soal',type:'textarea',req:1,ph:'Tulis soal (maks 80 char tampil di daftar)…'},{k:'diff',l:'Kesulitan',type:'select',opts:['Mudah','Sedang','Sulit']}]},
@@ -1132,9 +1224,9 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'CA-FIS',t:'Fisika Saintek',s:'74 soal · 9 materi · 3 unit',st:['Nonaktif','gray'],by:'Sistem'}],
   empty:{t:'Belum ada bidang materi',d:'Buat bidang materi sebagai wadah materi dan unit blueprint.',c:'Buat bidang'},
   form:[{k:'name',l:'Nama bidang',req:1,ph:'cth: TPS — Penalaran Umum'},{k:'code',l:'Kode',req:1,ph:'cth: CA-TPS'}]},
- topics:{menu:'menu.topics',hideActs:true,route:'/topics',perm:'taxonomy.read',title:'Materi',cat:'structure',qa:'Gabungkan duplikat',
-  sub:'Topik di dalam tiap kelompok materi. Topik kembar bisa digabung.',
-  cols:['Materi','ContentArea','Status','Aksi'],filters:[{k:'ca',l:'ContentArea',o:['Semua','TPS','Literasi','Fisika']}],chips:['Semua'],
+  topics:{menu:'menu.topics',hideActs:true,route:'/topics',perm:'taxonomy.read',title:'Materi',cat:'structure',qa:'Gabungkan duplikat',
+   sub:'Topik di dalam tiap kelompok materi. Topik kembar bisa digabung.',
+   cols:['Materi','ContentArea','Status','Aksi'],filters:[{k:'ca',l:'Bidang',o:['Semua','TPS','Literasi','Fisika']}],chips:['Semua'],
   rows:[
    {id:'PU-14',t:'Penalaran Umum 14 — Kuantor',s:'TPS · 3 nama lain',st:['Aktif','green'],by:'D. Mahesa'},
    {id:'BI-07',t:'Literasi BI 07 — Teks argumen',s:'Literasi · 1 nama lain',st:['Aktif','green'],by:'Sinta'},
@@ -1196,8 +1288,8 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
   empty:{t:'Belum ada versi',d:'Setiap perubahan blueprint tersimpan sebagai versi yang bisa dibandingkan.',c:'Buat versi'}},
  drills:{menu:'menu.drill',route:'/drills',perm:'drill.read',title:'Latihan',cat:'assess',qa:'Lihat daftar soal',
   acts:[{l:'Detail',icn:P_EYE,do:'drawer'},{l:'Kelola unit',icn:P_GRID,do:'dtab:unit'},{l:'Publikasikan',icn:P_CHECK,do:'toast:Latihan dipublikasikan'}],
-  sub:'Paket latihan dari blueprint yang sudah siap. Ketuk untuk lihat pool soal.',
-  cols:['Latihan','Kesiapan','Status','Aksi'],filters:[{k:'st',l:'Filter',o:['Semua','Siap','Perlu perbaikan','Draft']}],chips:['Semua','Siap','Perlu perbaikan','Draft'],
+   sub:'Paket latihan dari blueprint yang sudah siap. Ketuk untuk lihat pool soal.',
+   cols:['Latihan','Kesiapan','Status','Aksi'],filters:[{k:'st',l:'Status',o:['Semua','Siap','Perlu perbaikan','Draft']}],chips:['Semua','Siap','Perlu perbaikan','Draft'],
   rows:[
    {id:'DR-PU',t:'Latihan PU-14 (24 paket)',s:'blueprint v4 aktif · 240 soal siap',st:['Siap','green'],by:'Tim Soal',chip:'Siap'},
    {id:'DR-FIS',t:'Latihan Fisika Gelombang',s:'2 topik belum ada soal sulit',st:['Perlu perbaikan','amber'],by:'Tim Soal',chip:'Perlu perbaikan'},
@@ -1357,12 +1449,12 @@ var DASH={
  admin:{act:[120,150,135,170,160,190,184],reg:[90,110,100,128,120,142,135],dev:[['Android',64],['Desktop',27],['iOS',9]],ref:[['Organik',312],['Sekolah',284],['Teman',208],['Iklan',196]]}
 };
 /* State */
-var state={role:store.get('na3-role')||'soal',page:null,qsub:null,chip:'Semua',q:'',fq:{},sort:null,sortKey:null,
- showFilters:false,pg:1,theme:store.get('na3-theme')||'light',loading:false,sel:{},tab:'ringkas',palIdx:0,range:'7',streakDays:30};
+var state={role:store.get('na3-role')||'soal',page:null,qsub:null,qtop:null,q:'',sort:null,sortKey:null,
+ pg:1,theme:store.get('na3-theme')||'light',loading:false,sel:{},tab:'ringkas',palIdx:0,range:'7',streakDays:30,flt:[]};
 var PG_SIZE=6;
 function fkey(){return 'na3-f-'+state.role+'-'+(state.page||defPage());}
-function saveFilters(){store.set(fkey(),JSON.stringify({chip:state.chip,q:state.q,fq:state.fq,sort:state.sort,sortKey:state.sortKey,showFilters:state.showFilters,pg:state.pg}));}
-function loadFilters(){try{var s=store.get(fkey());if(!s)return;var o=JSON.parse(s);if(o.chip)state.chip=o.chip;state.q=o.q||'';state.fq=o.fq||{};state.sort=o.sort||null;state.sortKey=o.sortKey||null;state.showFilters=o.showFilters===true;state.pg=o.pg||1;}catch(_){}}
+function saveFilters(){store.set(fkey(),JSON.stringify({flt:state.flt,q:state.q,sort:state.sort,sortKey:state.sortKey,pg:state.pg}));}
+function loadFilters(){try{var s=store.get(fkey());if(!s)return;var o=JSON.parse(s);state.flt=o.flt||[];state.q=o.q||'';state.sort=o.sort||null;state.sortKey=o.sortKey||null;state.pg=o.pg||1;}catch(_){}}
 function clearFilters(){store.clearPref('na3-f-');}
 document.documentElement.dataset.theme=state.theme;
 if(store.get('na3-collapsed')==='1')document.body.classList.add('collapsed');
@@ -1383,8 +1475,8 @@ function toast(m,s2,kind,action){
 function defPage(){return 'dashboard';}
 function featOf(page){if(page==='dashboard')return F['dash-'+state.role]||F['dash-admin'];return F[page]||GENERIC(page,'Halaman');}
 function saveLast(){try{store.set('na3-last',state.role+'|'+(state.page||defPage()));}catch(_){}}
-function setRole(r,silent){if(!ROLES[r])return;state.role=r;state.page=null;state.qsub=null;state.chip='Semua';state.q='';state.fq={};state.sort=null;state.sortKey=null;state.showFilters=false;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();store.set('na3-role',r);saveLast();if(!silent)window.scrollTo(0,0);load(function(){if(!silent)toast('Beralih ke '+ROLES[r].label,ROLES[r].hide);});}
-function go(p){state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.chip='Semua';state.q='';state.fq={};state.sort=null;state.sortKey=null;state.showFilters=false;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
+function setRole(r,silent){if(!ROLES[r])return;state.role=r;state.page=null;state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();store.set('na3-role',r);saveLast();if(!silent)window.scrollTo(0,0);load(function(){if(!silent)toast('Beralih ke '+ROLES[r].label,ROLES[r].hide);});}
+function go(p){state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
 function load(done){state.loading=true;render(true);clearTimeout(load.t);load.t=setTimeout(function(){state.loading=false;render(false);if(done)done();},220);}
 function cycle(){setRole(ROLE_ORDER[(ROLE_ORDER.indexOf(state.role)+1)%ROLE_ORDER.length]);}
 function fic(cls,s){return '<i class="ti-f '+cls+'"'+(s?' style="font-size:'+s+'px"':'')+'></i>';}
@@ -1416,7 +1508,7 @@ function renderSidebar(){
 function navBtn(it,sub){
  var cur=(state.page||defPage())===it.k||(it.k==='dashboard'&&(state.page===null||state.page==='dashboard'));
  var bdg=it.dot?'<span class="bdg dot '+(it.cls||'')+'" title="Ada baru"></span>':(it.badge?'<span class="bdg '+(it.cls||'')+'">'+it.badge+'</span>':'');
- return '<button class="ni'+(sub?' sub':'')+(cur?' active':'')+'" data-nav="'+it.k+'" title="'+esc(it.t)+'"'+(cur?' aria-current="page"':'')+'>'+ic(it.icn||'ti-dots',sub?20:24)+'<span class="lbl">'+esc(it.t)+'</span>'+bdg+'</button>';
+  return '<button class="ni'+(sub?' sub':'')+(cur?' active':'')+'" data-nav="'+it.k+'" title="'+esc(it.t)+'"'+(cur?' aria-current="page"':'')+'>'+ic(it.icn||'ti-dots',sub?18:20)+'<span class="lbl">'+esc(it.t)+'</span>'+bdg+'</button>';
 }
 function groupOf(page){
  var groups=navVisible(state.role);
@@ -1432,12 +1524,28 @@ function renderCrumbs(){
  var page=state.page||defPage();var t=featOf(page);
  var isDash=(page==='dashboard');var g=groupOf(page==='dashboard'?'dashboard':page);
  var label=isDash?'Dashboard':t.title;
-  var h='<button data-crumb="home"><span>Admin</span></button><span class="sep">'+ic(P_CHR,14)+'</span>';
-  if(isDash)h+='<span class="cur">'+ic('ti-layout-dashboard',15)+'<span>'+esc(label)+'</span></span>';
-  else h+='<button data-crumb="group">'+esc(g.g)+'</button><span class="sep">'+ic(P_CHR,14)+'</span><span class="cur">'+ic((g.item&&g.item.icn)||'ti-dots',15)+'<span>'+esc(label)+'</span></span>';
+ var h='<button data-crumb="home"><span>Admin</span></button><span class="sep">'+ic(P_CHR,14)+'</span>';
+ if(isDash)h+='<span class="cur">'+ic('ti-layout-dashboard',15)+'<span>'+esc(label)+'</span></span>';
+ else{
+  h+='<button data-crumb="group">'+esc(g.g)+'</button><span class="sep">'+ic(P_CHR,14)+'</span>';
+  if(page==='questions'){
+   var qs=state.qsub?qSub(state.qsub):null;
+   if(!qs)h+='<span class="cur">'+ic((g.item&&g.item.icn)||'ti-dots',15)+'<span>'+esc(label)+'</span></span>';
+   else{
+    label=qs.name;
+    h+='<button data-crumb="qs">'+ic((g.item&&g.item.icn)||'ti-dots',15)+'<span>'+esc(t.title)+'</span></button><span class="sep">'+ic(P_CHR,14)+'</span>';
+    var qm=state.qtop?qTop(state.qtop):null;
+    if(!qm)h+='<span class="cur"><span>'+esc(qs.name)+'</span></span>';
+    else{label=qm.name;h+='<button data-crumb="qsub">'+esc(qs.name)+'</button><span class="sep">'+ic(P_CHR,14)+'</span><span class="cur"><span>'+esc(qm.name)+'</span></span>';}
+   }
+  }
+  else h+='<span class="cur">'+ic((g.item&&g.item.icn)||'ti-dots',15)+'<span>'+esc(label)+'</span></span>';
+ }
  var c=$('#crumbs');c.innerHTML=h;document.title=label+' · '+ROLES[state.role].label+' · Tryoutku Admin';
  c.querySelector('[data-crumb="home"]').onclick=function(){go('dashboard');};
  var gb=c.querySelector('[data-crumb="group"]');if(gb)gb.onclick=function(){go('dashboard');};
+ var qsb=c.querySelector('[data-crumb="qs"]');if(qsb)qsb.onclick=function(){state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.pg=1;saveFilters();window.scrollTo(0,0);load();};
+ var qmb=c.querySelector('[data-crumb="qsub"]');if(qmb)qmb.onclick=function(){state.qtop=null;state.flt=[];state.q='';state.pg=1;saveFilters();window.scrollTo(0,0);load();};
 }
 function syncChrome(){
  var collapsed=document.body.classList.contains('collapsed');
@@ -1504,8 +1612,16 @@ var SORTS={
  detail:{label:'Detail',get:function(d){return String((d.by||'')+' '+(d.s||''));}},
  status:{label:'Status',get:function(d){return String((d.st&&d.st[0])||'');}},
  owner:{label:'Penyebar',get:function(d){return String(d.owner||d.by||'');}},
- quest:{label:'Quest',get:function(d){return String(d.quest||'');}}
+ quest:{label:'Quest',get:function(d){return String(d.quest||'');}},
+ type:{label:'Tipe',get:function(d){return String(d.type||'');}},
+ diff:{label:'Kesulitan',get:function(d){return String(d.diff||'');}}
 };
+/* Opsi urut dibaca dari kolom tabel itu sendiri (kontekstual per halaman).
+   t.sorts opsional: override eksplisit [{key,label}]. */
+function sortProps(t){
+ if(t.sorts)return t.sorts;
+ return colDefsOf(t).filter(function(c){return c.sort&&SORTS[c.sort];}).map(function(c){return {key:c.sort,label:c.label};});
+}
 function applySort(rows){
  if(!state.sort||!state.sortKey||!SORTS[state.sortKey])return rows;
  var g=SORTS[state.sortKey].get;var dir=state.sort==='asc'?1:-1;
@@ -1518,11 +1634,139 @@ function thCell(label,key,alignRight){
  var aria=active?(state.sort==='asc'?'ascending':'descending'):'none';
  return '<th class="th-sort'+(active?' sorted':'')+'" data-sort="'+key+'" aria-sort="'+aria+'"'+(alignRight?' style="text-align:right"':'')+'><span class="th-in">'+esc(label)+' '+arrow+'</span></th>';
 }
+/* ===== Filter Notion: kondisi {properti, operator, nilai} + urut properti =====
+   Properti dibaca dari deskriptor tabel (chips → Status, filters → select).
+   Semua kondisi digabung AND. state.flt=[{k,op:'eq'|'ne',v}]. */
+/* Properti dibaca dari descriptor tabel (chips → Status, filters → select).
+   Select yang isinya sama/lengkap dengan chip digabung jadi satu Status. */
+function filterProps(t){
+ var chips=(t.chips||[]).filter(function(c){return c!=='Semua';});
+ var out=[],chipUsed=chips.length>0;
+ (t.filters||[]).forEach(function(f){
+  var ops=(f.o||[]).filter(function(o){return o!=='Semua';});
+  if(!ops.length)return;
+  var covers=chips.length>0&&chips.every(function(c){return ops.indexOf(c)>=0;});
+  var sub=chips.length>0&&ops.every(function(o){return chips.indexOf(o)>=0;});
+  if(sub&&!covers)return;
+  if(covers)chipUsed=false;
+  out.push({key:f.k,label:f.l,options:ops});
+ });
+ if(chipUsed)out.unshift({key:'_chip',label:'Status',options:chips});
+ return out;
+}
+function propOf(t,k){var out=null;filterProps(t).forEach(function(p){if(p.key===k)out=p;});return out;}
+function fltMatch(d,c){
+ var v=c.v,hit;
+ if(c.k==='_chip')hit=(d.chip===v||d.chip==='Semua'||!d.chip);
+ else if(c.k==='isi'){var cc=qSubCount(d);hit=(v==='In Review')?cc.draft>0:cc.total===0;}
+ else if(c.k==='ent')hit=(d.ent===v);
+ else if(c.k==='owner')hit=(d.owner===v);
+ else hit=((d.t+' '+d.s).toLowerCase().indexOf(String(v).toLowerCase().slice(0,4))>=0||(d.st&&d.st[0]===v));
+ return c.op==='ne'?!hit:!!hit;
+}
+function fltN(){return (state.flt||[]).length;}
+function hasResetF(){return fltN()>0||!!state.q||!!state.sort;}
+function sortLbl(t){var sp=t?sortProps(t):null;var lbl=null;if(sp)sp.forEach(function(o){if(o.key===state.sortKey)lbl=o.label;});if(!lbl&&SORTS[state.sortKey])lbl=SORTS[state.sortKey].label;if(!state.sort||!state.sortKey||!lbl)return 'Urutkan';return lbl+' '+(state.sort==='asc'?'A–Z':'Z–A');}
 function filteredRows(t){
- var rows=(t.rows||[]).filter(function(d){return !state.chip||state.chip==='Semua'||d.chip===state.chip||d.chip==='Semua'||!d.chip;});
- Object.keys(state.fq).forEach(function(fk){var fv=state.fq[fk];if(!fv||fv==='Semua')return;if(fk==='ent'){rows=rows.filter(function(d){return d.ent===fv;});return;}if(fk==='owner'){rows=rows.filter(function(d){return d.owner===fv;});return;}rows=rows.filter(function(d){return (d.t+' '+d.s).toLowerCase().indexOf(fv.toLowerCase().slice(0,4))>=0||(d.st&&d.st[0]===fv);});});
+ var rows=(t.rows||[]).filter(function(d){return (state.flt||[]).every(function(c){return fltMatch(d,c);});});
  if(state.q){var q=state.q.toLowerCase();rows=rows.filter(function(d){return (d.id+' '+d.t+' '+d.s+' '+d.by).toLowerCase().indexOf(q)>=0;});}
  return applySort(rows);
+}
+/* Bar filter dua baris: [cari…] lalu [Filter ·n] [kondisi ×]… [Urutkan] [Reset]. */
+function filterBarHTML(t,ph,ss){
+ var conds=(state.flt||[]).map(function(c,i){
+  var p=propOf(t,c.k);
+  return '<span class="fcond"><span>'+esc(p?p.label:c.k)+' '+(c.op==='ne'?'bukan':'adalah')+' '+esc(c.v)+'</span><button data-nflt-del="'+i+'" aria-label="Hapus filter">'+ic(P_X,13)+'</button></span>';
+ }).join('');
+ var n=fltN();
+ var sortIcon=state.sort==='asc'?P_SORT_ASC:state.sort==='desc'?P_SORT_DESC:P_SORT;
+ return '<div><div class="filters">'
+  +searchField(ph||'Cari…',ss||'flex:0 0 auto;width:340px;max-width:100%')
+  +'</div><div class="filters" style="padding-top:8px">'
+  +(filterProps(t).length?'<button class="link'+(n?' on':'')+'" data-nfilter aria-haspopup="true">'+ic(P_FILTER,15)+(n?('Filter · '+n):'Filter')+'</button>':'')
+  +conds
+  +(sortProps(t).length?'<button class="link'+(state.sort?' on':'')+'" id="sortBtn" title="'+esc(sortLbl(t))+'" aria-pressed="'+(!!state.sort)+'">'+ic(sortIcon,15)+esc(sortLbl(t))+'</button>':'')
+  +(hasResetF()?'<button class="link" data-reset>Reset</button>':'')
+  +'</div><div style="height:10px"></div></div>';
+}
+/* Deskriptor filter/sort sesuai bar yang dirender (level-1 mapel pakai SUBTOOLS, level-2 pakai TOPICSORT). */
+function filterDesc(){var pg=state.page||defPage();if(pg==='questions'&&!state.qsub)return SUBTOOLS;return featOf(pg);}
+function sortDesc(){var pg=state.page||defPage();if(pg==='questions'){if(!state.qsub)return SUBTOOLS;if(!state.qtop)return TOPICSORT;}return featOf(pg);}
+/* Filter/Sort popover: click-only toggle. Hover does nothing.
+   Open/close via click on the button, close on outside click / Escape / select. */
+var popCloseT=null;
+function popStay(){if(popCloseT){clearTimeout(popCloseT);popCloseT=null;}}
+function popArm(){popStay();var p=$('#kebabPop');if(p)p.classList.remove('show');}
+/* Gap-tolerant leave: jangan tutup kalau pointer masih di tombol/pop
+   atau di jembatan di antaranya (pindah tombol -> daftar). */
+function popGuard(e,btn){
+  var pop=$('#kebabPop');if(!pop||!pop.classList.contains('show'))return;
+  var rt=e&&e.relatedTarget;
+  if(rt){
+    if(rt===pop||pop.contains(rt))return;
+    if(btn&&(rt===btn||btn.contains(rt)))return;
+  }
+  try{
+    if(e&&typeof e.clientX==='number'&&btn){
+      var b=btn.getBoundingClientRect(),p=pop.getBoundingClientRect();
+      var x=e.clientX,y=e.clientY;
+      var minX=Math.min(b.left,p.left)-4,maxX=Math.max(b.right,p.right)+4;
+      var minY=Math.min(b.top,p.top)-4,maxY=Math.max(b.bottom,p.bottom)+4;
+      if(x>=minX&&x<=maxX&&y>=minY&&y<=maxY)return;
+    }
+  }catch(_){}
+  popArm();
+}
+function placePop(btn,flush){
+  var pop=$('#kebabPop');if(!pop)return null;
+  var r=btn.getBoundingClientRect();
+  var pw=pop.offsetWidth||220,ph=pop.offsetHeight||160;
+  var x=r.left;if(x<12)x=12;if(x+pw>window.innerWidth-12)x=window.innerWidth-pw-12;
+  var gap=flush?0:6;
+  var y=r.bottom+gap;if(y+ph>window.innerHeight-12)y=r.top-ph-gap;if(y<12)y=12;
+  pop.style.left=x+'px';pop.style.top=y+'px';
+  pop.classList.add('show');
+  return pop;
+}
+/* Langkah 1: pilih properti. Langkah 2: operator + nilai. */
+function openFilterPop(btn,t,step){
+ step=step||{stage:'props'};
+ var pop=$('#kebabPop');if(!pop)return;
+ var h='';
+ if(step.stage==='props'){
+  var props=filterProps(t);
+  h+='<div class="fpop-h">Tambah filter</div>';
+  if(!props.length)h+='<div class="fpop-note">Tidak ada properti filter di tabel ini.</div>';
+  props.forEach(function(p){h+='<button data-nprop="'+esc(p.key)+'">'+ic(P_FILTER,15)+'<span>'+esc(p.label)+'</span></button>';});
+ }else{
+  var p=propOf(t,step.key);if(!p)return;
+  var op='eq';
+  h+='<button class="fpop-back" data-nback>'+ic(P_CHL,15)+'<span>'+esc(p.label)+'</span></button>';
+  p.options.forEach(function(o){h+='<button data-nval="'+esc(o)+'"><span>'+esc(o)+'</span></button>';});
+ }
+    pop.innerHTML=h;placePop(btn);
+  pop.dataset.src='filter';
+  pop.onmouseenter=null;
+  pop.onmouseleave=null;
+  pop.querySelectorAll('[data-nprop]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openFilterPop(btn,t,{stage:'vals',key:b.getAttribute('data-nprop')});};});
+  var bb=pop.querySelector('[data-nback]');if(bb)bb.onclick=function(e){e.stopPropagation();openFilterPop(btn,t,{stage:'props'});};
+ pop.querySelectorAll('[data-nval]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.flt.push({k:step.key,op:'eq',v:b.getAttribute('data-nval')});state.pg=1;saveFilters();pop.classList.remove('show');render(false);};});
+}
+/* Menu urut: opsi dibaca dari kolom tabel (sortProps) — klik properti = naik → turun → mati. */
+function openSortPop(btn,t){
+ var pop=$('#kebabPop');if(!pop)return;
+ var opts=sortProps(t||sortDesc());
+ var h='<div class="fpop-h">Urutkan</div>';
+ if(!opts.length)h+='<div class="fpop-note">Tidak ada kolom yang bisa diurut di tabel ini.</div>';
+ opts.forEach(function(o){
+  var cur=state.sortKey===o.key&&state.sort;
+  h+='<button data-nsort-pick="'+esc(o.key)+'">'+ic(cur?(state.sort==='asc'?P_SORT_ASC:P_SORT_DESC):P_SORT,15)+'<span>'+esc(o.label)+(cur?(state.sort==='asc'?' · A–Z':' · Z–A'):'')+'</span></button>';
+ });
+ pop.innerHTML=h;placePop(btn);
+  pop.dataset.src='sort';
+  pop.onmouseenter=null;
+  pop.onmouseleave=null;
+  pop.querySelectorAll('[data-nsort-pick]').forEach(function(b){b.onclick=function(e){e.stopPropagation();var k=b.getAttribute('data-nsort-pick');if(state.sortKey!==k||!state.sort){state.sortKey=k;state.sort='asc';}else if(state.sort==='asc'){state.sort='desc';}else{state.sort=null;state.sortKey=null;}state.pg=1;saveFilters();pop.classList.remove('show');render(false);};});
 }
 function cellTitle(d){return '<div class="cell-t">'+esc(d.t)+'</div><div class="cell-s">'+esc(d.id)+'</div>';}
 function cellWho(d,i){return '<div class="who">'+ava(d.by,i)+'<span><span class="cell-t" style="font-weight:500">'+esc(d.by)+'</span><br><span class="cell-s">'+esc(d.s)+'</span></span></div>';}
@@ -1548,6 +1792,7 @@ function openKebab(btn,d,t){
  var items=(t.menu||[]).concat(((t.acts||[]).slice(2)));
  if(!items.length)return;
  var pop=$('#kebabPop');
+ popStay();pop.onmouseenter=null;pop.onmouseleave=null;
  pop.innerHTML=items.map(function(a,i){return '<button data-k="'+i+'" role="menuitem">'+ic(a.icn||P_DOT,15)+'<span>'+esc(a.l)+'</span></button>';}).join('');
  pop.classList.add('show');
  var r=btn.getBoundingClientRect();
@@ -1573,16 +1818,12 @@ function pgPN(pages,prev,next){return '<button data-pg="prev"'+(state.pg<=1?' di
 function tfootHTML(total,label,pg){return '<div class="tfoot"><span><b style="color:var(--text-h)">'+total+'</b> '+label+'</span><span class="pg">'+pg+'</span></div>';}
 function skelHTML(n,h){var s='';for(var i=0;i<n;i++)s+='<div class="skel" style="height:'+h+'px'+(i?';margin-top:10px':'')+'"></div>';return '<div style="padding:14px 16px" aria-hidden="true">'+s+'</div>';}
 function searchField(ph,style){var has=!!state.q;return '<span class="fsearch"'+(style?' style="'+style+'"':'')+'>'+ic(P_SEARCH,17)+'<input type="text" class="rowQ" placeholder="'+esc(ph)+'" value="'+esc(state.q)+'" aria-label="'+esc(ph)+'" autocomplete="off" role="searchbox">'+(has?'<button class="rowClear" data-clear-q aria-label="Hapus pencarian">'+ic(P_X,15)+'</button>':'')+'</span>';}
-function resetTable(){state.chip='Semua';state.q='';state.fq={};state.sort=null;state.sortKey=null;state.pg=1;saveFilters();render(false);toast('Filter direset');}
-function headerResetHTML(on){return '<button class="link'+(on?'':' reset-hidden')+'" data-reset'+(on?'':' disabled aria-hidden="true" tabindex="-1"')+'>Reset</button>';}
-function toolsBar(ph,tools,sel){return '<div style="padding:12px 16px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center"><div class="chips" style="padding:0">'+tools.chips+'</div>'+(sel?tools.fbar:'')+searchField(ph,'flex:1;min-width:170px;max-width:290px;margin-left:auto')+'</div><div style="height:12px"></div>';}
+function resetTable(){state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;saveFilters();render(false);toast('Filter direset');}
 function tableCard(page,t,preview){
  var rows=filteredRows(t);
  var total=rows.length;var pages=Math.max(1,Math.ceil(total/PG_SIZE));
  if(state.pg>pages)state.pg=pages;
  var pageRows=preview?rows.slice(0,4):rows.slice((state.pg-1)*PG_SIZE,state.pg*PG_SIZE);
- var fbar=(t.filters||[]).map(function(f2){return '<select data-f="'+f2.k+'" aria-label="'+esc(f2.l)+'">'+f2.o.map(function(o){return '<option'+((state.fq[f2.k]||'Semua')===o?' selected':'')+'>'+esc(o)+'</option>';}).join('')+'</select>';}).join('');
- var chips=(t.chips||['Semua']).map(function(c2){return '<button class="chip'+(state.chip===c2?' active':'')+'" data-chip="'+esc(c2)+'">'+esc(c2)+'</button>';}).join('');
  var body;
   if(state.loading)body=skelHTML(3,44);
   else if(!rows.length)body=emptyHTML(t,!!(t.form||t.cat!=='system'));
@@ -1590,18 +1831,12 @@ function tableCard(page,t,preview){
   +pageRows.map(function(d,i){return '<tr data-row="'+esc(d.id)+'" tabindex="0" class="'+(state.sel[d.id]?'selected':'')+'"><td class="sel-cell"><input type="checkbox" data-sel="'+esc(d.id)+'"'+(state.sel[d.id]?' checked':'')+' aria-label="Pilih '+esc(d.t)+'"></td>'+rowCellsHTML(t,d,i)+(t.hideActs?'':'<td><div class="rowact">'+rowActs(t,d)+'</div></td>')+'</tr>';}).join('')+'</tbody></table></div>';
   var selIds=Object.keys(state.sel).filter(function(id){return state.sel[id];});
  var bulk=selIds.length?'<div class="bulkbar" role="status">'+selIds.length+' dipilih <button class="mini-btn" data-bulk="process">Tandai diproses</button><button class="mini-btn" data-bulk="archive">Arsipkan</button><button class="mini-btn danger" data-bulk="delete">Hapus</button><button class="mini-btn" data-clear>Batal</button></div>':'';
- var sortIcon=state.sort==='asc'?P_SORT_ASC:state.sort==='desc'?P_SORT_DESC:P_SORT;
- var sortLabel=state.sort==='asc'?'Urut A–Z':state.sort==='desc'?'Urut Z–A':'Urutkan';
- var fCount=(state.chip&&state.chip!=='Semua'?1:0)+Object.keys(state.fq).filter(function(k){return state.fq[k]&&state.fq[k]!=='Semua';}).length+(state.q?1:0);
- var filterLabel=fCount>0?'Filter · '+fCount:'Filter';
    var pgBtns=preview?'':pgNum(pages);
   var headLeft='<h2>'+esc(t.title)+'</h2>';
-  var hasReset=(fCount>0||!!state.sort);
-  var resetBtn=(!preview?'<button class="link'+(hasReset?'':' reset-hidden')+'" data-reset'+(hasReset?'':' disabled aria-hidden="true" tabindex="-1"')+'>Reset</button>':'');
-  return '<div class="card"><div class="card-h"><div><div>'+headLeft+'</div></div><div class="sp">'
-   +(preview?'<button class="link" data-goto="'+esc(page)+'">Lihat semua</button>':'<button class="link'+(fCount>0?' on':'')+'" id="filterBtn" aria-pressed="'+(fCount>0)+'">'+ic(P_FILTER,15)+esc(filterLabel)+'</button><button class="link'+(state.sort?' on':'')+'" id="sortBtn" title="'+esc(sortLabel)+'" aria-pressed="'+(!!state.sort)+'">'+ic(sortIcon,15)+esc(sortLabel)+'</button>'+resetBtn+'<button class="link" data-t="Menyiapkan export…">'+ic(P_DOWNLOAD,15)+'Export</button>')
+   return '<div class="card"><div class="card-h"><div><div>'+headLeft+'</div></div><div class="sp">'
+   +(preview?'<button class="link" data-goto="'+esc(page)+'">Lihat semua</button>':'<button class="link" data-t="Menyiapkan export…">'+ic(P_DOWNLOAD,15)+'Export</button>')
    +'</div></div>'
-   +(preview?'':'<div id="filterPanel"'+(state.showFilters?'':' style="display:none"')+'><div class="filters">'+searchField('Cari nama, ID, email…','flex:1;min-width:170px')+fbar+'</div><div class="chips">'+chips+'</div><div style="height:10px"></div></div>')
+   +(preview?'':filterBarHTML(t,'Cari nama, ID, email…'))
    +bulk+body
     +(preview?'':tfootHTML(total,'dari '+(t.rows||[]).length+' data',pgBtns))+'</div>';
 }
@@ -1727,15 +1962,6 @@ function listFoot(){return '<div style="height:56px"></div>';}
 function dashFoot(){return '<div style="height:56px"></div>';}
 function kpiHTML(r){return r.kpis.map(function(k){return '<button class="kpi '+k.c+'" data-goto="'+k.go+'"><div class="kh"><span class="lbl">'+esc(k.l)+'</span></div><div class="vrow"><span class="val">'+esc(k.v)+'</span><span class="delta '+k.c+'">'+esc(k.d)+'</span></div><div class="sub dot">'+esc(k.s)+'</div></button>';}).join('');}
 function heroBtnsHTML(r){return r.heroes.map(function(h){return '<button class="btn '+(h[3]||'')+'" data-hero-go="'+h[2]+'"'+(h[4]?' data-hero-new="1"':'')+'>'+ic(h[4]?P_PLUS:P_ZAP,17)+esc(h[0])+'</button>';}).join('');}
-function tableTools(t){
- var fbar=(t.filters||[]).map(function(f2){return '<select data-f="'+f2.k+'" aria-label="'+esc(f2.l)+'">'+f2.o.map(function(o){return '<option'+((state.fq[f2.k]||'Semua')===o?' selected':'')+'>'+esc(o)+'</option>';}).join('')+'</select>';}).join('');
- var chips=(t.chips||['Semua']).map(function(c2){return '<button class="chip'+(state.chip===c2?' active':'')+'" data-chip="'+esc(c2)+'">'+esc(c2)+'</button>';}).join('');
- var sortIcon=state.sort==='asc'?P_SORT_ASC:state.sort==='desc'?P_SORT_DESC:P_SORT;
- var sortLabel=state.sort==='asc'?'Urut A–Z':state.sort==='desc'?'Urut Z–A':'Urutkan';
- var fCount=(state.chip&&state.chip!=='Semua'?1:0)+Object.keys(state.fq).filter(function(k){return state.fq[k]&&state.fq[k]!=='Semua';}).length+(state.q?1:0);
- var filterLabel=fCount>0?'Filter · '+fCount:'Filter';
- return {fbar:fbar,chips:chips,sortIcon:sortIcon,sortLabel:sortLabel,fCount:fCount,filterLabel:filterLabel};
-}
 var ADST={Draft:['Draft','gray'],Menunggu:['Menunggu','amber'],Tayang:['Tayang','green'],Selesai:['Selesai','gray']};
 var ADFLOW={Draft:['Menunggu','Tayang','Selesai'],Menunggu:['Draft','Tayang','Selesai'],Tayang:['Draft','Menunggu','Selesai'],Selesai:['Draft','Menunggu','Tayang']};
 var ADFLOWLBL={Draft:'Jadikan Draft',Menunggu:'Jadwalkan',Tayang:'Jadikan Tayang',Selesai:'Tandai Selesai'};
@@ -1751,7 +1977,6 @@ function adCardHTML(d){
   +foot+'</div></article>';
 }
 function adsView(page,t){
- var tools=tableTools(t);
  var rows=filteredRows(t);
  var total=rows.length;var pages=Math.max(1,Math.ceil(total/PG_SIZE));
  if(state.pg>pages)state.pg=pages;
@@ -1761,7 +1986,7 @@ function adsView(page,t){
   else if(!rows.length)body='<div style="margin:14px 16px;border:1px dashed var(--border);border-radius:14px;padding:36px 20px;text-align:center;color:var(--text-2)"><b>Belum ada iklan untuk filter ini.</b><br><br><button class="btn sm" data-reset>Reset filter</button></div>';
  else body='<div class="adsgrid" style="display:grid;grid-template-columns:1fr;gap:12px;padding:14px 16px">'+pageRows.map(adCardHTML).join('')+'</div>';
   return listHero(page,t,'<button class="btn" data-adtemp>'+ic(P_GRID,17)+'Dari template</button><button class="btn primary" data-new>'+ic(P_PLUS,17)+'Tambah Iklan</button>')
-   +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp">'+((total>0&&tools.fCount>0)?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+toolsBar('Cari iklan…',tools,false)
+   +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp">'+(hasResetF()?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+filterBarHTML(t,'Cari iklan…')
    +body+tfootHTML(total,'iklan',pgPN(pages))+'</div>'+listFoot();
 }
 function adDuplicate(id){var t=featOf('ads');var d=adFind(id);if(!d)return;var c={};for(var k in d)c[k]=d[k];c.id='ADS-'+Math.floor(100+Math.random()*900);c.chip='Draft';c.st=['Draft','gray'];t.rows.unshift(c);saveFilters();render(false);toast('Iklan diduplikat sebagai Draft');}
@@ -1789,7 +2014,6 @@ function adDelete(id){
 var VIEWS={};
 function mediaIcon(d){var m=d.mime||'';if(m.indexOf('audio')===0)return 'ti-music';if(m.indexOf('image')===0)return 'ti-photo';if(m.indexOf('video')===0)return 'ti-video';return 'ti-file-text';}
 function mediaView(page,t){
- var tools=tableTools(t);
  var rows=filteredRows(t);
  var total=rows.length;var pages=Math.max(1,Math.ceil(total/PG_SIZE));
  if(state.pg>pages)state.pg=pages;
@@ -1801,7 +2025,7 @@ function mediaView(page,t){
   var ext=(d.t||'').split('.').pop().toUpperCase();
   return '<div class="card m-tile"><button class="m-art" data-mopen="'+esc(d.id)+'" aria-label="Buka '+esc(d.t)+'"><span style="display:flex;flex-direction:column;align-items:center;gap:6px">'+ic(mediaIcon(d),32)+'<b style="font-size:11px;letter-spacing:.06em">'+esc(ext)+'</b></span></button><div style="padding:12px 12px 10px;display:flex;flex-direction:column;gap:7px"><span><span class="cell-t" style="font-size:12.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(d.t)+'</span><span class="cell-s">'+esc(d.cat||'')+' · '+esc(d.size||'')+'</span></span><span style="display:flex;gap:6px;align-items:center">'+byAvatar(d.by,ix)+'<span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span><span class="m-quick" style="margin-left:auto"><button class="mini-btn ic" data-mdown="'+esc(d.id)+'" title="Export" aria-label="Export">'+ic(P_DOWNLOAD,12)+'</button></span></span></div></div>';}).join('')+'</div>';
   return listHero(page,t,'<button class="btn primary" data-new>'+ic(P_PLUS,17)+'Unggah media</button>')
-   +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp">'+((total>0&&tools.fCount>0)?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+toolsBar('Cari file…',tools,false)
+   +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp">'+(hasResetF()?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+filterBarHTML(t,'Cari file…')
    +body+tfootHTML(total,'file',pgNum(pages))+'</div>'+listFoot();
 }
 /* ===== Bank Soal: kartu soal, bukan tabel =====
@@ -1820,17 +2044,19 @@ function qOptsHTML(d,kl){
 }
 function qCardHTML(d,no,ix){
  var kl=qKeyLetter(d);
+ var locked=d.st&&d.st[0]==='Locked';
  var fig=d.fig?'<div class="qc-fig">'+ic('ti-photo',26)+'<span>'+esc(d.fig)+'</span></div>':'';
- var tags='<span class="qc-tags"><span class="qtag">'+esc(d.type||'')+'</span><span class="qtag">'+esc(d.topic||'')+'</span><span class="qtag '+(QDIFF[d.diff]||'')+'"><span class="dot"></span>'+esc(d.diff||'')+'</span></span>';
+ var tags='<span class="qc-tags"><span class="qtag">'+esc(d.type||'')+'</span><span class="qtag">'+esc(d.topic||'')+'</span><span class="qtag '+(QDIFF[d.diff]||'')+'"><span class="dot"></span>'+esc(d.diff||'')+'</span><span class="qtag">Bobot '+esc(d.points||0)+'</span>'+(locked&&d.usedIn?'<span class="qtag">'+esc(d.usedIn)+' · berjalan</span>':'')+'</span>';
  var use='<span class="qc-use"><span class="cell-s">dipakai '+esc(d.used||0)+'x</span>'
   +'<button class="mini-btn ic" data-qkey="'+esc(d.id)+'" aria-expanded="false" aria-controls="qkey-'+esc(d.id)+'" title="Lihat kunci dan pembahasan" aria-label="Lihat kunci dan pembahasan soal '+esc(d.id)+'">'+ic(P_EYE,14)+'</button>'
-  +'<button class="mini-btn ic" data-qqedit="'+esc(d.id)+'" title="Ubah soal" aria-label="Ubah soal '+esc(d.id)+'">'+ic(P_PENCIL,14)+'</button>'
+  +(locked?'<button class="mini-btn ic" data-qlocked="'+esc(d.id)+'" title="Terkunci — dipakai tryout berjalan" aria-label="Soal terkunci">'+ic('ti-lock',14)+'</button>':'<button class="mini-btn ic" data-qqedit="'+esc(d.id)+'" title="Ubah soal" aria-label="Ubah soal '+esc(d.id)+'">'+ic(P_PENCIL,14)+'</button>')
   +'<button class="mini-btn ic" data-qdup="'+esc(d.id)+'" title="Duplikat" aria-label="Duplikat soal '+esc(d.id)+'">'+ic(P_COPY,14)+'</button>'
   +'<button class="mini-btn ic" data-qarch="'+esc(d.id)+'" title="Arsipkan" aria-label="Arsipkan soal '+esc(d.id)+'">'+ic(P_ARCH,14)+'</button></span>';
  return '<article class="qc" data-qcard="'+esc(d.id)+'">'
   +'<div class="qc-top"><button class="qc-no" data-qopen="'+esc(d.id)+'" title="Buka detail soal" aria-label="Buka detail soal '+esc(d.id)+'">'+no+'</button>'+tags
   +'<span class="status '+d.st[1]+'">'+esc(d.st[0])+'</span>'+(d.reports?'<span class="bdg alert">'+esc(d.reports)+' laporan</span>':'')+'</div>'
   +'<p class="qc-stem">'+esc(d.t)+'</p>'+fig
+  +(d.checkFail&&d.checkFail.length?'<div class="cell-s" style="margin:8px 14px 0;color:var(--danger)">Gagal cek: '+esc(d.checkFail[0])+(d.checkFail.length>1?' (+'+(d.checkFail.length-1)+' lagi)':'')+'</div>':'')
   +(d.options&&d.options.length?qOptsHTML(d,kl):'<div class="qfill">'+(d.type==='Uraian'?'Kolom uraian pelajar · dinilai manual dari rubrik.':'Kolom jawaban pelajar · isian pendek.')+'</div>')
   +'<div class="qkey" id="qkey-'+esc(d.id)+'" hidden><b>Kunci jawaban</b><p><b>'+esc(d.key||'belum diisi')+'</b> — '+esc(d.explain||'Pembahasan belum ditulis.')+'</p></div>'
   +'<div class="qc-foot"><span class="qc-who">'+byAvatar(d.by,ix)+esc(d.by||'')+'</span>'+use+'</div></article>';
@@ -1842,20 +2068,187 @@ function qPick(id,L){
  saveFilters();render(false);
  if(f.d.pick&&kl&&f.d.pick!==kl)toast('Pilihan '+f.d.pick+' beda dari kunci '+kl,'Buka pembahasan untuk mengecek.');
 }
+/* ===== Cek soal otomatis (ikut aturan import admin asli) =====
+   Bobot default: Mudah 5, Sedang 10, Sulit 15. */
+var QW_BY_DIFF={Mudah:5,Sedang:10,Sulit:15};
+var QDIFF_ID={easy:'Mudah',medium:'Sedang',hard:'Sulit',Mudah:'Mudah',Sedang:'Sedang',Sulit:'Sulit',mudah:'Mudah',sedang:'Sedang',sulit:'Sulit',sukar:'Sulit'};
+function qNormDiff(v){return QDIFF_ID[String(v||'').trim().toLowerCase()]||'';}
+function checkSoal(o){
+ var errs=[];
+ var type=o.type||'';
+ if(!String(o.content||'').trim())errs.push('Teks soal wajib diisi.');
+ if(type==='Pilihan Ganda'){
+  var opts=(o.options||[]).filter(function(x){return String(x||'').trim();});
+  if(opts.length<2)errs.push('Minimal 2 opsi jawaban.');
+  var kl=String(o.key||'').trim().toUpperCase();
+  if(!kl)errs.push('Kunci jawaban wajib diisi (contoh: B).');
+  else{var idx='ABCDE'.indexOf(kl);if(idx<0||!String(opts[idx]||'').trim())errs.push('Kunci "'+kl+'" tidak cocok dengan opsi yang diisi.');}
+ }else if(type==='Isian Singkat'){
+  if(!String(o.key||'').trim())errs.push('Jawaban benar wajib diisi.');
+ }else if(type==='Benar/Salah'){
+  var b=String(o.key||'').trim().toLowerCase();
+  if(b!=='benar'&&b!=='salah')errs.push('Kunci harus "Benar" atau "Salah".');
+ }
+ var dv=qNormDiff(o.diff);
+ if(!dv)errs.push('Tingkat kesulitan wajib diisi (Mudah/Sedang/Sulit).');
+ var pv=Number(String(o.points==null?'':o.points).replace(',','.'));
+ if(o.points===''||o.points==null||!isFinite(pv)||pv<=0)errs.push('Bobot nilai wajib diisi (> 0).');
+ else if(dv&&pv!==QW_BY_DIFF[dv])errs.push('Kesulitan '+dv+' harus berbobot '+QW_BY_DIFF[dv]+'.');
+ return {ok:errs.length===0,reasons:errs,diff:dv||o.diff,points:pv};
+}
+/* Tambah soal manual di dalam materi: cek otomatis jalan saat simpan. */
+function qSoalForm(matId){
+ var m=qTop(matId);if(!m)return;
+ var subjId=null;Object.keys(QMAT).forEach(function(k){QMAT[k].forEach(function(x){if(x.id===matId)subjId=k;});});
+ var s=subjId?qSub(subjId):null;
+ var mats=subjId?qMats(subjId):[m];
+ modalFocus=document.activeElement;
+ $('#modalBox').innerHTML='<div class="modal-h"><h3>Tambah soal</h3><p>'+esc(s?s.name:'')+' · '+esc(m.name)+' · cek otomatis saat simpan.</p></div>'
+ +'<div class="modal-b">'
+ +'<div class="field"><label for="qsType">Tipe soal</label><select id="qsType" aria-label="Tipe soal"><option>Pilihan Ganda</option><option>Isian Singkat</option><option>Benar/Salah</option><option>Uraian</option></select></div>'
+ +'<div class="field"><label for="qsText">Teks soal</label><textarea id="qsText" placeholder="Tulis soal…"></textarea><span class="ferr" id="qseText"></span></div>'
+ +'<div class="field" data-qs="pg"><label for="qsOpts">Opsi jawaban <small>(satu per baris)</small></label><textarea id="qsOpts" placeholder="Opsi A&#10;Opsi B&#10;Opsi C"></textarea><span class="ferr" id="qseOpts"></span></div>'
+ +'<div class="field" data-qs="pg"><label for="qsKey">Kunci jawaban <small>(huruf, cth: B)</small></label><input id="qsKey" placeholder="B" style="text-transform:uppercase"><span class="ferr" id="qseKey"></span></div>'
+ +'<div class="field" data-qs="isian" style="display:none"><label for="qsAns">Jawaban benar</label><input id="qsAns" placeholder="cth: Jakarta"><span class="ferr" id="qseAns"></span></div>'
+ +'<div class="field" data-qs="bs" style="display:none"><label for="qsBS">Kunci jawaban</label><select id="qsBS" aria-label="Kunci jawaban"><option>Benar</option><option>Salah</option></select></div>'
+ +'<div class="field" data-qs="uraian" style="display:none"><label for="qsRub">Rubrik penilaian</label><textarea id="qsRub" placeholder="Yang dinilai dari jawaban…"></textarea></div>'
+ +'<div class="field"><label for="qsMat">Materi</label><select id="qsMat" aria-label="Materi">'+mats.map(function(x){return '<option value="'+esc(x.id)+'"'+(x.id===matId?' selected':'')+'>'+esc(x.name)+'</option>';}).join('')+'</select></div>'
+ +'<div class="field"><label for="qsExp">Pembahasan</label><textarea id="qsExp" placeholder="Pembahasan jawaban…"></textarea></div>'
+ +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px">'
+ +'<div class="field"><label for="qsDiff">Tingkat kesulitan</label><select id="qsDiff" aria-label="Tingkat kesulitan"><option>Sedang</option><option>Mudah</option><option>Sulit</option></select></div>'
+ +'<div class="field"><label for="qsPts">Bobot nilai</label><input id="qsPts" type="number" min="1" value="10"><span class="fhint">Default: Mudah 5 · Sedang 10 · Sulit 15.</span><span class="ferr" id="qsePts"></span></div>'
+ +'</div>'
+ +'</div>'
+ +'<div class="modal-f"><button class="btn" id="qsCancel">Batal</button><button class="btn primary" id="qsOk">Simpan & cek</button></div>';
+ $('#modalOv').classList.add('show');
+ function syncType(){var ty=$('#qsType').value;$('#modalBox').querySelectorAll('[data-qs]').forEach(function(f){f.style.display=((f.getAttribute('data-qs')==='pg'&&ty==='Pilihan Ganda')||(f.getAttribute('data-qs')==='isian'&&ty==='Isian Singkat')||(f.getAttribute('data-qs')==='bs'&&ty==='Benar/Salah')||(f.getAttribute('data-qs')==='uraian'&&ty==='Uraian'))?'':'none';});}
+ $('#qsType').onchange=syncType;syncType();
+ $('#qsDiff').onchange=function(){var dd={Mudah:5,Sedang:10,Sulit:15}[$('#qsDiff').value];if(dd)$('#qsPts').value=dd;};
+ $('#qsCancel').onclick=closeModal;
+ $('#qsOk').onclick=function(){
+  var ty=$('#qsType').value;
+  var opts=$('#qsOpts').value.split('\n');
+  var key=ty==='Pilihan Ganda'?$('#qsKey').value:ty==='Isian Singkat'?$('#qsAns').value:ty==='Benar/Salah'?$('#qsBS').value:'Dinilai sesuai rubrik';
+  var mid=$('#qsMat').value,mm=qTop(mid)||m;
+  var o={type:ty,content:$('#qsText').value,options:opts,key:key,diff:$('#qsDiff').value,points:$('#qsPts').value};
+  var chk=checkSoal(o);
+  function mark(id,msg){var f=$('#'+id),e=$('#qse'+id.slice(2));if(f)f.classList.toggle('bad',!!msg);if(e){e.textContent=msg||'';e.classList.toggle('show',!!msg);}if(msg)ok=false;}
+  var ok=true;
+  mark('qsText',!String(o.content).trim()?'Teks soal wajib diisi.':'');
+  mark('qsOpts',(ty==='Pilihan Ganda'&&opts.filter(function(x){return String(x).trim();}).length<2)?'Minimal 2 opsi.':'');
+  mark('qsKey',(ty==='Pilihan Ganda'&&!String(key).trim())?'Kunci wajib diisi.':'');
+  mark('qsAns',(ty==='Isian Singkat'&&!String(key).trim())?'Jawaban wajib diisi.':'');
+  mark('qsPts',(!/^\d+([.,]\d+)?$/.test(String($('#qsPts').value).trim()))?'Bobot harus angka > 0.':'');
+  if(!ok){var b0=$('#modalBox').querySelector('.bad');if(b0)b0.focus();return;}
+  var t=featOf('questions');
+  var d={id:'SOAL-'+(9000+Math.floor(Math.random()*900)),t:String(o.content).trim()||'(tanpa teks)',s:ty+' · '+(s?s.name:'')+' · '+mm.name+' · '+chk.diff,diff:chk.diff,topic:mm.name,subj:subjId,mat:mid,type:ty,options:ty==='Pilihan Ganda'?opts.filter(function(x){return String(x).trim();}).map(function(x){return String(x).trim();}):[],key:ty==='Pilihan Ganda'?String(key).trim().toUpperCase():ty==='Benar/Salah'?(String(key).toLowerCase()==='salah'?'Salah':'Benar'):String(key).trim(),explain:$('#qsExp').value.trim(),points:chk.points,used:0,reports:0,by:'Admin',rubric:ty==='Uraian'?$('#qsRub').value.trim():''};
+  if(chk.ok){d.st=['Ready','green'];d.chip='Ready';}else{d.st=['In Review','amber'];d.chip='In Review';d.checkFail=chk.reasons;}
+  t.rows.unshift(d);closeModal();saveFilters();render(false);
+  toast(chk.ok?'Soal masuk sebagai Ready':'Soal masuk sebagai In Review',chk.ok?'Lolos cek otomatis.':chk.reasons[0]);
+ };
+ var f0=$('#qsText');if(f0)f0.focus();
+}
+/* Import soal (UI-only, mirror admin asli): template + file + cek + import.
+   Tanpa parsing/backend — baris contoh statis untuk pratinjau tampilan. */
+function qImportModal(matId){
+ var m=qTop(matId);if(!m)return;
+ var subjId=null;Object.keys(QMAT).forEach(function(k){QMAT[k].forEach(function(x){if(x.id===matId)subjId=k;});});
+ var s=subjId?qSub(subjId):null;
+ var TPLS=[
+  {k:'pg',t:'Pilihan Ganda',d:'Teks Soal · Opsi A–E · Kunci Jawaban · Tingkat Kesulitan · Bobot Nilai'},
+  {k:'isian',t:'Isian Singkat',d:'Teks Soal · Jawaban Benar · Tingkat Kesulitan · Bobot Nilai'},
+  {k:'bs',t:'Benar/Salah',d:'Teks Soal · Kunci Benar/Salah · Tingkat Kesulitan · Bobot Nilai'},
+  {k:'uraian',t:'Uraian',d:'Teks Soal · Rubrik Penilaian · Kata Min/Maks · Tingkat Kesulitan'},
+  {k:'generic',t:'Semua Tipe (Generic)',d:'type · content · options · statements · pairs · acceptedAnswers'}];
+ var DEMO=[
+  {n:2,teks:'Diketahui barisan 3, 7, 11, 15, … Suku ke-20 adalah …',tipe:'Pilihan Ganda',diff:'Sedang',bobot:10,st:'ready',msg:'Siap diimpor',opsi:['79','80','81','82'],kunci:'A',bahas:'Beda 4 → Un = 4n - 1 → U20 = 79.'},
+  {n:3,teks:'Apa ibukota Indonesia?',tipe:'Isian Singkat',diff:'Mudah',bobot:5,st:'ready',msg:'Siap diimpor',kunci:'Jakarta',bahas:'Ibukota Indonesia adalah Jakarta.'},
+  {n:4,teks:'Air mendidih di suhu 100°C pada tekanan normal.',tipe:'Benar/Salah',diff:'Mudah',bobot:5,st:'ready',msg:'Siap diimpor',kunci:'Benar',bahas:'Benar pada tekanan atmosfer normal.'},
+  {n:5,teks:'Jelaskan proses fotosintesis pada tumbuhan.',tipe:'Uraian',diff:'Sulit',bobot:15,st:'ready',msg:'Siap diimpor',kunci:'Rubrik: cahaya, air, CO2, klorofil',bahas:'Mengubah air + CO2 menjadi glukosa.'},
+  {n:6,teks:'Pilih bilangan genap berikut.',tipe:'Pilihan Ganda',diff:'Sedang',bobot:10,st:'ready',msg:'Siap diimpor',opsi:['2','3','4','5'],kunci:'A, C',bahas:'2 dan 4 genap.'},
+  {n:7,teks:'Apa ibukota Indonesia?',tipe:'Isian Singkat',diff:'Mudah',bobot:5,st:'dup',msg:'Duplikat baris 3',kunci:'Jakarta',bahas:''},
+  {n:8,teks:'(tanpa teks soal)',tipe:'Pilihan Ganda',diff:'—',bobot:0,st:'err',msg:'Tidak valid: Teks Soal wajib diisi; Kunci tidak cocok',kunci:'-',bahas:''}];
+ modalFocus=document.activeElement;
+ $('#modalBox').classList.add('wide');
+ $('#modalBox').innerHTML='<div class="modal-h"><h3>Import soal</h3><p>'+esc(s?s.name:'')+' · '+esc(m.name)+' · CSV/XLSX · UI saja, file tidak diproses.</p></div>'
+ +'<div class="modal-b">'
+ +'<div style="border:1px solid var(--border);border-radius:14px;padding:13px 14px;background:var(--bg-hover)"><div style="font-size:12.8px;color:var(--text-2)">Unggah file CSV atau Excel (.xlsx) berisi daftar soal. Unduh template “Semua Tipe” untuk soal campuran, atau template per tipe untuk kolom yang lebih sederhana. Tipe file terdeteksi otomatis dari nama kolomnya.</div>'
+ +'<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><span class="imp-tpl"><button class="btn sm" id="qiTplBtn">'+ic(P_DOWNLOAD,15)+'Unduh Template '+ic(P_CHEV,14)+'</button><span class="imp-tpl-pop" id="qiTplPop">'+TPLS.map(function(tp){return '<button data-qitpl="'+tp.k+'"><span style="flex:1;min-width:0"><b>'+esc(tp.t)+'</b><small>'+esc(tp.d)+'</small></span></button>';}).join('')+'</span></span>'
+ +'<button class="btn sm primary" id="qiPick">'+ic(P_UPLOAD,15)+'<span id="qiPickLbl">Pilih File</span></button>'
+ +'<button class="link" id="qiDemo">Muat contoh</button>'
+ +'<input id="qiFile" type="file" accept=".csv,.xlsx,.xls" hidden aria-label="File soal"></div>'
+ +'<span class="fhint">Maks 500 baris per file · dikirim per chunk (25 soal).</span></div>'
+ +'<div id="qiEmpty" style="border:1px dashed var(--border);border-radius:14px;padding:26px 16px;text-align:center;color:var(--text-2)"><b>Belum ada file.</b><br><span style="font-size:12.5px">Pilih file atau muat contoh untuk melihat pratinjau hasil cek.</span></div>'
+ +'<div id="qiResult" style="display:none;flex-direction:column;gap:10px">'
+ +'<div style="display:flex;gap:7px;flex-wrap:wrap;align-items:center"><span class="bdg ok" id="qiCReady">5 siap</span><span class="bdg warn" id="qiCDup">1 duplikat</span><span class="bdg alert" id="qiCErr">1 error</span>'
+ +'<span style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap" role="group" aria-label="Filter status import"><button class="chip active" data-qif="all">Semua</button><button class="chip" data-qif="ready">Siap</button><button class="chip" data-qif="dup">Duplikat</button><button class="chip" data-qif="err">Error</button></span></div>'
+ +'<div class="imp-rows" id="qiRows"></div>'
+ +'<div class="dsec" id="qiPrev" style="display:none"><h4>Detail soal · <span id="qiPrevN"></span></h4><div id="qiPrevB" style="font-size:12.8px"></div></div>'
+ +'<div id="qiProgW" style="display:none"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-2);margin-bottom:6px"><b id="qiProgT" style="color:var(--text-h)">Mengimpor…</b><span id="qiProgN">0%</span></div><div class="imp-prog"><i id="qiProg"></i></div><div class="cell-s" style="margin-top:6px">Import dapat dilanjutkan per chunk; yang berhasil tidak dikirim ulang.</div></div>'
+ +'</div>'
+ +'</div>'
+ +'<div class="modal-f"><button class="btn" id="qiCancel">Batal</button><button class="btn primary" id="qiOk" disabled>Import 5 Soal</button></div>';
+ $('#modalOv').classList.add('show');
+ var filter='all',sel={};DEMO.forEach(function(r){sel[r.n]=(r.st==='ready');});
+ function readyCount(){return DEMO.filter(function(r){return r.st==='ready'&&sel[r.n];}).length;}
+ function paintBtn(){var n=readyCount();var b=$('#qiOk');if(b){b.textContent='Import '+n+' Soal';b.disabled=(!n);}}
+ function prevHTML(r){
+  var ops=(r.opsi||[]).map(function(o,i){var L='ABCDE'[i]||'';var isK=String(r.kunci||'').indexOf(L)>=0;return '<div style="border:1px solid '+(isK?'var(--primary)':'var(--border-soft)')+';background:'+(isK?'var(--primary-50)':'var(--bg-card)')+';border-radius:10px;padding:7px 10px;font-size:12.8px"><b>'+L+'.</b> '+esc(o)+(isK?' <span class="bdg ok">Benar</span>':'')+'</div>';}).join('');
+  return '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span class="qtag">'+esc(r.tipe)+'</span><span class="qtag">'+esc(r.diff)+'</span><span class="qtag">Bobot '+esc(r.bobot)+'</span></div>'
+  +'<div style="font-size:13.5px;color:var(--text-h);font-weight:600">'+esc(r.teks)+'</div>'
+  +(ops?'<div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">'+ops+'</div>':'<div class="qfill" style="margin:8px 0 0">Kunci: <b>'+esc(r.kunci||'-')+'</b></div>')
+  +(r.bahas?'<div style="margin-top:8px;font-size:12.8px;color:var(--text-2)"><b style="color:var(--text-h)">Pembahasan:</b> '+esc(r.bahas)+'</div>':'');
+ }
+ function paintRows(){
+  var box=$('#qiRows');if(!box)return;
+  var rows=DEMO.filter(function(r){return filter==='all'||r.st===filter;});
+  if(!rows.length){box.innerHTML='<div style="text-align:center;color:var(--text-2);padding:18px;font-size:12.5px">Tidak ada soal untuk filter ini.</div>';return;}
+  box.innerHTML=rows.map(function(r){
+   var cls=r.st==='ready'?'is-ready':r.st==='dup'?'is-dup':'is-err';
+   var dot=r.st==='ready'?'ok':r.st==='dup'?'warn':'err';
+   var badge=r.st==='ready'?'<span class="status green">Siap</span>':r.st==='dup'?'<span class="status amber">Duplikat</span>':'<span class="status red">Error</span>';
+   return '<div class="imp-row '+cls+'"><input type="checkbox" data-qick="'+r.n+'"'+(r.st==='ready'&&sel[r.n]?' checked':'')+(r.st!=='ready'?' disabled':'')+' aria-label="Pilih baris '+r.n+'" style="width:17px;height:17px;accent-color:var(--primary);margin-top:2px">'
+   +'<span class="imp-dot '+dot+'"></span><span style="flex:1;min-width:0"><b style="font-size:12.8px;color:var(--text-h)">Baris '+r.n+':</b> <span style="color:var(--text-1)">'+esc(r.teks)+'</span><br><span class="cell-s">'+esc(r.msg)+' · '+esc(r.tipe)+'</span></span>'
+   +'<span style="display:flex;gap:6px;flex:0 0 auto;align-items:center">'+badge+'<button class="mini-btn" data-qiview="'+r.n+'">'+ic(P_EYE,14)+'<span>Lihat</span></button></span></div>';
+  }).join('');
+  box.querySelectorAll('[data-qick]').forEach(function(cb){cb.onchange=function(){sel[+cb.getAttribute('data-qick')]=cb.checked;paintBtn();};});
+  box.querySelectorAll('[data-qiview]').forEach(function(b){b.onclick=function(){var n=+b.getAttribute('data-qiview');var r=null;DEMO.forEach(function(x){if(x.n===n)r=x;});if(!r)return;$('#qiPrev').style.display='';$('#qiPrevN').textContent='Baris '+r.n;$('#qiPrevB').innerHTML=prevHTML(r);};});
+ }
+ function showResult(fileLbl){
+  $('#qiEmpty').style.display='none';var rs=$('#qiResult');rs.style.display='flex';
+  var pl=$('#qiPickLbl');if(pl&&fileLbl)pl.textContent=fileLbl;
+  paintRows();paintBtn();
+ }
+ var tp=$('#qiTplBtn'),pp=$('#qiTplPop');
+ if(tp)tp.onclick=function(e){e.stopPropagation();pp.classList.toggle('show');};
+ document.addEventListener('click',function h(e){var p2=$('#qiTplPop');if(p2&&!e.target.closest('.imp-tpl'))p2.classList.remove('show');});
+ $('#modalBox').querySelectorAll('[data-qitpl]').forEach(function(b){b.onclick=function(){pp.classList.remove('show');var tp2=null;TPLS.forEach(function(x){if(x.k===b.getAttribute('data-qitpl'))tp2=x;});toast('Template '+(tp2?tp2.t:'')+' disiapkan…','Contoh kolom ikut dalam file.');};});
+ $('#qiPick').onclick=function(){$('#qiFile').click();};
+ $('#qiFile').onchange=function(){var f=$('#qiFile').files&&$('#qiFile').files[0];showResult(f?f.name:'contoh-soal.xlsx');toast('File dibaca (UI saja)','7 baris contoh dimuat.');};
+ $('#qiDemo').onclick=function(){showResult('contoh-soal.xlsx');toast('Contoh dimuat','5 siap · 1 duplikat · 1 error.');};
+ $('#modalBox').querySelectorAll('[data-qif]').forEach(function(b){b.onclick=function(){filter=b.getAttribute('data-qif');$('#modalBox').querySelectorAll('[data-qif]').forEach(function(x){x.classList.toggle('active',x===b);});paintRows();};});
+ $('#qiCancel').onclick=closeModal;
+ $('#qiOk').onclick=function(){
+  var w=$('#qiProgW');w.style.display='';var bar=$('#qiProg'),tx=$('#qiProgN'),tt=$('#qiProgT');var p=0;
+  $('#qiOk').disabled=true;
+  var iv=setInterval(function(){p=Math.min(100,p+Math.ceil(Math.random()*22));bar.style.width=p+'%';tx.textContent=p+'%';tt.textContent=p<100?'Mengimpor '+readyCount()+' soal…':'Selesai';if(p>=100){clearInterval(iv);toast('Import selesai (UI saja)',readyCount()+' soal masuk sebagai In Review.');closeModal();}},220);
+ };
+ var c0=$('#qiCancel');if(c0)c0.focus();
+}
 function qDuplicate(id){
  var f=findRow('questions',id);if(!f.d)return;
  var c={};for(var k in f.d)c[k]=f.d[k];
  c.options=(f.d.options||[]).slice();
  c.id='SOAL-'+(9000+Math.floor(Math.random()*900));
- c.st=['Draft','gray'];c.chip='Draft';c.used=0;c.reports=0;c.pick='';
+ c.st=['In Review','amber'];c.chip='In Review';c.used=0;c.reports=0;c.pick='';delete c.usedIn;
  c.s=(f.d.s||'')+' · duplikat dari '+f.d.id;
- f.t.rows.unshift(c);saveFilters();render(false);toast('Soal diduplikat sebagai Draft',c.id);
+ f.t.rows.unshift(c);saveFilters();render(false);toast('Soal diduplikat sebagai In Review',c.id);
 }
 function qArchive(id){
  var f=findRow('questions',id);if(!f.d)return;
- var was=f.d.st;
- f.d.st=['Diarsipkan','gray'];saveFilters();render(false);
- toast('Soal diarsipkan','Tidak ikut tampil di tryout.',null,{label:'Urungkan',fn:function(){f.d.st=was;saveFilters();render(false);}});
+ var was=f.d.st,wasChip=f.d.chip;
+ f.d.st=['Archive','gray'];f.d.chip='Archive';saveFilters();render(false);
+ toast('Soal diarsipkan','Tidak ikut tampil di tryout.',null,{label:'Urungkan',fn:function(){f.d.st=was;f.d.chip=wasChip;saveFilters();render(false);}});
 }
 /* ===== Bank Soal tingkat 1: daftar mata pelajaran =====
    Kartu soal dan css .qc* di atas tidak berubah; ini hanya menambah daftar
@@ -1869,14 +2262,33 @@ var SUBJECTS=[
  {id:'SUB-EKO',name:'Ekonomi',group:'Sosial',icn:'ti-coin'}];
 /* Select level 1: hanya "Isi". Chip kelompok sudah dihapus, jadi chips kosong.
    Key 'isi' sengaja dibeda dari 'st' milik soal. */
-var SUBTOOLS={chips:[],filters:[{k:'isi',l:'Isi',o:['Semua','Ada Draft','Belum ada soal']}]};
+var SUBTOOLS={chips:[],filters:[{k:'isi',l:'Isi',o:['Semua','In Review','Belum ada soal']}],sorts:[{key:'title',label:'Nama'}]};
+var TOPICSORT={filters:[],chips:[],sorts:[{key:'title',label:'Nama'}]};
 function qSub(id){var out=null;SUBJECTS.forEach(function(s){if(s.id===id)out=s;});return out;}
 /* Angka selalu dihitung ulang dari baris soal, jadi tidak pernah basi setelah
-   duplikat atau arsip. Draft dibaca dari st, karena baris baru belum punya chip. */
+   duplikat atau arsip. live = Ready + Locked; draft = In Review. */
 function qSubCount(s){
  var r=(featOf('questions').rows||[]).filter(function(d){return d.subj===s.id;});
  var live=0,draft=0;
- r.forEach(function(d){if(d.st&&d.st[0]==='Draft')draft++;else live++;});
+ r.forEach(function(d){if(!d.st||d.st[0]==='In Review')draft++;else if(d.st[0]==='Archive'){}else live++;});
+ return {total:r.length,live:live,draft:draft};
+}
+/* ===== Bank Soal tingkat 2: daftar isi materi per mapel =====
+   Tiap mapel punya materi sendiri (tidak bersarang antar mapel, ikut
+   penamaan mapel resmi). Angka dihitung ulang dari baris soal. */
+var QMAT={
+ 'SUB-MAT':[{id:'MAT-ALJ',name:'Aljabar'},{id:'MAT-PK',name:'Persamaan Kuadrat'},{id:'MAT-BAR',name:'Barisan & Deret'},{id:'MAT-GEO',name:'Geometri'}],
+ 'SUB-FIS':[{id:'FIS-GEL',name:'Gelombang'},{id:'FIS-KIN',name:'Kinematika'},{id:'FIS-LIS',name:'Listrik Dinamis'}],
+ 'SUB-BIO':[{id:'BIO-GEN',name:'Genetika'},{id:'BIO-SEL',name:'Sel'},{id:'BIO-EKO',name:'Ekosistem'}],
+ 'SUB-INF':[{id:'INF-ALG',name:'Algoritma'},{id:'INF-JAR',name:'Jaringan Komputer'}],
+ 'SUB-BIN':[{id:'BIN-LIT',name:'Literasi'},{id:'BIN-TB',name:'Tata Bahasa'},{id:'BIN-KI',name:'Karya Ilmiah'}],
+ 'SUB-EKO':[{id:'EKO-MIK',name:'Mikroekonomi'},{id:'EKO-MAK',name:'Makroekonomi'}]};
+function qMats(subj){return QMAT[subj]||[];}
+function qTop(id){var out=null;Object.keys(QMAT).forEach(function(k){QMAT[k].forEach(function(m){if(m.id===id)out=m;});});return out;}
+function qTopCount(mid){
+ var r=(featOf('questions').rows||[]).filter(function(d){return d.mat===mid;});
+ var live=0,draft=0;
+ r.forEach(function(d){if(!d.st||d.st[0]==='In Review')draft++;else if(d.st[0]==='Archive'){}else live++;});
  return {total:r.length,live:live,draft:draft};
 }
 /* Level 1 punya barisnya sendiri, jadi tidak menyentuh filteredRows yang dipakai
@@ -1884,68 +2296,141 @@ function qSubCount(s){
 function qSubFiltered(){
  var out=SUBJECTS.filter(function(s){
   if(state.q&&(s.name+' '+s.group).toLowerCase().indexOf(state.q.toLowerCase())<0)return false;
-  var isi=state.fq.isi,c=qSubCount(s);
-  if(isi==='Ada Draft'&&!c.draft)return false;
-  if(isi==='Belum ada soal'&&c.total)return false;
-  return true;
- });
- if(state.sort){var dir=state.sort==='asc'?1:-1;out.sort(function(a,b){return dir*a.name.localeCompare(b.name,'id',{numeric:true,sensitivity:'base'});});}
- return out;
-}
-/* Filter aktif, sama hitungannya dengan tableCard. */
-function qFilterCount(){
- var n=0;
- if(state.chip&&state.chip!=='Semua')n++;
- Object.keys(state.fq).forEach(function(k){if(state.fq[k]&&state.fq[k]!=='Semua')n++;});
- if(state.q)n++;
- return n;
-}
-/* Kepala kartu Bank Soal: kontrol .sp dan panel filter memakai bahasa yang sama
-   dengan tableCard — tombol Filter, Urutkan, Export, lalu Reset yang menyisakan
-   ruangnya sendiri. Reset memakai data-reset milik app. Satu fungsi untuk dua
-   tingkat supaya keduanya sama. */
-function qHeadTools(tools){
- var fCount=qFilterCount();
- var hasReset=(fCount>0||!!state.sort);
- var resetBtn='<button class="link'+(hasReset?'':' reset-hidden')+'" data-reset'+(hasReset?'':' disabled aria-hidden="true" tabindex="-1"')+'>Reset</button>';
- return '<button class="link'+(fCount>0?' on':'')+'" id="filterBtn" aria-pressed="'+(fCount>0)+'">'+ic(P_FILTER,15)+esc(fCount>0?('Filter · '+fCount):'Filter')+'</button>'
-  +'<button class="link'+(state.sort?' on':'')+'" id="sortBtn" title="'+esc(tools.sortLabel)+'" aria-pressed="'+(!!state.sort)+'">'+ic(tools.sortIcon,15)+esc(tools.sortLabel)+'</button>'
-  +'<button class="link" data-t="Menyiapkan export…">'+ic(P_DOWNLOAD,15)+'Export</button>'+resetBtn;
+  return (state.flt||[]).every(function(c){return fltMatch(s,c);});
+  });
+  if(state.sort){var dir=state.sort==='asc'?1:-1;out.sort(function(a,b){return dir*a.name.localeCompare(b.name,'id',{numeric:true,sensitivity:'base'});});}
+  return out;
 }
 function qSubTileHTML(s){
  var c=qSubCount(s);
- var pills=c.total?('<span class="bdg ok">'+c.live+' terbit</span>'+(c.draft?'<span class="bdg warn">'+c.draft+' draft</span>':'')):'<span class="bdg">Belum ada soal</span>';
- return '<div class="card m-tile">'
-  +'<button class="m-art" data-qsub="'+esc(s.id)+'" aria-label="Buka soal '+esc(s.name)+', '+c.total+' soal">'+ic(s.icn,30)+'</button>'
-  +'<div style="padding:12px 12px 10px;display:flex;flex-direction:column;gap:7px">'
-  +'<span><span class="cell-t" style="font-size:12.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(s.name)+'</span><span class="cell-s">'+esc(s.group)+'</span></span>'
-  +'<span style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><span class="qsubt">'+esc(c.total?c.total+' soal':'0 soal')+'</span><span class="m-quick">'+pills+'</span></span>'
+ var art=s.img
+  ?'<img src="'+esc(s.img)+'" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">'
+  :'<span style="display:flex;width:100%;height:100%;justify-content:space-between;align-items:flex-start;padding:12px;color:var(--text-3)">'+ic('ti-photo',26)+'</span>';
+ return '<div class="qsub">'
+  +'<button class="qsub-art" data-qsub="'+esc(s.id)+'" aria-label="Buka soal '+esc(s.name)+', '+c.total+' soal">'+art+'</button>'
+  +'<div class="qsub-meta" data-qsub="'+esc(s.id)+'" role="button" tabindex="0" aria-label="Buka soal '+esc(s.name)+'" style="cursor:pointer">'
+  +'<span class="meta-row"><span class="cell-t" style="font-size:13px">'+esc(s.name)+'</span><span class="go">'+ic(P_CHR,15)+'</span></span>'
+  +'<span class="cell-s">'+qMats(s.id).length+' materi · '+c.total+' soal</span>'
   +'</div></div>';
 }
+/* Ubah kartu mapel: gambar upload + nama. Sesi ini saja (tanpa backend). */
+function qSubForm(id){
+ var s=qSub(id);if(!s)return;
+ var imgData=s.img||'';
+ modalFocus=document.activeElement;
+ $('#modalBox').innerHTML='<div class="modal-h"><h3>Ubah mapel</h3><p>Gambar dan nama yang tampil di kartu.</p></div>'
+ +'<div class="modal-b">'
+ +'<div class="field"><label for="qfName">Nama mapel</label><input id="qfName" value="'+esc(s.name||'')+'" placeholder="cth: Matematika"><span class="ferr" id="qfeName"></span></div>'
+ +'<div class="field"><label>Gambar <small>(opsional)</small></label><div id="qfPrevWrap" style="margin-bottom:8px">'+(imgData?'<img src="'+esc(imgData)+'" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid var(--border)">':'')+'</div><label class="w-up" for="qfImg"><span class="w-up-ic">'+ic('ti-photo',18)+'</span><span style="flex:1;min-width:0"><b>Unggah gambar</b><small>PNG/JPG/WEBP · maks 5 MB</small></span><input id="qfImg" type="file" accept="image/png,image/jpeg,image/webp" hidden></label><span class="fhint">Kosongkan untuk ikon bawaan di kiri atas.</span></div>'
+ +'</div>'
+ +'<div class="modal-f"><button class="btn" id="qfCancel">Batal</button><button class="btn primary" id="qfOk">Simpan</button></div>';
+ $('#modalOv').classList.add('show');
+ $('#qfCancel').onclick=closeModal;
+ var fi=$('#qfImg');
+ if(fi)fi.onchange=function(){
+  var f=fi.files&&fi.files[0];if(!f)return;
+  if(f.size>5*1024*1024){toast('Gambar maksimal 5 MB',null,'err');fi.value='';return;}
+  var rd=new FileReader();
+  rd.onload=function(){imgData=rd.result;var w=$('#qfPrevWrap');if(w)w.innerHTML='<img src="'+esc(imgData)+'" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid var(--border)">';};
+  rd.readAsDataURL(f);
+ };
+ $('#qfOk').onclick=function(){
+  var vN=$('#qfName').value.trim();
+  var fe=$('#qfeName'),fn=$('#qfName');
+  if(!vN){if(fe){fe.textContent='Nama mapel wajib diisi.';fe.classList.add('show');}if(fn)fn.classList.add('bad');fn.focus();return;}
+  s.name=vN;s.img=imgData||null;closeModal();saveFilters();render(false);toast('Kartu mapel diperbarui');
+ };
+ var f0=$('#qfName');if(f0)f0.focus();
+}
+/* Tambah mapel: nama + kelompok + cover. Sesi ini saja (tanpa backend). */
+function qSubNew(){
+ var imgData='';
+ modalFocus=document.activeElement;
+ $('#modalBox').innerHTML='<div class="modal-h"><h3>Tambah buku mapel</h3><p>Nama dan cover kartu mapel.</p></div>'
+ +'<div class="modal-b">'
+ +'<div class="field"><label for="qnName">Nama mapel</label><input id="qnName" value="" placeholder="cth: Kimia"><span class="ferr" id="qneName"></span></div>'
+ +'<div class="field"><label>Cover <small>(opsional)</small></label><div id="qnPrevWrap" style="margin-bottom:8px"></div><label class="w-up" for="qnImg"><span class="w-up-ic">'+ic('ti-photo',18)+'</span><span style="flex:1;min-width:0"><b>Unggah cover</b><small>PNG/JPG/WEBP · maks 5 MB</small></span><input id="qnImg" type="file" accept="image/png,image/jpeg,image/webp" hidden></label><span class="fhint">Kosongkan untuk ikon bawaan.</span></div>'
+ +'</div>'
+ +'<div class="modal-f"><button class="btn" id="qnCancel">Batal</button><button class="btn primary" id="qnOk">Tambah</button></div>';
+ $('#modalOv').classList.add('show');
+ $('#qnCancel').onclick=closeModal;
+ var fi=$('#qnImg');
+ if(fi)fi.onchange=function(){
+  var f=fi.files&&fi.files[0];if(!f)return;
+  if(f.size>5*1024*1024){toast('Gambar maksimal 5 MB',null,'err');fi.value='';return;}
+  var rd=new FileReader();
+  rd.onload=function(){imgData=rd.result;var w=$('#qnPrevWrap');if(w)w.innerHTML='<img src="'+esc(imgData)+'" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid var(--border)">';};
+  rd.readAsDataURL(f);
+ };
+ $('#qnOk').onclick=function(){
+  var vN=$('#qnName').value.trim();
+  var fe=$('#qneName'),fn=$('#qnName');
+  if(!vN){if(fe){fe.textContent='Nama mapel wajib diisi.';fe.classList.add('show');}if(fn)fn.classList.add('bad');fn.focus();return;}
+  var base=(vN.replace(/[^A-Za-z]/g,'').slice(0,3)||'MAP').toUpperCase();
+  var id='SUB-'+base+Math.floor(10+Math.random()*90);
+  while(qSub(id)){id='SUB-'+base+Math.floor(10+Math.random()*90);}
+  SUBJECTS.push({id:id,name:vN,group:'Umum',icn:'ti-book',img:imgData||null});
+  if(!QMAT[id])QMAT[id]=[];
+  closeModal();saveFilters();render(false);toast('Buku mapel ditambahkan','Isi materinya dari daftar isi.');
+ };
+ var f0=$('#qnName');if(f0)f0.focus();
+}
 function qSubjectsView(page,t){
- var tools=tableTools(SUBTOOLS);
- var head=qHeadTools(tools);
  var subs=qSubFiltered();
  var total=subs.length;var pages=Math.max(1,Math.ceil(total/PG_SIZE));
  if(state.pg>pages)state.pg=pages;
  var pageSubs=subs.slice((state.pg-1)*PG_SIZE,state.pg*PG_SIZE);
  var body;
  if(state.loading)body=skelHTML(2,150);
-else if(!subs.length)body='<div style="margin:14px 16px;border:1px dashed var(--border);border-radius:14px;padding:36px 20px;text-align:center;color:var(--text-2)"><b>Tidak ada mata pelajaran untuk filter ini.</b><br><span style="font-size:12.5px">Ubah kata kunci atau atur filter di atas.</span><br><br><button class="btn sm" data-reset>Reset filter</button></div>';
+else if(!subs.length)body='<div style="margin:14px 16px;border:1px dashed var(--border);border-radius:14px;padding:36px 20px;text-align:center;color:var(--text-2)"><b>Tidak ada mata pelajaran untuk filter ini.</b><br><span style="font-size:12.5px">Ubah kata kunci di atas.</span><br><br><button class="btn sm" data-reset>Reset filter</button></div>';
    else body='<div class="qsubs">'+pageSubs.map(qSubTileHTML).join('')+'</div>';
- return listHero(page,t,'<button class="btn primary" data-new>'+ic(P_PLUS,17)+'Buat soal</button>')
-  +'<div class="card"><div class="card-h"><div><div><h2>Mata Pelajaran</h2></div></div><div class="sp">'+head+'</div></div>'
-  +'<div id="filterPanel"'+(state.showFilters?'':' style="display:none"')+'><div class="filters">'+searchField('Cari mata pelajaran…','flex:1;min-width:170px')+tools.fbar+'</div><div style="height:10px"></div></div>'
+ return listHero(page,t,'<button class="btn primary" data-qsubnew>'+ic(P_PLUS,17)+'Tambah buku mapel</button>')
+  +'<div class="card"><div class="card-h"><div><div><h2>Mata Pelajaran</h2></div></div><div class="sp"><button class="link" data-t="Menyiapkan export…">'+ic(P_DOWNLOAD,15)+'Export</button></div></div>'
+  +filterBarHTML(SUBTOOLS,'Cari mata pelajaran…')
   +body+tfootHTML(total,'dari '+SUBJECTS.length+' mata pelajaran',pgNum(pages))+'</div>'+listFoot();
 }
-/* Baris soal milik satu mata pelajaran. Memakai filteredRows apa adanya lalu
-   menyaring lagi per subjek, jadi chip, select, cari, dan urut tetap berlaku. */
-function qSubjectRows(s){return filteredRows(featOf('questions')).filter(function(d){return d.subj===s.id;});}
-function qQuestionsView(page,t,s){
- var tools=tableTools(t);
- var head=qHeadTools(tools);
- var rows=qSubjectRows(s);
+/* Daftar isi materi milik satu mapel. Cari + urut A–Z ikut tombol yang sama. */
+function qTopFiltered(s){
+ var out=qMats(s.id).filter(function(m){
+  if(state.q&&(m.name+' '+s.name).toLowerCase().indexOf(state.q.toLowerCase())<0)return false;
+  return true;
+ });
+ if(state.sort){var dir=state.sort==='asc'?1:-1;out.sort(function(a,b){return dir*a.name.localeCompare(b.name,'id',{numeric:true,sensitivity:'base'});});}
+ return out;
+}
+function qTopTileHTML(s,m){
+ var c=qTopCount(m.id);
+ var pills=c.total?('<span class="bdg ok">'+c.live+' ready</span>'+(c.draft?'<span class="bdg warn">'+c.draft+' in review</span>':'')):'<span class="bdg">Belum ada soal</span>';
+ var sub=c.total?(c.total+' soal'):'0 soal';
+ return '<button class="qtop-row" data-qtop="'+esc(m.id)+'" aria-label="Buka materi '+esc(m.name)+', '+c.total+' soal">'
+ +'<span class="et"><span class="et-t">'+esc(m.name)+'</span><br><time>'+esc(sub)+'</time></span>'
+ +'<span style="display:flex;gap:6px;align-items:center;flex:0 0 auto">'+pills+'</span>'
+ +'<span style="color:var(--text-3);flex:0 0 auto">'+ic(P_CHR,16)+'</span></button>';
+}
+function qTopicsView(page,t,s){
+ var mats=qTopFiltered(s);
  var c=qSubCount(s);
+ var total=mats.length;var pages=Math.max(1,Math.ceil(total/PG_SIZE));
+ if(state.pg>pages)state.pg=pages;
+ var pageMats=mats.slice((state.pg-1)*PG_SIZE,state.pg*PG_SIZE);
+ var body;
+ if(state.loading)body=skelHTML(2,150);
+ else if(!mats.length)body='<div style="margin:14px 16px;border:1px dashed var(--border);border-radius:14px;padding:36px 20px;text-align:center;color:var(--text-2)">'
+  +(qMats(s.id).length?('<b>Tidak ada materi untuk filter ini.</b><br><span style="font-size:12.5px">Ubah kata kunci di atas.</span><br><br><button class="btn sm" data-reset>Reset filter</button>')
+  :('<b>Belum ada materi di '+esc(s.name)+'.</b><br><span style="font-size:12.5px">Daftar isi masih kosong.</span>'))
+  +'</div>';
+ else body='<div class="qtop-list">'+pageMats.map(function(m){return qTopTileHTML(s,m);}).join('')+'</div>';
+ var meta=qMats(s.id).length+' materi · '+c.total+' soal';
+ return '<div class="card"><div class="card-h"><button class="link" data-qback aria-label="Kembali ke daftar mata pelajaran" title="Kembali">'+ic(P_CHL,15)+'</button><span style="width:32px;aspect-ratio:3/4;border-radius:8px;overflow:hidden;flex:0 0 32px;background:var(--bg-hover);display:grid;place-items:center;color:var(--text-3)">'+(s.img?'<img src="'+esc(s.img)+'" alt="" style="width:100%;height:100%;object-fit:cover">':'')+'</span><div><div><h2>'+esc(s.name)+'</h2><p>'+meta+'</p></div></div><button class="mini-btn" data-qsubedit="'+esc(s.id)+'" title="Ubah mapel" aria-label="Ubah '+esc(s.name)+'">'+ic(P_PENCIL,14)+'<span>Ubah</span></button><div class="sp"><button class="link" data-t="Menyiapkan export…">'+ic(P_DOWNLOAD,15)+'Export</button></div></div>'
+  +filterBarHTML(TOPICSORT,'Cari materi…','flex:0 0 auto;width:50%;min-width:220px')
+ +body+tfootHTML(total,'dari '+qMats(s.id).length+' materi',pgNum(pages))+'</div>'+listFoot();
+}
+/* Baris soal milik satu materi. Memakai filteredRows apa adanya lalu
+   menyaring lagi per materi, jadi chip, select, cari, dan urut tetap berlaku. */
+function qTopicRows(m){return filteredRows(featOf('questions')).filter(function(d){return d.mat===m.id;});}
+function qQuestionsView(page,t,s,m){
+ var rows=qTopicRows(m);
+ var c=qTopCount(m.id);
  var total=rows.length;var pages=Math.max(1,Math.ceil(total/PG_SIZE));
  if(state.pg>pages)state.pg=pages;
  var pageRows=rows.slice((state.pg-1)*PG_SIZE,state.pg*PG_SIZE);
@@ -1953,22 +2438,20 @@ function qQuestionsView(page,t,s){
  if(state.loading)body=skelHTML(2,180);
   else if(!rows.length)body='<div style="margin:14px 16px;border:1px dashed var(--border);border-radius:14px;padding:36px 20px;text-align:center;color:var(--text-2)">'
    +(c.total?('<b>Belum ada soal untuk filter ini.</b><br><span style="font-size:12.5px">Ubah kata kunci atau atur filter di atas.</span><br><br><button class="btn sm" data-reset>Reset filter</button>')
-   :('<b>Belum ada soal di '+esc(s.name)+'.</b><br><span style="font-size:12.5px">Mulai dari satu soal, lalu lengkapi kunci dan pembahasannya.</span><br><br><button class="btn sm primary" data-new>'+ic(P_PLUS,15)+'Buat soal</button>'))
+   :('<b>Belum ada soal di '+esc(m.name)+'.</b><br><span style="font-size:12.5px">Mulai dari satu soal, lalu lengkapi kunci dan pembahasannya.</span>'))
    +'</div>';
   else body='<div class="qlist">'+pageRows.map(function(d,i){return qCardHTML(d,rows.indexOf(d)+1,i);}).join('')+'</div>';
- var back='<div style="padding:0 16px 12px"><button class="link plain" data-qback aria-label="Kembali ke daftar mata pelajaran">'+ic(P_CHL,14)+' Daftar mata pelajaran</button></div>';
- var meta=esc(s.group)+' · '+c.total+' soal · '+c.live+' terbit'+(c.draft?(' · '+c.draft+' draft'):'');
- var chips=(t.chips||['Semua']).map(function(c2){return '<button class="chip'+(state.chip===c2?' active':'')+'" data-chip="'+esc(c2)+'">'+esc(c2)+'</button>';}).join('');
- return listHero(page,t,'<button class="btn primary" data-new>'+ic(P_PLUS,17)+'Buat soal</button>')
-  +back
-  +'<div class="card"><div class="card-h"><div><div><h2>Soal '+esc(s.name)+'</h2><p>'+meta+'</p></div></div><div class="sp">'+head+'</div></div>'
-  +'<div id="filterPanel"'+(state.showFilters?'':' style="display:none"')+'><div class="filters">'+searchField('Cari isi soal, topik, atau ID…','flex:1;min-width:170px')+tools.fbar+'</div><div class="chips">'+chips+'</div><div style="height:10px"></div></div>'
-  +body+tfootHTML(total,'soal dari '+c.total+' di '+esc(s.name),pgNum(pages))+'</div>'+listFoot();
+ var meta=esc(s.name)+' · '+c.total+' soal · '+c.live+' ready'+(c.draft?(' · '+c.draft+' in review'):'');
+  return '<div class="card"><div class="card-h"><button class="link" data-qtopback aria-label="Kembali ke daftar materi" title="Kembali">'+ic(P_CHL,15)+'</button><div><div><h2>Soal '+esc(m.name)+'</h2><p>'+meta+'</p></div></div><div class="sp"><button class="btn sm" data-qimport>'+ic(P_UPLOAD,15)+'Import</button><button class="btn sm primary" data-qsoalnew>'+ic(P_PLUS,15)+'Tambah soal</button><button class="link" data-t="Menyiapkan export…">'+ic(P_DOWNLOAD,15)+'Export</button></div></div>'
+  +filterBarHTML(t,'Cari isi soal, topik, atau ID…')
+  +body+tfootHTML(total,'soal dari '+c.total+' di '+esc(m.name),pgNum(pages))+'</div>'+listFoot();
 }
 function questionsView(page,t){
  var s=state.qsub?qSub(state.qsub):null;
- if(s)return qQuestionsView(page,t,s);
- return qSubjectsView(page,t);
+ if(!s)return qSubjectsView(page,t);
+ var m=state.qtop?qTop(state.qtop):null;
+ if(!m)return qTopicsView(page,t,s);
+ return qQuestionsView(page,t,s,m);
 }
 function notifTypeMeta(ty){
  if(ty==='Berhasil')return {cls:'green',icn:P_CHECK};
@@ -1999,7 +2482,6 @@ var SOCICON={Instagram:'ti-brand-instagram',TikTok:'ti-brand-tiktok',YouTube:'ti
 var SOCTILE={Instagram:['#FCE7F3','#DB2777'],TikTok:['var(--bg-hover)','var(--text-h)'],YouTube:['#FEE2E2','#DC2626'],X:['var(--bg-hover)','var(--text-h)'],Facebook:['#DBEAFE','#2563EB'],WhatsApp:['#DCFCE7','#16A34A'],Telegram:['#E0F2FE','#0284C7']};
 function socTile(p){return SOCTILE[p]||['var(--primary-100)','var(--primary)'];}
 function socialView(page,t){
- var tools=tableTools(t);
  var rows=filteredRows(t);
   var active=rows.filter(function(r){return r.chip==='Aktif';}).length;
   var body;
@@ -2011,7 +2493,7 @@ function socialView(page,t){
   var prevCard='<div class="card" style="box-shadow:none;align-self:start"><div class="card-h"><div><div><h2>Pratinjau tautan</h2><p>'+prev.length+' aktif · urut sesuai daftar</p></div></div></div><div class="prev-list">'+(prev.length?prev.map(function(r){var tl=socTile(r.platform);return '<button class="nrow" data-smgo="'+esc(r.url||'')+'" style="width:100%;background:none;border:0;border-radius:0;font:inherit;text-align:left" aria-label="Buka '+esc(r.t)+'"><span style="width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:0 0 40px;background:'+tl[0]+';color:'+tl[1]+'">'+ic(SOCICON[r.platform]||'ti-share-2',20)+'</span><span style="flex:1;min-width:0;text-align:left"><b style="font-size:13.5px;color:var(--text-h);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(r.t)+'</b><span class="cell-s" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(r.url||'')+'</span></span>'+ic(P_CHR,18)+'</button>';}).join(''):'<div style="padding:12px 14px"><span class="cell-s">Tidak ada akun aktif. Aktifkan dari daftar.</span></div>')+'</div></div>';
   return listHero(page,t,'<button class="btn primary" data-new>'+ic(P_PLUS,17)+'Tambah akun</button>')
    +'<div class="smgrid">'
-   +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp"><span class="cell-s">'+rows.length+' akun · '+active+' aktif</span>'+((rows.length>0&&tools.fCount>0)?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+toolsBar('Cari akun…',tools,false)
+   +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp"><span class="cell-s">'+rows.length+' akun · '+active+' aktif</span>'+(hasResetF()?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+filterBarHTML(t,'Cari akun…')
    +body+'</div>'+prevCard+'</div>'+listFoot();
 }
 VIEWS.questions=questionsView;
@@ -2320,7 +2802,7 @@ function mediaDetail(id){
 /* Mirrors admin /(content)/articles: Konfigurasi portal + Daftar artikel grup "artikel". */
 function artCfg(){var d={apiBaseUrl:'https://portal.stekom.ac.id/api/v1',domain:'sbnmpts.stekom.ac.id',apiKey:'stekom-portal-demo-key-9f2c41'};try{var s=store.get('na3-portal');if(s){var o=JSON.parse(s);if(o.apiBaseUrl)d.apiBaseUrl=o.apiBaseUrl;if(o.domain)d.domain=o.domain;if(o.apiKey)d.apiKey=o.apiKey;}}catch(_){}return d;}
 function artCardHTML(d){
- var thumb=d.thumbnail?'<img src="'+esc(d.thumbnail)+'" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0" onerror="this.remove()">':ic('ti-news',30);
+ var thumb=d.thumbnail?'<img src="'+esc(d.thumbnail)+'" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0" onerror="this.remove()">':ic('ti-article',30);
  var date=esc(d.published||d.published_at||'Tanggal tidak tersedia');
  return '<article class="card" style="box-shadow:none;display:flex;flex-direction:column;min-width:0">'
  +'<button data-artopen="'+esc(d.id)+'" aria-label="Lihat '+esc(d.t)+'" style="position:relative;aspect-ratio:16/9;background:var(--bg-hover);border-radius:14px 14px 0 0;border:0;padding:0;cursor:pointer;color:var(--text-3);overflow:hidden;font-family:inherit;display:block;width:100%">'
@@ -2438,7 +2920,6 @@ function questToggleLive(id){
 }
 function syncInvQuest(){var lbl=questLabel();var t=featOf('invitations');(t.rows||[]).forEach(function(r){if(!r.s0)r.s0=String(r.s||'');r.s=r.s0+' · '+lbl;});}
 function vouchersView(page,t){
- var tools=tableTools(t);
  var rows=filteredRows(t);
  var w={Aktif:0,Siap:1,Draft:2,Kedaluwarsa:3};
  rows=rows.slice().sort(function(a,b){return (w[a.chip]==null?9:w[a.chip])-(w[b.chip]==null?9:w[b.chip]);});
@@ -2450,7 +2931,7 @@ function vouchersView(page,t){
   else if(!rows.length)body='<div style="margin:14px 16px;border:1px dashed var(--border);border-radius:14px;padding:36px 20px;text-align:center;color:var(--text-2)"><b>Belum ada voucher untuk filter ini.</b><br><br><button class="btn sm" data-reset>Reset filter</button> <button class="btn sm" data-vouquick>Tambah cepat</button> <button class="btn sm primary" data-vounew>Buat voucher</button></div>';
  else body='<div class="adsgrid" style="display:grid;grid-template-columns:1fr;gap:12px;padding:14px 16px">'+pageRows.map(vouCardHTML).join('')+'</div>';
  return listHero(page,t,'<button class="btn" data-vouquick>'+ic(P_ZAP,17)+'Tambah cepat</button><button class="btn primary" data-vounew>'+ic(P_PLUS,17)+'Buat voucher</button>')
-  +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp">'+((total>0&&tools.fCount>0)?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+toolsBar('Cari voucher…',tools,false)
+  +'<div class="card"><div class="card-h"><div><div><h2>'+esc(t.title)+'</h2></div></div><div class="sp">'+(hasResetF()?'<button class="link" data-reset>Reset</button>':'')+'</div></div>'+filterBarHTML(t,'Cari voucher…')
   +body+tfootHTML(total,'voucher',pgPN(pages))+'</div>'+listFoot();
 }
 function linkMaster(){var t=featOf('referrals');if(!t._master)t._master=(t.rows||[]).slice();return t._master;}
@@ -3036,12 +3517,19 @@ function bindAll(page,t){
   });
   /* Bank Soal — pindah antar tingkat. Filter ikut dibersihkan supaya status
      "Ada Draft" di level 1 tidak ikut menyaring soal di level 2. */
-  c.querySelectorAll('[data-qsub]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.qsub=b.getAttribute('data-qsub');state.chip='Semua';state.q='';state.fq={};state.pg=1;saveFilters();window.scrollTo(0,0);load();};});
-  c.querySelectorAll('[data-qback]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.qsub=null;state.chip='Semua';state.q='';state.fq={};state.pg=1;saveFilters();window.scrollTo(0,0);load();};});
+  c.querySelectorAll('[data-qsub]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.qsub=b.getAttribute('data-qsub');state.qtop=null;state.flt=[];state.q='';state.pg=1;saveFilters();window.scrollTo(0,0);load();};if(b.tagName!=='BUTTON')b.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openDrawer0(b);};};function openDrawer0(el){state.qsub=el.getAttribute('data-qsub');state.qtop=null;state.chip='Semua';state.q='';state.fq={};state.pg=1;saveFilters();window.scrollTo(0,0);load();}});
+  c.querySelectorAll('[data-qsubedit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qSubForm(b.getAttribute('data-qsubedit'));};});
+  c.querySelectorAll('[data-qsubnew]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qSubNew();};});
+  c.querySelectorAll('[data-qsoalnew]').forEach(function(b){b.onclick=function(e){e.stopPropagation();if(state.qtop)qSoalForm(state.qtop);};});
+  c.querySelectorAll('[data-qimport]').forEach(function(b){b.onclick=function(e){e.stopPropagation();if(state.qtop)qImportModal(state.qtop);};});
+  c.querySelectorAll('[data-qtop]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.qtop=b.getAttribute('data-qtop');state.flt=[];state.q='';state.pg=1;saveFilters();window.scrollTo(0,0);load();};});
+  c.querySelectorAll('[data-qback]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.pg=1;saveFilters();window.scrollTo(0,0);load();};});
+  c.querySelectorAll('[data-qtopback]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.qtop=null;state.flt=[];state.q='';state.pg=1;saveFilters();window.scrollTo(0,0);load();};});
   c.querySelectorAll('[data-qopen]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openDrawer(b.getAttribute('data-qopen'));};});
   c.querySelectorAll('[data-qkey]').forEach(function(b){b.onclick=function(e){e.stopPropagation();var card=b.closest('.qc');var kp=card?card.querySelector('.qkey'):null;if(!kp)return;var on=kp.hasAttribute('hidden');if(on)kp.removeAttribute('hidden');else kp.setAttribute('hidden','');var lb=on?'Sembunyikan kunci dan pembahasan':'Lihat kunci dan pembahasan';b.setAttribute('aria-expanded',on?'true':'false');b.setAttribute('title',lb);b.setAttribute('aria-label',lb);};});
   c.querySelectorAll('[data-qqedit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openDrawer(b.getAttribute('data-qqedit'),'media');};});
   c.querySelectorAll('[data-qdup]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qDuplicate(b.getAttribute('data-qdup'));};});
+  c.querySelectorAll('[data-qlocked]').forEach(function(b){b.onclick=function(e){e.stopPropagation();toast('Terkunci — dipakai tryout berjalan','Ubah + kunci jawaban dikunci. Duplikat/arsip tetap bisa.','err');};});
   c.querySelectorAll('[data-qarch]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qArchive(b.getAttribute('data-qarch'));};});
   c.querySelectorAll('[data-qopt]').forEach(function(b){b.onclick=function(e){e.stopPropagation();qPick(b.getAttribute('data-qopt'),b.getAttribute('data-qletter'));};});
  c.querySelectorAll('[data-nopen]').forEach(function(r){r.onclick=function(){var id=r.getAttribute('data-nopen');var tt=featOf('notifications');var nn=null;(tt.rows||[]).forEach(function(x){if(x.id===id)nn=x;});if(!nn)return;if(nn.link){notifMark(id);go(nn.link);}else notifMark(id);};r.onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();r.onclick();}};});
@@ -3093,7 +3581,7 @@ function bindAll(page,t){
      if(moved)window.__smDrag=true;
      if(smDragId){
       var tt=featOf('social-media');var a=tt.rows||[];
-      var fActive=(state.chip&&state.chip!=='Semua')||state.q||Object.keys(state.fq).some(function(k){return state.fq[k]&&state.fq[k]!=='Semua';});
+       var fActive=hasResetF();
       if(!fActive){
        var order=smRows().map(function(r){return r.getAttribute('data-smid');});
        if(order.indexOf(smDragId)>=0){
@@ -3136,13 +3624,12 @@ function bindAll(page,t){
  var dev=c.querySelector('[data-devreset]');if(dev)dev.onclick=function(){openConfirm('Kembalikan bawaan?','Filter, tema, dan peran kembali seperti semula.','Kembalikan',function(){clearFilters();store.del('na3-theme');store.del('na3-collapsed');state.theme='light';document.documentElement.dataset.theme='light';setRole('soal');});};
  var pe=c.querySelector('[data-profile-edit]');if(pe)pe.onclick=function(){openModal({title:'Ubah profil',sub:'Nama & email tampil di hero dan avatar.',fields:[{k:'name',l:'Nama',req:1,ph:'Admin'},{k:'email',l:'Email',type:'email',req:1,ph:'admin@tryoutku.id'}],submit:'Simpan',onSubmit:function(){toast('Profil disimpan');}});};
  var qb=$('#quickBtn');if(qb)qb.onclick=function(e){e.stopPropagation();var p=$('#quickPop');var o=p.classList.toggle('show');qb.classList.toggle('open',o);};
- var fb=$('#filterBtn');if(fb)fb.onclick=function(e){e.stopPropagation();state.showFilters=!state.showFilters;saveFilters();render(false);};
- var sb=$('#sortBtn');if(sb)sb.onclick=function(e){e.stopPropagation();if(!state.sort){state.sort='asc';state.sortKey='title';}else if(state.sort==='asc'){state.sort='desc';state.sortKey='title';}else{state.sort=null;state.sortKey=null;}state.pg=1;saveFilters();render(false);};
+   var sb=$('#sortBtn');if(sb){sb.onmouseenter=null;sb.onmouseleave=null;sb.onclick=function(e){e.stopPropagation();var p=$('#kebabPop');if(p&&p.classList.contains('show')&&p.dataset.src==='sort'){p.classList.remove('show');return;}openSortPop(sb,sortDesc());};}
  c.querySelectorAll('[data-sort]').forEach(function(h){h.onclick=function(e){e.stopPropagation();var k=h.getAttribute('data-sort');if(state.sortKey!==k||!state.sort){state.sortKey=k;state.sort='asc';}else if(state.sort==='asc'){state.sort='desc';}else{state.sort=null;state.sortKey=null;}state.pg=1;saveFilters();render(false);};});
  c.querySelectorAll('[data-pg]').forEach(function(b){if(b.disabled)return;b.onclick=function(e){e.stopPropagation();var v=b.getAttribute('data-pg');if(v==='prev')state.pg=Math.max(1,state.pg-1);else if(v==='next')state.pg=state.pg+1;else state.pg=+v;saveFilters();render(false);};});
  c.querySelectorAll('#quickPop [data-hero-go]').forEach(function(b){b.addEventListener('click',function(){var p=$('#quickPop');var q2=$('#quickBtn');if(p)setTimeout(function(){p.classList.remove('show');if(q2)q2.classList.remove('open');},60);});});
- c.querySelectorAll('[data-chip]').forEach(function(b){b.onclick=function(){state.chip=b.getAttribute('data-chip');state.pg=1;saveFilters();render(false);};});
- c.querySelectorAll('[data-f]').forEach(function(s){s.onchange=function(){state.fq[s.getAttribute('data-f')]=s.value;state.pg=1;saveFilters();render(false);};});
+   c.querySelectorAll('[data-nfilter]').forEach(function(b){b.onmouseenter=null;b.onmouseleave=null;b.onclick=function(e){e.stopPropagation();var p=$('#kebabPop');if(p&&p.classList.contains('show')&&p.dataset.src==='filter'){p.classList.remove('show');return;}openFilterPop(b,filterDesc());};});
+  c.querySelectorAll('[data-nflt-del]').forEach(function(b){b.onclick=function(e){e.stopPropagation();state.flt.splice(+b.getAttribute('data-nflt-del'),1);state.pg=1;saveFilters();render(false);};});
   c.querySelectorAll('.rowQ').forEach(function(inp){
    inp.addEventListener('input',function(e){state.q=e.target.value;state.pg=1;saveFilters();var p=e.target.selectionStart;render(false);var n2=c.querySelector('.rowQ');if(n2){n2.focus();try{n2.setSelectionRange(p,p);}catch(_){}}});
    inp.addEventListener('keydown',function(e){if(e.key==='Escape'&&e.target.value){e.stopPropagation();state.q='';state.pg=1;saveFilters();render(false);}});
@@ -3260,7 +3747,7 @@ enhanceSelects(document);
  try{var last=store.get('na3-last');if(last){var parts=String(last).split('|');if(parts[0]&&ROLES[parts[0]])r=parts[0];if(parts[1])p=parts[1];}}catch(_){}
  if(!F[p]&&p!=='dashboard'&&p!=='settings'&&p!=='profile')p='dashboard';
  state.role=r;state.page=p;
- state.chip='Semua';state.q='';state.fq={};state.sort=null;state.sortKey=null;state.showFilters=false;state.pg=1;state.sel={};state.tab='ringkas';
+  state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';
  loadFilters();
  load(function(){
   try{
