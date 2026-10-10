@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tombol — Komponen Admin</title>
+<link rel="stylesheet" href="../assets/fonts.css" />
+<link rel="stylesheet" href="../assets/tabler-icons.min.css" />
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/layout.css" />
+<link rel="stylesheet" href="../styles/primitives.css" />
+<link rel="stylesheet" href="../styles/tables.css" />
+<link rel="stylesheet" href="../styles/lists.css" />
+<link rel="stylesheet" href="../styles/overlays.css" />
+<link rel="stylesheet" href="../styles/forms.css" />
+<link rel="stylesheet" href="../styles/features.css" />
+<style>
+.demo{max-width:960px;margin:0 auto;padding:24px}
+.demo-nav{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.demo-sec{margin:0 0 22px}
+.demo-sec>h2{font-size:14px;margin:0 0 10px}
+.demo-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.demo-note{font-size:12.5px;color:var(--text-2)}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="demo-nav"><a class="link" href="../index.html">← Admin</a><button class="mini-btn" id="themeBtn" type="button">Gelap/Terang</button></div>
+<h1 style="font-size:20px;margin:0 0 4px">Tombol</h1>
+<p class="demo-note">Contoh statis — class sama persis dengan <code>new-admin.html</code>. Sumber gaya: <code>../styles/*.css</code> (terutama <code>primitives.css</code>).</p>
+<div class="demo-sec"><h2>.btn</h2><div class="demo-row">
+<button class="btn" type="button">Default</button>
+<button class="btn primary" type="button"><i class="ti ti-plus"></i><span>Tambah</span></button>
+<button class="btn danger" type="button">Hapus</button>
+<button class="btn danger-solid" type="button">Hapus permanen</button>
+<button class="btn sm" type="button">Kecil (.sm)</button>
+<button class="btn" type="button" disabled>Nonaktif</button>
+</div></div>
+<div class="demo-sec"><h2>.link (alat kepala kartu)</h2><div class="demo-row">
+<button class="link" type="button"><i class="ti ti-download"></i><span>Export</span></button>
+<button class="link on" type="button">Filter aktif (.on)</button>
+<button class="link plain" type="button">Teks saja (.plain)</button>
+</div></div>
+<div class="demo-sec"><h2>.iconbtn + .mini-btn</h2><div class="demo-row">
+<button class="iconbtn" type="button" aria-label="Contoh"><i class="ti ti-bell"></i></button>
+<button class="mini-btn" type="button"><i class="ti ti-pencil"></i><span>Ubah</span></button>
+<button class="mini-btn ic danger" type="button" aria-label="Hapus"><i class="ti ti-trash"></i></button>
+<select class="mini-btn" aria-label="Contoh status"><option>Aktif</option><option>Draft</option></select>
+</div></div>
+<div class="demo-sec"><h2>.fab-btn (tambah cepat)</h2><div class="demo-row">
+<button class="fab-btn" type="button"><i class="ti ti-plus"></i><span>Tambah cepat</span></button>
+</div></div>
+</div>
+<script>document.getElementById('themeBtn').onclick=function(){var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');};</script>
+</body>
+</html>

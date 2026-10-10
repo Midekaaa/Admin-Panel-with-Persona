@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Baris & Status — Komponen Admin</title>
+<link rel="stylesheet" href="../assets/fonts.css" />
+<link rel="stylesheet" href="../assets/tabler-icons.min.css" />
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/layout.css" />
+<link rel="stylesheet" href="../styles/primitives.css" />
+<link rel="stylesheet" href="../styles/tables.css" />
+<link rel="stylesheet" href="../styles/lists.css" />
+<link rel="stylesheet" href="../styles/overlays.css" />
+<link rel="stylesheet" href="../styles/forms.css" />
+<link rel="stylesheet" href="../styles/features.css" />
+<style>
+.demo{max-width:960px;margin:0 auto;padding:24px}
+.demo-nav{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.demo-sec{margin:0 0 22px}
+.demo-sec>h2{font-size:14px;margin:0 0 10px}
+.demo-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.demo-note{font-size:12.5px;color:var(--text-2)}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="demo-nav"><a class="link" href="../index.html">← Admin</a><button class="mini-btn" id="themeBtn" type="button">Gelap/Terang</button></div>
+<h1 style="font-size:20px;margin:0 0 4px">Baris & Status</h1>
+<p class="demo-note">Contoh statis — class sama persis dengan <code>new-admin.html</code>. Sumber gaya: <code>lists.css</code> + <code>overlays.css</code>.</p>
+<div class="demo-sec"><h2>.nrow (notifikasi + geser)</h2>
+<!-- ASLI notifView -->
+<div class="nrow" data-nopen="N-2" tabindex="0" role="button" aria-label="Perawatan rutin malam ini"><span class="status amber"><i class="ti ti-alert-triangle" style="font-size:16px"></i></span><span style="flex:1;min-width:0"><span style="display:flex;gap:8px;align-items:center"><b>Perawatan rutin malam ini</b></span><span class="cell-s" style="display:block;margin-top:2px">Perawatan rutin 02:00–03:00. Aplikasi web tidak bisa diakses.</span><span style="display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap"><span class="cell-s">Peringatan · 30 Sep, 17:20</span><span class="bdg" style="background:#0F172A;color:#fff">Admin</span></span></span></div>
+<!-- ASLI socialView -->
+<div class="nrow" data-smopen="SM-IG" data-smid="SM-IG" tabindex="0" role="button" aria-label="Ubah @tryoutku · Instagram"><span class="grip" data-grip="SM-IG" title="Tahan dan geser untuk mengurutkan" aria-label="Geser untuk mengurutkan"><i class="ti ti-grip-vertical" style="font-size:18px"></i></span><span style="width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:#fff;flex:0 0 38px;background:var(--primary)"><i class="ti ti-brand-instagram" style="font-size:19px"></i></span><span style="flex:1;min-width:0"><b style="font-size:13.5px;color:var(--text-h);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">@tryoutku · Instagram</b><span class="cell-s" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">tryoutku.id/ig · tautan resmi</span><span class="cell-s" style="display:block">tampil di profil</span></span><button class="status green" data-smtoggle="SM-IG" title="Ubah status" style="border:0;cursor:pointer;font-family:inherit;flex:0 0 auto">Aktif</button><button class="mini-btn ic" data-smcopy="SM-IG" title="Salin tautan" aria-label="Salin tautan" style="flex:0 0 auto"><i class="ti ti-copy" style="font-size:14px"></i></button><button class="mini-btn danger ic" data-smdel="SM-IG" title="Hapus akun" aria-label="Hapus akun @tryoutku · Instagram" style="flex:0 0 auto"><i class="ti ti-trash" style="font-size:14px"></i></button></div>
+</div>
+<div class="demo-sec"><h2>.st-mini + .act-list/.ev + .timeline</h2>
+<button class="st-mini" type="button"><span class="ev-ic tone-primary"><i class="ti ti-target"></i></span><span class="et"><span class="et-t"> streak 7 hari</span><br /><span class="cell-s">Belum ditinjau</span></span><span class="status amber">Antre</span></button>
+<div style="margin-top:12px"><div class="cell-s" style="margin-bottom:6px">Kartu streak nyata (.st-card2):</div>
+<!-- ASLI streakTasksView -->
+<div class="st-card2" data-strow="1" tabindex="0"><span class="st-stick" title="Status: Aktif" style="background:var(--secondary)"></span><div style="display:flex;gap:10px;align-items:center"><span class="grip" data-stgrip="1" title="Tahan dan geser untuk mengurutkan" aria-label="Geser untuk mengurutkan"><i class="ti ti-grip-vertical" style="font-size:18px"></i></span><div style="flex:1;min-width:0"><div class="st-title"><span class="status purple" style="flex:0 0 auto">Quiz</span><span class="t">Kuis 3 soal harian</span></div></div><div class="st-side"><select class="mini-btn" data-stsel="1" aria-label="Status Kuis 3 soal harian"><option value="draft">Draft</option><option value="active" selected>Aktif</option><option value="paused">Dijeda</option></select><button class="mini-btn" data-stedit="1"><i class="ti ti-pencil" style="font-size:14px"></i><span>Edit</span></button><button class="mini-btn danger ic" data-stdel="1" aria-label="Hapus Kuis 3 soal harian"><i class="ti ti-trash" style="font-size:14px"></i></button></div></div><div class="st-groups"><div><div class="cell-s">Aturan</div><div class="cell-t">1x / hari · Subject 1</div></div><div><div class="cell-s">Reward</div><div class="cell-t">+10 koin</div></div><div><div class="cell-s">Monitoring</div><div class="cell-t">1.240 selesai · 380 pengguna · 42 hari ini</div></div></div></div>
+</div>
+<div class="act-list" style="margin-top:12px"><div class="ev"><span class="ev-ava">BU</span><span class="et"><span class="et-t">Budi mengirim tautan quest</span><time>10 menit lalu</time></span></div></div>
+<div class="timeline"><div class="ev"><span class="ev-ic tone-success"><i class="ti ti-check"></i></span><span>Voucher diterbitkan<time>Hari ini</time></span></div></div>
+</div>
+<div class="demo-sec"><h2>.empty + .skel + .banner</h2>
+<!-- Markup ASLI: emptyHTML dari new-admin.html -->
+<div class="empty"><div class="eico"><i class="ti ti-inbox" style="font-size:24px"></i></div><b>Tidak ada hasil</b><br><span style="font-size:12.5px">Ubah filter atau kata kunci.</span><br><br><button class="btn sm" data-reset>Reset filter</button> <button class="btn sm primary" data-new>Reset filter</button></div>
+<!-- Markup ASLI: skelHTML(2,64) dari new-admin.html -->
+<div style="padding:14px 16px" aria-hidden="true"><div class="skel" style="height:64px"></div><div class="skel" style="height:64px;margin-top:10px"></div></div>
+<div class="banner show" style="margin-top:12px"><i class="ti ti-wifi-off"></i><span>Anda offline. Data mungkin belum terbaru.</span><button class="mini-btn">Coba lagi</button></div>
+</div>
+</div>
+<script>document.getElementById('themeBtn').onclick=function(){var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');};</script>
+</body>
+</html>

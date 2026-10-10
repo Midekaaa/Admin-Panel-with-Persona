@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Toast, Palette & Menu — Komponen Admin</title>
+<link rel="stylesheet" href="../assets/fonts.css" />
+<link rel="stylesheet" href="../assets/tabler-icons.min.css" />
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/layout.css" />
+<link rel="stylesheet" href="../styles/primitives.css" />
+<link rel="stylesheet" href="../styles/tables.css" />
+<link rel="stylesheet" href="../styles/lists.css" />
+<link rel="stylesheet" href="../styles/overlays.css" />
+<link rel="stylesheet" href="../styles/forms.css" />
+<link rel="stylesheet" href="../styles/features.css" />
+<style>
+.demo{max-width:960px;margin:0 auto;padding:24px}
+.demo-nav{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.demo-sec{margin:0 0 22px}
+.demo-sec>h2{font-size:14px;margin:0 0 10px}
+.demo-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.demo-note{font-size:12.5px;color:var(--text-2)}
+.preview-frame{position:relative;min-height:300px;border:1px dashed var(--border);border-radius:14px;overflow:hidden}
+.preview-frame .toast,.preview-frame .kebab{position:absolute}
+.preview-frame .pal-ov{position:absolute}
+.static-drop{position:static;display:block;width:340px}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="demo-nav"><a class="link" href="../index.html">← Admin</a><button class="mini-btn" id="themeBtn" type="button">Gelap/Terang</button></div>
+<h1 style="font-size:20px;margin:0 0 4px">Toast, Palette & Menu</h1>
+<p class="demo-note">Contoh statis — class sama persis dengan <code>new-admin.html</code>. Pratinjau dibatasi bingkai putus-putus.</p>
+<div class="demo-sec"><h2>.toast-item</h2><div class="preview-frame"><div class="toast" style="position:absolute">
+<div class="toast-item"><i class="ti ti-check"></i><span>Tersimpan</span></div>
+<div class="toast-item err"><i class="ti ti-alert-triangle"></i><span>Gagal menyimpan<br /><span style="opacity:.65">Coba lagi.</span></span></div>
+<div class="toast-item"><i class="ti ti-trash"></i><span>Voucher dihapus</span><button class="tact" type="button">Urungkan</button></div>
+</div></div></div>
+<div class="demo-sec"><h2>.kebab + .ctx-pop</h2><div class="demo-row">
+<div class="kebab show" style="position:static;display:block"><button type="button"><i class="ti ti-eye"></i><span>Lihat kunci</span></button><button type="button"><i class="ti ti-copy"></i><span>Duplikat</span></button></div>
+<div class="ctx-pop show" style="position:static;display:block;width:250px"><button type="button" class="on"><span class="ctx-ic" style="background:var(--primary)">T</span><span><b>Tim Soal</b><small>Bank soal</small></span><span class="tickok"><i class="ti ti-check"></i></span></button></div>
+</div></div>
+<div class="demo-sec"><h2>.drop (.notif)</h2>
+<div class="drop show static-drop"><div class="notif">
+<button type="button" class="unread"><span class="nicon" style="background:var(--primary)"><i class="ti ti-flag"></i></span><span><b>Laporan soal baru</b><br /><span class="cell-s">2 menit lalu</span></span></button>
+<button type="button"><span class="nicon" style="background:var(--secondary)"><i class="ti ti-check"></i></span><span><b>Import selesai</b><br /><span class="cell-s">1 jam lalu</span></span></button>
+</div></div></div>
+<div class="demo-sec"><h2>.pal (pencarian cepat)</h2><div class="preview-frame"><div class="pal-ov show"><div class="pal">
+<div class="pal-in"><i class="ti ti-search"></i><input type="search" placeholder="Ketik nama halaman atau aksi…" aria-label="Pencarian cepat" /></div>
+<div class="pal-list"><div class="pal-sec">Halaman</div>
+<button class="pal-item on" type="button"><span class="qi" style="background:var(--primary)"><i class="ti ti-layout-dashboard"></i></span><span><b>Dashboard</b><small>Halo Marketing</small></span></button>
+<button class="pal-item" type="button"><span class="qi" style="background:var(--secondary)"><i class="ti ti-ticket"></i></span><span><b>Voucher</b><small>Koin-only</small></span></button></div>
+</div></div></div></div>
+</div>
+<script>document.getElementById('themeBtn').onclick=function(){var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');};</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+/* tokens.css — Token UI, tema gelap, base, ikon, skip link.
+   Dipisah otomatis dari DESIGN ADMIN/new-admin.html (baris 12-80). Isi verbatim, urutan <link> di index.html harus tetap.
+   Beda dari aslinya hanya 2 URL font filled di bawah (dibuat lokal ke ../assets/ agar offline). */
+  /* UI tokens (flat, no gradient). Fonts: Inter for body/UI, Poppins for display/headings. Icons: Tabler Icons.
+     Accent = student app primary scale (light: #1D4ED8 family / dark: #3B82F6 family). All accents use var(--primary). */
+  :root{
+    color-scheme:light;
+    --primary:#1D4ED8; --primary-hover:#1E40AF; --primary-50:#EFF6FF; --primary-100:#DBEAFE;
+    --primary-200:#BFDBFE; --primary-300:#93C5FD; --primary-400:#60A5FA; --primary-500:#2563EB; --primary-600:#1D4ED8;
+    --secondary:#16A34A; --secondary-100:#DCFCE7;
+    --gold:#F59E0B; --orange:#F97316; --pink:#EC4899; --red:#EF4444;
+    --bg-page:#F8FAFC; --bg-card:#FFFFFF; --bg-hover:#F1F5F9; --bg-input:#FFFFFF;
+    --bg-sidebar:#FFFFFF; --bg-content:#FFFFFF;
+    --text-h:#0F172A; --text-1:#0F172A; --text-2:#475569; --text-3:#94A3B8;
+    --border:#D8E0EC; --border-soft:#E6ECF3;
+    --ring:#93C5FD; --danger:#EF4444;
+    --r-card:16px; --r-btn:12px; --r-input:12px; --r-float:24px;
+    /* Single z-scale. Higher paints above. Dropdown lives inside topbar, drawer above scrim, palette above drawer, toast above all. */
+    --z-topbar:40; --z-moboverlay:45; --z-sidebar:50;
+    --z-scrim:70; --z-drawer:71; --z-pal:80; --z-toast:90;
+    --z-modal:85;
+    --shadow-sm:0 1px 2px rgba(15,23,42,.08),0 1px 3px rgba(15,23,42,.05);
+    --shadow-md:0 4px 14px rgba(15,23,42,.08);
+    --sb-w:232px; --sb-wc:76px; --top-h:64px;
+    --content-width:1280px;
+  }
+  [data-theme="dark"]{
+    color-scheme:dark;
+    --primary:#3B82F6; --primary-hover:#60A5FA; --primary-50:#172554; --primary-100:#1E3A8A;
+    --primary-200:#1E40AF; --primary-300:#1D4ED8; --primary-400:#60A5FA; --primary-500:#3B82F6; --primary-600:#2563EB;
+    --secondary:#22C55E; --secondary-100:#14532D;
+    --bg-page:#0D0E10; --bg-card:#1A1B1E; --bg-hover:#22242A; --bg-input:#0D0E10;
+    --bg-sidebar:#111214; --bg-content:#1A1B1E;
+    --text-h:#F2F3F5; --text-1:#DBDEE1; --text-2:#B5BAC1; --text-3:#72767E;
+    --border:#272A34; --border-soft:#1A1B1E;
+    --ring:#5865F2; --danger:#F23F43;
+    --shadow-sm:none; --shadow-md:none;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg-page);color:var(--text-1);
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  button{font:inherit;color:inherit}
+  h1,h2,h3,.hero h1,.card-h h2,.drawer-h h3,.kpi .val{font-family:Poppins,Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  h1,h2,h3,b,strong{font-weight:600}
+  /* Tabler Icons base */
+  .ti{font-size:20px;line-height:1;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}
+  @font-face{font-family:"tabler-icons-filled";font-style:normal;font-weight:400;
+    src:url("../assets/tabler-fonts/tabler-icons-filled.woff2") format("woff2"),url("../assets/tabler-fonts/tabler-icons-filled.woff") format("woff")}
+  .ti-f{font-family:"tabler-icons-filled" !important;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;speak:none;font-size:20px;line-height:1;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  .ti-f-book:before{content:"\fa87";}
+  .ti-f-adc:before{content:"\f7d3";}
+  .ti-f-user:before{content:"\fd19";}
+  .ti-f-shield:before{content:"\f761";}
+  .ni .ti{font-size:16px;flex:0 0 16px}
+  .iconbtn .ti{font-size:22px;display:block}
+  #roleBtn .ti,.ctx-pop .ti,#roleBtn .ti-f,.ctx-pop .ti-f{font-size:16px}
+  .qi .ti,.tick .ti{display:block;font-size:17px}
+  .tick .ti{font-size:14px}
+  .toast-item .ti{flex:0 0 16px;margin-top:2px;font-size:16px}
+  .empty .eico .ti{display:block;font-size:24px}
+  .who-ava,.ev-ava,.ava,.ctx-ic,.qi{font-family:Poppins,Inter,system-ui,sans-serif}
+  :focus-visible{outline:2px solid var(--ring);outline-offset:2px;border-radius:8px}
+  ::selection{background:var(--primary);color:#fff}
+  .app{display:flex;min-height:100vh;gap:0}
+
+  /* Skip link */
+  .skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--text-h);color:var(--bg-card);
+    padding:10px 16px;border-radius:10px;font-weight:600;font-size:13px;transition:top .15s ease;text-decoration:none}
+  .skip:focus{top:12px}
+

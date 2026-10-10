@@ -1,0 +1,107 @@
+/* features.css — Kartu soal, materi, tile mapel, import.
+   Dipisah otomatis dari DESIGN ADMIN/new-admin.html (baris 776-880). Isi verbatim, urutan <link> di index.html harus tetap. */
+  /* Bank Soal: kartu soal. Satu kolom di ponsel/tablet, dua kolom di layar lebar.
+     Semua warna lewat token, jadi mode gelap ikut berubah tanpa aturan tambahan. */
+  .qlist{display:grid;gap:12px;padding:14px 16px;grid-template-columns:minmax(0,1fr)}
+  @media(min-width:1080px){.qlist{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .qc{display:flex;flex-direction:column;background:var(--bg-card);border:1px solid var(--border);
+    border-radius:var(--r-card);box-shadow:var(--shadow-sm);overflow:hidden}
+  .qc:hover{border-color:var(--primary)}
+  .qc-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 14px 0}
+  .qc-no{width:34px;height:34px;flex:0 0 34px;border-radius:11px;border:1px solid transparent;
+    background:var(--primary-50);color:var(--text-h);display:grid;place-items:center;cursor:pointer;
+    font-family:Poppins,Inter,system-ui,sans-serif;font-size:13px;font-weight:600;padding:0}
+  .qc-no:hover{border-color:var(--primary)}
+  .qc-tags{display:flex;gap:6px;align-items:center;flex-wrap:wrap;min-width:0}
+  .qtag{font-size:11px;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--bg-hover);
+    color:var(--text-2);border:1px solid var(--border-soft);white-space:nowrap;
+    display:inline-flex;align-items:center;gap:5px}
+  .qtag .dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:var(--text-3)}
+  .qtag.lv1 .dot{background:var(--secondary)}
+  .qtag.lv2 .dot{background:var(--gold)}
+  .qtag.lv3 .dot{background:var(--danger)}
+  .qc-stem{margin:11px 14px 0;font-size:14.2px;line-height:1.6;color:var(--text-1)}
+  .qc-fig{margin:12px 14px 0;padding:24px 12px;border:1px dashed var(--border);border-radius:12px;
+    background:var(--bg-hover);color:var(--text-3);display:grid;place-items:center;gap:5px;text-align:center}
+  .qc-fig .ti{font-size:26px}
+  .qc-fig span{font-size:11.5px}
+  .qopts{margin:12px 14px 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+  .qopt{width:100%;display:flex;gap:10px;align-items:flex-start;text-align:left;font:inherit;
+    cursor:pointer;color:var(--text-1);background:var(--bg-card);border:1px solid var(--border-soft);
+    border-radius:var(--r-btn);padding:8px 11px}
+  .qopt:hover{border-color:var(--primary);background:var(--primary-50)}
+  .qopt .qk{width:24px;height:24px;flex:0 0 24px;border-radius:8px;background:var(--bg-hover);
+    color:var(--text-2);display:grid;place-items:center;font-size:11.5px;font-weight:600}
+  .qopt .qt{flex:1;min-width:0;font-size:13.2px;line-height:1.5}
+  .qopt.key{border-color:var(--primary);background:var(--primary-50)}
+  .qopt.key .qk{background:var(--primary);color:#fff}
+  .qopt.pick{border-color:var(--primary)}
+  .qopt.pick .qk{background:var(--text-h);color:var(--bg-card)}
+  .qopt.pick .qt{font-weight:600}
+  .qfill{margin:12px 14px 0;padding:9px 11px;border:1px dashed var(--border);border-radius:var(--r-btn);
+    font-size:13px;line-height:1.5;color:var(--text-3)}
+  .qkey{margin:12px 14px 0;padding:9px 12px;border-left:2px solid var(--primary);
+    background:var(--primary-50);border-radius:0 10px 10px 0}
+  .qkey[hidden]{display:none}
+  .qkey b{display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2)}
+  .qkey p{margin:4px 0 0;font-size:13px;line-height:1.55;color:var(--text-1)}
+  .qc-foot{margin-top:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    border-top:1px solid var(--border-soft);padding:10px 14px}
+  .qc-who{display:flex;align-items:center;gap:7px;min-width:0;font-size:12px;color:var(--text-2)}
+  .qc-use{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  @media(max-width:760px){.qc-use{margin-left:0;width:100%}}
+  /* Daftar isi materi: list ringkas tanpa visual, tanpa kartu. */
+  .qtop-list{display:flex;flex-direction:column}
+  .qtop-row{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;color:inherit;
+    background:none;border:0;border-bottom:1px solid var(--border-soft);padding:10px 16px;cursor:pointer}
+  .qtop-row:last-child{border-bottom:0}
+  .qtop-row:hover{background:var(--bg-hover)}
+  .qtop-row .et{flex:1;min-width:0}
+  /* Tile mapel Bank Soal: kartu 3:4 milik sendiri (Media tidak ikut berubah).
+     Tanpa aksen hover di gambar; ubah via tombol pensil. */
+  .qsub{margin:0;display:flex;flex-direction:column;min-width:0;background:var(--bg-card);
+    border:1px solid var(--border);border-radius:var(--r-card);box-shadow:none;overflow:hidden;
+    position:relative;aspect-ratio:3/4}
+  .qsub-art{flex:1;min-height:0;display:grid;place-items:center;color:var(--text-3);position:relative;
+    background:var(--bg-hover);border:0;border-radius:0;width:100%;cursor:pointer;font-family:inherit;padding:0;overflow:hidden}
+  .qsub-art .ti{font-size:44px}
+  .qsub-meta{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+  .qsub:hover{border-color:var(--primary)}
+  /* Hover tombol Ubah tidak menyalakan status hover kartu. */
+  .qsub:has([data-qsubedit]:hover){border-color:var(--border)}
+  .qsub:has([data-qsubedit]:hover) .go{opacity:0}
+  .qsub-meta .meta-row{display:flex;align-items:center;gap:8px}
+  .qsub-meta .meta-row>.cell-t,.qsub-meta .meta-row>.cell-s{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .qsub-meta .go{flex:0 0 auto;color:var(--text-3);opacity:0;transition:opacity .15s ease}
+  .qsub:hover .go{opacity:1}
+  /* Tingkat 1 Bank Soal: daftar mata pelajaran. Tile (.m-tile) dan tombol
+     gambar (.m-art) dipinjam apa adanya dari halaman Media; grid-nya sendiri
+     supaya ponsel tetap satu kolom tanpa mengubah halaman Media. */
+  .qsubs{display:grid;gap:12px;padding:14px 16px;grid-template-columns:minmax(0,1fr)}
+  @media(min-width:760px){.qsubs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(min-width:1080px){.qsubs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(min-width:1320px){.qsubs{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .qsubt{font-size:12px;font-weight:600;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* Import Soal (UI-only mock, mirror admin asli): dropzone, baris status, progres. */
+  .imp-drop{border:1.5px dashed var(--border);border-radius:12px;padding:14px;display:flex;gap:10px;align-items:center;cursor:pointer;background:var(--bg-hover)}
+  .imp-drop:hover{border-color:var(--primary)}
+  .imp-drop .w-up-ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--bg-card);border:1px solid var(--border);color:var(--text-2);flex:0 0 36px}
+  .imp-tpl{position:relative;display:inline-flex}
+  .imp-tpl-pop{position:absolute;top:calc(100% + 6px);left:0;min-width:280px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-md);padding:6px;display:none;z-index:5}
+  .imp-tpl-pop.show{display:block}
+  .imp-tpl-pop button{display:flex;gap:10px;width:100%;text-align:left;border:0;background:none;padding:9px 10px;border-radius:10px;cursor:pointer;min-height:48px;align-items:flex-start}
+  .imp-tpl-pop button:hover{background:var(--bg-hover)}
+  .imp-tpl-pop b{font-size:12.8px;display:block;color:var(--text-h)}
+  .imp-tpl-pop small{font-size:11.5px;color:var(--text-2);display:block;line-height:1.4}
+  .imp-rows{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto}
+  .imp-row{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:12.5px;background:var(--bg-card)}
+  .imp-row.is-ready{border-color:rgba(22,163,74,.35);background:rgba(22,163,74,.05)}
+  .imp-row.is-dup{border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.07)}
+  .imp-row.is-err{border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.05)}
+  [data-theme="dark"] .imp-row.is-ready{background:rgba(34,197,94,.08)}
+  [data-theme="dark"] .imp-row.is-dup{background:rgba(245,158,11,.08)}
+  [data-theme="dark"] .imp-row.is-err{background:rgba(242,63,67,.08)}
+  .imp-dot{width:9px;height:9px;border-radius:50%;flex:0 0 9px;margin-top:5px}
+  .imp-dot.ok{background:var(--secondary)} .imp-dot.warn{background:var(--gold)} .imp-dot.err{background:var(--danger)}
+  .imp-prog{height:8px;border-radius:99px;background:var(--bg-hover);overflow:hidden}
+  .imp-prog i{display:block;height:100%;width:0;background:var(--primary);border-radius:99px;transition:width .3s ease}

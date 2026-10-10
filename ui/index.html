@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tryoutku Admin</title>
+<link rel="stylesheet" href="assets/fonts.css" />
+<link rel="stylesheet" href="assets/tabler-icons.min.css" />
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/primitives.css" />
+  <link rel="stylesheet" href="styles/tables.css" />
+  <link rel="stylesheet" href="styles/lists.css" />
+  <link rel="stylesheet" href="styles/overlays.css" />
+  <link rel="stylesheet" href="styles/forms.css" />
+  <link rel="stylesheet" href="styles/features.css" />
+</head>
+<body>
+<a class="skip" href="#content">Lewati ke konten utama</a>
+<div class="app">
+  <div class="overlay-m" id="overlayM"></div>
+  <aside class="sidebar" id="sidebar" aria-label="Navigasi admin"></aside>
+  <div class="main">
+    <header class="top">
+      <button id="menuBtn" aria-label="Ciutkan navigasi"></button>
+      <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+      <div class="top-right">
+        <button class="iconbtn" id="themeBtn" aria-label="Ganti tema"></button>
+        <div style="position:relative">
+          <button class="iconbtn" id="notifBtn" aria-label="Notifikasi" aria-haspopup="true"><i class="ti ti-bell" style="font-size:22px"></i><span class="ping" id="notifPing"></span></button>
+          <div class="drop" id="notifDrop" role="dialog" aria-label="Notifikasi"></div>
+        </div>
+      </div>
+    </header>
+    <main class="wrap" id="content" tabindex="-1" aria-live="off"><div class="empty"><div class="eico"><i class="ti ti-loader-2" style="font-size:24px"></i></div><b>Memuat…</b></div></main>
+  </div>
+</div>
+<div class="banner" id="offBanner" role="alert" style="position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:95;width:min(560px,calc(100vw - 32px))"><i class="ti ti-wifi-off" style="font-size:18px"></i><span>Anda offline. Data mungkin belum terbaru.</span><button class="mini-btn" id="offRetry">Coba lagi</button></div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Detail"></aside>
+<div class="modal-ov" id="modalOv"><div class="modal" id="modalBox" role="dialog" aria-modal="true" aria-label="Dialog"></div></div>
+<div class="pal-ov" id="palOv"><div class="pal" role="dialog" aria-modal="true" aria-label="Pencarian cepat">
+  <div class="pal-in"><i class="ti ti-search"></i><input id="palInput" type="search" placeholder="Ketik nama halaman atau aksi…" aria-label="Pencarian cepat" autocomplete="off" /></div>
+  <div class="pal-list" id="palList" role="listbox"></div>
+</div></div>
+<div class="logout-ov" id="logoutOv"><div class="logout-card"><div class="ava">AD</div><b>Admin</b><span id="logoutRole">Tim Soal</span><p>Anda telah keluar.</p><button class="btn primary" id="loginBack">Masuk kembali</button></div></div>
+<div class="kebab" id="kebabPop" role="menu" aria-label="Aksi lainnya"></div>
+<div class="sel-pop" id="selPop" role="listbox" aria-label="Pilihan"></div>
+<div class="toast" id="toast" aria-live="polite" aria-atomic="false"></div>
+  <script src="js/00-core.js"></script>
+  <script src="js/01-table.js"></script>
+  <script src="js/02-dashboard-ads-media.js"></script>
+  <script src="js/03-bank-soal.js"></script>
+  <script src="js/04-notifikasi-sosial.js"></script>
+  <script src="js/05-streak-artikel.js"></script>
+  <script src="js/06-promo-referral.js"></script>
+  <script src="js/07-shell-boot.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kartu Soal — Komponen Admin</title>
+<link rel="stylesheet" href="../assets/fonts.css" />
+<link rel="stylesheet" href="../assets/tabler-icons.min.css" />
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/layout.css" />
+<link rel="stylesheet" href="../styles/primitives.css" />
+<link rel="stylesheet" href="../styles/tables.css" />
+<link rel="stylesheet" href="../styles/lists.css" />
+<link rel="stylesheet" href="../styles/overlays.css" />
+<link rel="stylesheet" href="../styles/forms.css" />
+<link rel="stylesheet" href="../styles/features.css" />
+<style>
+.demo{max-width:960px;margin:0 auto;padding:24px}
+.demo-nav{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.demo-sec{margin:0 0 22px}
+.demo-sec>h2{font-size:14px;margin:0 0 10px}
+.demo-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.demo-note{font-size:12.5px;color:var(--text-2)}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="demo-nav"><a class="link" href="../index.html">← Admin</a><button class="mini-btn" id="themeBtn" type="button">Gelap/Terang</button></div>
+<h1 style="font-size:20px;margin:0 0 4px">Kartu Soal</h1>
+<p class="demo-note">Contoh statis — class sama persis dengan <code>new-admin.html</code> (<code>qCardHTML</code> dkk). Sumber gaya: <code>features.css</code>.</p>
+<div class="demo-sec"><h2>.qc (kartu soal)</h2><div class="qlist" style="padding:0">
+<!-- Markup ASLI: qCardHTML + baris data nyata dari new-admin.html -->
+<article class="qc" data-qcard="SOAL-8821"><div class="qc-top"><button class="qc-no" data-qopen="SOAL-8821" title="Buka detail soal" aria-label="Buka detail soal SOAL-8821">1</button><span class="qc-tags"><span class="qtag">Pilihan Ganda</span><span class="qtag">Aljabar</span><span class="qtag lv1"><span class="dot"></span>Mudah</span><span class="qtag">Bobot 5</span></span><span class="status green">Ready</span></div><p class="qc-stem">Grafik fungsi f(x) = x² − 6x + 5 berpotongan dengan sumbu X pada titik …</p><div class="qc-fig"><i class="ti ti-photo" style="font-size:26px"></i><span>grafik-fungsi.png</span></div><ul class="qopts"><li><button class="qopt" data-qopt="SOAL-8821" data-qletter="A" aria-label="Pilihan A: (−1, 0) dan (5, 0)"><span class="qk">A</span><span class="qt">(−1, 0) dan (5, 0)</span></button></li><li><button class="qopt key" data-qopt="SOAL-8821" data-qletter="B" aria-label="Pilihan B: (1, 0) dan (5, 0)"><span class="qk">B</span><span class="qt">(1, 0) dan (5, 0)</span></button></li><li><button class="qopt" data-qopt="SOAL-8821" data-qletter="C" aria-label="Pilihan C: (−1, 0) dan (−5, 0)"><span class="qk">C</span><span class="qt">(−1, 0) dan (−5, 0)</span></button></li><li><button class="qopt" data-qopt="SOAL-8821" data-qletter="D" aria-label="Pilihan D: (1, 0) dan (3, 0)"><span class="qk">D</span><span class="qt">(1, 0) dan (3, 0)</span></button></li><li><button class="qopt" data-qopt="SOAL-8821" data-qletter="E" aria-label="Pilihan E: (3, 0) dan (−5, 0)"><span class="qk">E</span><span class="qt">(3, 0) dan (−5, 0)</span></button></li></ul><div class="qkey" id="qkey-SOAL-8821" hidden><b>Kunci jawaban</b><p><b>B</b> — Nilai x saat f(x) = 0 diperoleh dari x² − 6x + 5 = 0, sehingga (x − 1)(x − 5) = 0 dan x = 1 atau x = 5. Jadi titik potongnya (1, 0) dan (5, 0).</p></div><div class="qc-foot"><span class="qc-who"><button class="ava-btn" data-ugo="R. Kartika" title="R. Kartika" aria-label="Lihat data R. Kartika"><span class="who-ava" style="background:#0E7490">RK</span></button>R. Kartika</span><span class="qc-use"><span class="cell-s">dipakai 12x</span><button class="mini-btn ic" data-qkey="SOAL-8821" aria-expanded="false" aria-controls="qkey-SOAL-8821" title="Lihat kunci dan pembahasan" aria-label="Lihat kunci dan pembahasan soal SOAL-8821"><i class="ti ti-eye" style="font-size:14px"></i></button><button class="mini-btn ic" data-qqedit="SOAL-8821" title="Ubah soal" aria-label="Ubah soal SOAL-8821"><i class="ti ti-pencil" style="font-size:14px"></i></button><button class="mini-btn ic" data-qdup="SOAL-8821" title="Duplikat" aria-label="Duplikat soal SOAL-8821"><i class="ti ti-copy" style="font-size:14px"></i></button><button class="mini-btn ic" data-qarch="SOAL-8821" title="Arsipkan" aria-label="Arsipkan soal SOAL-8821"><i class="ti ti-archive" style="font-size:14px"></i></button></span></div></article>
+</div></div>
+<div class="demo-sec"><h2>.qsubs + .qtop-list + .m-tile</h2>
+<div class="qsubs"><button class="qsub" type="button"><span class="cell-t">Aljabar</span><span class="cell-s">4 materi · 12 soal</span></button></div>
+<div class="qtop-list" style="margin-top:12px"><div class="qtop-row"><span class="cell-t">Persamaan Kuadrat</span><span class="cell-s">8 soal</span></div></div>
+<div class="m-tile card" style="margin-top:12px;max-width:280px"><button class="m-art" type="button" aria-label="Buka Matematika"><i class="ti ti-book" style="font-size:26px"></i></button>
+<div style="padding:12px 14px"><div class="cell-t">Matematika</div><div class="cell-s">4 materi · 12 soal</div>
+<div class="m-quick" style="margin-top:8px"><button class="mini-btn" type="button">Buka</button></div></div></div>
+</div>
+<div class="demo-sec"><h2>.imp-row (import soal)</h2>
+<div class="imp-rows"><div class="imp-row"><span class="imp-dot" style="background:var(--secondary)"></span><span class="cell-t">baris-01.csv</span><span class="cell-s">Lolos</span></div>
+<div class="imp-row"><span class="imp-dot" style="background:var(--danger)"></span><span class="cell-t">baris-02.csv</span><span class="cell-s">Gagal: duplikat</span></div></div>
+<div class="imp-prog" style="margin-top:8px"><i style="width:50%"></i></div>
+</div>
+</div>
+<script>document.getElementById('themeBtn').onclick=function(){var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');};</script>
+</body>
+</html>

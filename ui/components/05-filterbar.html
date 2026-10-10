@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Filter Bar — Komponen Admin</title>
+<link rel="stylesheet" href="../assets/fonts.css" />
+<link rel="stylesheet" href="../assets/tabler-icons.min.css" />
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/layout.css" />
+<link rel="stylesheet" href="../styles/primitives.css" />
+<link rel="stylesheet" href="../styles/tables.css" />
+<link rel="stylesheet" href="../styles/lists.css" />
+<link rel="stylesheet" href="../styles/overlays.css" />
+<link rel="stylesheet" href="../styles/forms.css" />
+<link rel="stylesheet" href="../styles/features.css" />
+<style>
+.demo{max-width:960px;margin:0 auto;padding:24px}
+.demo-nav{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.demo-sec{margin:0 0 22px}
+.demo-sec>h2{font-size:14px;margin:0 0 10px}
+.demo-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.demo-note{font-size:12.5px;color:var(--text-2)}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="demo-nav"><a class="link" href="../index.html">← Admin</a><button class="mini-btn" id="themeBtn" type="button">Gelap/Terang</button></div>
+<h1 style="font-size:20px;margin:0 0 4px">Filter Bar</h1>
+<p class="demo-note">Contoh statis — class sama persis dengan <code>new-admin.html</code>. Sumber gaya: <code>primitives.css</code> + <code>tables.css</code>.</p>
+<div class="demo-sec"><div class="card">
+<!-- Markup ASLI: filterBarHTML(F vouchers) dari new-admin.html -->
+<div><div class="filters"><span class="fsearch" style="flex:0 0 auto;width:340px;max-width:100%"><i class="ti ti-search" style="font-size:17px"></i><input type="text" class="rowQ" placeholder="Cari…" value="" aria-label="Cari…" autocomplete="off" role="searchbox"></span></div><div class="filters" style="padding-top:8px"><button class="link" data-nfilter aria-haspopup="true"><i class="ti ti-filter" style="font-size:15px"></i>Filter</button><button class="link" id="sortBtn" title="Urutkan" aria-pressed="false"><i class="ti ti-arrows-sort" style="font-size:15px"></i>Urutkan</button></div><div style="height:10px"></div></div>
+<div class="chips"><span class="fcond">Status: Aktif <button type="button" aria-label="Hapus kondisi"><i class="ti ti-x"></i></button></span>
+<button class="chip active" type="button">Semua</button><button class="chip" type="button">Aktif</button></div>
+<div style="padding:12px 16px 16px"><div class="seg" role="radiogroup" aria-label="Rentang"><button type="button">7 hari</button><button type="button" class="on">30 hari</button><button type="button">90 hari</button></div></div>
+</div></div>
+</div>
+<script>document.getElementById('themeBtn').onclick=function(){var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');};</script>
+</body>
+</html>

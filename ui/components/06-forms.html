@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Formulir — Komponen Admin</title>
+<link rel="stylesheet" href="../assets/fonts.css" />
+<link rel="stylesheet" href="../assets/tabler-icons.min.css" />
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/layout.css" />
+<link rel="stylesheet" href="../styles/primitives.css" />
+<link rel="stylesheet" href="../styles/tables.css" />
+<link rel="stylesheet" href="../styles/lists.css" />
+<link rel="stylesheet" href="../styles/overlays.css" />
+<link rel="stylesheet" href="../styles/forms.css" />
+<link rel="stylesheet" href="../styles/features.css" />
+<style>
+.demo{max-width:960px;margin:0 auto;padding:24px}
+.demo-nav{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.demo-sec{margin:0 0 22px}
+.demo-sec>h2{font-size:14px;margin:0 0 10px}
+.demo-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.demo-note{font-size:12.5px;color:var(--text-2)}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="demo-nav"><a class="link" href="../index.html">← Admin</a><button class="mini-btn" id="themeBtn" type="button">Gelap/Terang</button></div>
+<h1 style="font-size:20px;margin:0 0 4px">Formulir</h1>
+<p class="demo-note">Contoh statis — class sama persis dengan <code>new-admin.html</code>. Sumber gaya: <code>forms.css</code>.</p>
+<div class="demo-sec"><h2>.field</h2>
+<div class="field"><label for="fNama">Nama</label><input id="fNama" value="Paket SNBT 01" /><span class="fhint">Contoh petunjuk (.fhint).</span></div>
+<div class="field" style="margin-top:13px"><label for="fJenis">Jenis</label><select id="fJenis"><option>Pilihan Ganda</option><option>Uraian</option></select></div>
+<div class="field" style="margin-top:13px"><label for="fDesc">Deskripsi <small>opsional</small></label><textarea id="fDesc"></textarea><span class="ferr show">Contoh galat (.ferr.show).</span></div>
+</div>
+<div class="demo-sec"><h2>.sel (select bertema)</h2>
+<div class="demo-row"><span class="sel"><button class="sel-trigger sel-skin-filters" type="button"><span class="sel-lbl">Status: Aktif</span><span class="sel-chev"><i class="ti ti-chevron-down"></i></span></button></span></div>
+</div>
+<div class="demo-sec"><h2>.w-step + .pick-grid + .w-coin + .w-up</h2>
+<div class="w-step"><div class="w-step-h"><span class="w-num">1</span><b>Jenis tugas</b><small>pilih satu</small></div>
+<div class="pick-grid cols-4">
+<button class="pick on" type="button"><span class="pick-ic"><i class="ti ti-target"></i></span><b>Harian</b><small>reset tiap hari</small></button>
+<button class="pick" type="button"><span class="pick-ic"><i class="ti ti-calendar"></i></span><b>Mingguan</b><small>reset Senin</small></button>
+</div></div>
+<div class="w-step" style="margin-top:12px"><div class="w-step-h"><span class="w-num">2</span><b>Reward koin</b></div>
+<div class="field"><label for="wKoin">Koin</label><div class="w-coin"><button class="w-stepbtn" type="button">−</button><input id="wKoin" value="10" /><button class="w-stepbtn" type="button">+</button></div></div></div>
+<div class="w-up" style="margin-top:12px"><span class="w-up-ic"><i class="ti ti-upload"></i></span><span><b>Unggah ikon</b><small>PNG/JPG, maks 2 MB</small></span></div>
+</div>
+</div>
+<script>document.getElementById('themeBtn').onclick=function(){var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');};</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+/* lists.css — Grid media, aktivitas, timeline, avatar, matriks.
+   Dipisah otomatis dari DESIGN ADMIN/new-admin.html (baris 441-519). Isi verbatim, urutan <link> di index.html harus tetap. */
+  /* Bio + manager side by side on desktop, stacked on mobile */
+  .smgrid{display:grid;gap:12px;padding:0;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:start}
+  @media(max-width:899px){.smgrid{grid-template-columns:1fr}}
+  /* Media grid: isi kiri ke kanan, lalu baris berikutnya */
+  .masonry{display:grid;gap:12px;padding:14px 16px;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+  @media(min-width:900px){.masonry{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(min-width:1240px){.masonry{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .m-tile{margin:0;display:flex;flex-direction:column;width:auto;min-width:0;height:100%;box-shadow:none;overflow:hidden}
+  .m-art{display:grid;place-items:center;color:var(--text-3);background:var(--bg-hover);border-radius:14px 14px 0 0;border:0;width:100%;cursor:pointer;font-family:inherit;padding:0;aspect-ratio:4/3;min-height:0}
+  .m-art:hover{color:var(--primary)}
+  .m-quick{display:flex;gap:6px}
+  .fab-wrap{position:fixed;right:18px;bottom:18px;z-index:60}
+  .fab-btn{min-height:48px;padding:0 18px;border-radius:999px;border:1px solid var(--primary);
+    background:var(--primary);color:#fff;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;
+    gap:8px;font-size:13.5px;box-shadow:var(--shadow-md)}
+  .fab-btn:hover{background:var(--primary-hover)}
+  .fab-btn .chev{display:inline-flex;transition:transform .2s ease}
+  .fab-btn.open .chev{transform:rotate(180deg)}
+  .fab-btn .ti{font-size:17px}
+  .fab-wrap .quick-pop{top:auto;bottom:calc(100% + 10px);right:0}
+  .act-list{display:flex;flex-direction:column;padding:4px 0}
+  .act-list .ev{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;border-bottom:1px solid var(--border-soft)}
+  .act-list .ev:last-child{border-bottom:0}
+  .act-list .ev:hover{background:var(--bg-hover)}
+  .ev .et{flex:1;min-width:0}
+  .ev .et-t{font-size:13px;font-weight:600;color:var(--text-h);line-height:1.45}
+  .quick{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+  .quick button{display:flex;gap:11px;align-items:center;text-align:left;border:1px solid var(--border);
+    background:var(--bg-card);border-radius:12px;padding:10px 12px;cursor:pointer;min-height:56px}
+  .quick button:hover{border-color:var(--primary)}
+  .quick b{font-size:13px;display:block;color:var(--text-h)}
+  .quick small{font-size:12px;color:var(--text-2)}
+  .quick .qi{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;
+    flex:0 0 34px;font-size:15px;font-weight:600}
+  /* Dashboard Tugas Streak: daftar kartu kecil berbingkai, bisa diklik langsung. */
+  .st-mini{display:flex;gap:10px;align-items:center;width:100%;text-align:left;font:inherit;color:inherit;
+    background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:10px 12px;cursor:pointer}
+  .st-mini:hover{border-color:var(--primary)}
+  .st-mini .et{flex:1;min-width:0}
+  .timeline{padding:6px 16px 14px;display:flex;flex-direction:column}
+  .ev{display:flex;gap:11px;font-size:12.8px;padding:9px 0;position:relative}
+  .timeline .ev:not(:last-child)::before{content:"";position:absolute;left:15px;top:36px;bottom:-4px;width:2px;background:var(--border-soft)}
+  /* Person avatar — one consistent neutral style everywhere. Identity comes
+     from the initials + the actor name in the meta line, not a random hue. */
+  .ev-ava{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+    background:var(--bg-hover);color:var(--text-2);border:1px solid var(--border-soft);
+    font-size:11px;font-weight:600;flex:0 0 30px;z-index:1}
+  /* Icon badge for non-person rows (tasks, alerts, channels). Two-letter
+     initials are reserved for real people — never for objects. */
+  .ev-ic{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;flex:0 0 30px;
+    background:var(--bg-hover);color:var(--text-2);border:1px solid var(--border-soft)}
+  .ev-ic .ti{font-size:17px}
+  .ev-ic.tone-primary{background:var(--primary-50);color:var(--primary);border-color:transparent}
+  [data-theme="dark"] .ev-ic.tone-primary{background:rgba(59,130,246,.14);color:#93C5FD}
+  .ev-ic.tone-success{background:var(--secondary-100);color:#15803D;border-color:transparent}
+  [data-theme="dark"] .ev-ic.tone-success{background:rgba(22,163,74,.15);color:#4ADE80}
+  .ev-ic.tone-warning{background:#FEF3C7;color:#B45309;border-color:transparent}
+  [data-theme="dark"] .ev-ic.tone-warning{background:rgba(245,158,11,.15);color:#FBBF24}
+  .ev time{font-size:11px;color:var(--text-3);display:block;margin-top:1px}
+  .perm{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;background:var(--bg-hover);
+    border:1px solid var(--border);padding:1px 7px;border-radius:6px;color:var(--text-2);white-space:nowrap}
+  .matrix-scroll{overflow-x:auto}
+  .matrix{min-width:620px}
+  .mrow{display:grid;grid-template-columns:1.4fr repeat(4,.6fr);font-size:13px;border-bottom:1px solid var(--border-soft)}
+  .mrow.head{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-3);
+    font-weight:600;background:var(--bg-hover)}
+  .mrow>div{padding:11px 14px;display:flex;align-items:center;gap:7px}
+  .mrow>div:not(:first-child){justify-content:center}
+  .tick{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:600;border:0;font-family:inherit}
+  button.tick{cursor:pointer}
+  button.tick:hover{box-shadow:0 0 0 2px var(--ring)}
+  .tick.y{background:#DCFCE7;color:#15803D}
+  .tick.n{background:var(--bg-hover);color:var(--text-3)}
+  .tick.part{background:#FEF3C7;color:#B45309}
+  [data-theme="dark"] .tick.y{background:rgba(34,197,94,.15);color:#4ADE80}
+  [data-theme="dark"] .tick.part{background:rgba(245,158,11,.15);color:#FBBF24}
+  .foot{color:var(--text-3);font-size:12px;margin:16px 2px 44px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .foot code{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--bg-hover);
+    border:1px solid var(--border);padding:1px 7px;border-radius:6px;color:var(--text-2)}

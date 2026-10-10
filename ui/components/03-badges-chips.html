@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lencana & Chip — Komponen Admin</title>
+<link rel="stylesheet" href="../assets/fonts.css" />
+<link rel="stylesheet" href="../assets/tabler-icons.min.css" />
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/layout.css" />
+<link rel="stylesheet" href="../styles/primitives.css" />
+<link rel="stylesheet" href="../styles/tables.css" />
+<link rel="stylesheet" href="../styles/lists.css" />
+<link rel="stylesheet" href="../styles/overlays.css" />
+<link rel="stylesheet" href="../styles/forms.css" />
+<link rel="stylesheet" href="../styles/features.css" />
+<style>
+.demo{max-width:960px;margin:0 auto;padding:24px}
+.demo-nav{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.demo-sec{margin:0 0 22px}
+.demo-sec>h2{font-size:14px;margin:0 0 10px}
+.demo-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.demo-note{font-size:12.5px;color:var(--text-2)}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="demo-nav"><a class="link" href="../index.html">← Admin</a><button class="mini-btn" id="themeBtn" type="button">Gelap/Terang</button></div>
+<h1 style="font-size:20px;margin:0 0 4px">Lencana & Chip</h1>
+<p class="demo-note">Contoh statis — class sama persis dengan <code>new-admin.html</code>. Sumber gaya: <code>tables.css</code> (.status), <code>primitives.css</code> (.chip), <code>lists.css</code> (.bdg).</p>
+<div class="demo-sec"><h2>.status (6 warna)</h2><div class="demo-row">
+<span class="status green">Aktif</span><span class="status amber">Menunggu</span><span class="status red">Ditolak</span>
+<span class="status blue">Quest A</span><span class="status purple">Quest B</span><span class="status gray">Draft</span>
+</div></div>
+<div class="demo-sec"><h2>.bdg (notifikasi + konteks)</h2><div class="demo-row">
+<span class="bdg">4</span><span class="bdg warn">24</span><span class="bdg alert">9</span><span class="bdg ok">5</span><span class="bdg info">320</span><span class="bdg dot"></span>
+</div></div>
+<div class="demo-sec"><h2>.chip (pilihan filter)</h2><div class="chips" style="padding:0">
+<button class="chip active" type="button">Semua</button><button class="chip" type="button">Aktif</button><button class="chip" type="button">Penuh</button><button class="chip" type="button">Kedaluwarsa</button>
+</div></div>
+<div class="demo-sec"><h2>.delta + .perm</h2><div class="demo-row">
+<span class="delta up">+12</span><span class="delta down">−3</span><span class="delta flat">stabil</span><span class="perm">users.read</span>
+</div></div>
+</div>
+<script>document.getElementById('themeBtn').onclick=function(){var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');};</script>
+</body>
+</html>

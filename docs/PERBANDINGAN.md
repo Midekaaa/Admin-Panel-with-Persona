@@ -36,7 +36,7 @@ Soal terkait per mata pelajaran:
 ## Dashboard
 
 * Halaman baru, tidak ada di admin lama.
-* Halo Marketing, 3 KPI, Tugas Streak, Kanal aktif, Artikel portal, Perlu perhatian, Aktivitas terbaru.
+* Halo Marketing, 3 KPI, Tugas Streak, Kanal aktif, Artikel portal, Aktivitas terbaru.
 
 | Before | Update |
 |---|---|
@@ -135,16 +135,6 @@ Soal terkait per mata pelajaran:
 |---|---|
 | *(kosong)* | ![Voucher after](images/after/after-voucher.png) |
 
-## Undangan (split Marketing ↔ Tim User)
+Catatan: screenshot diambil sebelum tombol Tambah cepat ada dan sebelum model quest/tiket. Referral tidak lagi punya Tambah cepat / Buat referral; Voucher masih punya Tambah cepat. Screenshot `after-referral.png`, `after-voucher.png` perlu diambil ulang.
 
-* Baru di PR ini, tidak ada di admin lama maupun perbandingan sebelumnya.
-* Marketing: strip Minta Undangan di halaman Referral (maks 5 permintaan terbuka, hanya Marketing yang bisa meminta). Form: Email tujuan, Penjelasan singkat (`user baru mendapatkan benefit +10 koin Quest A`). Benefit selalu Quest A (pengguna baru), tanpa dropdown. Tidak ada halaman / menu mandiri.
-* Kolom Aksi disembunyikan di tabel yang aksinya non-fungsional (Undangan, Data Pelajar, Izin, Materi, Universitas, Jenjang, Prodi, Versi Blueprint, Try Out, Penilaian Esai, Log, Masukan, Testimoni, Tugas Streak, Referral). Detail tetap via klik baris; tabel dengan navigasi nyata (Pengguna, Peran, Bidang, Program, Blueprint, Latihan, Laporan Soal) tetap punya Aksi.
-* Tim User: halaman `Undangan` + section `Permintaan dari Marketing` (Setujui / Tolak di tempat). Setujui → `INV-xxx` tercatat di Undangan + notif link ke `invitations`. Tolak wajib alasan.
-* Label quest live ikut tersemat di Undangan (`· Quest A, …`) via `syncInvQuest`.
-
-| Before | Update |
-|---|---|
-| *(kosong)* | *(screenshot menyusul)* |
-
-Catatan: screenshot diambil sebelum tombol Tambah cepat ada dan sebelum model quest/tiket/split undangan. Referral tidak lagi punya Tambah cepat / Buat referral; Voucher masih punya Tambah cepat. Screenshot `after-referral.png`, `after-voucher.png` perlu diambil ulang, plus screenshot baru untuk Undangan split.
+Catatan: fitur permintaan undangan Marketing → Tim User dibatalkan, jadi strip "Minta Undangan" di halaman Referral tidak dipakai.

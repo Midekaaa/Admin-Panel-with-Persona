@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tabel — Komponen Admin</title>
+<link rel="stylesheet" href="../assets/fonts.css" />
+<link rel="stylesheet" href="../assets/tabler-icons.min.css" />
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/layout.css" />
+<link rel="stylesheet" href="../styles/primitives.css" />
+<link rel="stylesheet" href="../styles/tables.css" />
+<link rel="stylesheet" href="../styles/lists.css" />
+<link rel="stylesheet" href="../styles/overlays.css" />
+<link rel="stylesheet" href="../styles/forms.css" />
+<link rel="stylesheet" href="../styles/features.css" />
+<style>
+.demo{max-width:960px;margin:0 auto;padding:24px}
+.demo-nav{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.demo-sec{margin:0 0 22px}
+.demo-sec>h2{font-size:14px;margin:0 0 10px}
+.demo-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.demo-note{font-size:12.5px;color:var(--text-2)}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="demo-nav"><a class="link" href="../index.html">← Admin</a><button class="mini-btn" id="themeBtn" type="button">Gelap/Terang</button></div>
+<h1 style="font-size:20px;margin:0 0 4px">Tabel</h1>
+<p class="demo-note">Contoh statis — class sama persis dengan <code>new-admin.html</code>. Sumber gaya: <code>tables.css</code>.</p>
+<div class="demo-sec"><div class="card"><div class="card-h"><div><h2>Contoh tabel</h2><p>Baris + aksi + kaki halaman.</p></div><div class="sp"><button class="link" type="button"><i class="ti ti-download" style="font-size:15px"></i>Export</button></div></div>
+<!-- ASLI: susunan tableCard (card-h -> bulkbar -> tbl -> tfoot), tanpa inline-style penimpa -->
+<div class="bulkbar" role="status">2 dipilih <button class="mini-btn" type="button">Tandai diproses</button><button class="mini-btn" type="button">Arsipkan</button><button class="mini-btn danger" type="button">Hapus</button><button class="mini-btn" type="button">Batal</button></div>
+<div class="tbl-wrap"><table>
+<thead><tr><th style="width:48px"><input type="checkbox" id="selAll" aria-label="Pilih semua di halaman ini" checked /></th><th class="th-sort" data-sort="nama" aria-sort="none"><span class="th-in">Nama <i class="ti ti-chevron-down" style="font-size:14px"></i></span></th><th><span class="th-in">Status</span></th><th style="text-align:right"><span class="th-in">Aksi</span></th></tr></thead>
+<tbody>
+<tr data-row="paket-01" tabindex="0" class="selected"><td class="sel-cell"><input type="checkbox" data-sel="paket-01" checked aria-label="Pilih Paket SNBT 01" /></td><td><div class="cell-t">Paket SNBT 01</div><div class="cell-s">12 soal · Matematika</div></td><td><span class="status green">Aktif</span></td>
+<td><div class="rowact"><button class="mini-btn" type="button">Ubah</button><button class="mini-btn ic" type="button" aria-label="Lainnya"><i class="ti ti-dots"></i></button></div></td></tr>
+<tr data-row="paket-02" tabindex="0"><td class="sel-cell"><input type="checkbox" data-sel="paket-02" aria-label="Pilih Paket SNBT 02" /></td><td><div class="cell-t">Paket SNBT 02</div><div class="cell-s">8 soal · Fisika</div></td><td><span class="status gray">Draft</span></td>
+<td><div class="rowact"><button class="mini-btn" type="button">Ubah</button><button class="mini-btn ic danger" type="button" aria-label="Hapus"><i class="ti ti-trash"></i></button></div></td></tr>
+</tbody></table></div>
+<!-- ASLI: tfootHTML(2,'dari 2 data',pgNum(2)) -->
+<div class="tfoot"><span><b style="color:var(--text-h)">2</b> dari 2 data</span><span class="pg"><button data-pg="1" disabled aria-label="Halaman pertama"><i class="ti ti-chevrons-left" style="font-size:16px"></i></button><button data-pg="prev" disabled aria-label="Halaman sebelumnya"><i class="ti ti-chevron-left" style="font-size:16px"></i></button><button data-pg="1" class="on" aria-label="Halaman 1" aria-current="page">1</button><button data-pg="2" aria-label="Halaman 2">2</button><button data-pg="next" aria-label="Halaman berikutnya"><i class="ti ti-chevron-right" style="font-size:16px"></i></button><button data-pg="2" aria-label="Halaman terakhir"><i class="ti ti-chevrons-right" style="font-size:16px"></i></button></span></div>
+</div></div>
+</div>
+<script>document.getElementById('themeBtn').onclick=function(){var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');};</script>
+</body>
+</html>

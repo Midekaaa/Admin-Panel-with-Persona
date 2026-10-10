@@ -1,0 +1,100 @@
+/* tables.css — Sistem tabel, status badge, kebab, popover filter.
+   Dipisah otomatis dari DESIGN ADMIN/new-admin.html (baris 343-440). Isi verbatim, urutan <link> di index.html harus tetap. */
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  /* Reusable table system: sticky head, sortable columns, cohesive row states */
+  .tbl-wrap{overflow-x:auto}
+  thead th{position:sticky;top:0;background:var(--bg-card);z-index:1}
+  /* Referral: kolom Penyebar (4) dan Pendaftar (5) selalu sama lebar. */
+  .tbl-ref{table-layout:fixed;width:100%}
+  .tbl-ref th:nth-child(4),.tbl-ref td:nth-child(4),
+  .tbl-ref th:nth-child(5),.tbl-ref td:nth-child(5){width:27%}
+  th.th-sort{cursor:pointer;user-select:none}
+  th.th-sort:hover{background:none}
+  th.sorted{background:none;color:var(--text-h)}
+  .th-in{display:inline-flex;align-items:center;gap:6px}
+  .th-in .ti{font-size:14px;color:var(--text-3);opacity:0;transition:opacity .15s ease}
+  th.th-sort:hover .th-in .ti{opacity:.55}
+  th.sorted .th-in .ti{opacity:1;color:var(--text-h)}
+  .bulkbar{display:flex;gap:8px;align-items:center;padding:10px 16px;background:var(--primary-50);
+    font-size:12.5px;font-weight:600;color:var(--primary);border-bottom:1px solid var(--border-soft);flex-wrap:wrap}
+  th{text-align:left;font-size:11px;color:var(--text-3);font-weight:500;text-transform:uppercase;
+    letter-spacing:.06em;padding:11px 12px;border-bottom:1px solid var(--border-soft);white-space:nowrap;background:transparent;vertical-align:middle}
+  th:first-child{padding-left:16px} th:last-child{padding-right:16px}
+  thead th:first-child{width:48px;min-width:48px;text-align:center}
+  tbody td.sel-cell{min-width:48px;text-align:center}
+  td{padding:14px 12px;border-bottom:1px solid var(--border-soft);vertical-align:middle}
+  td:first-child{padding-left:16px} td:last-child{padding-right:16px}
+  .sel-cell{cursor:default}
+  table input[type="checkbox"]{width:17px;height:17px;margin:0;accent-color:var(--primary);cursor:pointer;vertical-align:middle}
+  tbody tr{cursor:pointer;transition:background .15s ease}
+  tbody tr:focus-within{background:var(--primary-50)}
+  tbody tr:hover{background:rgba(239,246,255,.5)}
+  [data-theme="dark"] tbody tr:hover{background:#22242A}
+  tbody tr.selected{background:var(--bg-hover)}
+  tr:last-child td{border-bottom:0}
+  .cell-t{font-weight:600;color:var(--text-h);line-height:1.35;font-size:13px}
+  .cell-s{font-size:12px;color:var(--text-2)}
+  .who{display:flex;align-items:center;gap:9px}
+  .who-ava{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;
+    font-size:11px;font-weight:600;flex:0 0 30px}
+  .ava-btn{background:none;border:0;padding:0;cursor:pointer;border-radius:50%;display:inline-flex;flex:0 0 auto;vertical-align:middle}
+  .ava-btn:hover .who-ava{box-shadow:0 0 0 2px var(--ring)}
+  /* Status badge: rounded-full, no border (student style) */
+  .status{font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;display:inline-flex;
+    align-items:center;gap:5px;white-space:nowrap}
+  .status.green{background:#DCFCE7;color:#15803D}
+  .status.amber{background:#FEF3C7;color:#B45309}
+  .status.red{background:#FEE2E2;color:#B91C1C}
+  .status.blue{background:var(--primary-100);color:var(--primary)}
+  .status.purple{background:#F3E8FF;color:#7E22CE}
+  .status.gray{background:var(--bg-hover);color:var(--text-2)}
+  [data-theme="dark"] .status.green{background:rgba(34,197,94,.15);color:#4ADE80}
+  [data-theme="dark"] .status.amber{background:rgba(245,158,11,.15);color:#FBBF24}
+  [data-theme="dark"] .status.red{background:rgba(242,63,67,.15);color:#F87171}
+  [data-theme="dark"] .status.blue{background:rgba(59,130,246,.18);color:#93C5FD}
+  [data-theme="dark"] .status.purple{background:rgba(217,70,239,.15);color:#E879F9}
+  [data-theme="dark"] .status.gray{background:#22242A;color:#B5BAC1}
+  .rowact{display:flex;gap:6px;justify-content:flex-end}
+  .mini-btn{border:1px solid var(--border);background:var(--bg-card);border-radius:10px;min-height:36px;
+    padding:0 11px;font-size:12px;font-weight:600;cursor:pointer;color:var(--text-2);
+    display:inline-flex;align-items:center;gap:6px}
+  .mini-btn .ti{font-size:14px}
+  .mini-btn:hover{border-color:var(--primary);color:var(--primary)}
+  .mini-btn.ic{padding:0 10px;justify-content:center}
+  .mini-btn.danger{color:var(--danger);background:rgba(239,68,68,.08);border-color:transparent}
+  .mini-btn.danger:hover{border-color:var(--danger);color:var(--danger);background:rgba(239,68,68,.14)}
+  [data-theme="dark"] .mini-btn.danger{background:rgba(242,63,67,.16);color:#F87171}
+  .tfoot{display:flex;align-items:center;gap:10px;padding:12px 16px;border-top:1px solid var(--border-soft);
+    font-size:12.3px;color:var(--text-2);flex-wrap:wrap}
+  .tfoot .pg{margin-left:auto;display:flex;gap:6px;align-items:center}
+  .pg button{min-width:36px;min-height:36px;border-radius:10px;border:1px solid var(--border);
+    background:var(--bg-card);cursor:pointer;font-weight:600;font-size:12px;display:grid;place-items:center;color:var(--text-2)}
+  .pg button:not(.on):not(:disabled):hover{border-color:var(--primary);color:var(--primary)}
+  .pg button .ti{font-size:16px}
+  .pg button.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .pg button:disabled{opacity:.4;cursor:default}
+  .quick-pop{position:absolute;top:calc(100% + 8px);right:0;width:300px;background:var(--bg-card);border:1px solid var(--border);
+    border-radius:14px;box-shadow:var(--shadow-md);display:none;z-index:5}
+  .quick-pop.show{display:block}
+  /* Kebab overflow menu: same language as ctx-pop, but floating (fixed) */
+  .kebab{position:fixed;z-index:95;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
+    box-shadow:var(--shadow-md);padding:6px;min-width:200px;display:none}
+  .kebab.show{display:block}
+  .kebab button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;
+    padding:9px 10px;border-radius:9px;cursor:pointer;font-size:12.8px;font-weight:600;color:var(--text-1);min-height:38px}
+  .kebab button:hover{background:var(--bg-hover)}
+  .kebab button .ti{font-size:15px;color:var(--text-2)}
+  /* Filter Notion: kondisi inline yang bisa dilepas + popover tambah/urut. */
+  .fcond{display:inline-flex;align-items:center;gap:6px;background:var(--primary-50);
+    border:1px solid var(--primary);color:var(--primary);border-radius:999px;
+    padding:4px 5px 4px 10px;font-size:12px;font-weight:600;white-space:nowrap}
+  .fcond button{border:0;background:none;color:inherit;cursor:pointer;display:grid;
+    place-items:center;width:18px;height:18px;border-radius:50%;padding:0;min-height:0}
+  .fcond button:hover{background:var(--primary);color:#fff}
+  .fpop-h{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--text-3);padding:8px 10px 4px}
+  .fpop-sec{font-size:11px;font-weight:600;color:var(--text-2);padding:8px 10px 2px}
+  .fpop-back{color:var(--text-2) !important;font-weight:500 !important}
+  .fpop-note{font-size:12px;color:var(--text-2);padding:9px 10px}
+  @media(min-width:900px){.adsgrid{grid-template-columns:repeat(2,1fr) !important}}
+  @media(min-width:1400px){.adsgrid{grid-template-columns:repeat(3,1fr) !important}}

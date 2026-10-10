@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Voucher & Quest — Komponen Admin</title>
+<link rel="stylesheet" href="../assets/fonts.css" />
+<link rel="stylesheet" href="../assets/tabler-icons.min.css" />
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/layout.css" />
+<link rel="stylesheet" href="../styles/primitives.css" />
+<link rel="stylesheet" href="../styles/tables.css" />
+<link rel="stylesheet" href="../styles/lists.css" />
+<link rel="stylesheet" href="../styles/overlays.css" />
+<link rel="stylesheet" href="../styles/forms.css" />
+<link rel="stylesheet" href="../styles/features.css" />
+<style>
+.demo{max-width:960px;margin:0 auto;padding:24px}
+.demo-nav{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.demo-sec{margin:0 0 22px}
+.demo-sec>h2{font-size:14px;margin:0 0 10px}
+.demo-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.demo-note{font-size:12.5px;color:var(--text-2)}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="demo-nav"><a class="link" href="../index.html">← Admin</a><button class="mini-btn" id="themeBtn" type="button">Gelap/Terang</button></div>
+<h1 style="font-size:20px;margin:0 0 4px">Voucher & Quest</h1>
+<p class="demo-note">Contoh statis — class sama persis dengan <code>new-admin.html</code> (<code>vouCardHTML</code>, <code>questMinis</code>). Kartu memakai <code>.card</code> + <code>.status</code> + gaya inline perforasi.</p>
+<div class="demo-sec"><h2>Tiket voucher</h2>
+<!-- Markup ASLI: vouCardHTML + baris data nyata dari new-admin.html -->
+<article class="card" style="box-shadow:none;display:flex;flex-direction:column;min-width:0;position:relative"><div style="padding:14px 14px 4px"><div style="display:flex;align-items:center;gap:8px"><span class="cell-s" style="font-weight:600;letter-spacing:.08em">VOUCHER</span><span style="margin-left:auto"><span class="status green">Aktif</span></span></div><div style="display:flex;align-items:center;gap:8px;margin-top:6px"><span style="flex:1;min-width:0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:20px;font-weight:700;color:var(--text-h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">TO-AKBAR12</span><button class="mini-btn ic" data-voucopy="TO-AKBAR12" title="Salin kode" aria-label="Salin kode"><i class="ti ti-copy" style="font-size:14px"></i></button></div><div class="cell-t" style="font-size:13.5px;font-weight:500;margin-top:2px">Diskon TO Akbar 12</div></div><div style="position:relative;border-top:2px dashed var(--border);margin:12px 0 0"><span style="position:absolute;left:-9px;top:-10px;width:18px;height:18px;border-radius:50%;background:var(--bg-page)"></span><span style="position:absolute;right:-9px;top:-10px;width:18px;height:18px;border-radius:50%;background:var(--bg-page)"></span></div><div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px;flex:1"><dl class="kv" style="margin:0"><dt>Nilai</dt><dd><span class="status blue">50 koin</span></dd><dt>Terpakai</dt><dd>143 dari 200<span style="display:block;height:6px;border-radius:99px;background:var(--bg-hover);margin-top:6px"><span style="display:block;height:100%;width:72%;border-radius:99px;background:var(--primary)"></span></span></dd><dt>Berlaku</dt><dd>1 Okt 2026 → 8 Okt 2026</dd><dt>Penerima</dt><dd>Semua pelajar</dd></dl><div style="margin-top:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--border-soft);padding-top:10px"><button class="mini-btn" data-vouedit="V-AKBAR12"><i class="ti ti-pencil" style="font-size:14px"></i><span>Ubah</span></button><select class="mini-btn" data-vouflow="V-AKBAR12" aria-label="Ubah status Diskon TO Akbar 12"><option>Draft</option><option>Siap</option><option selected>Aktif</option><option>Kedaluwarsa</option></select><span style="margin-left:auto;display:flex;gap:6px"><button class="mini-btn" data-voudup="V-AKBAR12" aria-label="Duplikat sebagai Draft"><i class="ti ti-copy" style="font-size:14px"></i><span>Duplikat</span></button><button class="mini-btn ic danger" data-voudel="V-AKBAR12" title="Hapus voucher" aria-label="Hapus voucher"><i class="ti ti-trash" style="font-size:14px"></i></button></span></div></div></article></div>
+<div class="demo-sec"><h2>Kartu quest</h2>
+<!-- Markup ASLI: questMinis(questAll()) dari new-admin.html -->
+<div class="cell-s" style="margin:0 2px 8px">Quest · 1 live</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:12px"><div class="card" style="box-shadow:none;padding:12px 14px 12px 24px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden"><span class="st-stick" style="background:var(--secondary)"></span><div style="display:flex;gap:8px;align-items:center"><span class="status blue">Quest A</span><span class="cell-t" style="flex:1;min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Ajak teman baru</span></div><div class="cell-s">+10 <img src="../coin.png" alt="koin" style="width:15px;height:15px;vertical-align:-3px"> pengajak · +10 <img src="../coin.png" alt="koin" style="width:15px;height:15px;vertical-align:-3px"> pendaftar</div><div class="cell-s">Berlaku 1 Okt 2026 → 31 Des 2026</div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:2px"><button class="mini-btn" data-qedit="Q-A" title="Ubah quest" aria-label="Ubah quest"><i class="ti ti-pencil" style="font-size:14px"></i><span>Ubah</span></button><button class="mini-btn" data-qact="Q-A">Nonaktifkan</button></div></div><div class="card" style="box-shadow:none;padding:12px 14px 12px 24px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden"><span class="st-stick" style="background:var(--border)"></span><div style="display:flex;gap:8px;align-items:center"><span class="status purple">Quest B</span><span class="cell-t" style="flex:1;min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Lainnya</span></div><div class="cell-s">+15 <img src="../coin.png" alt="koin" style="width:15px;height:15px;vertical-align:-3px"> pengajak · +10 <img src="../coin.png" alt="koin" style="width:15px;height:15px;vertical-align:-3px"> pendaftar</div><div class="cell-s">Berlaku Belum diatur → Belum diatur</div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:2px"><button class="mini-btn" data-qedit="Q-B" title="Ubah quest" aria-label="Ubah quest"><i class="ti ti-pencil" style="font-size:14px"></i><span>Ubah</span></button><button class="mini-btn primary" data-qact="Q-B">Aktifkan</button></div></div><div class="card" style="box-shadow:none;padding:12px 14px 12px 24px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden"><span class="st-stick" style="background:var(--border)"></span><div style="display:flex;gap:8px;align-items:center"><span class="status amber">Quest C</span><span class="cell-t" style="flex:1;min-width:0;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Bonus TO Akbar</span></div><div class="cell-s">+15 <img src="../coin.png" alt="koin" style="width:15px;height:15px;vertical-align:-3px"> pengajak · +15 <img src="../coin.png" alt="koin" style="width:15px;height:15px;vertical-align:-3px"> pendaftar</div><div class="cell-s">Berlaku Belum diatur → Belum diatur</div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:2px"><button class="mini-btn" data-qedit="Q-C" title="Ubah quest" aria-label="Ubah quest"><i class="ti ti-pencil" style="font-size:14px"></i><span>Ubah</span></button><button class="mini-btn primary" data-qact="Q-C">Aktifkan</button></div></div></div>
+</div>
+</div>
+<script>document.getElementById('themeBtn').onclick=function(){var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');};</script>
+</body>
+</html>

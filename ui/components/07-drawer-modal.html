@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Drawer & Modal — Komponen Admin</title>
+<link rel="stylesheet" href="../assets/fonts.css" />
+<link rel="stylesheet" href="../assets/tabler-icons.min.css" />
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/layout.css" />
+<link rel="stylesheet" href="../styles/primitives.css" />
+<link rel="stylesheet" href="../styles/tables.css" />
+<link rel="stylesheet" href="../styles/lists.css" />
+<link rel="stylesheet" href="../styles/overlays.css" />
+<link rel="stylesheet" href="../styles/forms.css" />
+<link rel="stylesheet" href="../styles/features.css" />
+<style>
+.demo{max-width:960px;margin:0 auto;padding:24px}
+.demo-nav{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.demo-sec{margin:0 0 22px}
+.demo-sec>h2{font-size:14px;margin:0 0 10px}
+.demo-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.demo-note{font-size:12.5px;color:var(--text-2)}
+.preview-frame{position:relative;min-height:560px;border:1px dashed var(--border);border-radius:14px;overflow:hidden}
+.preview-frame .drawer,.preview-frame .scrim{position:absolute}
+.preview-frame .modal-ov{position:absolute}
+</style>
+</head>
+<body>
+<div class="demo">
+<div class="demo-nav"><a class="link" href="../index.html">← Admin</a><button class="mini-btn" id="themeBtn" type="button">Gelap/Terang</button></div>
+<h1 style="font-size:20px;margin:0 0 4px">Drawer & Modal</h1>
+<p class="demo-note">Contoh statis — class sama persis dengan <code>new-admin.html</code>. Pratinjau dibatasi bingkai putus-putus agar posisi <code>fixed</code> tidak menutupi halaman.</p>
+<div class="demo-sec"><h2>.drawer</h2><div class="preview-frame">
+<div class="scrim show"></div>
+<aside class="drawer show" role="dialog" aria-label="Contoh drawer">
+<div class="drawer-h"><h3>Ringkasan referral</h3><p>Detail penyebar dan pendaftar.</p>
+<div class="tabs"><button type="button" class="on">Ringkasan</button><button type="button">Aktivitas</button></div></div>
+<div class="drawer-b"><dl class="kv"><dt>Penyebar</dt><dd>Budi</dd><dt>Pendaftar</dt><dd>12 unik</dd></dl>
+<div class="dsec"><h4>Koin</h4><div class="cell-t">10/pendaftar</div></div></div>
+<div class="drawer-f"><button class="btn sm" type="button">Salin tautan</button><button class="btn sm primary" type="button">Tutup</button></div>
+</aside></div></div>
+<div class="demo-sec"><h2>.modal</h2><div class="preview-frame">
+<div class="modal-ov show"><div class="modal" role="dialog" aria-label="Contoh modal">
+<div class="modal-h"><h3>Ubah Quest A</h3><p>Nama, reward split, dan periode quest.</p></div>
+<div class="modal-b"><div class="field"><label for="mNama">Nama quest</label><input id="mNama" value="Ajak Teman SNBT" /></div></div>
+<div class="modal-f"><button class="btn" type="button">Batal</button><button class="btn primary" type="button">Simpan</button></div>
+</div></div></div></div>
+<div class="demo-sec"><h2>.modal-confirm</h2><div class="preview-frame">
+<div class="modal-ov show"><div class="modal" role="dialog" aria-label="Contoh konfirmasi">
+<div class="modal-h modal-confirm"><span class="confirm-ic bad"><i class="ti ti-trash"></i></span><h3>Hapus voucher?</h3><p>Tindakan ini bisa diurungkan dari toast.</p></div>
+<div class="modal-f confirm-f"><button class="btn" type="button">Batal</button><button class="btn danger-solid" type="button">Hapus</button></div>
+</div></div></div></div>
+</div>
+<script>document.getElementById('themeBtn').onclick=function(){var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');};</script>
+</body>
+</html>
