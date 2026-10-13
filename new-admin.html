@@ -796,6 +796,90 @@
     *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
     .skel::after{animation:none;opacity:.25}
   }
+  /* Changelog workspace */
+  .cl-page-head{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;margin:4px 0 18px}
+  .cl-page-head .hero-copy{flex:1;min-width:240px}
+  .cl-page-head h1{margin:0;font-size:22px;color:var(--text-h);letter-spacing:-.02em}
+  .cl-page-head p{margin:5px 0 0;color:var(--text-2);font-size:13px;max-width:680px}
+  .cl-page-head .btn{margin-left:auto}
+  .cl-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}
+  .cl-stat{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;min-width:0}
+  .cl-stat span{display:block;color:var(--text-2);font-size:11.5px}
+  .cl-stat b{display:block;color:var(--text-h);font:600 19px Poppins,Inter,sans-serif;margin-top:2px}
+  .cl-toolbar-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px}
+  .cl-filters{display:flex;gap:6px;flex-wrap:wrap}
+  .cl-filter{min-height:38px;padding:0 12px;border:1px solid var(--border);background:var(--bg-card);border-radius:10px;color:var(--text-2);font-weight:600;font-size:12.5px;cursor:pointer}
+  .cl-filter:hover{border-color:var(--primary);color:var(--text-h)}
+  .cl-filter.on{background:var(--primary-50);border-color:var(--primary-200);color:var(--primary)}
+  .cl-search{margin-left:auto;width:min(340px,100%)}
+  .cl-list{display:flex;flex-direction:column;gap:10px}
+  .cl-item{background:var(--bg-card);border:1px solid var(--border);border-radius:15px;padding:16px;box-shadow:var(--shadow-sm);min-width:0}
+  .cl-item:hover{border-color:var(--primary-300)}
+  .cl-item-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--text-3);font-size:11.5px}
+  .cl-version{font:600 11.5px ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--text-2);background:var(--bg-hover);border:1px solid var(--border-soft);border-radius:7px;padding:3px 7px}
+  .cl-item h2{font-size:16px;line-height:1.4;margin:9px 0 4px;color:var(--text-h)}
+  .cl-item p{margin:0;color:var(--text-2);font-size:12.5px;line-height:1.55;max-width:860px}
+  .cl-item-foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px solid var(--border-soft);margin-top:13px;padding-top:11px}
+  .cl-author{display:flex;align-items:center;gap:7px;color:var(--text-2);font-size:12px;min-width:0}
+  .cl-avatar{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:50%;background:var(--primary-100);color:var(--primary);font-size:10px;font-weight:700;flex:0 0 27px}
+  .cl-actions{margin-left:auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .cl-empty{background:var(--bg-card);border:1px dashed var(--border);border-radius:15px;text-align:center;padding:40px 18px;color:var(--text-2)}
+  .cl-empty .ti{font-size:25px;color:var(--text-3)}
+  .cl-empty b{display:block;color:var(--text-h);margin:8px 0 3px}
+  .cl-editor-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:15px}
+  .cl-back{border:0;background:none;padding:7px 0;color:var(--text-2);font-weight:600;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+  .cl-back:hover{color:var(--primary)}
+  .cl-editor-title{flex:1;min-width:180px}
+  .cl-editor-title h1{font-size:20px;margin:0;color:var(--text-h)}
+  .cl-editor-title p{margin:3px 0 0;color:var(--text-2);font-size:12.5px}
+  .cl-editor-actions{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
+  .cl-editor-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:14px;align-items:start}
+  .cl-editor-card{background:var(--bg-card);border:1px solid var(--border);border-radius:15px;padding:16px;box-shadow:var(--shadow-sm);min-width:0}
+  .cl-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .cl-fields .field:first-child{grid-column:1/-1}
+  .cl-fields .field input{width:100%}
+  .cl-editor-card .field label{font-size:12px}
+  .cl-editor-card input{min-height:42px}
+  .cl-body-field{margin-top:14px}
+  .cl-body-field>label{display:flex;align-items:center;gap:6px;font-weight:600;color:var(--text-h);font-size:12px;margin-bottom:6px}
+  .cl-body-field>label small{font-weight:400;color:var(--text-3)}
+  .cl-tiptap{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg-card)}
+  .cl-tiptap:focus-within{border-color:var(--primary-400);box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 35%,transparent)}
+  .cl-tiptap-tools{display:flex;align-items:center;gap:3px;flex-wrap:wrap;padding:7px;border-bottom:1px solid var(--border);background:var(--bg-hover)}
+  .cl-tiptap-tools button{min-width:34px;height:34px;padding:0 7px;border:1px solid transparent;background:transparent;border-radius:8px;color:var(--text-2);font:600 12px Inter,sans-serif;cursor:pointer}
+  .cl-tiptap-tools button:hover,.cl-tiptap-tools button:focus-visible{background:var(--bg-card);border-color:var(--border);color:var(--text-h)}
+  .cl-tiptap-tools .ti{font-size:16px}
+  .cl-tool-sep{width:1px;height:20px;background:var(--border);margin:0 3px}
+  .cl-richbody{min-height:220px;max-height:440px;overflow:auto;padding:14px 16px;outline:0;color:var(--text-1);font-size:13.5px;line-height:1.65}
+  .cl-richbody:empty:before{content:attr(data-placeholder);color:var(--text-3);pointer-events:none}
+  .cl-richbody p{margin:0 0 10px}.cl-richbody h2{font-size:18px;margin:15px 0 7px}.cl-richbody h3{font-size:15px;margin:13px 0 6px}
+  .cl-richbody ul,.cl-richbody ol{padding-left:24px;margin:7px 0 12px}.cl-richbody blockquote{margin:10px 0;padding:6px 12px;border-left:3px solid var(--primary-300);color:var(--text-2);background:var(--primary-50)}
+  .cl-richbody code,.cl-public-body code{font:12px ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg-hover);border:1px solid var(--border-soft);border-radius:5px;padding:2px 5px}
+  .cl-richbody pre,.cl-public-body pre{padding:10px 12px;background:var(--bg-hover);border:1px solid var(--border);border-radius:9px;overflow:auto}
+  .cl-richbody a,.cl-public-body a{color:var(--primary);text-decoration:underline;text-underline-offset:2px}
+  .cl-error-summary{margin:0 0 14px;padding:11px 13px;border:1px solid rgba(239,68,68,.35);border-radius:11px;background:rgba(239,68,68,.06);color:var(--text-h);font-size:12.5px}
+  .cl-error-summary[hidden]{display:none}.cl-error-summary ul{margin:5px 0 0;padding-left:19px}.cl-error-summary a{color:var(--danger)}
+  .cl-editor-card .bad{border-color:var(--danger)!important}.cl-editor-card .ferr{display:none}.cl-editor-card .ferr.show{display:block;color:var(--danger);font-size:11.5px;margin-top:4px}
+  .cl-preview-card{position:sticky;top:calc(var(--top-h) + 16px);padding:0;overflow:hidden}
+  .cl-preview-head{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--border-soft)}
+  .cl-preview-head b{font-size:12.5px;color:var(--text-h)}.cl-preview-head span{font-size:11px;color:var(--text-3);margin-left:auto}
+  .cl-preview-pad{padding:12px;background:var(--bg-page)}
+  .cl-public-preview{background:#fff;color:#17191d;border:1px solid #e7e9ed;border-radius:11px;padding:20px 19px;min-height:280px;font-family:Inter,system-ui,sans-serif;box-shadow:0 1px 3px rgba(15,23,42,.06)}
+  .cl-public-preview.dark{background:#0b0b0c;color:#f3f4f6;border-color:#292a2c;box-shadow:none}
+  .cl-public-date{display:block;font-size:10px;letter-spacing:.04em;color:#52565c;margin:0 0 14px;text-transform:uppercase}
+  .cl-public-preview.dark .cl-public-date{color:#8b9caf}
+  .cl-public-version{display:inline-block;font:600 12px ui-monospace,SFMono-Regular,Consolas,monospace;border:1px solid #dedfe2;background:#f6f6f6;border-radius:7px;padding:4px 7px;margin-bottom:12px;color:inherit}
+  .cl-public-preview.dark .cl-public-version{background:#18191a;border-color:#343537}
+  .cl-public-title{font:600 24px/1.25 Poppins,Inter,sans-serif;letter-spacing:-.02em;margin:0 0 12px;color:inherit;overflow-wrap:anywhere}
+  .cl-public-body{font-size:13px;line-height:1.58;overflow-wrap:anywhere}.cl-public-body p{margin:0 0 10px}.cl-public-body h2{font:600 17px/1.4 Poppins,Inter,sans-serif;margin:15px 0 7px}.cl-public-body h3{font-size:15px;margin:12px 0 6px}
+  .cl-public-body ul,.cl-public-body ol{padding-left:19px;margin:7px 0 11px}.cl-public-body li{padding:2px 0}.cl-public-body blockquote{margin:10px 0;padding:5px 10px;border-left:2px solid var(--primary);color:inherit}
+  .cl-public-preview.dark .cl-public-body code{background:#191a1b;border-color:#333;color:#f4f4f5}
+  .cl-public-author{display:flex;align-items:center;gap:7px;margin-top:15px;font-size:11.5px;color:inherit}
+  .cl-public-avatar{width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:#dbeafe;color:#1d4ed8;font-size:9px;font-weight:700}
+  .cl-preview-modal{max-width:760px!important}
+  .cl-preview-modal .modal-b{max-height:70vh;overflow:auto}
+  @media(max-width:1050px){.cl-editor-grid{grid-template-columns:minmax(0,1fr)}.cl-preview-card{position:static}.cl-public-preview{min-height:220px}}
+  @media(max-width:600px){.cl-stats{gap:7px}.cl-stat{padding:10px}.cl-stat b{font-size:17px}.cl-search{margin-left:0;width:100%}.cl-page-head .btn{width:100%;justify-content:center}.cl-item{padding:13px}.cl-item-foot{align-items:flex-start}.cl-actions{width:100%;margin:0}.cl-actions .btn{flex:1;justify-content:center;min-height:44px}.cl-filter{min-height:44px}.cl-fields{grid-template-columns:1fr}.cl-fields .field:first-child{grid-column:auto}.cl-editor-actions{width:100%;margin:0}.cl-editor-actions .btn{flex:1;justify-content:center;min-height:44px}.cl-tiptap-tools button{min-width:42px;height:42px}.cl-public-title{font-size:21px}}
   /* Bank Soal: kartu soal. Satu kolom di ponsel/tablet, dua kolom di layar lebar.
      Semua warna lewat token, jadi mode gelap ikut berubah tanpa aturan tambahan. */
   .qlist{display:grid;gap:12px;padding:14px 16px;grid-template-columns:minmax(0,1fr)}
@@ -969,6 +1053,7 @@ var NAV=[
   {k:'questions',t:'Bank Soal',icn:'ti-books',route:'/questions',mp:'menu.questions',perm:'questionBank.read',badge:'12',cls:'warn'},
   {k:'ads',t:'Iklan',icn:'ti-speakerphone',route:'/ads',mp:'menu.ads',perm:'ads.read',badge:'5',cls:'ok'},
    {k:'articles',t:'Artikel',icn:'ti-article',route:'/articles',mp:'menu.articles',perm:'articles.read'},
+   {k:'changelogs',t:'Changelog',icn:'ti-history',route:'/changelogs',mp:'menu.changelogs'},
    {k:'vouchers',t:'Voucher',icn:'ti-ticket',route:'/vouchers',mp:'menu.vouchers',perm:'vouchers.read'},
    {k:'referrals',t:'Referral',icn:'ti-link',route:'/referrals',mp:'menu.referrals',perm:'referrals.read'},
    /* Prototype-only: no backend route yet — requested for Marketing */
@@ -1189,6 +1274,8 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
     {id:'beasiswa-stekom-2026',t:'Info Beasiswa STEKOM 2026',s:'Syarat, berkas, dan batas waktu pendaftaran.',st:['Tayang','green'],by:'Portal',chip:'Semua',slug:'beasiswa-stekom-2026',thumbnail:null,published:'20 Sep 2026',excerpt:'Syarat, berkas, dan batas waktu pendaftaran beasiswa.'},
     {id:'tips-manajemen-waktu',t:'Tips Manajemen Waktu Tryout',s:'Cara membagi waktu per subtes tanpa panik.',st:['Draft','amber'],by:'Portal',chip:'Semua',slug:'tips-manajemen-waktu',thumbnail:null,published:'18 Sep 2026',excerpt:'Cara membagi waktu per subtes tanpa panik saat ujian.'}],
    empty:{t:'Belum ada artikel',d:'Simpan konfigurasi portal untuk memuat artikel grup “artikel”.',c:'Muat ulang'}},
+  changelogs:{menu:'menu.changelogs',route:'/changelogs',perm:'changelogs.manage',title:'Changelog',cat:'content',view:'changelogs',
+   sub:'Kelola catatan pembaruan yang tampil di aplikasi Tryoutku.'},
   /* Prototype-only promo tools — requested for Marketing */
   vouchers:{menu:'menu.vouchers',route:'/vouchers',perm:'vouchers.read',title:'Voucher',cat:'content',qa:'Aktifkan',view:'vouchers',
    sub:'Kode diskon untuk pelajar. Atur nilai, kuota, jadwal, dan siapa yang menerima.',
@@ -1499,7 +1586,7 @@ function defPage(){return 'dashboard';}
 function featOf(page){if(page==='dashboard')return F['dash-'+state.role]||F['dash-admin'];return F[page]||GENERIC(page,'Halaman');}
 function saveLast(){try{store.set('na3-last',state.role+'|'+(state.page||defPage()));}catch(_){}}
 function setRole(r,silent){if(!ROLES[r])return;state.role=r;state.page=null;state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();store.set('na3-role',r);saveLast();if(!silent)window.scrollTo(0,0);load(function(){if(!silent)toast('Beralih ke '+ROLES[r].label,ROLES[r].hide);});}
-function go(p){state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
+function go(p){if(p==='changelogs'&&state.role!=='admin'){toast('Changelog hanya tersedia di workspace Admin',null,'err');return;}state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
 function load(done){state.loading=true;render(true);clearTimeout(load.t);load.t=setTimeout(function(){state.loading=false;render(false);if(done)done();},220);}
 function cycle(){setRole(ROLE_ORDER[(ROLE_ORDER.indexOf(state.role)+1)%ROLE_ORDER.length]);}
 function fic(cls,s){return '<i class="ti-f '+cls+'"'+(s?' style="font-size:'+s+'px"':'')+'></i>';}
@@ -2035,6 +2122,92 @@ function adDelete(id){
  });
 }
 var VIEWS={};
+var changelogFilter='Semua',changelogEditor=null,changelogPreviewDark=false;
+var CHANGELOG_KEY='na3-changelogs';
+function changelogSeed(){return [
+ {id:'CL-1018',title:'Icons',version:'1.0.18',date:'2025-10-27',author:'Matthew Smith',status:'published',content:'<h2>Icons</h2><ul><li>Added <strong>12 new icons</strong> by <a href="https://tryoutku.id">Matthew Smith</a>:<ul><li><code>phone-call</code></li><li><code>link-2</code></li><li><code>sparkle</code></li><li><code>sparkles</code></li><li><code>panel-bottom-close</code></li><li><code>panel-bottom-open</code></li><li><code>panel-left-close</code></li><li><code>panel-left-open</code></li><li><code>panel-right-close</code></li><li><code>panel-right-open</code></li><li><code>panel-top-close</code></li><li><code>panel-top-open</code></li></ul></li></ul>'},
+ {id:'CL-1017',title:'Scheduled cron jobs for Workflows',version:'1.0.17',date:'2025-09-30',author:'Jon Samp',status:'published',content:'<p>Scheduling workflows allows you to automate routine tasks like building and submitting your app on a regular cadence. This eliminates the need to manually trigger builds and submissions, so that you can do things like have your biweekly production builds already submitted to the app stores by the time you arrive at work.</p>'}
+];}
+function changelogRows(){var raw=store.get(CHANGELOG_KEY);if(!raw){var seed=changelogSeed();store.set(CHANGELOG_KEY,JSON.stringify(seed));return seed;}try{var rows=JSON.parse(raw);return Array.isArray(rows)?rows:changelogSeed();}catch(_){return changelogSeed();}}
+function saveChangelogRows(rows){store.set(CHANGELOG_KEY,JSON.stringify(rows));}
+function clDate(value){if(!value)return 'Tanggal belum diatur';var d=new Date(value+'T12:00:00');return isNaN(d.getTime())?value:d.toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'});}
+function clLocalDate(){var d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10);}
+function clInitials(name){return String(name||'Admin').trim().split(/\s+/).slice(0,2).map(function(x){return x.charAt(0).toUpperCase();}).join('')||'AD';}
+function clSanitize(html){
+ var doc=new DOMParser().parseFromString(String(html||''),'text/html'),allowed={p:1,h2:1,h3:1,h4:1,ul:1,ol:1,li:1,strong:1,b:1,em:1,i:1,u:1,code:1,pre:1,blockquote:1,a:1,br:1,hr:1};
+ function clean(node){var out='';Array.prototype.forEach.call(node.childNodes,function(n){if(n.nodeType===3){out+=esc(n.nodeValue);return;}if(n.nodeType!==1)return;var tag=n.tagName.toLowerCase();if(tag==='div')tag='p';var inner=clean(n);if(!allowed[tag]){out+=inner;return;}var href='';if(tag==='a'){var raw=(n.getAttribute('href')||'').trim();if(/^(https?:\/\/|mailto:)/i.test(raw))href=' href="'+esc(raw)+'"';}out+='<'+tag+href+(tag==='br'||tag==='hr'?' />':'>'+inner+'</'+tag+'>');});return out;}
+ return clean(doc.body);
+}
+function clText(html){var d=new DOMParser().parseFromString(clSanitize(html),'text/html');return (d.body.textContent||'').replace(/\s+/g,' ').trim();}
+function clPublicMarkup(row,dark){return '<article class="cl-public-preview'+(dark?' dark':'')+'"><time class="cl-public-date">'+esc(clDate(row.date))+'</time><span class="cl-public-version">'+esc(row.version||'Versi belum diatur')+'</span><h1 class="cl-public-title">'+esc(row.title||'Judul changelog')+'</h1><div class="cl-public-body">'+clSanitize(row.content)+'</div><div class="cl-public-author"><span class="cl-public-avatar">'+esc(clInitials(row.author))+'</span><span>'+esc(row.author||'Admin')+'</span></div></article>';}
+function changelogsView(){
+ if(changelogEditor)return changelogEditorView();
+ var all=changelogRows().slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));}),q=(state.q||'').trim().toLowerCase();
+ var published=all.filter(function(x){return x.status==='published';}).length,drafts=all.length-published;
+ var rows=all.filter(function(x){return changelogFilter==='Semua'||(changelogFilter==='Tayang'?x.status==='published':x.status!=='published');}).filter(function(x){return !q||(String(x.title||'')+' '+String(x.version||'')+' '+String(x.author||'')).toLowerCase().indexOf(q)>=0;});
+ var filters=['Semua','Tayang','Draft'];
+ return '<section class="cl-page-head"><div class="hero-copy"><h1>Changelog</h1><p>Kelola catatan pembaruan yang dibaca pengguna. Tulis konten, simpan sebagai draft, lalu terbitkan saat siap.</p></div><button class="btn primary" data-cl-new>'+ic(P_PLUS,17)+'Buat changelog</button></section>'
+  +'<div class="cl-stats"><div class="cl-stat"><span>Total catatan</span><b>'+all.length+'</b></div><div class="cl-stat"><span>Sudah tayang</span><b>'+published+'</b></div><div class="cl-stat"><span>Draft</span><b>'+drafts+'</b></div></div>'
+  +'<div class="cl-toolbar-row"><div class="cl-filters" role="group" aria-label="Filter status changelog">'+filters.map(function(f){return '<button class="cl-filter'+(changelogFilter===f?' on':'')+'" data-cl-filter="'+f+'" aria-pressed="'+(changelogFilter===f)+'">'+f+'</button>';}).join('')+'</div><div class="cl-search">'+searchField('Cari judul, versi, atau penulis…','')+'</div></div>'
+  +'<section class="cl-list" aria-label="Daftar changelog">'+(rows.length?rows.map(function(x){var live=x.status==='published';var summary=clText(x.content);if(summary.length>170)summary=summary.slice(0,167)+'…';return '<article class="cl-item"><div class="cl-item-meta"><span class="status '+(live?'green':'amber')+'">'+(live?'Tayang':'Draft')+'</span><span class="cl-version">v'+esc(x.version||'—')+'</span><time datetime="'+esc(x.date||'')+'">'+esc(clDate(x.date))+'</time></div><h2>'+esc(x.title||'Tanpa judul')+'</h2><p>'+esc(summary||'Belum ada isi changelog.')+'</p><div class="cl-item-foot"><span class="cl-author"><span class="cl-avatar">'+esc(clInitials(x.author))+'</span>'+esc(x.author||'Admin')+'</span><div class="cl-actions"><button class="btn sm" data-cl-preview="'+esc(x.id)+'">'+ic(P_EYE,15)+'Pratinjau</button><button class="btn sm" data-cl-edit="'+esc(x.id)+'">'+ic(P_PENCIL,15)+'Edit</button><button class="btn sm" data-cl-status="'+esc(x.id)+'">'+(live?'Jadikan draft':'Terbitkan')+'</button><button class="btn sm danger" data-cl-delete="'+esc(x.id)+'" aria-label="Hapus '+esc(x.title)+'">'+ic(P_TRASH,15)+'Hapus</button></div></div></article>';}).join(''):'<div class="cl-empty">'+ic(P_FILE,25)+'<b>'+(all.length?'Tidak ada changelog yang cocok':'Belum ada changelog')+'</b><span>'+(all.length?'Coba kata kunci atau filter status lain.':'Buat catatan pertama untuk mulai membagikan pembaruan.')+'</span>'+(all.length?'':'<div style="margin-top:14px"><button class="btn primary sm" data-cl-new>'+ic(P_PLUS,15)+'Buat changelog</button></div>')+'</div>')+'</section>';
+}
+VIEWS.changelogs=function(){return changelogsView();};
+function changelogEditorView(){
+ var r=changelogEditor.row,editing=!!r.id;
+ return '<div class="cl-editor-top"><button class="cl-back" data-cl-back>'+ic(P_CHL,17)+'Kembali ke daftar</button><div class="cl-editor-title"><h1>'+(editing?'Ubah changelog':'Buat changelog')+'</h1><p>Isi informasi rilis dan susun konten untuk pratinjau pengguna.</p></div><div class="cl-editor-actions"><button class="btn" data-cl-back>Batalkan</button><button class="btn" data-cl-save="draft">Simpan draft</button><button class="btn primary" data-cl-save="published">'+(r.status==='published'?'Simpan & terbitkan':'Terbitkan')+'</button></div></div>'
+  +'<div class="cl-editor-grid"><section class="cl-editor-card" aria-label="Editor changelog"><div class="cl-error-summary" id="clErrorSummary" tabindex="-1" role="alert" hidden></div><div class="cl-fields">'
+  +'<div class="field"><label for="clTitle">Judul changelog</label><input id="clTitle" maxlength="120" value="'+esc(r.title||'')+'" placeholder="cth: Scheduled cron jobs for Workflows" aria-describedby="clErrTitle"><span class="ferr" id="clErrTitle"></span></div>'
+  +'<div class="field"><label for="clVersion">Versi</label><input id="clVersion" maxlength="30" value="'+esc(r.version||'')+'" placeholder="cth: 1.0.19" aria-describedby="clErrVersion"><span class="ferr" id="clErrVersion"></span></div>'
+  +'<div class="field"><label for="clDate">Tanggal rilis</label><input id="clDate" type="date" value="'+esc(r.date||'')+'" aria-describedby="clErrDate"><span class="ferr" id="clErrDate"></span></div>'
+  +'<div class="field"><label for="clAuthor">Penulis</label><input id="clAuthor" maxlength="80" value="'+esc(r.author||'')+'" placeholder="Nama penulis" aria-describedby="clErrAuthor"><span class="ferr" id="clErrAuthor"></span></div></div>'
+  +'<div class="cl-body-field"><label for="clBody">Konten <small>· editor bergaya Tiptap</small></label><div class="cl-tiptap"><div class="cl-tiptap-tools" role="toolbar" aria-label="Pemformatan konten">'
+  +'<button type="button" data-cl-cmd="bold" aria-label="Tebal" title="Tebal"><b>B</b></button><button type="button" data-cl-cmd="italic" aria-label="Miring" title="Miring"><i>I</i></button><button type="button" data-cl-cmd="underline" aria-label="Garis bawah" title="Garis bawah"><u>U</u></button><span class="cl-tool-sep"></span>'
+  +'<button type="button" data-cl-cmd="formatBlock" data-cl-value="h2" aria-label="Judul bagian" title="Judul bagian">H2</button><button type="button" data-cl-cmd="formatBlock" data-cl-value="h3" aria-label="Subjudul" title="Subjudul">H3</button><span class="cl-tool-sep"></span>'
+  +'<button type="button" data-cl-cmd="insertUnorderedList" aria-label="Daftar berpoin" title="Daftar berpoin">'+ic('ti-list',16)+'</button><button type="button" data-cl-cmd="insertOrderedList" aria-label="Daftar bernomor" title="Daftar bernomor">'+ic('ti-list-numbers',16)+'</button><button type="button" data-cl-cmd="formatBlock" data-cl-value="blockquote" aria-label="Kutipan" title="Kutipan">'+ic('ti-blockquote',16)+'</button><button type="button" data-cl-cmd="createLink" aria-label="Tambahkan tautan" title="Tambahkan tautan">'+ic('ti-link',16)+'</button><button type="button" data-cl-cmd="formatBlock" data-cl-value="pre" aria-label="Blok kode" title="Blok kode">'+ic('ti-code',16)+'</button></div>'
+  +'<div id="clBody" class="cl-richbody" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Konten changelog" aria-describedby="clErrBody" data-placeholder="Tulis detail pembaruan…">'+clSanitize(r.content||'')+'</div></div><span class="ferr" id="clErrBody"></span><span class="fhint">Gunakan heading dan daftar agar catatan rilis mudah dipindai.</span></div></section>'
+  +'<aside class="cl-editor-card cl-preview-card"><div class="cl-preview-head"><b>Pratinjau pengguna</b><span>Perubahan tampil langsung</span><button class="mini-btn ic" data-cl-theme aria-label="Ganti tema pratinjau" title="Ganti tema pratinjau">'+ic(changelogPreviewDark?P_SUN:P_MOON,16)+'</button></div><div class="cl-preview-pad" id="clLivePreview">'+clPublicMarkup(r,changelogPreviewDark)+'</div></aside></div>';
+}
+function openChangelogEditor(id){
+ var rows=changelogRows(),found=null;rows.forEach(function(x){if(String(x.id)===String(id))found=x;});
+ var row=found?JSON.parse(JSON.stringify(found)):{id:'',title:'',version:'',date:clLocalDate(),author:'Admin',status:'draft',content:''};
+ changelogEditor={row:row,dirty:false};render(false);var title=document.getElementById('clTitle');if(title)title.focus();
+}
+function clSyncEditor(){
+ if(!changelogEditor)return;var r=changelogEditor.row;
+ [['title','clTitle'],['version','clVersion'],['date','clDate'],['author','clAuthor']].forEach(function(pair){var el=document.getElementById(pair[1]);if(el)r[pair[0]]=el.value;});
+ var body=document.getElementById('clBody');if(body)r.content=clSanitize(body.innerHTML);
+ changelogEditor.dirty=true;var preview=document.getElementById('clLivePreview');if(preview)preview.innerHTML=clPublicMarkup(r,changelogPreviewDark);
+}
+function clLeaveEditor(){
+ if(!changelogEditor)return;var leave=function(){changelogEditor=null;render(false);};
+ if(changelogEditor.dirty)openConfirm('Batalkan perubahan?','Perubahan yang belum disimpan akan hilang.','Batalkan edit',leave);else leave();
+}
+function clSave(status){
+ if(!changelogEditor)return;clSyncEditor();var r=changelogEditor.row;
+ var els={title:document.getElementById('clTitle'),version:document.getElementById('clVersion'),date:document.getElementById('clDate'),author:document.getElementById('clAuthor'),body:document.getElementById('clBody')};
+ var defs=[['title','clErrTitle','Judul wajib diisi.'],['version','clErrVersion','Versi wajib diisi.'],['date','clErrDate','Tanggal rilis wajib diisi.'],['author','clErrAuthor','Nama penulis wajib diisi.']],errors=[];
+ defs.forEach(function(x){var el=els[x[0]],err=document.getElementById(x[1]),msg=el&&!el.value.trim()?x[2]:'';if(el)el.classList.toggle('bad',!!msg);if(err){err.textContent=msg;err.classList.toggle('show',!!msg);}if(msg)errors.push({id:el.id,msg:msg});});
+ var content=clSanitize(els.body?els.body.innerHTML:''),bodyErr=document.getElementById('clErrBody');if(!clText(content)){if(bodyErr){bodyErr.textContent='Konten changelog wajib diisi.';bodyErr.classList.add('show');}errors.push({id:'clBody',msg:'Konten changelog wajib diisi.'});}else if(bodyErr)bodyErr.classList.remove('show');
+ var summary=document.getElementById('clErrorSummary');if(errors.length){summary.innerHTML='<strong>Periksa bagian berikut:</strong><ul>'+errors.map(function(x){return '<li><a href="#'+x.id+'">'+esc(x.msg)+'</a></li>';}).join('')+'</ul>';summary.hidden=false;summary.focus();return;}if(summary)summary.hidden=true;
+ r.title=els.title.value.trim();r.version=els.version.value.trim();r.date=els.date.value;r.author=els.author.value.trim();r.content=content;r.status=status;r.updatedAt=new Date().toISOString();
+ var rows=changelogRows(),idx=-1;rows.forEach(function(x,i){if(String(x.id)===String(r.id))idx=i;});if(idx<0){r.id='CL-'+Date.now().toString().slice(-7);rows.unshift(r);}else rows[idx]=r;
+ saveChangelogRows(rows);changelogEditor=null;changelogFilter='Semua';state.q='';render(false);toast(status==='published'?'Changelog diterbitkan':'Draft changelog disimpan');
+}
+function clSetStatus(id){
+ var rows=changelogRows(),row=null;rows.forEach(function(x){if(String(x.id)===String(id))row=x;});if(!row)return;
+ var next=row.status==='published'?'draft':'published';
+ function apply(){row.status=next;row.updatedAt=new Date().toISOString();saveChangelogRows(rows);render(false);toast(next==='published'?'Changelog diterbitkan':'Changelog dijadikan draft');}
+ if(next==='draft')openConfirm('Jadikan draft?','Changelog ini tidak lagi tampil untuk pengguna.','Jadikan draft',apply);else apply();
+}
+function clDelete(id){
+ var rows=changelogRows(),gone=rows.filter(function(x){return String(x.id)===String(id);});if(!gone.length)return;
+ openConfirm('Hapus changelog ini?','Catatan "'+gone[0].title+'" akan dihapus dari daftar.','Hapus',function(){saveChangelogRows(rows.filter(function(x){return String(x.id)!==String(id);}));render(false);toast('Changelog dihapus',null,null,{label:'Urungkan',fn:function(){saveChangelogRows(changelogRows().concat(gone));render(false);}});});
+}
+function clOpenPreview(id){
+ var row=null;changelogRows().forEach(function(x){if(String(x.id)===String(id))row=x;});if(!row)return;modalFocus=document.activeElement;
+ $('#modalBox').classList.add('cl-preview-modal');$('#modalBox').innerHTML='<div class="modal-h"><h3>Pratinjau changelog</h3><p>Seperti yang akan dibaca pengguna.</p></div><div class="modal-b"><div class="cl-preview-pad">'+clPublicMarkup(row,false)+'</div></div><div class="modal-f"><button class="btn" id="clPreviewClose">Tutup</button><button class="btn primary" id="clPreviewEdit">'+ic(P_PENCIL,16)+'Edit changelog</button></div>';
+ $('#modalOv').classList.add('show');$('#clPreviewClose').onclick=closeModal;$('#clPreviewEdit').onclick=function(){closeModal();openChangelogEditor(id);};
+}
 function mediaIcon(d){var m=d.mime||'';if(m.indexOf('audio')===0)return 'ti-music';if(m.indexOf('image')===0)return 'ti-photo';if(m.indexOf('video')===0)return 'ti-video';return 'ti-file-text';}
 function mediaView(page,t){
  var rows=filteredRows(t);
@@ -3201,8 +3374,9 @@ function quickFAB(){
  return '<div class="fab-wrap"><button class="fab-btn" id="quickBtn" aria-haspopup="true">'+ic(P_ZAP,17)+'Pintasan<span class="chev">'+ic(P_CHEV,15)+'</span></button><div class="quick-pop" id="quickPop"><div class="quick">'+items+'</div></div></div>';
 }
 function render(skel){
+ var page=state.page||defPage();if(page==='changelogs'&&state.role!=='admin'){state.page='dashboard';page='dashboard';saveLast();}
  renderSidebar();renderCrumbs();
- var page=state.page||defPage();var t=featOf(page);
+ var t=featOf(page);
  var html='';
  if(page==='dashboard')html=dashView();
  else if(page==='settings')html=settingsView();
@@ -3345,7 +3519,7 @@ function openModal(o){
  };
   var f0=$('#modalBox').querySelector('input,select,textarea');if(f0)f0.focus();else{var fb=$('#mCancel');if(fb)fb.focus();}
 }
-function closeModal(){$('#modalOv').classList.remove('show');$('#modalBox').classList.remove('wide');if(modalFocus&&modalFocus.focus)modalFocus.focus();}
+function closeModal(){$('#modalOv').classList.remove('show');$('#modalBox').classList.remove('wide','cl-preview-modal');if(modalFocus&&modalFocus.focus)modalFocus.focus();}
 function openConfirm(title,sub,yesLabel,onYes){openModal({title:title,sub:sub,fields:[],submit:yesLabel||'Ya, lanjutkan',danger:true,onSubmit:onYes});}
 function defaultForm(t){
  return [{k:'name',l:'Nama / judul',req:1,ph:'cth: '+((t.rows&&t.rows[0]&&t.rows[0].t)||'Item baru')}];
@@ -3443,6 +3617,23 @@ function doAct(id,way){
 }
 function bindAll(page,t){
  var c=$('#content');
+ c.querySelectorAll('[data-cl-new]').forEach(function(b){b.onclick=function(e){e.stopPropagation();changelogFilter='Semua';state.q='';openChangelogEditor(null);};});
+ c.querySelectorAll('[data-cl-edit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openChangelogEditor(b.getAttribute('data-cl-edit'));};});
+ c.querySelectorAll('[data-cl-preview]').forEach(function(b){b.onclick=function(e){e.stopPropagation();clOpenPreview(b.getAttribute('data-cl-preview'));};});
+ c.querySelectorAll('[data-cl-delete]').forEach(function(b){b.onclick=function(e){e.stopPropagation();clDelete(b.getAttribute('data-cl-delete'));};});
+ c.querySelectorAll('[data-cl-status]').forEach(function(b){b.onclick=function(e){e.stopPropagation();clSetStatus(b.getAttribute('data-cl-status'));};});
+ c.querySelectorAll('[data-cl-filter]').forEach(function(b){b.onclick=function(){changelogFilter=b.getAttribute('data-cl-filter');render(false);};});
+ c.querySelectorAll('[data-cl-back]').forEach(function(b){b.onclick=function(e){e.stopPropagation();clLeaveEditor();};});
+ c.querySelectorAll('[data-cl-save]').forEach(function(b){b.onclick=function(e){e.stopPropagation();clSave(b.getAttribute('data-cl-save'));};});
+ var clBody=document.getElementById('clBody');
+ if(clBody)clBody.addEventListener('input',clSyncEditor);
+ c.querySelectorAll('[data-cl-cmd]').forEach(function(b){
+  b.onmousedown=function(e){e.preventDefault();};
+  b.onclick=function(){var cmd=b.getAttribute('data-cl-cmd'),value=b.getAttribute('data-cl-value')||null;if(cmd==='createLink'){value=window.prompt('Masukkan URL tautan:','https://');if(!value)return;}if(clBody)clBody.focus();try{document.execCommand(cmd,false,value);}catch(_){}clSyncEditor();};
+ });
+ var clTheme=c.querySelector('[data-cl-theme]');
+ if(clTheme)clTheme.onclick=function(){clSyncEditor();changelogPreviewDark=!changelogPreviewDark;render(false);};
+ ['clTitle','clVersion','clDate','clAuthor'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',clSyncEditor);});
  c.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(e){e.stopPropagation();toast(b.getAttribute('data-t'));};});
  c.querySelectorAll('[data-goto]').forEach(function(b){b.onclick=function(e){e.stopPropagation();go(b.getAttribute('data-goto'));};});
  c.querySelectorAll('[data-hero-go]').forEach(function(b){b.onclick=function(e){e.stopPropagation();var p=b.getAttribute('data-hero-go');var nw=b.getAttribute('data-hero-new');go(p==='dashboard'?'dashboard':p);if(nw)setTimeout(function(){openCreate(p);},320);};});
