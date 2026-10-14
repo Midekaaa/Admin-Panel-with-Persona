@@ -823,6 +823,27 @@
   .cl-author{display:flex;align-items:center;gap:7px;color:var(--text-2);font-size:12px;min-width:0}
   .cl-avatar{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:50%;background:var(--primary-100);color:var(--primary);font-size:10px;font-weight:700;flex:0 0 27px}
   .cl-actions{margin-left:auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .ds-page-head{margin-bottom:16px}
+  .ds-create-card,.ds-list-card{background:var(--bg-card);border:1px solid var(--border);border-radius:15px;padding:18px;box-shadow:var(--shadow-sm)}
+  .ds-create-card{margin-bottom:14px}
+  .ds-create-copy h2,.ds-list-head h2{margin:0;color:var(--text-h);font-size:14px}
+  .ds-create-copy p,.ds-list-head p{margin:4px 0 0;color:var(--text-2);font-size:12.5px;line-height:1.5}
+  .ds-form-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:10px;margin-top:14px}
+  .ds-form-row .field{margin:0;min-width:0}
+  .ds-form-row .field label{font-size:12px}
+  .ds-form-row input{width:100%;min-height:44px}
+  .ds-form-row .btn{min-height:44px;white-space:nowrap}
+  .ds-form-error{margin:7px 0 0;color:var(--danger);font-size:12px}
+  .ds-form-error:empty{display:none}
+  .ds-list-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+  .ds-count{flex:0 0 auto;border:1px solid var(--border);border-radius:999px;padding:5px 9px;color:var(--text-2);font-size:11.5px;font-weight:600}
+  .ds-list{list-style:none;margin:0;padding:0}
+  .ds-row{display:flex;align-items:center;gap:11px;padding:12px 0;border-top:1px solid var(--border-soft)}
+  .ds-row-icon{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border:1px solid var(--border);border-radius:10px;background:var(--bg-hover);color:var(--text-2)}
+  .ds-row-name{min-width:0;flex:1;color:var(--text-h);font-size:13px;font-weight:600;overflow-wrap:anywhere}
+  .ds-row-tag{flex:0 0 auto;color:var(--text-3);font-size:11.5px}
+  .ds-empty{border:1px dashed var(--border);border-radius:12px;padding:26px 16px;text-align:center;color:var(--text-2);font-size:12.5px;line-height:1.5}
+  .ds-empty b{display:block;margin-bottom:3px;color:var(--text-h);font-size:13px}
   .cl-empty{background:var(--bg-card);border:1px dashed var(--border);border-radius:15px;text-align:center;padding:40px 18px;color:var(--text-2)}
   .cl-empty .ti{font-size:25px;color:var(--text-3)}
   .cl-empty b{display:block;color:var(--text-h);margin:8px 0 3px}
@@ -880,7 +901,7 @@
   .cl-preview-modal .modal-b{max-height:70vh;overflow:auto}
   @media(max-width:1050px){.cl-editor-grid{grid-template-columns:minmax(0,1fr)}.cl-preview-card{position:static}.cl-public-preview{min-height:220px}}
   @media(max-width:760px){.cl-editor-top{grid-template-columns:minmax(0,1fr);grid-template-areas:"back" "title" "actions";gap:8px}.cl-editor-actions{width:100%;justify-content:flex-start}}
-  @media(max-width:600px){.cl-stats{gap:7px}.cl-stat{padding:10px}.cl-stat b{font-size:17px}.cl-search{margin-left:0;width:100%}.cl-page-head .btn{width:100%;justify-content:center}.cl-item{padding:13px}.cl-item-foot{align-items:flex-start}.cl-actions{width:100%;margin:0}.cl-actions .btn{flex:1;justify-content:center;min-height:44px}.cl-filter{min-height:44px}.cl-fields{grid-template-columns:1fr}.cl-fields .field:first-child{grid-column:auto}.cl-editor-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0}.cl-editor-actions .btn{width:100%;justify-content:center;min-height:44px}.cl-editor-actions [data-cl-save="published"]{grid-column:1/-1;grid-row:2}.cl-tiptap-tools button{min-width:42px;height:42px}.cl-public-title{font-size:21px}}
+  @media(max-width:600px){.cl-stats{gap:7px}.cl-stat{padding:10px}.cl-stat b{font-size:17px}.cl-search{margin-left:0;width:100%}.cl-page-head .btn{width:100%;justify-content:center}.cl-item{padding:13px}.cl-item-foot{align-items:flex-start}.cl-actions{width:100%;margin:0}.cl-actions .btn{flex:1;justify-content:center;min-height:44px}.cl-filter{min-height:44px}.cl-fields{grid-template-columns:1fr}.cl-fields .field:first-child{grid-column:auto}.cl-editor-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0}.cl-editor-actions .btn{width:100%;justify-content:center;min-height:44px}.cl-editor-actions [data-cl-save="published"]{grid-column:1/-1;grid-row:2}.cl-tiptap-tools button{min-width:42px;height:42px}.cl-public-title{font-size:21px}.ds-create-card,.ds-list-card{padding:14px}.ds-form-row{grid-template-columns:minmax(0,1fr)}.ds-form-row .btn{width:100%;justify-content:center}.ds-row-tag{display:none}}
   /* Bank Soal: kartu soal. Satu kolom di ponsel/tablet, dua kolom di layar lebar.
      Semua warna lewat token, jadi mode gelap ikut berubah tanpa aturan tambahan. */
   .qlist{display:grid;gap:12px;padding:14px 16px;grid-template-columns:minmax(0,1fr)}
@@ -1047,6 +1068,7 @@ var NAV=[
  {g:'Pengguna & Akses',items:[
   {k:'users',t:'Pengguna',icn:'ti-users',route:'/users',mp:'menu.users',perm:'users.read'},
   {k:'data-pelajar',t:'Data Pelajar',icn:'ti-school',route:'/data-pelajar',mp:'menu.users',perm:'users.read'},
+  {k:'data-sources',t:'Data Source',icn:'ti-world',route:'/data-sources',mp:'menu.dataSources',perm:'dataSources.manage'},
    {k:'invitations',t:'Undangan',icn:'ti-mail',route:'/invitations',mp:'menu.invitations',perm:'users.invite',badge:'24',cls:'warn'},
    {k:'database',t:'Database',icn:'ti-database',mp:'menu.database',children:[
     {k:'roles',t:'Role',icn:'ti-shield-check',route:'/roles',mp:'menu.roles',perm:'roles.read',badge:'4',cls:'info'},
@@ -1277,6 +1299,8 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    empty:{t:'Belum ada artikel',d:'Simpan konfigurasi portal untuk memuat artikel grup “artikel”.',c:'Muat ulang'}},
   changelogs:{menu:'menu.changelogs',route:'/changelogs',perm:'changelogs.manage',title:'Changelog',cat:'content',view:'changelogs',
    sub:'Kelola catatan pembaruan yang tampil di aplikasi Tryoutku.'},
+  'data-sources':{menu:'menu.dataSources',route:'/data-sources',perm:'dataSources.manage',title:'Data Source',cat:'access',view:'dataSources',
+   sub:'Kelola pilihan sumber traffic yang akan ditampilkan pada onboarding.'},
   /* Prototype-only promo tools — requested for Marketing */
   vouchers:{menu:'menu.vouchers',route:'/vouchers',perm:'vouchers.read',title:'Voucher',cat:'content',qa:'Aktifkan',view:'vouchers',
    sub:'Kode diskon untuk pelajar. Atur nilai, kuota, jadwal, dan siapa yang menerima.',
@@ -1587,7 +1611,7 @@ function defPage(){return 'dashboard';}
 function featOf(page){if(page==='dashboard')return F['dash-'+state.role]||F['dash-admin'];return F[page]||GENERIC(page,'Halaman');}
 function saveLast(){try{store.set('na3-last',state.role+'|'+(state.page||defPage()));}catch(_){}}
 function setRole(r,silent){if(!ROLES[r])return;state.role=r;state.page=null;state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();store.set('na3-role',r);saveLast();if(!silent)window.scrollTo(0,0);load(function(){if(!silent)toast('Beralih ke '+ROLES[r].label,ROLES[r].hide);});}
-function go(p){if(p==='changelogs'&&state.role!=='admin'){toast('Changelog hanya tersedia di workspace Admin',null,'err');return;}state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
+function go(p){if(p==='changelogs'&&state.role!=='admin'){toast('Changelog hanya tersedia di workspace Admin',null,'err');return;}if(p==='data-sources'&&state.role!=='admin'){toast('Data Source hanya tersedia di workspace Admin',null,'err');return;}state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
 function load(done){state.loading=true;render(true);clearTimeout(load.t);load.t=setTimeout(function(){state.loading=false;render(false);if(done)done();},220);}
 function cycle(){setRole(ROLE_ORDER[(ROLE_ORDER.indexOf(state.role)+1)%ROLE_ORDER.length]);}
 function fic(cls,s){return '<i class="ti-f '+cls+'"'+(s?' style="font-size:'+s+'px"':'')+'></i>';}
@@ -2123,6 +2147,22 @@ function adDelete(id){
  });
 }
 var VIEWS={};
+var DATA_SOURCES_KEY='na3-data-sources';
+function dataSourceRows(){try{var rows=JSON.parse(store.get(DATA_SOURCES_KEY)||'[]');return Array.isArray(rows)?rows.filter(function(x){return typeof x==='string'&&x.trim();}):[];}catch(_){return [];}}
+function dataSourcesView(){
+ var rows=dataSourceRows();
+ return '<section class="cl-page-head ds-page-head"><div class="hero-copy"><h1>Data Source</h1><p>Kelola pilihan sumber asal traffic pengguna yang akan ditampilkan saat onboarding.</p></div></section>'
+  +'<section class="ds-create-card" aria-labelledby="dsCreateHeading"><div class="ds-create-copy"><h2 id="dsCreateHeading">Tambah data source</h2><p>Tambahkan kanal seperti TikTok, Instagram, atau YouTube.</p></div><form id="dsForm"><div class="ds-form-row"><div class="field"><label for="dsName">Nama data source</label><input id="dsName" name="name" maxlength="60" autocomplete="off" placeholder="cth: YouTube" aria-describedby="dsNameError" required></div><button class="btn primary" type="submit">'+ic(P_PLUS,17)+'Tambah data source</button></div><p class="ds-form-error" id="dsNameError" aria-live="polite"></p></form></section>'
+  +'<section class="ds-list-card" aria-labelledby="dsListHeading"><div class="ds-list-head"><div><h2 id="dsListHeading">Data source tersedia</h2><p>Pilihan berikut dipakai untuk mencatat asal traffic saat onboarding.</p></div><span class="ds-count">'+rows.length+' sumber</span></div>'
+  +(rows.length?'<ul class="ds-list">'+rows.map(function(name){return '<li class="ds-row"><span class="ds-row-icon" aria-hidden="true">'+ic('ti-world',16)+'</span><span class="ds-row-name">'+esc(name)+'</span><span class="ds-row-tag">Tersedia di onboarding</span></li>';}).join('')+'</ul>':'<div class="ds-empty"><b>Belum ada data source</b>Tambahkan sumber pertama agar asal traffic bisa dicatat saat onboarding.</div>')+'</section>';
+}
+function createDataSource(name){
+ var input=$('#dsName'),error=$('#dsNameError'),value=String(name||'').trim(),rows=dataSourceRows();
+ var msg=!value?'Nama data source wajib diisi.':rows.some(function(x){return x.toLowerCase()===value.toLowerCase();})?'Data source ini sudah ada.':'';
+ if(msg){input.setAttribute('aria-invalid','true');error.textContent=msg;input.focus();return;}
+ rows.unshift(value);store.set(DATA_SOURCES_KEY,JSON.stringify(rows));render(false);toast('Data source ditambahkan','Tersedia sebagai pilihan onboarding.');
+}
+VIEWS.dataSources=function(){return dataSourcesView();};
 var changelogFilter='Semua',changelogEditor=null,changelogPreviewDark=false;
 var CHANGELOG_KEY='na3-changelogs';
 function changelogSeed(){return [
@@ -3375,7 +3415,7 @@ function quickFAB(){
  return '<div class="fab-wrap"><button class="fab-btn" id="quickBtn" aria-haspopup="true">'+ic(P_ZAP,17)+'Pintasan<span class="chev">'+ic(P_CHEV,15)+'</span></button><div class="quick-pop" id="quickPop"><div class="quick">'+items+'</div></div></div>';
 }
 function render(skel){
- var page=state.page||defPage();if(page==='changelogs'&&state.role!=='admin'){state.page='dashboard';page='dashboard';saveLast();}
+ var page=state.page||defPage();if((page==='changelogs'||page==='data-sources')&&state.role!=='admin'){state.page='dashboard';page='dashboard';saveLast();}
  renderSidebar();renderCrumbs();
  var t=featOf(page);
  var html='';
@@ -3618,6 +3658,8 @@ function doAct(id,way){
 }
 function bindAll(page,t){
  var c=$('#content');
+ var dsForm=c.querySelector('#dsForm');
+ if(dsForm){var dsName=c.querySelector('#dsName'),dsError=c.querySelector('#dsNameError');dsName.addEventListener('input',function(){dsName.removeAttribute('aria-invalid');dsError.textContent='';});dsForm.addEventListener('submit',function(e){e.preventDefault();createDataSource(dsName.value);});}
  c.querySelectorAll('[data-cl-new]').forEach(function(b){b.onclick=function(e){e.stopPropagation();changelogFilter='Semua';state.q='';openChangelogEditor(null);};});
  c.querySelectorAll('[data-cl-edit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openChangelogEditor(b.getAttribute('data-cl-edit'));};});
  c.querySelectorAll('[data-cl-preview]').forEach(function(b){b.onclick=function(e){e.stopPropagation();clOpenPreview(b.getAttribute('data-cl-preview'));};});
