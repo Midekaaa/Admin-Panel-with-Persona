@@ -848,14 +848,58 @@
   .ds-drawer-form .drawer-f{justify-content:flex-end}
   .ds-drawer-form .btn{min-height:44px}
   .ds-error{margin:5px 0 0;color:var(--danger);font-size:12px}
-  .ds-card-editing{display:block}
-  .ds-inline-form{width:100%;display:flex;flex-direction:column;gap:10px}
-  .ds-inline-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,.55fr);gap:10px}
-  .ds-inline-fields .field{margin:0;min-width:0}
-  .ds-inline-fields input,.ds-inline-fields select{width:100%}
-  .ds-inline-error{min-height:0;color:var(--danger);font-size:12px}
-  .ds-inline-error:empty{display:none}
-  .ds-inline-actions{display:flex;justify-content:flex-end;gap:7px}
+  .ds-card-editing{border-color:var(--primary-300);box-shadow:0 0 0 2px var(--primary-50)}
+  .ds-inline-form{display:contents}
+  .ds-card-edit-input{width:100%;min-width:0;height:38px;padding:0 9px;border:1px solid var(--primary-300);border-radius:8px;background:var(--bg-card);color:var(--text-h);font:600 12.5px Inter,sans-serif;outline:0}
+  .ds-card-edit-input:focus{box-shadow:0 0 0 3px var(--primary-100)}
+  .pd-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+  .pd-tab{min-height:40px;padding:0 13px;border:1px solid var(--border);border-radius:10px;background:var(--bg-card);color:var(--text-2);font-size:12.5px;font-weight:600;cursor:pointer}
+  .pd-tab:hover{border-color:var(--primary);color:var(--text-h)}
+  .pd-tab.on{background:var(--primary-50);border-color:var(--primary-200);color:var(--primary)}
+  .pd-panel,.pd-subpanel{min-width:0;background:var(--bg-card);border:1px solid var(--border);border-radius:15px;box-shadow:var(--shadow-sm)}
+  .pd-panel-head,.pd-subpanel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 16px}
+  .pd-panel-head h2,.pd-subpanel-head h2{margin:0;color:var(--text-h);font-size:14px}
+  .pd-panel-head p,.pd-subpanel-head p{margin:4px 0 0;color:var(--text-2);font-size:12px;line-height:1.45}
+  .pd-panel-head .btn,.pd-subpanel-head .btn{flex:0 0 auto;min-height:40px}
+  .pd-entry-list{list-style:none;margin:0;padding:0 16px}
+  .pd-entry{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:57px;padding:9px 0;border-top:1px solid var(--border-soft)}
+  .pd-entry-main{display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap;color:var(--text-h);font-size:13px;font-weight:600;overflow-wrap:anywhere}
+  .pd-entry-editing .pd-entry-main{flex:1}
+  .pd-auto-tag{padding:3px 7px;border-radius:999px;background:var(--primary-50);color:var(--primary);font-size:10.5px;font-weight:600;white-space:nowrap}
+  .pd-entry-actions{display:flex;align-items:center;gap:6px;flex:0 0 auto}
+  .pd-entry-actions .mini-btn{width:40px;min-width:40px;min-height:40px;padding:0}
+  .pd-entry-actions .mini-btn:disabled{opacity:.45;cursor:not-allowed}
+  .pd-empty{padding:30px 16px;text-align:center;color:var(--text-2);font-size:12.5px;line-height:1.5}
+  .pd-empty b{display:block;margin-bottom:3px;color:var(--text-h);font-size:13px}
+  .pd-edit-form{display:contents}
+  .pd-entry-input{width:100%;min-width:0;min-height:40px;padding:0 10px;border:1px solid var(--primary-300);border-radius:9px;background:var(--bg-card);color:var(--text-h);font:600 13px Inter,sans-serif;outline:0}
+  .pd-entry-input:focus{box-shadow:0 0 0 3px var(--primary-100)}
+  .pd-region-grid{display:grid;grid-template-columns:minmax(230px,.75fr) minmax(0,1.25fr);gap:12px;align-items:start}
+  .pd-subpanel{overflow:hidden}
+  .pd-subpanel-head{padding:13px 14px}
+  .pd-subpanel .pd-entry-list{padding:0 14px}
+  .pd-province-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;padding:7px 0;border-top:1px solid var(--border-soft)}
+  .pd-province-row-editing .pd-edit-form{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .pd-province-edit-main{display:flex;align-items:center;gap:10px;min-width:0}
+  .pd-province-edit-main .pd-region-count{flex:0 0 auto}
+  .pd-province-select{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;padding:9px 10px;border:1px solid transparent;border-radius:9px;background:transparent;color:var(--text-h);font:600 12.5px Inter,sans-serif;text-align:left;cursor:pointer}
+  .pd-province-select:hover{background:var(--bg-hover)}
+  .pd-province-select.on{background:var(--primary-50);color:var(--primary);border-color:var(--primary-200)}
+  .pd-province-select span:first-child{min-width:0;overflow-wrap:anywhere}
+  .pd-region-count{color:var(--text-3);font-size:11px;white-space:nowrap}
+  .pd-region-hint{padding:0 14px 13px;color:var(--text-3);font-size:11.5px;line-height:1.45}
+  .pd-region-hint:empty{display:none}
+  .pd-panel-head .pd-head-actions{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+  .pd-pager{display:flex;align-items:center;gap:8px;min-height:56px;padding:10px 16px;border-top:1px solid var(--border-soft)}
+  .pd-pager-info{color:var(--text-3);font-size:11.5px;white-space:nowrap}
+  .pd-pager-controls{display:flex;align-items:center;gap:6px;margin-left:auto}
+  .pd-pager .mini-btn.ic{width:36px;min-width:36px;min-height:36px;padding:0}
+  .pd-pager select{min-width:86px;height:36px;padding:0 9px;border:1px solid var(--border);border-radius:9px;background:var(--bg-card);color:var(--text-h);font:600 12px Inter,sans-serif;cursor:pointer}
+  .pd-pager select:focus{border-color:var(--primary);outline:3px solid var(--primary-100)}
+  .ds-column .pd-pager{min-height:48px;padding:9px 0 0}
+  .pd-subpanel .pd-pager{padding:10px 14px}
+  @media(max-width:760px){.pd-region-grid{grid-template-columns:minmax(0,1fr)}}
+  @media(max-width:560px){.pd-panel-head,.pd-subpanel-head{align-items:flex-start;padding:13px}.pd-panel-head .pd-head-actions{align-items:flex-end;flex-direction:column}.pd-entry-list{padding:0 13px}.pd-subpanel .pd-entry-list{padding:0 11px}.pd-entry{gap:8px}.pd-entry-main{font-size:12.5px}.pd-region-grid .pd-province-row-editing .pd-edit-form{grid-template-columns:minmax(0,1fr) auto}.pd-region-grid .pd-entry-actions .mini-btn{width:38px;min-width:38px;min-height:38px}.pd-pager{padding:9px 13px}.pd-pager-info{font-size:10.5px}.pd-pager select{min-width:78px}}
   .cl-empty{background:var(--bg-card);border:1px dashed var(--border);border-radius:15px;text-align:center;padding:40px 18px;color:var(--text-2)}
   .cl-empty .ti{font-size:25px;color:var(--text-3)}
   .cl-empty b{display:block;color:var(--text-h);margin:8px 0 3px}
@@ -913,7 +957,7 @@
   .cl-preview-modal .modal-b{max-height:70vh;overflow:auto}
   @media(max-width:1050px){.cl-editor-grid{grid-template-columns:minmax(0,1fr)}.cl-preview-card{position:static}.cl-public-preview{min-height:220px}}
   @media(max-width:760px){.cl-editor-top{grid-template-columns:minmax(0,1fr);grid-template-areas:"back" "title" "actions";gap:8px}.cl-editor-actions{width:100%;justify-content:flex-start}}
-  @media(max-width:700px){.ds-board{gap:8px}.ds-column{min-height:190px;padding:8px}.ds-column-head{gap:5px;padding-right:0;padding-left:0}.ds-column-head h2{font-size:12px}.ds-column-head p{font-size:10px}.ds-column-count{min-width:22px;height:22px;padding:0 5px;font-size:10px}.ds-cards{gap:7px;padding-top:8px}.ds-card{grid-template-columns:24px minmax(0,1fr) auto;gap:5px;padding:8px}.ds-drag-handle{width:24px;height:30px}.ds-card-name{font-size:12px}.ds-card-actions{grid-column:auto;justify-content:flex-end}.ds-card-actions .mini-btn{width:40px;min-width:40px;min-height:40px}.ds-inline-fields{grid-template-columns:minmax(0,1fr)}}
+  @media(max-width:700px){.ds-board{gap:8px}.ds-column{min-height:190px;padding:8px}.ds-column-head{gap:5px;padding-right:0;padding-left:0}.ds-column-head h2{font-size:12px}.ds-column-head p{font-size:10px}.ds-column-count{min-width:22px;height:22px;padding:0 5px;font-size:10px}.ds-cards{gap:7px;padding-top:8px}.ds-card{grid-template-columns:24px minmax(0,1fr) auto;gap:5px;padding:8px}.ds-drag-handle{width:24px;height:30px}.ds-card-name{font-size:12px}.ds-card-actions{grid-column:auto;justify-content:flex-end}.ds-card-actions .mini-btn{width:40px;min-width:40px;min-height:40px}.ds-card-edit-input{height:38px;padding:0 7px;font-size:12px}}
   @media(max-width:600px){.cl-stats{gap:7px}.cl-stat{padding:10px}.cl-stat b{font-size:17px}.cl-search{margin-left:0;width:100%}.cl-page-head .btn{width:100%;justify-content:center}.cl-item{padding:13px}.cl-item-foot{align-items:flex-start}.cl-actions{width:100%;margin:0}.cl-actions .btn{flex:1;justify-content:center;min-height:44px}.cl-filter{min-height:44px}.cl-fields{grid-template-columns:1fr}.cl-fields .field:first-child{grid-column:auto}.cl-editor-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0}.cl-editor-actions .btn{width:100%;justify-content:center;min-height:44px}.cl-editor-actions [data-cl-save="published"]{grid-column:1/-1;grid-row:2}.cl-tiptap-tools button{min-width:42px;height:42px}.cl-public-title{font-size:21px}}
   /* Bank Soal: kartu soal. Satu kolom di ponsel/tablet, dua kolom di layar lebar.
      Semua warna lewat token, jadi mode gelap ikut berubah tanpa aturan tambahan. */
@@ -1081,7 +1125,7 @@ var NAV=[
  {g:'Pengguna & Akses',items:[
   {k:'users',t:'Pengguna',icn:'ti-users',route:'/users',mp:'menu.users',perm:'users.read'},
   {k:'data-pelajar',t:'Data Pelajar',icn:'ti-school',route:'/data-pelajar',mp:'menu.users',perm:'users.read'},
-  {k:'data-sources',t:'Data Source',icn:'ti-world',route:'/data-sources',mp:'menu.dataSources',perm:'dataSources.manage'},
+  {k:'participant-data',t:'Data Peserta',icn:'ti-list-details',route:'/data-peserta',mp:'menu.participantData',perm:'participantData.manage'},
    {k:'invitations',t:'Undangan',icn:'ti-mail',route:'/invitations',mp:'menu.invitations',perm:'users.invite',badge:'24',cls:'warn'},
    {k:'database',t:'Database',icn:'ti-database',mp:'menu.database',children:[
     {k:'roles',t:'Role',icn:'ti-shield-check',route:'/roles',mp:'menu.roles',perm:'roles.read',badge:'4',cls:'info'},
@@ -1312,8 +1356,8 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    empty:{t:'Belum ada artikel',d:'Simpan konfigurasi portal untuk memuat artikel grup “artikel”.',c:'Muat ulang'}},
   changelogs:{menu:'menu.changelogs',route:'/changelogs',perm:'changelogs.manage',title:'Changelog',cat:'content',view:'changelogs',
    sub:'Kelola catatan pembaruan yang tampil di aplikasi Tryoutku.'},
-  'data-sources':{menu:'menu.dataSources',route:'/data-sources',perm:'dataSources.manage',title:'Data Source',cat:'access',view:'dataSources',
-   sub:'Kelola pilihan sumber traffic yang akan ditampilkan pada onboarding.'},
+  'participant-data':{menu:'menu.participantData',route:'/data-peserta',perm:'participantData.manage',title:'Data Peserta',cat:'access',view:'participantData',
+   sub:'Kelola data peserta, wilayah, dan sumber traffic untuk onboarding.'},
   /* Prototype-only promo tools — requested for Marketing */
   vouchers:{menu:'menu.vouchers',route:'/vouchers',perm:'vouchers.read',title:'Voucher',cat:'content',qa:'Aktifkan',view:'vouchers',
    sub:'Kode diskon untuk pelajar. Atur nilai, kuota, jadwal, dan siapa yang menerima.',
@@ -1623,8 +1667,8 @@ function toast(m,s2,kind,action){
 function defPage(){return 'dashboard';}
 function featOf(page){if(page==='dashboard')return F['dash-'+state.role]||F['dash-admin'];return F[page]||GENERIC(page,'Halaman');}
 function saveLast(){try{store.set('na3-last',state.role+'|'+(state.page||defPage()));}catch(_){}}
-function setRole(r,silent){if(!ROLES[r])return;dataSourceEditing=null;state.role=r;state.page=null;state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();store.set('na3-role',r);saveLast();if(!silent)window.scrollTo(0,0);load(function(){if(!silent)toast('Beralih ke '+ROLES[r].label,ROLES[r].hide);});}
-function go(p){if(p==='changelogs'&&state.role!=='admin'){toast('Changelog hanya tersedia di workspace Admin',null,'err');return;}if(p==='data-sources'&&state.role!=='admin'){toast('Data Source hanya tersedia di workspace Admin',null,'err');return;}if((state.page||defPage())==='data-sources'&&p!=='data-sources')dataSourceEditing=null;state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
+function setRole(r,silent){if(!ROLES[r])return;dataSourceEditing=null;participantEditing=null;state.role=r;state.page=null;state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();store.set('na3-role',r);saveLast();if(!silent)window.scrollTo(0,0);load(function(){if(!silent)toast('Beralih ke '+ROLES[r].label,ROLES[r].hide);});}
+function go(p){if(p==='data-sources'){p='participant-data';participantDataTab='traffic';participantEditing=null;dataSourceEditing=null;}if(p==='changelogs'&&state.role!=='admin'){toast('Changelog hanya tersedia di workspace Admin',null,'err');return;}if(p==='participant-data'&&state.role!=='admin'){toast('Data Peserta hanya tersedia di workspace Admin',null,'err');return;}if((state.page||defPage())==='participant-data'&&p!=='participant-data'){participantEditing=null;dataSourceEditing=null;}state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
 function load(done){state.loading=true;render(true);clearTimeout(load.t);load.t=setTimeout(function(){state.loading=false;render(false);if(done)done();},220);}
 function cycle(){setRole(ROLE_ORDER[(ROLE_ORDER.indexOf(state.role)+1)%ROLE_ORDER.length]);}
 function fic(cls,s){return '<i class="ti-f '+cls+'"'+(s?' style="font-size:'+s+'px"':'')+'></i>';}
@@ -2175,57 +2219,179 @@ function dataSourceRows(){
 function saveDataSourceRows(rows){store.set(DATA_SOURCES_KEY,JSON.stringify(rows));}
 function dataSourceIssue(rows,name,exceptId){
  var value=String(name||'').trim();
- if(!value)return 'Nama data source wajib diisi.';
- if(rows.some(function(row){return row.id!==exceptId&&row.name.toLowerCase()===value.toLowerCase();}))return 'Data source ini sudah ada.';
+ if(!value)return 'Nama sumber traffic wajib diisi.';
+ if(rows.some(function(row){return row.id!==exceptId&&row.name.toLowerCase()===value.toLowerCase();}))return 'Sumber traffic ini sudah ada.';
  return '';
 }
 function dataSourceStatusOptions(selected){return '<option value="draft"'+(selected==='draft'?' selected':'')+'>Draft · Tidak muncul</option><option value="published"'+(selected==='published'?' selected':'')+'>Published · Muncul</option>';}
 function dataSourceRow(row){
- if(dataSourceEditing===row.id)return '<li class="ds-card ds-card-editing"><form class="ds-inline-form" data-ds-edit-form="'+esc(row.id)+'"><div class="ds-inline-fields"><div class="field"><label for="dsEditName">Nama data source</label><input id="dsEditName" name="name" maxlength="60" value="'+esc(row.name)+'" aria-describedby="dsEditError" required></div><div class="field"><label for="dsEditStatus">Status</label><select id="dsEditStatus" name="status">'+dataSourceStatusOptions(row.status)+'</select></div></div><div class="ds-inline-error" id="dsEditError" aria-live="polite"></div><div class="ds-inline-actions"><button class="btn sm" type="button" data-ds-cancel>Batal</button><button class="btn sm primary" type="submit">Simpan</button></div></form></li>';
- return '<li class="ds-card" data-ds-card="'+esc(row.id)+'"><button class="ds-drag-handle" type="button" draggable="true" data-ds-drag="'+esc(row.id)+'" title="Tahan dan geser ke kolom lain" aria-label="Seret '+esc(row.name)+' untuk mengubah status">'+ic('ti-grip-vertical',17)+'</button><span class="ds-card-name">'+esc(row.name)+'</span><div class="ds-card-actions"><button class="mini-btn ic" type="button" data-ds-edit-open="'+esc(row.id)+'" title="Edit '+esc(row.name)+'" aria-label="Edit '+esc(row.name)+'">'+ic(P_PENCIL,16)+'</button><button class="mini-btn ic danger" type="button" data-ds-delete="'+esc(row.id)+'" title="Hapus '+esc(row.name)+'" aria-label="Hapus '+esc(row.name)+'">'+ic(P_TRASH,16)+'</button></div></li>';
+ var isEditing=dataSourceEditing===row.id,handle='<button class="ds-drag-handle" type="button" draggable="'+(!isEditing)+'" data-ds-drag="'+esc(row.id)+'" title="Tahan dan geser ke kolom lain" aria-label="Seret '+esc(row.name)+' untuk mengubah status">'+ic('ti-grip-vertical',17)+'</button>';
+ if(dataSourceEditing===row.id)return '<li class="ds-card ds-card-editing" data-ds-card="'+esc(row.id)+'">'+handle+'<form class="ds-inline-form" data-ds-edit-form="'+esc(row.id)+'"><input class="ds-card-edit-input" id="dsEditName" name="name" maxlength="60" value="'+esc(row.name)+'" aria-label="Nama sumber traffic" required><div class="ds-card-actions"><button class="mini-btn ic" type="submit" title="Simpan perubahan" aria-label="Simpan perubahan">'+ic(P_CHECK,16)+'</button><button class="mini-btn ic" type="button" data-ds-cancel title="Batalkan perubahan" aria-label="Batalkan perubahan">'+ic(P_X,16)+'</button></div></form></li>';
+ return '<li class="ds-card" data-ds-card="'+esc(row.id)+'">'+handle+'<span class="ds-card-name">'+esc(row.name)+'</span><div class="ds-card-actions"><button class="mini-btn ic" type="button" data-ds-edit-open="'+esc(row.id)+'" title="Edit '+esc(row.name)+'" aria-label="Edit '+esc(row.name)+'">'+ic(P_PENCIL,16)+'</button><button class="mini-btn ic danger" type="button" data-ds-delete="'+esc(row.id)+'" title="Hapus '+esc(row.name)+'" aria-label="Hapus '+esc(row.name)+'">'+ic(P_TRASH,16)+'</button></div></li>';
 }
 function dataSourceColumn(status,rows){
  var published=status==='published',list=rows.filter(function(row){return row.status===status;});
- return '<section class="ds-column" data-ds-column="'+status+'" aria-labelledby="dsColumn-'+status+'"><header class="ds-column-head"><div><h2 id="dsColumn-'+status+'">'+(published?'Published':'Draft')+'</h2><p>'+(published?'Muncul di onboarding':'Tidak muncul di onboarding')+'</p></div><span class="ds-column-count" aria-label="'+list.length+' data source">'+list.length+'</span></header><ul class="ds-cards">'+(list.length?list.map(dataSourceRow).join(''):'<li class="ds-column-empty">Belum ada data source</li>')+'</ul></section>';
+ var pageKey='traffic-'+status,pageInfo=participantDataPageRows(list,pageKey);
+ return '<section class="ds-column" data-ds-column="'+status+'" aria-labelledby="dsColumn-'+status+'"><header class="ds-column-head"><div><h2 id="dsColumn-'+status+'">'+(published?'Published':'Draft')+'</h2><p>'+(published?'Muncul di onboarding':'Tidak muncul di onboarding')+'</p></div><span class="ds-column-count" aria-label="'+list.length+' sumber traffic">'+list.length+'</span></header><ul class="ds-cards">'+(list.length?pageInfo.rows.map(dataSourceRow).join(''):'<li class="ds-column-empty">Belum ada sumber traffic</li>')+'</ul>'+participantDataPager(pageKey,list.length,'sumber traffic '+(published?'Published':'Draft'))+'</section>';
 }
-function dataSourcesView(){
+function participantTrafficView(){
  var rows=dataSourceRows();
  var announcement=dataSourceAnnouncement;dataSourceAnnouncement='';
- return '<section class="cl-page-head ds-page-head"><div class="hero-copy"><h1>Data Source</h1><p>Seret data source ke kolom lain untuk mengubah visibilitas saat onboarding.</p></div><button class="btn primary" data-ds-new>'+ic(P_PLUS,17)+'Tambah data source</button></section>'
-  +'<p class="ds-visually-hidden" id="dsStatusLive" aria-live="polite">'+esc(announcement)+'</p><div class="ds-board" role="group" aria-label="Data source berdasarkan status">'+dataSourceColumn('draft',rows)+dataSourceColumn('published',rows)+'</div>';
+ return '<section class="pd-panel" role="tabpanel"><header class="pd-panel-head"><div><h2>Sumber Traffic</h2><p>Kelola pilihan asal traffic dan atur visibilitasnya pada onboarding.</p></div><div class="pd-head-actions"><span class="ds-count">'+rows.length+' sumber</span><button class="btn primary" data-ds-new>'+ic(P_PLUS,16)+'Tambah sumber</button></div></header>'
+  +'<p class="ds-visually-hidden" id="dsStatusLive" aria-live="polite">'+esc(announcement)+'</p><div class="ds-board" role="group" aria-label="Sumber traffic berdasarkan status">'+dataSourceColumn('draft',rows)+dataSourceColumn('published',rows)+'</div></section>';
 }
 function newDataSourceId(){return 'DS-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);}
 function openDataSourceCreate(){
- lastFocus=document.activeElement;var d=$('#drawer');d.setAttribute('aria-label','Tambah data source');
- d.innerHTML='<div class="drawer-h"><div style="display:flex;gap:8px;align-items:flex-start"><div style="flex:1"><h3>Tambah data source</h3><p>Isi nama dan tentukan apakah sumber tampil saat onboarding.</p></div><button class="iconbtn" id="dsDrawerClose" aria-label="Tutup">'+ic(P_X,18)+'</button></div></div>'
-  +'<form id="dsCreateForm" class="ds-drawer-form"><div class="drawer-b"><div class="field"><label for="dsCreateName">Nama data source</label><input id="dsCreateName" name="name" maxlength="60" autocomplete="off" placeholder="cth: YouTube" aria-describedby="dsCreateError" required><span class="ds-error" id="dsCreateError" aria-live="polite"></span></div><div class="field"><label for="dsCreateStatus">Status</label><select id="dsCreateStatus" name="status">'+dataSourceStatusOptions('published')+'</select><span class="fhint">Draft tidak muncul. Published muncul sebagai pilihan onboarding.</span></div></div><div class="drawer-f"><button class="btn" id="dsDrawerCancel" type="button">Batal</button><button class="btn primary" type="submit">'+ic(P_PLUS,16)+'Buat data source</button></div></form>';
+ lastFocus=document.activeElement;var d=$('#drawer');d.setAttribute('aria-label','Tambah sumber traffic');
+ d.innerHTML='<div class="drawer-h"><div style="display:flex;gap:8px;align-items:flex-start"><div style="flex:1"><h3>Tambah sumber traffic</h3><p>Tambahkan pilihan asal traffic untuk formulir onboarding.</p></div><button class="iconbtn" id="dsDrawerClose" aria-label="Tutup">'+ic(P_X,18)+'</button></div></div>'
+  +'<form id="dsCreateForm" class="ds-drawer-form"><div class="drawer-b"><div class="field"><label for="dsCreateName">Nama sumber traffic</label><input id="dsCreateName" name="name" maxlength="60" autocomplete="off" placeholder="cth: YouTube" aria-describedby="dsCreateError" required><span class="ds-error" id="dsCreateError" aria-live="polite"></span></div><div class="field"><label for="dsCreateStatus">Status</label><select id="dsCreateStatus" name="status">'+dataSourceStatusOptions('published')+'</select><span class="fhint">Draft tidak muncul. Published muncul sebagai pilihan onboarding.</span></div></div><div class="drawer-f"><button class="btn" id="dsDrawerCancel" type="button">Batal</button><button class="btn primary" type="submit">'+ic(P_PLUS,16)+'Buat sumber</button></div></form>';
  $('#scrim').classList.add('show');d.classList.add('show');
  $('#dsDrawerClose').onclick=closeDrawer;$('#dsDrawerCancel').onclick=closeDrawer;
  var form=$('#dsCreateForm'),input=$('#dsCreateName'),error=$('#dsCreateError');
  input.addEventListener('input',function(){input.removeAttribute('aria-invalid');error.textContent='';});
- form.addEventListener('submit',function(e){e.preventDefault();var rows=dataSourceRows(),issue=dataSourceIssue(rows,input.value,'');if(issue){input.setAttribute('aria-invalid','true');error.textContent=issue;input.focus();return;}rows.unshift({id:newDataSourceId(),name:input.value.trim(),status:$('#dsCreateStatus').value});saveDataSourceRows(rows);closeDrawer();render(false);toast('Data source ditambahkan');});
+ form.addEventListener('submit',function(e){e.preventDefault();var rows=dataSourceRows(),issue=dataSourceIssue(rows,input.value,'');if(issue){input.setAttribute('aria-invalid','true');error.textContent=issue;input.focus();return;}var status=$('#dsCreateStatus').value;rows.unshift({id:newDataSourceId(),name:input.value.trim(),status:status});participantDataPages['traffic-'+status]=1;saveDataSourceRows(rows);closeDrawer();render(false);toast('Sumber traffic ditambahkan');});
  input.focus();
 }
 function saveDataSourceEdit(id,form){
- var input=form.querySelector('[name="name"]'),status=form.querySelector('[name="status"]'),error=form.querySelector('.ds-inline-error'),rows=dataSourceRows(),issue=dataSourceIssue(rows,input.value,id);
- if(issue){input.setAttribute('aria-invalid','true');error.textContent=issue;input.focus();return;}
+ var input=form.querySelector('[name="name"]'),rows=dataSourceRows(),issue=dataSourceIssue(rows,input.value,id);
+ if(issue){toast(issue,null,'err');input.setAttribute('aria-invalid','true');input.focus();return;}
  var row=null;rows.forEach(function(x){if(x.id===id)row=x;});if(!row)return;
- row.name=input.value.trim();row.status=status.value==='published'?'published':'draft';saveDataSourceRows(rows);dataSourceEditing=null;render(false);toast('Data source diperbarui');
+ row.name=input.value.trim();saveDataSourceRows(rows);dataSourceEditing=null;render(false);toast('Sumber traffic diperbarui');
 }
 function moveDataSourceStatus(id,status){
  if(status!=='draft'&&status!=='published')return;
  var rows=dataSourceRows(),row=null;rows.forEach(function(item){if(item.id===id)row=item;});
  if(!row||row.status===status)return;
- row.status=status;saveDataSourceRows(rows);dataSourceAnnouncement=row.name+' dipindahkan ke '+(status==='published'?'Published, Muncul':'Draft, Tidak muncul')+'.';render(false);toast(row.name+' dipindahkan',status==='published'?'Muncul di onboarding':'Tidak muncul di onboarding');
+ row.status=status;participantDataPages['traffic-'+status]=1;saveDataSourceRows(rows);dataSourceAnnouncement=row.name+' dipindahkan ke '+(status==='published'?'Published, Muncul':'Draft, Tidak muncul')+'.';render(false);toast(row.name+' dipindahkan',status==='published'?'Muncul di onboarding':'Tidak muncul di onboarding');
 }
 function clearDataSourceDrag(){
  dataSourceDragId=null;document.querySelectorAll('.ds-column.is-over').forEach(function(column){column.classList.remove('is-over');});document.querySelectorAll('.ds-card.is-dragging').forEach(function(card){card.classList.remove('is-dragging');});
 }
 function deleteDataSource(id){
  var rows=dataSourceRows(),index=-1;rows.forEach(function(row,i){if(row.id===id)index=i;});if(index<0)return;var gone=rows[index];
- openConfirm('Hapus data source?','“'+gone.name+'” akan dihapus dari daftar pilihan onboarding.','Hapus',function(){var current=dataSourceRows().filter(function(row){return row.id!==id;});saveDataSourceRows(current);dataSourceEditing=null;render(false);toast('Data source dihapus',null,null,{label:'Urungkan',fn:function(){var restored=dataSourceRows();restored.splice(Math.min(index,restored.length),0,gone);saveDataSourceRows(restored);render(false);}});});
+ openConfirm('Hapus sumber traffic?','“'+gone.name+'” akan dihapus dari daftar pilihan onboarding.','Hapus',function(){var current=dataSourceRows().filter(function(row){return row.id!==id;});saveDataSourceRows(current);dataSourceEditing=null;render(false);toast('Sumber traffic dihapus',null,null,{label:'Urungkan',fn:function(){var restored=dataSourceRows();restored.splice(Math.min(index,restored.length),0,gone);saveDataSourceRows(restored);render(false);}});});
 }
-VIEWS.dataSources=function(){return dataSourcesView();};
+var PARTICIPANT_DATA_KEY='na3-participant-data';
+var participantDataTab='years',participantProvinceId='',participantEditing=null,participantDataPages={};
+var PARTICIPANT_DATA_META={
+ years:{title:'Tahun lulus',singular:'tahun lulus',desc:'Atur tahun yang tersedia pada formulir peserta.'},
+ classes:{title:'Kelas',singular:'kelas',desc:'Atur tingkat kelas yang dapat dipilih peserta.'},
+ schools:{title:'Jenjang',singular:'jenjang',desc:'Atur jenjang pendidikan yang dapat dipilih peserta.'},
+ provinces:{title:'Provinsi',singular:'provinsi',desc:'Atur provinsi dan kabupaten/kota untuk pilihan wilayah.'},
+ regencies:{title:'Kabupaten/Kota',singular:'kabupaten/kota',desc:'Atur kabupaten/kota di dalam provinsi.'}
+};
+function participantDataSave(data){store.set(PARTICIPANT_DATA_KEY,JSON.stringify(data));}
+function participantDataRead(){
+ var data={years:[],classes:[],schools:[],provinces:[],regencies:[]},changed=false,raw=null;
+ try{raw=JSON.parse(store.get(PARTICIPANT_DATA_KEY)||'null');}catch(_){raw=null;}
+ Object.keys(data).forEach(function(kind){
+  var rows=raw&&Array.isArray(raw[kind])?raw[kind]:[];
+  data[kind]=rows.reduce(function(out,row,i){
+   if(typeof row==='string'&&row.trim()){out.push({id:'legacy-'+kind+'-'+i,name:row.trim()});changed=true;}
+   else if(row&&typeof row.name==='string'&&row.name.trim())out.push({id:String(row.id||'legacy-'+kind+'-'+i),name:row.name.trim(),provinceId:kind==='regencies'?String(row.provinceId||''):undefined});
+   return out;
+  },[]);
+ });
+ var currentYear=String(new Date().getFullYear());
+ if(!data.years.some(function(row){return row.name===currentYear;})){data.years.push({id:'year-'+currentYear,name:currentYear});changed=true;}
+ if(!data.provinces.some(function(row){return row.id===participantProvinceId;}))participantProvinceId=data.provinces.length?data.provinces[0].id:'';
+ if(changed)participantDataSave(data);
+ return data;
+}
+function participantDataSorted(rows,kind){
+ return rows.slice().sort(function(a,b){return kind==='years'?Number(b.name)-Number(a.name):a.name.localeCompare(b.name,'id',{numeric:true,sensitivity:'base'});});
+}
+function participantDataPageInfo(total,key){
+ var pages=Math.max(1,Math.ceil(total/PG_SIZE)),page=Math.max(1,Math.min(pages,Number(participantDataPages[key])||1));participantDataPages[key]=page;
+ return {page:page,pages:pages,start:total?(page-1)*PG_SIZE+1:0,end:Math.min(page*PG_SIZE,total)};
+}
+function participantDataPageRows(rows,key){var info=participantDataPageInfo(rows.length,key);info.rows=rows.slice((info.page-1)*PG_SIZE,info.page*PG_SIZE);return info;}
+function participantDataPager(key,total,label){
+ var info=participantDataPageInfo(total,key),options='';for(var page=1;page<=info.pages;page++)options+='<option value="'+page+'"'+(page===info.page?' selected':'')+'>Halaman '+page+'</option>';
+ return '<nav class="pd-pager" aria-label="Navigasi halaman '+esc(label)+'"><span class="pd-pager-info">'+info.start+'–'+info.end+' dari '+total+'</span><div class="pd-pager-controls"><button class="mini-btn ic" type="button" data-pd-page-step="-1" data-pd-page-key="'+key+'" data-pd-page-count="'+info.pages+'" aria-label="Halaman sebelumnya" title="Sebelumnya"'+(info.page<=1?' disabled':'')+'>'+ic(P_CHL,16)+'</button><select data-pd-page-select="'+key+'" aria-label="Pilih halaman '+esc(label)+'">'+options+'</select><button class="mini-btn ic" type="button" data-pd-page-step="1" data-pd-page-key="'+key+'" data-pd-page-count="'+info.pages+'" aria-label="Halaman berikutnya" title="Berikutnya"'+(info.page>=info.pages?' disabled':'')+'>'+ic(P_CHR,16)+'</button></div></nav>';
+}
+function participantDataIssue(data,kind,name,exceptId,provinceId){
+ var value=String(name||'').trim(),meta=PARTICIPANT_DATA_META[kind];
+ if(!value)return 'Nama '+meta.singular+' wajib diisi.';
+ if(kind==='years'&&!/^\d{4}$/.test(value))return 'Tahun lulus harus berisi 4 digit.';
+ if(data[kind].some(function(row){return row.id!==exceptId&&row.name.toLowerCase()===value.toLowerCase()&&(kind!=='regencies'||row.provinceId===provinceId);}))return meta.title+' ini sudah ada.';
+ if(kind==='regencies'&&!data.provinces.some(function(row){return row.id===provinceId;}))return 'Pilih provinsi terlebih dahulu.';
+ return '';
+}
+function participantDataId(){return 'PD-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);}
+function participantDataEditForm(kind,row,data){
+ var meta=PARTICIPANT_DATA_META[kind],year=kind==='years',input='<input class="pd-entry-input" id="pdEditName" name="name" '+(year?'inputmode="numeric" maxlength="4"':'maxlength="80"')+' value="'+esc(row.name)+'" aria-label="Nama '+esc(meta.singular)+'" required>';
+ var main=kind==='provinces'?'<div class="pd-province-edit-main">'+input+'<span class="pd-region-count">'+data.regencies.filter(function(item){return item.provinceId===row.id;}).length+' kab/kota</span></div>':'<span class="pd-entry-main">'+input+'</span>';
+ return '<form class="pd-edit-form" data-pd-edit-form="'+kind+'" data-pd-id="'+esc(row.id)+'">'+main+'<div class="pd-entry-actions"><button class="mini-btn ic" type="submit" title="Simpan perubahan" aria-label="Simpan perubahan">'+ic(P_CHECK,16)+'</button><button class="mini-btn ic" type="button" data-pd-cancel title="Batalkan perubahan" aria-label="Batalkan perubahan">'+ic(P_X,16)+'</button></div></form>';
+}
+function participantDataEntry(kind,row,data){
+ var editing=participantEditing&&participantEditing.kind===kind&&participantEditing.id===row.id;
+ if(editing)return '<li class="pd-entry pd-entry-editing">'+participantDataEditForm(kind,row,data)+'</li>';
+ var isCurrent=kind==='years'&&row.name===String(new Date().getFullYear()),actions='';
+ if(!isCurrent)actions='<div class="pd-entry-actions"><button class="mini-btn ic" type="button" data-pd-edit="'+kind+'" data-pd-id="'+esc(row.id)+'" title="Edit '+esc(row.name)+'" aria-label="Edit '+esc(row.name)+'">'+ic(P_PENCIL,16)+'</button><button class="mini-btn ic danger" type="button" data-pd-delete="'+kind+'" data-pd-id="'+esc(row.id)+'" title="Hapus '+esc(row.name)+'" aria-label="Hapus '+esc(row.name)+'">'+ic(P_TRASH,16)+'</button></div>';
+ return '<li class="pd-entry"><span class="pd-entry-main">'+esc(row.name)+(isCurrent?'<span class="pd-auto-tag">Tahun ini · otomatis</span>':'')+'</span>'+actions+'</li>';
+}
+function participantDataListView(kind,data){
+ var meta=PARTICIPANT_DATA_META[kind],rows=participantDataSorted(data[kind],kind);
+ var pageInfo=participantDataPageRows(rows,'list-'+kind);
+ return '<section class="pd-panel" role="tabpanel"><header class="pd-panel-head"><div><h2>'+meta.title+'</h2><p>'+meta.desc+'</p></div><div class="pd-head-actions"><span class="ds-count">'+rows.length+' data</span><button class="btn primary" data-pd-new="'+kind+'">'+ic(P_PLUS,16)+'Tambah '+meta.singular+'</button></div></header>'
+  +'<ul class="pd-entry-list">'+(rows.length?pageInfo.rows.map(function(row){return participantDataEntry(kind,row,data);}).join(''):'<li class="pd-empty"><b>Belum ada '+meta.title.toLowerCase()+'</b>Tambahkan pilihan agar tersedia pada formulir peserta.</li>')+'</ul>'+participantDataPager('list-'+kind,rows.length,meta.title.toLowerCase())+'</section>';
+}
+function participantProvinceEntry(row,data){
+ var editing=participantEditing&&participantEditing.kind==='provinces'&&participantEditing.id===row.id;
+ var count=data.regencies.filter(function(item){return item.provinceId===row.id;}).length;
+ if(editing)return '<li class="pd-province-row pd-province-row-editing">'+participantDataEditForm('provinces',row,data)+'</li>';
+ return '<li class="pd-province-row"><button class="pd-province-select'+(participantProvinceId===row.id?' on':'')+'" type="button" data-pd-select-province="'+esc(row.id)+'" aria-pressed="'+(participantProvinceId===row.id)+'"><span>'+esc(row.name)+'</span><span class="pd-region-count">'+count+' kab/kota</span></button><div class="pd-entry-actions"><button class="mini-btn ic" type="button" data-pd-edit="provinces" data-pd-id="'+esc(row.id)+'" title="Edit '+esc(row.name)+'" aria-label="Edit '+esc(row.name)+'">'+ic(P_PENCIL,16)+'</button><button class="mini-btn ic danger" type="button" data-pd-delete="provinces" data-pd-id="'+esc(row.id)+'" title="Hapus '+esc(row.name)+'" aria-label="Hapus '+esc(row.name)+'">'+ic(P_TRASH,16)+'</button></div></li>';
+}
+function participantRegionView(data){
+ var provinces=participantDataSorted(data.provinces,'provinces'),selected=data.provinces.filter(function(row){return row.id===participantProvinceId;})[0]||null;
+ var regencies=selected?participantDataSorted(data.regencies.filter(function(row){return row.provinceId===selected.id;}),'regencies'):[];
+ var provincePage=participantDataPageRows(provinces,'regions-provinces'),regencyPage=participantDataPageRows(regencies,'regions-regencies');
+ return '<div class="pd-region-grid"><section class="pd-subpanel" aria-label="Daftar provinsi"><header class="pd-subpanel-head"><div><h2>Provinsi</h2><p>'+provinces.length+' provinsi</p></div><button class="btn primary sm" data-pd-new="provinces">'+ic(P_PLUS,15)+'Tambah</button></header><ul class="pd-entry-list">'+(provinces.length?provincePage.rows.map(function(row){return participantProvinceEntry(row,data);}).join(''):'<li class="pd-empty"><b>Belum ada provinsi</b>Tambahkan provinsi sebelum mengatur kabupaten/kota.</li>')+'</ul>'+participantDataPager('regions-provinces',provinces.length,'provinsi')+'</section>'
+  +'<section class="pd-subpanel" aria-label="Daftar kabupaten dan kota"><header class="pd-subpanel-head"><div><h2>Kabupaten/Kota</h2><p>'+(selected?esc(selected.name)+' · '+regencies.length+' wilayah':'Pilih provinsi untuk melihat wilayah')+'</p></div><button class="btn primary sm" data-pd-new="regencies"'+(selected?'':' disabled')+'>'+ic(P_PLUS,15)+'Tambah</button></header>'
+  +(selected?'<ul class="pd-entry-list">'+(regencies.length?regencyPage.rows.map(function(row){return participantDataEntry('regencies',row,data);}).join(''):'<li class="pd-empty"><b>Belum ada kabupaten/kota</b>Tambahkan wilayah untuk '+esc(selected.name)+'.</li>')+'</ul>'+participantDataPager('regions-regencies',regencies.length,'kabupaten/kota'):'<div class="pd-empty"><b>Pilih provinsi</b>Kabupaten/kota dikelola di dalam provinsinya.</div>')+'</section></div>';
+}
+function participantDataView(){
+ var data=participantDataRead(),tabs=[['years','Tahun lulus'],['classes','Kelas'],['schools','Jenjang'],['regions','Wilayah'],['traffic','Sumber Traffic']];
+ var tabHtml=tabs.map(function(tab){return '<button class="pd-tab'+(participantDataTab===tab[0]?' on':'')+'" type="button" role="tab" aria-selected="'+(participantDataTab===tab[0])+'" data-pd-tab="'+tab[0]+'">'+tab[1]+'</button>';}).join('');
+ var body=participantDataTab==='regions'?participantRegionView(data):participantDataTab==='traffic'?participantTrafficView():participantDataListView(participantDataTab,data);
+ return '<section class="cl-page-head ds-page-head"><div class="hero-copy"><h1>Data Peserta</h1><p>Kelola pilihan formulir peserta, wilayah, dan sumber traffic onboarding.</p></div></section><div class="pd-tabs" role="tablist" aria-label="Jenis data peserta">'+tabHtml+'</div>'+body;
+}
+function openParticipantCreate(kind){
+ var meta=PARTICIPANT_DATA_META[kind],data=participantDataRead();if(!meta)return;
+ lastFocus=document.activeElement;var d=$('#drawer'),isYear=kind==='years';d.setAttribute('aria-label','Tambah '+meta.singular);
+ var form='<div class="field"><label for="pdCreateName">'+meta.title+'</label><input id="pdCreateName" name="name" '+(isYear?'inputmode="numeric" maxlength="4" placeholder="cth: '+new Date().getFullYear()+'"':'maxlength="80" placeholder="cth: '+(kind==='schools'?'SMA/SMK':kind==='classes'?'Kelas 12':kind==='provinces'?'Jawa Barat':'Kab. Bandung')+'"')+' aria-describedby="pdCreateError" required><span class="ds-error" id="pdCreateError" aria-live="polite"></span></div>';
+ if(kind==='regencies')form+='<div class="field"><label for="pdCreateProvince">Provinsi</label><select id="pdCreateProvince" name="provinceId">'+data.provinces.map(function(province){return '<option value="'+esc(province.id)+'"'+(province.id===participantProvinceId?' selected':'')+'>'+esc(province.name)+'</option>';}).join('')+'</select></div>';
+ d.innerHTML='<div class="drawer-h"><div style="display:flex;gap:8px;align-items:flex-start"><div style="flex:1"><h3>Tambah '+meta.singular+'</h3><p>Data ini langsung tersedia sebagai pilihan formulir peserta.</p></div><button class="iconbtn" id="pdDrawerClose" type="button" aria-label="Tutup">'+ic(P_X,18)+'</button></div></div><form id="pdCreateForm" class="ds-drawer-form"><div class="drawer-b">'+form+'</div><div class="drawer-f"><button class="btn" id="pdDrawerCancel" type="button">Batal</button><button class="btn primary" type="submit">'+ic(P_PLUS,16)+'Tambah '+meta.singular+'</button></div></form>';
+ $('#scrim').classList.add('show');d.classList.add('show');$('#pdDrawerClose').onclick=closeDrawer;$('#pdDrawerCancel').onclick=closeDrawer;
+ var createForm=$('#pdCreateForm'),input=$('#pdCreateName'),error=$('#pdCreateError');
+ input.addEventListener('input',function(){input.removeAttribute('aria-invalid');error.textContent='';});
+ createForm.addEventListener('submit',function(e){e.preventDefault();var fresh=participantDataRead(),province=$('#pdCreateProvince'),provinceId=province?province.value:'';var issue=participantDataIssue(fresh,kind,input.value,'',provinceId);if(issue){input.setAttribute('aria-invalid','true');error.textContent=issue;input.focus();return;}var item={id:participantDataId(),name:input.value.trim()};if(kind==='regencies')item.provinceId=provinceId;fresh[kind].unshift(item);participantDataPages['list-'+kind]=1;if(kind==='provinces'||kind==='regencies'){participantProvinceId=kind==='provinces'?item.id:provinceId;participantDataPages[kind==='provinces'?'regions-provinces':'regions-regencies']=1;}participantDataSave(fresh);participantEditing=null;closeDrawer();render(false);toast(meta.title+' ditambahkan');});
+ input.focus();
+}
+function saveParticipantEdit(form){
+ var kind=form.getAttribute('data-pd-edit-form'),id=form.getAttribute('data-pd-id'),input=form.querySelector('[name="name"]'),data=participantDataRead(),issue=participantDataIssue(data,kind,input.value,id,kind==='regencies'?participantProvinceId:'');
+ if(issue){toast(issue,null,'err');input.setAttribute('aria-invalid','true');input.focus();return;}
+ var row=data[kind].filter(function(item){return item.id===id;})[0];if(!row)return;row.name=input.value.trim();participantDataSave(data);participantEditing=null;render(false);toast(PARTICIPANT_DATA_META[kind].title+' diperbarui');
+}
+function deleteParticipantItem(kind,id){
+ var data=participantDataRead(),rows=data[kind],row=rows.filter(function(item){return item.id===id;})[0];if(!row)return;
+ if(kind==='years'&&row.name===String(new Date().getFullYear())){toast('Tahun berjalan tersedia otomatis',null,'err');return;}
+ if(kind==='provinces'){var linked=data.regencies.filter(function(item){return item.provinceId===id;}).length;if(linked){toast('Provinsi belum bisa dihapus',linked+' kabupaten/kota masih terhubung.','err');return;}}
+ var meta=PARTICIPANT_DATA_META[kind];openConfirm('Hapus '+meta.singular+'?',row.name+' akan dihapus dari pilihan data peserta.','Hapus',function(){data[kind]=data[kind].filter(function(item){return item.id!==id;});participantDataSave(data);participantEditing=null;render(false);toast(meta.title+' dihapus');});
+}
+function bindParticipantDataPage(c){
+ c.querySelectorAll('[data-pd-tab]').forEach(function(button){button.onclick=function(){participantDataTab=button.getAttribute('data-pd-tab');participantEditing=null;dataSourceEditing=null;render(false);};});
+ c.querySelectorAll('[data-pd-new]').forEach(function(button){button.onclick=function(){openParticipantCreate(button.getAttribute('data-pd-new'));};});
+ c.querySelectorAll('[data-pd-select-province]').forEach(function(button){button.onclick=function(){participantProvinceId=button.getAttribute('data-pd-select-province');participantDataPages['regions-regencies']=1;participantEditing=null;render(false);};});
+ c.querySelectorAll('[data-pd-edit]').forEach(function(button){button.onclick=function(){participantEditing={kind:button.getAttribute('data-pd-edit'),id:button.getAttribute('data-pd-id')};render(false);var input=c.querySelector('#pdEditName');if(input)input.focus();};});
+ c.querySelectorAll('[data-pd-cancel]').forEach(function(button){button.onclick=function(){participantEditing=null;render(false);};});
+ c.querySelectorAll('[data-pd-delete]').forEach(function(button){button.onclick=function(){deleteParticipantItem(button.getAttribute('data-pd-delete'),button.getAttribute('data-pd-id'));};});
+ c.querySelectorAll('[data-pd-edit-form]').forEach(function(form){var input=form.querySelector('[name="name"]');input.addEventListener('input',function(){input.removeAttribute('aria-invalid');});form.addEventListener('submit',function(e){e.preventDefault();saveParticipantEdit(form);});form.addEventListener('keydown',function(e){if(e.key==='Escape'){e.preventDefault();participantEditing=null;render(false);}});});
+ c.querySelectorAll('[data-pd-page-select]').forEach(function(select){select.onchange=function(){var key=select.getAttribute('data-pd-page-select');participantDataPages[key]=Number(select.value)||1;participantEditing=null;dataSourceEditing=null;render(false);var next=c.querySelector('[data-pd-page-select="'+key+'"]');if(next)next.focus();};});
+ c.querySelectorAll('[data-pd-page-step]').forEach(function(button){button.onclick=function(){var key=button.getAttribute('data-pd-page-key'),max=Number(button.getAttribute('data-pd-page-count'))||1,current=Number(participantDataPages[key])||1,step=Number(button.getAttribute('data-pd-page-step'))||0;participantDataPages[key]=Math.max(1,Math.min(max,current+step));participantEditing=null;dataSourceEditing=null;render(false);var next=c.querySelector('[data-pd-page-step="'+step+'"][data-pd-page-key="'+key+'"]');if(next&&!next.disabled)next.focus();else{var select=c.querySelector('[data-pd-page-select="'+key+'"]');if(select)select.focus();}};});
+}
+VIEWS.participantData=function(){return participantDataView();};
 var changelogFilter='Semua',changelogEditor=null,changelogPreviewDark=false;
 var CHANGELOG_KEY='na3-changelogs';
 function changelogSeed(){return [
@@ -3478,7 +3644,7 @@ function quickFAB(){
  return '<div class="fab-wrap"><button class="fab-btn" id="quickBtn" aria-haspopup="true">'+ic(P_ZAP,17)+'Pintasan<span class="chev">'+ic(P_CHEV,15)+'</span></button><div class="quick-pop" id="quickPop"><div class="quick">'+items+'</div></div></div>';
 }
 function render(skel){
- var page=state.page||defPage();if((page==='changelogs'||page==='data-sources')&&state.role!=='admin'){state.page='dashboard';page='dashboard';saveLast();}
+ var page=state.page||defPage();if(page==='data-sources'){page='participant-data';state.page=page;participantDataTab='traffic';participantEditing=null;dataSourceEditing=null;saveLast();}if((page==='changelogs'||page==='participant-data')&&state.role!=='admin'){state.page='dashboard';page='dashboard';saveLast();}
  renderSidebar();renderCrumbs();
  var t=featOf(page);
  var html='';
@@ -3721,12 +3887,13 @@ function doAct(id,way){
 }
 function bindAll(page,t){
  var c=$('#content');
+ if(page==='participant-data')bindParticipantDataPage(c);
  var dsNew=c.querySelector('[data-ds-new]');
  if(dsNew)dsNew.onclick=function(e){e.preventDefault();openDataSourceCreate();};
- c.querySelectorAll('[data-ds-edit-open]').forEach(function(b){b.onclick=function(e){e.preventDefault();dataSourceEditing=b.getAttribute('data-ds-edit-open');render(false);var input=c.querySelector('#dsEditName');if(input)input.focus();};});
+ c.querySelectorAll('[data-ds-edit-open]').forEach(function(b){b.onclick=function(e){e.preventDefault();participantEditing=null;dataSourceEditing=b.getAttribute('data-ds-edit-open');render(false);var input=c.querySelector('#dsEditName');if(input)input.focus();};});
  c.querySelectorAll('[data-ds-cancel]').forEach(function(b){b.onclick=function(e){e.preventDefault();dataSourceEditing=null;render(false);};});
  c.querySelectorAll('[data-ds-delete]').forEach(function(b){b.onclick=function(e){e.preventDefault();deleteDataSource(b.getAttribute('data-ds-delete'));};});
- c.querySelectorAll('[data-ds-edit-form]').forEach(function(form){var input=form.querySelector('[name="name"]'),error=form.querySelector('.ds-inline-error');input.addEventListener('input',function(){input.removeAttribute('aria-invalid');error.textContent='';});form.addEventListener('submit',function(e){e.preventDefault();saveDataSourceEdit(form.getAttribute('data-ds-edit-form'),form);});});
+ c.querySelectorAll('[data-ds-edit-form]').forEach(function(form){var input=form.querySelector('[name="name"]');input.addEventListener('input',function(){input.removeAttribute('aria-invalid');});form.addEventListener('submit',function(e){e.preventDefault();saveDataSourceEdit(form.getAttribute('data-ds-edit-form'),form);});form.addEventListener('keydown',function(e){if(e.key==='Escape'){e.preventDefault();dataSourceEditing=null;render(false);}});});
  c.querySelectorAll('[data-ds-drag]').forEach(function(handle){
   handle.addEventListener('dragstart',function(e){dataSourceDragId=handle.getAttribute('data-ds-drag');var card=handle.closest('[data-ds-card]');if(card)card.classList.add('is-dragging');if(e.dataTransfer){e.dataTransfer.setData('text/plain',dataSourceDragId);e.dataTransfer.effectAllowed='move';}});
   handle.addEventListener('dragend',clearDataSourceDrag);
