@@ -826,13 +826,13 @@
   .cl-empty{background:var(--bg-card);border:1px dashed var(--border);border-radius:15px;text-align:center;padding:40px 18px;color:var(--text-2)}
   .cl-empty .ti{font-size:25px;color:var(--text-3)}
   .cl-empty b{display:block;color:var(--text-h);margin:8px 0 3px}
-  .cl-editor-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:15px}
-  .cl-back{border:0;background:none;padding:7px 0;color:var(--text-2);font-weight:600;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+  .cl-editor-top{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"back actions" "title actions";align-items:center;column-gap:20px;row-gap:4px;margin-bottom:18px}
+  .cl-back{grid-area:back;justify-self:start;border:0;background:none;padding:7px 0;color:var(--text-2);font-weight:600;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
   .cl-back:hover{color:var(--primary)}
-  .cl-editor-title{flex:1;min-width:180px}
-  .cl-editor-title h1{font-size:20px;margin:0;color:var(--text-h)}
-  .cl-editor-title p{margin:3px 0 0;color:var(--text-2);font-size:12.5px}
-  .cl-editor-actions{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
+  .cl-editor-title{grid-area:title;min-width:0}
+  .cl-editor-title h1{font-size:22px;line-height:1.25;margin:0;color:var(--text-h);letter-spacing:-.02em}
+  .cl-editor-title p{margin:4px 0 0;color:var(--text-2);font-size:13px;line-height:1.5;max-width:560px}
+  .cl-editor-actions{grid-area:actions;align-self:center;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin:0}
   .cl-editor-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:14px;align-items:start}
   .cl-editor-card{background:var(--bg-card);border:1px solid var(--border);border-radius:15px;padding:16px;box-shadow:var(--shadow-sm);min-width:0}
   .cl-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -879,7 +879,8 @@
   .cl-preview-modal{max-width:760px!important}
   .cl-preview-modal .modal-b{max-height:70vh;overflow:auto}
   @media(max-width:1050px){.cl-editor-grid{grid-template-columns:minmax(0,1fr)}.cl-preview-card{position:static}.cl-public-preview{min-height:220px}}
-  @media(max-width:600px){.cl-stats{gap:7px}.cl-stat{padding:10px}.cl-stat b{font-size:17px}.cl-search{margin-left:0;width:100%}.cl-page-head .btn{width:100%;justify-content:center}.cl-item{padding:13px}.cl-item-foot{align-items:flex-start}.cl-actions{width:100%;margin:0}.cl-actions .btn{flex:1;justify-content:center;min-height:44px}.cl-filter{min-height:44px}.cl-fields{grid-template-columns:1fr}.cl-fields .field:first-child{grid-column:auto}.cl-editor-actions{width:100%;margin:0}.cl-editor-actions .btn{flex:1;justify-content:center;min-height:44px}.cl-tiptap-tools button{min-width:42px;height:42px}.cl-public-title{font-size:21px}}
+  @media(max-width:760px){.cl-editor-top{grid-template-columns:minmax(0,1fr);grid-template-areas:"back" "title" "actions";gap:8px}.cl-editor-actions{width:100%;justify-content:flex-start}}
+  @media(max-width:600px){.cl-stats{gap:7px}.cl-stat{padding:10px}.cl-stat b{font-size:17px}.cl-search{margin-left:0;width:100%}.cl-page-head .btn{width:100%;justify-content:center}.cl-item{padding:13px}.cl-item-foot{align-items:flex-start}.cl-actions{width:100%;margin:0}.cl-actions .btn{flex:1;justify-content:center;min-height:44px}.cl-filter{min-height:44px}.cl-fields{grid-template-columns:1fr}.cl-fields .field:first-child{grid-column:auto}.cl-editor-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0}.cl-editor-actions .btn{width:100%;justify-content:center;min-height:44px}.cl-editor-actions [data-cl-save="published"]{grid-column:1/-1;grid-row:2}.cl-tiptap-tools button{min-width:42px;height:42px}.cl-public-title{font-size:21px}}
   /* Bank Soal: kartu soal. Satu kolom di ponsel/tablet, dua kolom di layar lebar.
      Semua warna lewat token, jadi mode gelap ikut berubah tanpa aturan tambahan. */
   .qlist{display:grid;gap:12px;padding:14px 16px;grid-template-columns:minmax(0,1fr)}
