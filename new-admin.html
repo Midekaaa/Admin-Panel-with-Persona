@@ -824,20 +824,31 @@
   .cl-avatar{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:50%;background:var(--primary-100);color:var(--primary);font-size:10px;font-weight:700;flex:0 0 27px}
   .cl-actions{margin-left:auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
   .ds-page-head{align-items:center;margin-bottom:16px}
-  .ds-list-card{background:var(--bg-card);border:1px solid var(--border);border-radius:15px;padding:6px 16px;box-shadow:var(--shadow-sm)}
-  .ds-list-head{display:flex;justify-content:flex-end;padding:8px 0}
-  .ds-count{color:var(--text-3);font-size:11.5px;font-weight:600}
-  .ds-list{list-style:none;margin:0;padding:0}
-  .ds-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:18px;padding:12px 0;border-top:1px solid var(--border-soft)}
-  .ds-row-main{min-width:0;color:var(--text-h);font-size:13px;font-weight:600;overflow-wrap:anywhere}
-  .ds-row-actions{display:flex;align-items:center;gap:6px}
-  .ds-row-actions .btn{min-height:36px}
+  .ds-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+  .ds-column{min-width:0;min-height:210px;padding:12px;background:var(--bg-hover);border:1px solid var(--border);border-radius:14px;transition:border-color .16s,background .16s,box-shadow .16s}
+  .ds-column.is-over{border-color:var(--primary);background:var(--primary-50);box-shadow:0 0 0 2px var(--primary-100)}
+  .ds-column-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;padding:3px 2px 11px;border-bottom:1px solid var(--border)}
+  .ds-column-head h2{margin:0;color:var(--text-h);font-size:13px;font-weight:700}
+  .ds-column-head p{margin:3px 0 0;color:var(--text-3);font-size:11px;line-height:1.4}
+  .ds-column-count{display:grid;place-items:center;min-width:25px;height:25px;padding:0 7px;border:1px solid var(--border);border-radius:999px;background:var(--bg-card);color:var(--text-2);font-size:11px;font-weight:700}
+  .ds-cards{display:flex;flex-direction:column;gap:8px;min-height:128px;margin:0;padding:10px 0 0;list-style:none}
+  .ds-card{display:grid;grid-template-columns:26px minmax(0,1fr) auto;align-items:center;gap:8px;min-width:0;padding:10px;background:var(--bg-card);border:1px solid var(--border);border-radius:11px;box-shadow:var(--shadow-sm);transition:opacity .16s,border-color .16s,transform .16s}
+  .ds-card:hover{border-color:var(--primary-300)}
+  .ds-card.is-dragging{opacity:.45;transform:scale(.98)}
+  .ds-card-name{min-width:0;color:var(--text-h);font-size:12.5px;font-weight:650;overflow-wrap:anywhere}
+  .ds-drag-handle{display:grid;place-items:center;width:26px;height:34px;padding:0;border:0;border-radius:7px;background:transparent;color:var(--text-3);cursor:grab;touch-action:none}
+  .ds-drag-handle:hover,.ds-drag-handle:focus-visible{background:var(--bg-hover);color:var(--primary);outline:0}
+  .ds-drag-handle:active{cursor:grabbing}
+  .ds-card-actions{display:flex;align-items:center;gap:5px}
+  .ds-card-actions .mini-btn{width:36px;min-width:36px;min-height:36px;padding:0}
+  .ds-column-empty{display:grid;place-items:center;min-height:108px;padding:14px 6px;text-align:center;color:var(--text-3);font-size:11.5px;line-height:1.45}
+  .ds-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   .ds-drawer-form{display:flex;flex:1;min-height:0;flex-direction:column}
   .ds-drawer-form .drawer-b{flex:1}
   .ds-drawer-form .drawer-f{justify-content:flex-end}
   .ds-drawer-form .btn{min-height:44px}
   .ds-error{margin:5px 0 0;color:var(--danger);font-size:12px}
-  .ds-row-editing{display:block}
+  .ds-card-editing{display:block}
   .ds-inline-form{width:100%;display:flex;flex-direction:column;gap:10px}
   .ds-inline-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,.55fr);gap:10px}
   .ds-inline-fields .field{margin:0;min-width:0}
@@ -845,8 +856,6 @@
   .ds-inline-error{min-height:0;color:var(--danger);font-size:12px}
   .ds-inline-error:empty{display:none}
   .ds-inline-actions{display:flex;justify-content:flex-end;gap:7px}
-  .ds-empty{padding:28px 16px;text-align:center;color:var(--text-2);font-size:12.5px;line-height:1.5}
-  .ds-empty b{display:block;margin-bottom:3px;color:var(--text-h);font-size:13px}
   .cl-empty{background:var(--bg-card);border:1px dashed var(--border);border-radius:15px;text-align:center;padding:40px 18px;color:var(--text-2)}
   .cl-empty .ti{font-size:25px;color:var(--text-3)}
   .cl-empty b{display:block;color:var(--text-h);margin:8px 0 3px}
@@ -904,7 +913,7 @@
   .cl-preview-modal .modal-b{max-height:70vh;overflow:auto}
   @media(max-width:1050px){.cl-editor-grid{grid-template-columns:minmax(0,1fr)}.cl-preview-card{position:static}.cl-public-preview{min-height:220px}}
   @media(max-width:760px){.cl-editor-top{grid-template-columns:minmax(0,1fr);grid-template-areas:"back" "title" "actions";gap:8px}.cl-editor-actions{width:100%;justify-content:flex-start}}
-  @media(max-width:700px){.ds-row{grid-template-columns:minmax(0,1fr) auto;gap:8px}.ds-row-actions{grid-column:1/-1;justify-content:flex-end}.ds-inline-fields{grid-template-columns:minmax(0,1fr)}}
+  @media(max-width:700px){.ds-board{gap:8px}.ds-column{min-height:190px;padding:8px}.ds-column-head{gap:5px;padding-right:0;padding-left:0}.ds-column-head h2{font-size:12px}.ds-column-head p{font-size:10px}.ds-column-count{min-width:22px;height:22px;padding:0 5px;font-size:10px}.ds-cards{gap:7px;padding-top:8px}.ds-card{grid-template-columns:24px minmax(0,1fr) auto;gap:5px;padding:8px}.ds-drag-handle{width:24px;height:30px}.ds-card-name{font-size:12px}.ds-card-actions{grid-column:auto;justify-content:flex-end}.ds-card-actions .mini-btn{width:40px;min-width:40px;min-height:40px}.ds-inline-fields{grid-template-columns:minmax(0,1fr)}}
   @media(max-width:600px){.cl-stats{gap:7px}.cl-stat{padding:10px}.cl-stat b{font-size:17px}.cl-search{margin-left:0;width:100%}.cl-page-head .btn{width:100%;justify-content:center}.cl-item{padding:13px}.cl-item-foot{align-items:flex-start}.cl-actions{width:100%;margin:0}.cl-actions .btn{flex:1;justify-content:center;min-height:44px}.cl-filter{min-height:44px}.cl-fields{grid-template-columns:1fr}.cl-fields .field:first-child{grid-column:auto}.cl-editor-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0}.cl-editor-actions .btn{width:100%;justify-content:center;min-height:44px}.cl-editor-actions [data-cl-save="published"]{grid-column:1/-1;grid-row:2}.cl-tiptap-tools button{min-width:42px;height:42px}.cl-public-title{font-size:21px}}
   /* Bank Soal: kartu soal. Satu kolom di ponsel/tablet, dua kolom di layar lebar.
      Semua warna lewat token, jadi mode gelap ikut berubah tanpa aturan tambahan. */
@@ -2152,7 +2161,7 @@ function adDelete(id){
 }
 var VIEWS={};
 var DATA_SOURCES_KEY='na3-data-sources';
-var dataSourceEditing=null;
+var dataSourceEditing=null,dataSourceAnnouncement='',dataSourceDragId=null;
 function dataSourceRows(){
  try{
   var rows=JSON.parse(store.get(DATA_SOURCES_KEY)||'[]');if(!Array.isArray(rows))return [];
@@ -2170,17 +2179,20 @@ function dataSourceIssue(rows,name,exceptId){
  if(rows.some(function(row){return row.id!==exceptId&&row.name.toLowerCase()===value.toLowerCase();}))return 'Data source ini sudah ada.';
  return '';
 }
-function dataSourceStatus(status){return '<span class="status '+(status==='published'?'green':'gray')+'">'+(status==='published'?'Muncul':'Tidak muncul')+'</span>';}
 function dataSourceStatusOptions(selected){return '<option value="draft"'+(selected==='draft'?' selected':'')+'>Draft · Tidak muncul</option><option value="published"'+(selected==='published'?' selected':'')+'>Published · Muncul</option>';}
 function dataSourceRow(row){
- if(dataSourceEditing===row.id)return '<li class="ds-row ds-row-editing"><form class="ds-inline-form" data-ds-edit-form="'+esc(row.id)+'"><div class="ds-inline-fields"><div class="field"><label for="dsEditName">Nama data source</label><input id="dsEditName" name="name" maxlength="60" value="'+esc(row.name)+'" aria-describedby="dsEditError" required></div><div class="field"><label for="dsEditStatus">Status</label><select id="dsEditStatus" name="status">'+dataSourceStatusOptions(row.status)+'</select></div></div><div class="ds-inline-error" id="dsEditError" aria-live="polite"></div><div class="ds-inline-actions"><button class="btn sm" type="button" data-ds-cancel>Batal</button><button class="btn sm primary" type="submit">Simpan</button></div></form></li>';
- return '<li class="ds-row"><span class="ds-row-main">'+esc(row.name)+'</span>'+dataSourceStatus(row.status)+'<div class="ds-row-actions"><button class="btn sm" data-ds-edit-open="'+esc(row.id)+'" aria-label="Edit '+esc(row.name)+'">'+ic(P_PENCIL,15)+'Edit</button><button class="btn sm danger" data-ds-delete="'+esc(row.id)+'" aria-label="Hapus '+esc(row.name)+'">'+ic(P_TRASH,15)+'Hapus</button></div></li>';
+ if(dataSourceEditing===row.id)return '<li class="ds-card ds-card-editing"><form class="ds-inline-form" data-ds-edit-form="'+esc(row.id)+'"><div class="ds-inline-fields"><div class="field"><label for="dsEditName">Nama data source</label><input id="dsEditName" name="name" maxlength="60" value="'+esc(row.name)+'" aria-describedby="dsEditError" required></div><div class="field"><label for="dsEditStatus">Status</label><select id="dsEditStatus" name="status">'+dataSourceStatusOptions(row.status)+'</select></div></div><div class="ds-inline-error" id="dsEditError" aria-live="polite"></div><div class="ds-inline-actions"><button class="btn sm" type="button" data-ds-cancel>Batal</button><button class="btn sm primary" type="submit">Simpan</button></div></form></li>';
+ return '<li class="ds-card" data-ds-card="'+esc(row.id)+'"><button class="ds-drag-handle" type="button" draggable="true" data-ds-drag="'+esc(row.id)+'" title="Tahan dan geser ke kolom lain" aria-label="Seret '+esc(row.name)+' untuk mengubah status">'+ic('ti-grip-vertical',17)+'</button><span class="ds-card-name">'+esc(row.name)+'</span><div class="ds-card-actions"><button class="mini-btn ic" type="button" data-ds-edit-open="'+esc(row.id)+'" title="Edit '+esc(row.name)+'" aria-label="Edit '+esc(row.name)+'">'+ic(P_PENCIL,16)+'</button><button class="mini-btn ic danger" type="button" data-ds-delete="'+esc(row.id)+'" title="Hapus '+esc(row.name)+'" aria-label="Hapus '+esc(row.name)+'">'+ic(P_TRASH,16)+'</button></div></li>';
+}
+function dataSourceColumn(status,rows){
+ var published=status==='published',list=rows.filter(function(row){return row.status===status;});
+ return '<section class="ds-column" data-ds-column="'+status+'" aria-labelledby="dsColumn-'+status+'"><header class="ds-column-head"><div><h2 id="dsColumn-'+status+'">'+(published?'Published':'Draft')+'</h2><p>'+(published?'Muncul di onboarding':'Tidak muncul di onboarding')+'</p></div><span class="ds-column-count" aria-label="'+list.length+' data source">'+list.length+'</span></header><ul class="ds-cards">'+(list.length?list.map(dataSourceRow).join(''):'<li class="ds-column-empty">Belum ada data source</li>')+'</ul></section>';
 }
 function dataSourcesView(){
  var rows=dataSourceRows();
- return '<section class="cl-page-head ds-page-head"><div class="hero-copy"><h1>Data Source</h1><p>Atur sumber asal traffic yang tersedia saat onboarding.</p></div><button class="btn primary" data-ds-new>'+ic(P_PLUS,17)+'Tambah data source</button></section>'
-  +'<section class="ds-list-card" aria-label="Daftar data source"><div class="ds-list-head"><span class="ds-count">'+rows.length+' sumber</span></div>'
-  +(rows.length?'<ul class="ds-list">'+rows.map(dataSourceRow).join('')+'</ul>':'<div class="ds-empty"><b>Belum ada data source</b>Buat sumber pertama untuk mencatat asal traffic pengguna.</div>')+'</section>';
+ var announcement=dataSourceAnnouncement;dataSourceAnnouncement='';
+ return '<section class="cl-page-head ds-page-head"><div class="hero-copy"><h1>Data Source</h1><p>Seret data source ke kolom lain untuk mengubah visibilitas saat onboarding.</p></div><button class="btn primary" data-ds-new>'+ic(P_PLUS,17)+'Tambah data source</button></section>'
+  +'<p class="ds-visually-hidden" id="dsStatusLive" aria-live="polite">'+esc(announcement)+'</p><div class="ds-board" role="group" aria-label="Data source berdasarkan status">'+dataSourceColumn('draft',rows)+dataSourceColumn('published',rows)+'</div>';
 }
 function newDataSourceId(){return 'DS-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);}
 function openDataSourceCreate(){
@@ -2199,6 +2211,15 @@ function saveDataSourceEdit(id,form){
  if(issue){input.setAttribute('aria-invalid','true');error.textContent=issue;input.focus();return;}
  var row=null;rows.forEach(function(x){if(x.id===id)row=x;});if(!row)return;
  row.name=input.value.trim();row.status=status.value==='published'?'published':'draft';saveDataSourceRows(rows);dataSourceEditing=null;render(false);toast('Data source diperbarui');
+}
+function moveDataSourceStatus(id,status){
+ if(status!=='draft'&&status!=='published')return;
+ var rows=dataSourceRows(),row=null;rows.forEach(function(item){if(item.id===id)row=item;});
+ if(!row||row.status===status)return;
+ row.status=status;saveDataSourceRows(rows);dataSourceAnnouncement=row.name+' dipindahkan ke '+(status==='published'?'Published, Muncul':'Draft, Tidak muncul')+'.';render(false);toast(row.name+' dipindahkan',status==='published'?'Muncul di onboarding':'Tidak muncul di onboarding');
+}
+function clearDataSourceDrag(){
+ dataSourceDragId=null;document.querySelectorAll('.ds-column.is-over').forEach(function(column){column.classList.remove('is-over');});document.querySelectorAll('.ds-card.is-dragging').forEach(function(card){card.classList.remove('is-dragging');});
 }
 function deleteDataSource(id){
  var rows=dataSourceRows(),index=-1;rows.forEach(function(row,i){if(row.id===id)index=i;});if(index<0)return;var gone=rows[index];
@@ -3706,6 +3727,15 @@ function bindAll(page,t){
  c.querySelectorAll('[data-ds-cancel]').forEach(function(b){b.onclick=function(e){e.preventDefault();dataSourceEditing=null;render(false);};});
  c.querySelectorAll('[data-ds-delete]').forEach(function(b){b.onclick=function(e){e.preventDefault();deleteDataSource(b.getAttribute('data-ds-delete'));};});
  c.querySelectorAll('[data-ds-edit-form]').forEach(function(form){var input=form.querySelector('[name="name"]'),error=form.querySelector('.ds-inline-error');input.addEventListener('input',function(){input.removeAttribute('aria-invalid');error.textContent='';});form.addEventListener('submit',function(e){e.preventDefault();saveDataSourceEdit(form.getAttribute('data-ds-edit-form'),form);});});
+ c.querySelectorAll('[data-ds-drag]').forEach(function(handle){
+  handle.addEventListener('dragstart',function(e){dataSourceDragId=handle.getAttribute('data-ds-drag');var card=handle.closest('[data-ds-card]');if(card)card.classList.add('is-dragging');if(e.dataTransfer){e.dataTransfer.setData('text/plain',dataSourceDragId);e.dataTransfer.effectAllowed='move';}});
+  handle.addEventListener('dragend',clearDataSourceDrag);
+ });
+ c.querySelectorAll('[data-ds-column]').forEach(function(column){
+  column.addEventListener('dragover',function(e){if(!dataSourceDragId)return;e.preventDefault();if(e.dataTransfer)e.dataTransfer.dropEffect='move';column.classList.add('is-over');});
+  column.addEventListener('dragleave',function(e){if(!column.contains(e.relatedTarget))column.classList.remove('is-over');});
+  column.addEventListener('drop',function(e){if(!dataSourceDragId)return;e.preventDefault();var id=dataSourceDragId||e.dataTransfer&&e.dataTransfer.getData('text/plain');var status=column.getAttribute('data-ds-column');clearDataSourceDrag();if(id)moveDataSourceStatus(id,status);});
+ });
  c.querySelectorAll('[data-cl-new]').forEach(function(b){b.onclick=function(e){e.stopPropagation();changelogFilter='Semua';state.q='';openChangelogEditor(null);};});
  c.querySelectorAll('[data-cl-edit]').forEach(function(b){b.onclick=function(e){e.stopPropagation();openChangelogEditor(b.getAttribute('data-cl-edit'));};});
  c.querySelectorAll('[data-cl-preview]').forEach(function(b){b.onclick=function(e){e.stopPropagation();clOpenPreview(b.getAttribute('data-cl-preview'));};});
