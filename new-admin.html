@@ -796,6 +796,98 @@
     *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
     .skel::after{animation:none;opacity:.25}
   }
+  /* Campaign link workspace */
+  .cmp-page-head{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;margin:4px 0 18px}
+  .cmp-page-head .hero-copy{flex:1;min-width:240px}
+  .cmp-page-head h1{margin:0;font-size:22px;color:var(--text-h);letter-spacing:-.02em}
+  .cmp-page-head p{margin:5px 0 0;color:var(--text-2);font-size:13px;line-height:1.5;max-width:720px}
+  .cmp-page-head>.btn{margin-left:auto}
+  .cmp-toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+  .cmp-toolbar .fsearch{flex:0 1 340px;width:min(340px,100%);margin-left:auto}
+  .cmp-stats{margin:0 0 16px;padding:15px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm)}
+  .cmp-stats-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+  .cmp-stats-head h2{margin:0;color:var(--text-h);font-size:14px}
+  .cmp-range-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto;padding:3px;border-radius:10px;background:var(--bg-hover)}
+  .cmp-range-tabs button{min-height:32px;padding:0 10px;border:0;border-radius:8px;background:transparent;color:var(--text-2);font-size:11.5px;font-weight:600;cursor:pointer}
+  .cmp-range-tabs button:hover{color:var(--text-h)}
+  .cmp-range-tabs button.on{background:var(--bg-card);color:var(--primary);box-shadow:var(--shadow-sm)}
+  .cmp-custom-range{display:flex;align-items:center;gap:7px;margin:0 0 11px;padding:10px;border:1px solid var(--border-soft);border-radius:10px;background:var(--bg-hover)}
+  .cmp-custom-range[hidden]{display:none}
+  .cmp-custom-range label{display:flex;align-items:center;gap:6px;min-width:0;color:var(--text-2);font-size:11px}
+  .cmp-custom-range input{min-width:0;height:34px;padding:0 8px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text-h);font:11.5px Inter,sans-serif}
+  .cmp-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .cmp-stat{min-width:0;padding:10px 11px;border:1px solid var(--border-soft);border-radius:10px}
+  .cmp-stat span{display:block;color:var(--text-3);font-size:10.5px}
+  .cmp-stat b{display:block;margin-top:2px;color:var(--text-h);font:600 18px Poppins,Inter,sans-serif}
+  .cmp-stat small{display:block;margin-top:1px;color:var(--text-3);font-size:10px}
+  .cmp-chart{position:relative;display:flex;align-items:center;justify-content:center;min-height:94px;margin-top:10px;padding:12px;border:1px dashed var(--border);border-radius:10px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 27px,var(--border-soft) 28px,var(--border-soft) 29px)}
+  .cmp-chart.has-data{display:block;min-height:176px;padding:12px 12px 8px}
+  .cmp-chart-legend{display:flex;align-items:center;gap:13px;color:var(--text-3);font-size:10px}
+  .cmp-chart-legend span{display:inline-flex;align-items:center;gap:5px}
+  .cmp-chart-legend i{width:8px;height:8px;border-radius:3px;background:var(--primary)}
+  .cmp-chart-legend i.reg{background:var(--secondary)}
+  .cmp-bars{display:flex;align-items:flex-end;gap:7px;height:126px;margin-top:5px;overflow-x:auto}
+  .cmp-bar-group{display:flex;flex:1;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;min-width:24px;height:100%}
+  .cmp-bar-pair{display:flex;align-items:flex-end;justify-content:center;gap:2px;width:100%;height:105px}
+  .cmp-bar{display:block;width:min(12px,40%);min-height:2px;border-radius:4px 4px 0 0;background:var(--primary)}
+  .cmp-bar.reg{background:var(--secondary)}
+  .cmp-bar-group small{color:var(--text-3);font-size:9px;white-space:nowrap}
+  .cmp-chart-empty{max-width:320px;padding:6px 10px;border-radius:8px;background:var(--bg-card);color:var(--text-3);font-size:11.5px;text-align:center}
+  .cmp-short-link{display:flex;align-items:center;gap:8px;min-width:0;margin-top:12px;padding:9px 10px;border:1px solid var(--border-soft);border-radius:9px;background:var(--bg-hover)}
+  .cmp-short-copy{flex:1;min-width:0}
+  .cmp-short-copy small{display:block;color:var(--text-3);font-size:10px}
+  .cmp-short-copy code{display:block;color:var(--text-h);font:11.5px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+  .cmp-short-link .mini-btn.ic{width:36px;min-width:36px;min-height:36px;padding:0}
+  .cmp-full-details{margin-top:8px}
+  .cmp-full-details summary{color:var(--text-3);font-size:11px;cursor:pointer}
+  .cmp-full-details[open] summary{margin-bottom:7px}
+  .cmp-full-details .cmp-url{margin-top:0}
+  .cmp-qr-modal{width:min(430px,100%)!important}
+  .cmp-qr-body{align-items:center;text-align:center}
+  .cmp-qr-stage{display:grid;place-items:center;width:100%;min-height:270px;padding:12px;border:1px solid var(--border);border-radius:12px;background:#fff}
+  .cmp-qr-stage img,.cmp-qr-stage canvas{display:block;width:240px!important;height:240px!important;max-width:100%;image-rendering:pixelated}
+  .cmp-qr-stage table{border-collapse:collapse}
+  .cmp-qr-url{max-width:100%;margin-top:10px;color:var(--text-2);font:11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+  .cmp-qr-error{color:var(--danger);font-size:12px}
+  .cmp-list{display:flex;flex-direction:column;gap:10px}
+  .cmp-card{min-width:0;padding:15px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm)}
+  .cmp-card:hover{border-color:var(--primary-300)}
+  .cmp-card-head{display:flex;align-items:flex-start;gap:12px}
+  .cmp-card-title{flex:1;min-width:0}
+  .cmp-card-title h2{margin:3px 0 0;color:var(--text-h);font-size:15px;line-height:1.4;overflow-wrap:anywhere}
+  .cmp-date{color:var(--text-3);font-size:11px}
+  .cmp-actions{display:flex;align-items:center;gap:6px;flex:0 0 auto}
+  .cmp-actions .mini-btn{min-height:36px}
+  .cmp-actions .mini-btn.ic{width:36px;min-width:36px;padding:0}
+  .cmp-url{display:block;margin-top:12px;padding:10px 11px;border:1px solid var(--border-soft);border-radius:9px;background:var(--bg-hover);color:var(--primary);font:11.5px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;text-decoration:none;overflow-wrap:anywhere;word-break:break-word}
+  .cmp-url:hover{text-decoration:underline;text-underline-offset:2px}
+  .cmp-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+  .cmp-detail{min-width:0;padding:8px 9px;border:1px solid var(--border-soft);border-radius:9px}
+  .cmp-detail small{display:block;color:var(--text-3);font-size:10px;margin-bottom:2px}
+  .cmp-detail b{display:block;color:var(--text-h);font-size:11.5px;font-weight:600;overflow-wrap:anywhere}
+  .cmp-destination{display:flex;align-items:flex-start;gap:5px;margin-top:10px;color:var(--text-3);font-size:11.5px;line-height:1.45;overflow-wrap:anywhere}
+  .cmp-destination .ti{flex:0 0 auto;margin-top:1px}
+  .cmp-notes{margin:8px 0 0;color:var(--text-2);font-size:11.5px;line-height:1.45;overflow-wrap:anywhere}
+  .cmp-empty{padding:38px 18px;text-align:center;background:var(--bg-card);border:1px dashed var(--border);border-radius:14px;color:var(--text-2)}
+  .cmp-empty .ti{color:var(--text-3);font-size:24px}
+  .cmp-empty b{display:block;margin:8px 0 3px;color:var(--text-h)}
+  .cmp-drawer-form{display:flex;flex:1;min-height:0;flex-direction:column}
+  .cmp-drawer-form .drawer-b{flex:1;gap:12px}
+  .cmp-drawer-form .drawer-f{justify-content:flex-end}
+  .cmp-drawer-form .btn{min-height:42px}
+  .cmp-preview{padding:12px;border:1px solid var(--border);border-radius:11px;background:var(--bg-hover)}
+  .cmp-preview-head{display:flex;align-items:center;gap:7px;color:var(--text-h);font-size:12px;font-weight:650}
+  .cmp-preview-head .ti{color:var(--primary)}
+  .cmp-preview-text{margin:6px 0 0;color:var(--text-3);font-size:11.5px;line-height:1.5;overflow-wrap:anywhere;word-break:break-word}
+  .cmp-preview-text.ready{color:var(--primary);font:11px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace}
+  .cmp-preview-copy{margin-top:8px}
+  .cmp-preview-copy[hidden]{display:none}
+  .cmp-field-help{display:block;margin-top:4px;color:var(--text-3);font-size:10.5px;line-height:1.45}
+  .cmp-form-error{margin:0;color:var(--danger);font-size:12px;line-height:1.45}
+  .cmp-form-error:empty{display:none}
+  .cmp-drawer-form input[aria-invalid="true"]{border-color:var(--danger);box-shadow:0 0 0 2px rgba(239,68,68,.1)}
+  @media(max-width:760px){.cmp-details{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:600px){.cmp-page-head .btn{width:100%;justify-content:center;margin-left:0}.cmp-toolbar .fsearch{flex:1 1 100%;margin-left:0;width:100%}.cmp-stats{padding:13px}.cmp-stats-head{align-items:flex-start}.cmp-range-tabs{width:100%;margin:0}.cmp-range-tabs button{flex:1;padding:0 6px}.cmp-stat-grid{gap:6px}.cmp-stat{padding:8px}.cmp-stat b{font-size:16px}.cmp-custom-range{align-items:stretch;flex-direction:column}.cmp-custom-range label{justify-content:space-between}.cmp-custom-range input{width:60%}.cmp-card{padding:13px}.cmp-card-head{flex-wrap:wrap}.cmp-actions{width:100%;justify-content:flex-start}.cmp-details{gap:6px}.cmp-detail{padding:7px}.cmp-detail b{font-size:11px}.cmp-short-link{gap:5px;padding:8px}.cmp-short-copy code{font-size:10.5px}.cmp-short-link .mini-btn.ic{width:38px;min-width:38px;min-height:38px}}
   /* Changelog workspace */
   .cl-page-head{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;margin:4px 0 18px}
   .cl-page-head .hero-copy{flex:1;min-width:240px}
@@ -1099,6 +1191,7 @@
 <div class="sel-pop" id="selPop" role="listbox" aria-label="Pilihan"></div>
 <div class="toast" id="toast" aria-live="polite" aria-atomic="false"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 /* Never show a blank page: surface any error inside the content area */
 window.addEventListener('error',function(e){var c=document.getElementById('content');if(c&&!c.dataset.ready){c.innerHTML='<div class="empty"><div class="eico"><i class="ti ti-alert-triangle" style="font-size:24px"></i></div><b>Gagal memuat halaman</b><br><span style="font-size:12.5px">'+String((e&&e.message)||'unknown error')+'</span></div>';}});
@@ -1116,7 +1209,7 @@ var P_CHR='ti-chevron-right',P_CHL='ti-chevron-left',P_SEARCH='ti-search',P_DOWN
 var P_ZAP='ti-bolt',P_CHEV='ti-chevron-down',P_CHEV_UP='ti-chevron-up',P_EYE='ti-eye';
 var P_FILTER='ti-filter',P_SORT='ti-arrows-sort',P_SORT_ASC='ti-sort-ascending',P_SORT_DESC='ti-sort-descending';
 var P_DOT='ti-dots',P_HALF='ti-circle-half-2',P_TRASH='ti-trash',P_ARCH='ti-archive';
-var P_COPY='ti-copy',P_SEND='ti-send',P_BELL='ti-bell';
+var P_COPY='ti-copy',P_SEND='ti-send',P_BELL='ti-bell',P_LINK='ti-link',P_QR='ti-qrcode';
 var P_UPLOAD='ti-upload';
 /* ============ REAL NAV (mirrors sidebar/constants.tsx: 7 groups, routes, menu perms) ============ */
 var NAV=[
@@ -1133,6 +1226,7 @@ var NAV=[
  {g:'Konten',items:[
   {k:'questions',t:'Bank Soal',icn:'ti-books',route:'/questions',mp:'menu.questions',perm:'questionBank.read',badge:'12',cls:'warn'},
   {k:'ads',t:'Iklan',icn:'ti-speakerphone',route:'/ads',mp:'menu.ads',perm:'ads.read',badge:'5',cls:'ok'},
+  {k:'campaigns',t:'Kampanye',icn:'ti-link',route:'/campaigns',mp:'menu.campaigns',perm:'campaigns.manage'},
    {k:'articles',t:'Artikel',icn:'ti-article',route:'/articles',mp:'menu.articles',perm:'articles.read'},
    {k:'vouchers',t:'Voucher',icn:'ti-ticket',route:'/vouchers',mp:'menu.vouchers',perm:'vouchers.read'},
    {k:'referrals',t:'Referral',icn:'ti-link',route:'/referrals',mp:'menu.referrals',perm:'referrals.read'},
@@ -1166,7 +1260,7 @@ var NAV=[
 /* Role -> visible nav keys. Admin sees all. Media is read-only for Tim Soal. */
 var ACCESS={
  soal:['dashboard','questions','content-areas','topics','programs','blueprints','blueprint-versions','drills','tryouts','grading','question-reports','media','notifications'],
- marketing:['dashboard','ads','articles','vouchers','referrals','social-media','notifications','streak-tasks'],
+ marketing:['dashboard','ads','campaigns','articles','vouchers','referrals','social-media','notifications','streak-tasks'],
  user:['dashboard','users','data-pelajar','invitations','notifications'],
  admin:'*'
 };
@@ -1344,6 +1438,8 @@ questions:{menu:'menu.questions',route:'/questions',perm:'questionBank.read',tit
    {id:'ADS-GG',t:'Iklan tryout SNBT',s:'menunggu jadwal · belum diatur',st:['Menunggu','amber'],by:'Raka',chip:'Menunggu',variant:'full',label:'Segera Hadir',button:'Lihat Info',link:'',img:null,order:2,mulai:'Belum diatur',selesai:'Belum diatur'}],
   empty:{t:'Belum ada iklan',d:'Buat materi iklan: gambar, tautan, posisi, varian, dan jadwal tayang.',c:'Buat iklan'},
   form:[{k:'title',l:'Judul iklan',req:1,ph:'cth: TO Akbar 12 dibuka'},{k:'variant',l:'Tampilan',type:'select',opts:['Lengkap','Gambar saja','Teks saja']},{k:'budget',l:'Anggaran (Rp)',type:'number',ph:'2000000'}]},
+  campaigns:{menu:'menu.campaigns',route:'/campaigns',perm:'campaigns.manage',title:'Kampanye',cat:'content',view:'campaigns',
+   sub:'Buat, simpan, dan kelola tautan UTM untuk mengukur sumber kunjungan kampanye.'},
   /* Mirrors admin /(content)/articles: Konfigurasi portal + Daftar artikel grup "artikel". Prototype-only rows. */
   articles:{menu:'menu.articles',route:'/articles',perm:'articles.read',title:'Artikel',cat:'content',qa:'Lihat artikel',view:'articles',
    sub:'Sumber portal untuk halaman publik TRYOUTKU. Simpan konfigurasi lalu pantau daftar artikel grup “artikel”.',
@@ -1668,7 +1764,7 @@ function defPage(){return 'dashboard';}
 function featOf(page){if(page==='dashboard')return F['dash-'+state.role]||F['dash-admin'];return F[page]||GENERIC(page,'Halaman');}
 function saveLast(){try{store.set('na3-last',state.role+'|'+(state.page||defPage()));}catch(_){}}
 function setRole(r,silent){if(!ROLES[r])return;dataSourceEditing=null;participantEditing=null;state.role=r;state.page=null;state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();store.set('na3-role',r);saveLast();if(!silent)window.scrollTo(0,0);load(function(){if(!silent)toast('Beralih ke '+ROLES[r].label,ROLES[r].hide);});}
-function go(p){if(p==='data-sources'){p='participant-data';participantDataTab='traffic';participantEditing=null;dataSourceEditing=null;}if(p==='changelogs'&&state.role!=='admin'){toast('Changelog hanya tersedia di workspace Admin',null,'err');return;}if(p==='participant-data'&&state.role!=='admin'){toast('Data Peserta hanya tersedia di workspace Admin',null,'err');return;}if((state.page||defPage())==='participant-data'&&p!=='participant-data'){participantEditing=null;dataSourceEditing=null;}state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
+function go(p){if(p==='data-sources'){p='participant-data';participantDataTab='traffic';participantEditing=null;dataSourceEditing=null;}if(p==='changelogs'&&state.role!=='admin'){toast('Changelog hanya tersedia di workspace Admin',null,'err');return;}if(p==='participant-data'&&state.role!=='admin'){toast('Data Peserta hanya tersedia di workspace Admin',null,'err');return;}if(p==='campaigns'&&state.role!=='admin'&&state.role!=='marketing'){toast('Kampanye hanya tersedia di workspace Marketing',null,'err');return;}if((state.page||defPage())==='participant-data'&&p!=='participant-data'){participantEditing=null;dataSourceEditing=null;}state.page=(p==='dashboard'?'dashboard':p);state.qsub=null;state.qtop=null;state.flt=[];state.q='';state.sort=null;state.sortKey=null;state.pg=1;state.sel={};state.tab='ringkas';loadFilters();saveLast();window.scrollTo(0,0);load();}
 function load(done){state.loading=true;render(true);clearTimeout(load.t);load.t=setTimeout(function(){state.loading=false;render(false);if(done)done();},220);}
 function cycle(){setRole(ROLE_ORDER[(ROLE_ORDER.indexOf(state.role)+1)%ROLE_ORDER.length]);}
 function fic(cls,s){return '<i class="ti-f '+cls+'"'+(s?' style="font-size:'+s+'px"':'')+'></i>';}
@@ -3305,6 +3401,36 @@ function articlesView(page,t){
 }
 VIEWS.articles=articlesView;
 VIEWS.ads=adsView;
+/* Campaign links use UTM parameters and are stored locally in this prototype. */
+var CAMPAIGN_STORE='na3-campaign-links';
+var CAMPAIGN_SHORT_ORIGIN='https://tryoutku.toploker.com';
+var campaignRange='week',campaignFrom='',campaignTo='';
+function campaignRows(){try{var rows=JSON.parse(store.get(CAMPAIGN_STORE)||'[]');return Array.isArray(rows)?rows.filter(function(r){return r&&r.id;}):[];}catch(_){return [];}}
+function campaignSaveRows(rows){store.set(CAMPAIGN_STORE,JSON.stringify(rows));}
+function campaignId(){return 'CMP-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);}
+function campaignShortCode(){var chars='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',code='';for(var i=0;i<7;i++)code+=chars[Math.floor(Math.random()*chars.length)];return code;}
+function campaignShortUrl(d){var code=d.shortCode||String(d.id||'campaign').replace(/[^a-z0-9]/gi,'').slice(-7).padStart(7,'0');return CAMPAIGN_SHORT_ORIGIN+'/s/'+code;}
+function campaignFormValues(form){var v={};['destination','source','medium','campaign','placement','keyword','notes'].forEach(function(k){var el=form.querySelector('[name="'+k+'"]');v[k]=el?el.value.trim():'';});return v;}
+function campaignUrl(v){try{var u=new URL(String(v.destination||'').trim());if(u.protocol!=='https:'&&u.protocol!=='http:')return '';[['utm_source',v.source],['utm_medium',v.medium],['utm_campaign',v.campaign],['utm_content',v.placement],['utm_term',v.keyword]].forEach(function(pair){if(pair[1])u.searchParams.set(pair[0],pair[1]);});return u.toString();}catch(_){return '';}}
+function campaignIssue(v){if(!v.destination)return {field:'destination',message:'URL halaman tujuan wajib diisi.'};if(!campaignUrl({destination:v.destination}))return {field:'destination',message:'Masukkan URL yang valid dan diawali http:// atau https://.'};var required=[['source','Sumber platform'],['medium','Jenis media'],['campaign','Nama kampanye'],['placement','Penempatan']];for(var i=0;i<required.length;i++)if(!v[required[i][0]])return {field:required[i][0],message:required[i][1]+' wajib diisi.'};return null;}
+function campaignDate(value){var d=new Date(value||Date.now());return isNaN(d.getTime())?'Tanggal tidak diketahui':d.toLocaleString('id-ID',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});}
+function campaignCopy(url,label){if(!url)return;function ok(){toast(label||'URL kampanye disalin');}function fail(){toast('URL gagal disalin',null,'err');}try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(ok,fail);return;}var ta=document.createElement('textarea');ta.value=url;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();var copied=document.execCommand('copy');ta.remove();if(copied)ok();else fail();}catch(_){fail();}}
+function campaignCard(d){var url=campaignUrl(d),shortUrl=campaignShortUrl(d),safeUrl=url||'#';return '<article class="cmp-card"><div class="cmp-card-head"><div class="cmp-card-title"><span class="cmp-date">Dibuat '+esc(campaignDate(d.createdAt))+'</span><h2>'+esc(d.campaign||'Kampanye tanpa nama')+'</h2></div><div class="cmp-actions"><button class="mini-btn ic" data-cmp-edit="'+esc(d.id)+'" title="Ubah kampanye" aria-label="Ubah kampanye '+esc(d.campaign||'')+'">'+ic(P_PENCIL,14)+'</button><button class="mini-btn ic danger" data-cmp-delete="'+esc(d.id)+'" title="Hapus kampanye" aria-label="Hapus kampanye '+esc(d.campaign||'')+'">'+ic(P_TRASH,14)+'</button></div></div><div class="cmp-short-link"><div class="cmp-short-copy"><small>URL pendek</small><code title="'+esc(shortUrl)+'">'+esc(shortUrl)+'</code></div><button class="mini-btn" data-cmp-short-copy="'+esc(shortUrl)+'">'+ic(P_COPY,14)+'<span>Salin</span></button><button class="mini-btn ic" data-cmp-qr="'+esc(d.id)+'" title="Tampilkan QR Code" aria-label="Tampilkan QR Code '+esc(d.campaign||'')+'">'+ic(P_QR,15)+'</button></div><details class="cmp-full-details"><summary>Lihat URL lengkap dengan UTM</summary><a class="cmp-url" href="'+esc(safeUrl)+'" target="_blank" rel="noopener noreferrer"'+(url?'':' aria-disabled="true"')+'>'+esc(url||'URL kampanye tidak valid')+'</a><button class="mini-btn" style="margin-top:7px" data-cmp-copy="'+esc(url)+'"'+(url?'':' disabled')+'>'+ic(P_COPY,14)+'<span>Salin URL lengkap</span></button></details><div class="cmp-details"><div class="cmp-detail"><small>Sumber platform</small><b>'+esc(d.source||'—')+'</b></div><div class="cmp-detail"><small>Jenis media</small><b>'+esc(d.medium||'—')+'</b></div><div class="cmp-detail"><small>Penempatan</small><b>'+esc(d.placement||'—')+'</b></div><div class="cmp-detail"><small>Kata kunci</small><b>'+esc(d.keyword||'Tidak diisi')+'</b></div></div><div class="cmp-destination">'+ic('ti-world',14)+'<span>Halaman tujuan: '+esc(d.destination||'—')+'</span></div>'+(d.notes?'<p class="cmp-notes">Catatan: '+esc(d.notes)+'</p>':'')+'</article>';}
+function campaignInputDate(date){var d=new Date(date.getTime()-date.getTimezoneOffset()*60000);return d.toISOString().slice(0,10);}
+function campaignDefaultDates(){var end=new Date(),start=new Date(end);start.setDate(start.getDate()-6);return {from:campaignInputDate(start),to:campaignInputDate(end)};}
+function campaignChartLabels(){var end=new Date(),labels=[];if(campaignRange==='year'){for(var i=11;i>=0;i--){var month=new Date(end.getFullYear(),end.getMonth()-i,1);labels.push(month.toLocaleDateString('id-ID',{month:'short'}));}return labels;}var from=campaignRange==='custom'&&campaignFrom?new Date(campaignFrom+'T00:00:00'):new Date(end);if(campaignRange==='week')from.setDate(end.getDate()-6);else if(campaignRange==='month')from.setDate(end.getDate()-29);if(campaignRange==='custom'&&campaignTo)end=new Date(campaignTo+'T00:00:00');var span=Math.max(0,Math.round((end-from)/86400000)),count=campaignRange==='week'?7:6;for(var j=0;j<count;j++){var day=new Date(from);day.setDate(from.getDate()+Math.round(span*j/Math.max(1,count-1)));labels.push(day.toLocaleDateString('id-ID',{day:'numeric',month:'short'}));}return labels;}
+function campaignChartView(rows,period){var labels=campaignChartLabels(),empty=rows.length?'Belum ada data kunjungan pada periode ini.':'Buat tautan kampanye untuk mulai melihat statistik pengunjung.';return '<div class="cmp-chart has-data" role="img" aria-label="Grafik kunjungan dan pendaftar, '+esc(period)+'. '+esc(empty)+'"><div class="cmp-chart-legend"><span><i></i>Kunjungan</span><span><i class="reg"></i>Pendaftar</span></div><div class="cmp-bars">'+labels.map(function(label){return '<div class="cmp-bar-group"><div class="cmp-bar-pair"><i class="cmp-bar" style="height:2px"></i><i class="cmp-bar reg" style="height:2px"></i></div><small>'+esc(label)+'</small></div>';}).join('')+'</div><div class="cmp-chart-empty">'+esc(empty)+'</div></div>';}
+function campaignStatsView(rows){var names={week:'Minggu ini',month:'Bulan ini',year:'Tahun ini',custom:'Rentang tanggal'},fromDate=campaignFrom?new Date(campaignFrom+'T00:00:00').toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'}):'',toDate=campaignTo?new Date(campaignTo+'T00:00:00').toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'}):'',period=campaignRange==='week'?'7 hari terakhir':campaignRange==='month'?'30 hari terakhir':campaignRange==='year'?'12 bulan terakhir':(fromDate&&toDate?fromDate+' – '+toDate:'Pilih tanggal');var custom=campaignRange==='custom';return '<section class="cmp-stats" aria-labelledby="cmpStatsTitle"><div class="cmp-stats-head"><div><h2 id="cmpStatsTitle">Statistik pengunjung</h2><span class="cmp-date">'+esc(period)+'</span></div><div class="cmp-range-tabs" role="group" aria-label="Periode statistik">'+[['week','Minggu'],['month','Bulan'],['year','Tahun'],['custom','Kustom']].map(function(pair){return '<button type="button" data-cmp-range="'+pair[0]+'" class="'+(campaignRange===pair[0]?'on':'')+'" aria-pressed="'+(campaignRange===pair[0])+'">'+pair[1]+'</button>';}).join('')+'</div></div><div class="cmp-custom-range"'+(custom?'':' hidden')+'><label>Dari <input type="date" id="cmpDateFrom" value="'+esc(campaignFrom||campaignDefaultDates().from)+'"></label><label>Sampai <input type="date" id="cmpDateTo" value="'+esc(campaignTo||campaignDefaultDates().to)+'"></label><button type="button" class="btn sm primary" data-cmp-range-apply>Terapkan</button></div><div class="cmp-stat-grid"><div class="cmp-stat"><span>Total kunjungan</span><b>0</b><small>pada '+esc(names[campaignRange])+'</small></div><div class="cmp-stat"><span>Pendaftar</span><b>0</b><small>pada '+esc(names[campaignRange])+'</small></div><div class="cmp-stat"><span>Tingkat pendaftaran</span><b>0%</b><small>dari total kunjungan</small></div></div>'+campaignChartView(rows,period)+'</section>';}
+function campaignsView(){var rows=campaignRows().sort(function(a,b){return String(b.updatedAt||b.createdAt||'').localeCompare(String(a.updatedAt||a.createdAt||''));});var q=String(state.q||'').trim().toLowerCase();var filtered=q?rows.filter(function(r){return [r.campaign,r.source,r.medium,r.placement,r.keyword,r.destination,r.notes,campaignUrl(r),campaignShortUrl(r)].join(' ').toLowerCase().indexOf(q)>=0;}):rows;var pages=Math.max(1,Math.ceil(filtered.length/PG_SIZE));if(state.pg>pages)state.pg=pages;var visible=filtered.slice((state.pg-1)*PG_SIZE,state.pg*PG_SIZE);var cards=visible.map(campaignCard).join('');if(!filtered.length)cards='<div class="cmp-empty">'+ic(P_LINK,24)+'<b>'+(rows.length?'Tidak ada kampanye yang cocok':'Belum ada tautan kampanye')+'</b><span>'+(rows.length?'Coba kata kunci lain.':'Buat tautan pertama untuk mulai menandai sumber kunjungan.')+'</span>'+(rows.length?'':'<br><button class="btn primary" style="margin-top:13px" data-cmp-new>'+ic(P_PLUS,15)+'Buat tautan kampanye</button>')+'</div>';return '<section class="cmp-page-head"><div class="hero-copy"><h1>Kampanye</h1><p>Buat dan kelola tautan promosi dengan UTM agar sumber kunjungan kampanye mudah dikenali.</p></div><button class="btn primary" data-cmp-new>'+ic(P_PLUS,17)+'Buat tautan kampanye</button></section>'+campaignStatsView(rows)+'<div class="cmp-toolbar">'+searchField('Cari kampanye, sumber, atau URL…','')+'</div><div class="cmp-list">'+cards+'</div><div class="tfoot"><span class="pg">'+pgNum(pages)+'</span></div>';}
+function campaignPreview(form){var preview=form.querySelector('#cmpPreviewText'),copy=form.querySelector('[data-cmp-preview-copy]'),values=campaignFormValues(form),url=campaignUrl(values),issue=campaignIssue(values);if(url&&!issue){preview.textContent=url;preview.classList.add('ready');copy.hidden=false;copy.disabled=false;}else{preview.textContent='Pratinjau muncul setelah URL halaman tujuan dan nilai UTM wajib diisi.';preview.classList.remove('ready');copy.hidden=true;copy.disabled=true;}}
+function openCampaignEditor(id){var rows=campaignRows(),current=null;rows.forEach(function(r){if(String(r.id)===String(id))current=r;});if(id&&!current){toast('Kampanye tidak ditemukan',null,'err');return;}var d=current||{},isEdit=!!current;lastFocus=document.activeElement;var drawer=$('#drawer');drawer.setAttribute('aria-label',isEdit?'Ubah tautan kampanye':'Buat tautan kampanye');function val(k){return esc(d[k]||'');}drawer.innerHTML='<div class="drawer-h"><div style="display:flex;align-items:flex-start;gap:8px"><div style="flex:1"><h3>'+(isEdit?'Ubah tautan kampanye':'Buat tautan kampanye')+'</h3><p>Isi informasi UTM dengan nama yang mudah dikenali tim.</p></div><button class="iconbtn" id="cmpDrawerClose" type="button" aria-label="Tutup">'+ic(P_X,18)+'</button></div></div><form id="cmpForm" class="cmp-drawer-form" novalidate><div class="drawer-b"><div class="cmp-preview"><div class="cmp-preview-head">'+ic(P_LINK,15)+'<span>Pratinjau tautan</span></div><div class="cmp-preview-text" id="cmpPreviewText">Pratinjau muncul setelah URL halaman tujuan dan nilai UTM wajib diisi.</div><button class="mini-btn cmp-preview-copy" data-cmp-preview-copy type="button" hidden>'+ic(P_COPY,14)+'Salin pratinjau</button></div><div class="field"><label for="cmpDestination">URL halaman tujuan</label><input id="cmpDestination" name="destination" type="url" inputmode="url" autocomplete="url" placeholder="https://contoh.id/halaman" value="'+val('destination')+'" aria-describedby="cmpDestinationHelp" required><small class="cmp-field-help" id="cmpDestinationHelp">Alamat halaman yang akan dibuka setelah tautan diklik.</small></div><div class="field"><label for="cmpSource">Sumber platform</label><input id="cmpSource" name="source" list="cmpSourceOptions" maxlength="100" placeholder="cth: instagram" value="'+val('source')+'" required><datalist id="cmpSourceOptions"><option value="instagram"><option value="tiktok"><option value="facebook"><option value="youtube"><option value="whatsapp"><option value="google"></datalist><small class="cmp-field-help">Platform asal pengunjung (utm_source).</small></div><div class="field"><label for="cmpMedium">Jenis media</label><input id="cmpMedium" name="medium" list="cmpMediumOptions" maxlength="100" placeholder="cth: sosial" value="'+val('medium')+'" required><datalist id="cmpMediumOptions"><option value="sosial"><option value="iklan-berbayar"><option value="email"><option value="referral"><option value="organik"></datalist><small class="cmp-field-help">Cara tautan dibagikan (utm_medium).</small></div><div class="field"><label for="cmpCampaign">Nama kampanye</label><input id="cmpCampaign" name="campaign" maxlength="150" placeholder="cth: promo-tryout-oktober" value="'+val('campaign')+'" required><small class="cmp-field-help">Nama yang membedakan promosi ini (utm_campaign).</small></div><div class="field"><label for="cmpPlacement">Penempatan</label><input id="cmpPlacement" name="placement" maxlength="150" placeholder="cth: bio-instagram" value="'+val('placement')+'" required><small class="cmp-field-help">Lokasi tautan dipasang (utm_content).</small></div><div class="field"><label for="cmpKeyword">Kata kunci <small>(opsional)</small></label><input id="cmpKeyword" name="keyword" maxlength="150" placeholder="cth: tryout-snbt" value="'+val('keyword')+'"><small class="cmp-field-help">Kata atau istilah yang ingin dilacak (utm_term).</small></div><div class="field"><label for="cmpNotes">Catatan penggunaan <small>(opsional)</small></label><textarea id="cmpNotes" name="notes" rows="3" maxlength="500" placeholder="Catatan untuk tim, misalnya jadwal atau target promosi">'+val('notes')+'</textarea></div><p class="cmp-form-error" id="cmpFormError" role="alert"></p></div><div class="drawer-f"><button class="btn" id="cmpDrawerCancel" type="button">Batal</button><button class="btn primary" type="submit">'+ic(P_CHECK,15)+(isEdit?'Simpan perubahan':'Simpan tautan')+'</button></div></form>';
+ $('#scrim').classList.add('show');drawer.classList.add('show');var form=$('#cmpForm');$('#cmpDrawerClose').onclick=closeDrawer;$('#cmpDrawerCancel').onclick=closeDrawer;form.addEventListener('input',function(e){if(e.target.name){e.target.removeAttribute('aria-invalid');$('#cmpFormError').textContent='';}campaignPreview(form);});form.addEventListener('change',function(){campaignPreview(form);});form.addEventListener('keydown',function(e){if(e.key==='Escape'){e.preventDefault();closeDrawer();}});form.addEventListener('submit',function(e){e.preventDefault();saveCampaign(form,id);});var copy=form.querySelector('[data-cmp-preview-copy]');copy.onclick=function(){var values=campaignFormValues(form),issue=campaignIssue(values);if(!issue)campaignCopy(campaignUrl(values));};campaignPreview(form);var first=form.querySelector('[name="destination"]');if(first)first.focus();}
+function saveCampaign(form,id){var values=campaignFormValues(form),issue=campaignIssue(values),error=$('#cmpFormError');form.querySelectorAll('[name]').forEach(function(el){el.removeAttribute('aria-invalid');});if(issue){var field=form.querySelector('[name="'+issue.field+'"]');if(field){field.setAttribute('aria-invalid','true');field.focus();}if(error)error.textContent=issue.message;return;}var rows=campaignRows(),record=null;rows.forEach(function(r){if(String(r.id)===String(id))record=r;});var now=new Date().toISOString();if(!record){record={id:campaignId(),shortCode:campaignShortCode(),createdAt:now};rows.unshift(record);}if(!record.shortCode)record.shortCode=campaignShortCode();Object.keys(values).forEach(function(k){record[k]=values[k];});record.url=campaignUrl(values);record.updatedAt=now;campaignSaveRows(rows);closeDrawer();render(false);toast(id?'Tautan kampanye diperbarui':'Tautan kampanye disimpan');}
+function deleteCampaign(id){var rows=campaignRows(),index=-1,record=null;rows.forEach(function(r,i){if(String(r.id)===String(id)){index=i;record=r;}});if(!record)return;openConfirm('Hapus tautan kampanye?','Tautan “'+(record.campaign||'tanpa nama')+'” akan dihapus dari daftar.','Hapus',function(){var latest=campaignRows(),at=-1;latest.forEach(function(r,i){if(String(r.id)===String(id))at=i;});if(at>=0)latest.splice(at,1);campaignSaveRows(latest);render(false);toast('Tautan kampanye dihapus',null,null,{label:'Urungkan',fn:function(){var undo=campaignRows();undo.splice(Math.min(index,undo.length),0,record);campaignSaveRows(undo);render(false);}});});}
+function campaignQrData(host){var img=host.querySelector('img');if(img&&img.src&&img.src.indexOf('data:image')===0)return img.src;var canvas=host.querySelector('canvas');if(canvas)try{return canvas.toDataURL('image/png');}catch(_){}return '';}
+function openCampaignQr(id){var campaign=null;campaignRows().forEach(function(r){if(String(r.id)===String(id))campaign=r;});if(!campaign)return;var url=campaignShortUrl(campaign),slug=(campaign.campaign||'kampanye').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'kampanye';modalFocus=document.activeElement;var box=$('#modalBox');box.classList.add('cmp-qr-modal');box.innerHTML='<div class="modal-h"><h3>QR Code kampanye</h3><p>Pindai untuk membuka URL pendek kampanye.</p></div><div class="modal-b cmp-qr-body"><div class="cmp-qr-stage" id="cmpQrStage" aria-live="polite"></div><code class="cmp-qr-url">'+esc(url)+'</code></div><div class="modal-f"><button class="btn" id="cmpQrClose" type="button">Tutup</button><button class="btn primary" id="cmpQrDownload" type="button" disabled>'+ic(P_DOWNLOAD,15)+'Unduh PNG</button></div>';$('#modalOv').classList.add('show');$('#cmpQrClose').onclick=closeModal;$('#cmpQrDownload').onclick=function(){var data=campaignQrData($('#cmpQrStage'));if(!data){toast('QR Code belum siap',null,'err');return;}var a=document.createElement('a');a.href=data;a.download=slug+'-qr.png';a.click();};var stage=$('#cmpQrStage');if(typeof QRCode==='undefined'){stage.innerHTML='<span class="cmp-qr-error">QR Code belum bisa dibuat. Periksa koneksi lalu coba lagi.</span>';return;}try{new QRCode(stage,{text:url,width:240,height:240,colorDark:'#111827',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});var sync=function(){var data=campaignQrData(stage),download=$('#cmpQrDownload');if(download)download.disabled=!data;};sync();window.setTimeout(sync,180);}catch(_){stage.innerHTML='<span class="cmp-qr-error">QR Code gagal dibuat. Tutup lalu coba lagi.</span>';}}
+function bindCampaignPage(c){c.querySelectorAll('[data-cmp-new]').forEach(function(b){b.onclick=function(e){e.preventDefault();openCampaignEditor(null);};});c.querySelectorAll('[data-cmp-edit]').forEach(function(b){b.onclick=function(e){e.preventDefault();openCampaignEditor(b.getAttribute('data-cmp-edit'));};});c.querySelectorAll('[data-cmp-delete]').forEach(function(b){b.onclick=function(e){e.preventDefault();deleteCampaign(b.getAttribute('data-cmp-delete'));};});c.querySelectorAll('[data-cmp-copy]').forEach(function(b){b.onclick=function(e){e.preventDefault();campaignCopy(b.getAttribute('data-cmp-copy'),'URL lengkap disalin');};});c.querySelectorAll('[data-cmp-short-copy]').forEach(function(b){b.onclick=function(e){e.preventDefault();campaignCopy(b.getAttribute('data-cmp-short-copy'),'URL pendek disalin');};});c.querySelectorAll('[data-cmp-qr]').forEach(function(b){b.onclick=function(e){e.preventDefault();openCampaignQr(b.getAttribute('data-cmp-qr'));};});c.querySelectorAll('[data-cmp-range]').forEach(function(b){b.onclick=function(){campaignRange=b.getAttribute('data-cmp-range');if(campaignRange==='custom'&&(!campaignFrom||!campaignTo)){var dates=campaignDefaultDates();campaignFrom=dates.from;campaignTo=dates.to;}render(false);};});var apply=c.querySelector('[data-cmp-range-apply]');if(apply)apply.onclick=function(){var from=c.querySelector('#cmpDateFrom').value,to=c.querySelector('#cmpDateTo').value;if(!from||!to||from>to){toast('Pilih rentang tanggal yang valid',null,'err');return;}campaignFrom=from;campaignTo=to;render(false);};}
+VIEWS.campaigns=campaignsView;
 /* Voucher & referral (Marketing, prototype-only). Same card + status-flow language as ads. */
 var VOUCHST={Draft:['Draft','gray'],Siap:['Siap','amber'],Aktif:['Aktif','green'],Kedaluwarsa:['Kedaluwarsa','gray']};
 var QST={Aktif:['Aktif','green'],Draft:['Draft','gray']};
@@ -3644,7 +3770,7 @@ function quickFAB(){
  return '<div class="fab-wrap"><button class="fab-btn" id="quickBtn" aria-haspopup="true">'+ic(P_ZAP,17)+'Pintasan<span class="chev">'+ic(P_CHEV,15)+'</span></button><div class="quick-pop" id="quickPop"><div class="quick">'+items+'</div></div></div>';
 }
 function render(skel){
- var page=state.page||defPage();if(page==='data-sources'){page='participant-data';state.page=page;participantDataTab='traffic';participantEditing=null;dataSourceEditing=null;saveLast();}if((page==='changelogs'||page==='participant-data')&&state.role!=='admin'){state.page='dashboard';page='dashboard';saveLast();}
+ var page=state.page||defPage();if(page==='data-sources'){page='participant-data';state.page=page;participantDataTab='traffic';participantEditing=null;dataSourceEditing=null;saveLast();}if((page==='changelogs'||page==='participant-data')&&state.role!=='admin'||page==='campaigns'&&state.role!=='admin'&&state.role!=='marketing'){state.page='dashboard';page='dashboard';saveLast();}
  renderSidebar();renderCrumbs();
  var t=featOf(page);
  var html='';
@@ -3789,7 +3915,7 @@ function openModal(o){
  };
   var f0=$('#modalBox').querySelector('input,select,textarea');if(f0)f0.focus();else{var fb=$('#mCancel');if(fb)fb.focus();}
 }
-function closeModal(){$('#modalOv').classList.remove('show');$('#modalBox').classList.remove('wide','cl-preview-modal');if(modalFocus&&modalFocus.focus)modalFocus.focus();}
+function closeModal(){$('#modalOv').classList.remove('show');$('#modalBox').classList.remove('wide','cl-preview-modal','cmp-qr-modal');if(modalFocus&&modalFocus.focus)modalFocus.focus();}
 function openConfirm(title,sub,yesLabel,onYes){openModal({title:title,sub:sub,fields:[],submit:yesLabel||'Ya, lanjutkan',danger:true,onSubmit:onYes});}
 function defaultForm(t){
  return [{k:'name',l:'Nama / judul',req:1,ph:'cth: '+((t.rows&&t.rows[0]&&t.rows[0].t)||'Item baru')}];
@@ -3887,6 +4013,7 @@ function doAct(id,way){
 }
 function bindAll(page,t){
  var c=$('#content');
+ if(page==='campaigns')bindCampaignPage(c);
  if(page==='participant-data')bindParticipantDataPage(c);
  var dsNew=c.querySelector('[data-ds-new]');
  if(dsNew)dsNew.onclick=function(e){e.preventDefault();openDataSourceCreate();};
